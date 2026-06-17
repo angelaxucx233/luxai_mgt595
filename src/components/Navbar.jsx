@@ -1,5 +1,4 @@
-import { Link, NavLink, useParams } from 'react-router-dom';
-import { courses } from '../data/catalog.js';
+import { Link, NavLink } from 'react-router-dom';
 import LuxAvatar from './LuxAvatar.jsx';
 
 const navBtn =
@@ -14,9 +13,6 @@ function navClass({ isActive }) {
 }
 
 export default function Navbar() {
-  const { courseId } = useParams();
-  const activeCourseId = courseId ?? courses[0]?.id;
-
   return (
     <nav
       className="sticky top-0 z-30 shrink-0 flex items-center gap-6 px-4 md:px-6 py-3 bg-yale-panel border-b border-yale-500/25"
@@ -26,7 +22,7 @@ export default function Navbar() {
         to="/"
         className="flex items-center gap-2.5 shrink-0 hover:opacity-90 transition-opacity"
       >
-        <LuxAvatar size={32} animated />
+        <LuxAvatar size={32} />
         <span className="text-lg font-bold text-white tracking-tight">
           Lux<span className="text-yale-400">AI</span>
         </span>
@@ -36,11 +32,9 @@ export default function Navbar() {
         <NavLink to="/" end className={navClass}>
           Home
         </NavLink>
-        {activeCourseId && (
-          <NavLink to={`/course/${activeCourseId}`} className={navClass}>
-            Courses
-          </NavLink>
-        )}
+        <NavLink to="/courses" className={navClass}>
+          Courses
+        </NavLink>
       </div>
     </nav>
   );

@@ -9,7 +9,7 @@ export default function CoursePage() {
   const course = getCourse(courseId);
 
   if (!course) {
-    return <Navigate to="/" replace />;
+    return <Navigate to="/courses" replace />;
   }
 
   const liveCount = course.lectures.filter((l) => l.available).length;

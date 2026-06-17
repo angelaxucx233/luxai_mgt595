@@ -1,10 +1,10 @@
 import { useEffect, useRef } from 'react';
 
 /**
- * Lux — lightbulb tutor with warm caramel hair, straight bangs & bright smile.
+ * Lux — lightbulb tutor with warm caramel hair and a friendly smile.
  * Drawn on canvas; scales to any `size`.
  */
-export default function LuxAvatar({ size = 56, animated = true, className = '' }) {
+export default function LuxAvatar({ size = 56, animated = false, className = '' }) {
   const canvasRef = useRef(null);
   const frameRef = useRef(null);
 
@@ -32,7 +32,6 @@ export default function LuxAvatar({ size = 56, animated = true, className = '' }
       ctx.clearRect(0, 0, size, size);
 
       const pulse = animated ? 0.7 + 0.3 * Math.sin(time / 500) : 0.85;
-      const blink = animated && Math.sin(time / 2200) > 0.92;
 
       const glow = ctx.createRadialGradient(cx, cy - 2 * k, 2 * k, cx, cy, size * 0.52);
       glow.addColorStop(0, `rgba(212, 173, 122, ${0.35 * pulse})`);
@@ -51,7 +50,6 @@ export default function LuxAvatar({ size = 56, animated = true, className = '' }
       const hairDark = '#9a7048';
       const hairHi = '#e0c090';
 
-      // Long wavy hair behind the bulb
       ctx.fillStyle = hair;
       ctx.beginPath();
       ctx.moveTo(-18, 20);
@@ -73,7 +71,6 @@ export default function LuxAvatar({ size = 56, animated = true, className = '' }
         }
       );
 
-      // Bulb
       const bulbGrad = ctx.createLinearGradient(-14, -18, 14, 14);
       bulbGrad.addColorStop(0, '#fffef5');
       bulbGrad.addColorStop(0.4, '#fde047');
@@ -89,13 +86,13 @@ export default function LuxAvatar({ size = 56, animated = true, className = '' }
       ctx.strokeStyle = 'rgba(255,255,255,0.8)';
       ctx.lineWidth = 1.3;
       ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
       ctx.beginPath();
       ctx.moveTo(-5, -10);
       ctx.lineTo(-2, 0);
       ctx.lineTo(1, -9);
       ctx.stroke();
 
-      // Gold hoop earrings
       ctx.strokeStyle = '#d4af37';
       ctx.lineWidth = 1.6;
       ctx.beginPath();
@@ -105,68 +102,48 @@ export default function LuxAvatar({ size = 56, animated = true, className = '' }
       ctx.arc(15, 5, 3.2, 0, Math.PI * 2);
       ctx.stroke();
 
-      if (blink) {
-        ctx.strokeStyle = '#3d2914';
-        ctx.lineWidth = 2;
-        ctx.lineCap = 'round';
-        ctx.beginPath();
-        ctx.moveTo(-8, 4);
-        ctx.lineTo(-3, 4);
-        ctx.moveTo(3, 4);
-        ctx.lineTo(8, 4);
-        ctx.stroke();
-      } else {
-        const drawEye = (ex) => {
-          ctx.fillStyle = '#fff';
-          ctx.beginPath();
-          ctx.ellipse(ex, 3, 5.5, 4.2, 0, 0, Math.PI * 2);
-          ctx.fill();
-
-          ctx.fillStyle = '#4a3728';
-          ctx.beginPath();
-          ctx.ellipse(ex, 3.5, 3.2, 3.5, 0, 0, Math.PI * 2);
-          ctx.fill();
-
-          ctx.fillStyle = '#fff';
-          ctx.beginPath();
-          ctx.arc(ex + (ex < 0 ? 1.5 : -1.5), 2, 1.3, 0, Math.PI * 2);
-          ctx.fill();
-
-          ctx.strokeStyle = '#5c4030';
-          ctx.lineWidth = 1.2;
-          ctx.beginPath();
-          ctx.moveTo(ex - 6, 0);
-          ctx.quadraticCurveTo(ex, -2, ex + 6, 0);
-          ctx.stroke();
-        };
-        drawEye(-5.5);
-        drawEye(5.5);
-
-        // Wide smile with teeth
-        ctx.fillStyle = '#fecdd3';
-        ctx.beginPath();
-        ctx.ellipse(0, 11, 6.5, 4, 0.15, 0, Math.PI * 2);
-        ctx.fill();
+      const drawEye = (ex) => {
         ctx.fillStyle = '#fff';
         ctx.beginPath();
-        ctx.ellipse(0, 10.5, 5.5, 2.8, 0.1, 0, Math.PI * 2);
+        ctx.ellipse(ex, 3, 5.5, 4.2, 0, 0, Math.PI * 2);
         ctx.fill();
-        ctx.strokeStyle = '#f9a8b4';
-        ctx.lineWidth = 0.8;
-        for (let i = -2; i <= 2; i++) {
-          ctx.beginPath();
-          ctx.moveTo(i * 2 - 0.5, 9);
-          ctx.lineTo(i * 2 - 0.5, 12);
-          ctx.stroke();
-        }
-        ctx.strokeStyle = '#e879a9';
-        ctx.lineWidth = 1.2;
-        ctx.beginPath();
-        ctx.arc(0, 11, 6, 0.2, Math.PI - 0.2);
-        ctx.stroke();
-      }
 
-      // Straight across bangs (full forehead)
+        ctx.fillStyle = '#4a3728';
+        ctx.beginPath();
+        ctx.ellipse(ex, 3.5, 3.2, 3.5, 0, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.fillStyle = '#fff';
+        ctx.beginPath();
+        ctx.arc(ex + (ex < 0 ? 1.5 : -1.5), 2, 1.3, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.strokeStyle = '#5c4030';
+        ctx.lineWidth = 1.2;
+        ctx.lineCap = 'round';
+        ctx.beginPath();
+        ctx.moveTo(ex - 6, 0);
+        ctx.quadraticCurveTo(ex, -2, ex + 6, 0);
+        ctx.stroke();
+      };
+      drawEye(-5.5);
+      drawEye(5.5);
+
+      ctx.strokeStyle = '#e879a9';
+      ctx.lineWidth = 2;
+      ctx.lineCap = 'round';
+      ctx.beginPath();
+      ctx.moveTo(-6.5, 10);
+      ctx.quadraticCurveTo(0, 15, 6.5, 10);
+      ctx.stroke();
+
+      ctx.strokeStyle = 'rgba(244, 114, 182, 0.7)';
+      ctx.lineWidth = 1.2;
+      ctx.beginPath();
+      ctx.moveTo(-5, 10.5);
+      ctx.quadraticCurveTo(0, 13.5, 5, 10.5);
+      ctx.stroke();
+
       ctx.fillStyle = hair;
       ctx.beginPath();
       ctx.moveTo(-15, -6);
@@ -182,7 +159,6 @@ export default function LuxAvatar({ size = 56, animated = true, className = '' }
       ctx.lineTo(15, -6);
       ctx.stroke();
 
-      // Side hair strands in front
       ctx.strokeStyle = hairDark;
       ctx.lineWidth = 2;
       ctx.lineCap = 'round';
@@ -193,27 +169,31 @@ export default function LuxAvatar({ size = 56, animated = true, className = '' }
         ctx.stroke();
       });
 
-      // Base — collar + blazer + red accent
       ctx.fillStyle = '#f8fafc';
-      ctx.fillRect(-8, 14, 16, 2);
-      ctx.fillStyle = '#171717';
-      ctx.fillRect(-8, 16, 16, 4);
-      ctx.fillStyle = '#dc2626';
       ctx.beginPath();
-      ctx.arc(-5, 17, 2.2, 0, Math.PI * 2);
+      ctx.moveTo(-9, 14);
+      ctx.lineTo(9, 14);
+      ctx.lineTo(7, 17);
+      ctx.lineTo(-7, 17);
+      ctx.closePath();
       ctx.fill();
-      ctx.fillStyle = '#64748b';
-      for (let i = 0; i < 4; i++) {
-        ctx.fillRect(-6 + i * 3.5, 19, 2.5, 2);
-      }
-      ctx.fillStyle = '#475569';
-      ctx.fillRect(-5, 21, 10, 2);
+
+      ctx.fillStyle = '#1e293b';
+      ctx.beginPath();
+      ctx.moveTo(-10, 17);
+      ctx.lineTo(10, 17);
+      ctx.quadraticCurveTo(12, 19.5, 10, 22);
+      ctx.lineTo(-10, 22);
+      ctx.quadraticCurveTo(-12, 19.5, -10, 17);
+      ctx.closePath();
+      ctx.fill();
+
+      ctx.fillStyle = '#286dc0';
+      ctx.beginPath();
+      ctx.arc(-4, 19, 1.8, 0, Math.PI * 2);
+      ctx.fill();
 
       ctx.restore();
-
-      if (animated) {
-        frameRef.current = requestAnimationFrame(draw);
-      }
     };
 
     if (!animated) {
@@ -241,4 +221,4 @@ export default function LuxAvatar({ size = 56, animated = true, className = '' }
       className={className}
     />
   );
-};
+}
