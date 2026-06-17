@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LuxAI Seminar — Yale SOM Faculty</title>
+  <link rel="icon" href="public/lux-favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --yale-navy: #00356b;
+      --yale-blue: #286dc0;
+      --yale-sky: #4a8fd4;
+      --yale-panel: #0c4a6e;
+      --yale-gold: #d4af37;
+      --yale-cream: #fffef5;
+      --text-dark: #0f172a;
+      --text-muted: #475569;
+      --card: #ffffff;
+      --shadow: 0 20px 60px rgba(0, 53, 107, 0.25);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      height: 100%;
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--yale-navy);
+      color: var(--text-dark);
+      overflow: hidden;
+    }
+
+    /* Background pattern */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 10% 0%, rgba(74, 143, 212, 0.18), transparent 55%),
+        radial-gradient(ellipse 60% 50% at 90% 100%, rgba(212, 175, 55, 0.08), transparent 50%),
+        linear-gradient(160deg, #00356b 0%, #052238 100%);
+      z-index: 0;
+    }
+
+    .deck {
+      position: relative;
+      z-index: 1;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding: 1.25rem 1.5rem 1rem;
+    }
+
+    /* Top bar */
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    .topbar-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .topbar-brand img { width: 28px; height: 28px; }
+
+    .topbar-hint {
+      opacity: 0.65;
+      font-size: 0.72rem;
+      text-transform: none;
+      letter-spacing: 0;
+    }
+
+    /* Slide stage */
+    .stage {
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .slide {
+      display: none;
+      width: min(1100px, 96vw);
+      max-height: calc(100vh - 130px);
+      background: var(--card);
+      border-radius: 1.5rem;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      animation: slideIn 0.45s ease;
+    }
+
+    .slide.active { display: flex; flex-direction: column; }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .slide-header {
+      background: linear-gradient(135deg, var(--yale-navy) 0%, var(--yale-panel) 100%);
+      color: white;
+      padding: 1.75rem 2.25rem 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slide-header::after {
+      content: '';
+      position: absolute;
+      right: -40px;
+      top: -40px;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .slide-num {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--yale-gold);
+      margin-bottom: 0.35rem;
+    }
+
+    .slide-title {
+      font-size: clamp(1.5rem, 3.2vw, 2.15rem);
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    .slide-body {
+      padding: 1.75rem 2.25rem 2rem;
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    .slide-body p {
+      font-size: 1.08rem;
+      line-height: 1.65;
+      color: var(--text-muted);
+      max-width: 52rem;
+    }
+
+    .slide-body p + p { margin-top: 0.85rem; }
+
+    .lead {
+      font-size: 1.2rem !important;
+      color: var(--text-dark) !important;
+      font-weight: 500;
+    }
+
+    /* Layout helpers */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.75rem;
+      align-items: center;
+    }
+
+    @media (max-width: 768px) {
+      .two-col { grid-template-columns: 1fr; }
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1.25rem;
+    }
+
+    .mini-card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 1rem;
+      padding: 1.1rem 1.2rem;
+      border-left: 4px solid var(--yale-blue);
+    }
+
+    .mini-card h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--yale-navy);
+      margin-bottom: 0.35rem;
+    }
+
+    .mini-card p {
+      font-size: 0.88rem !important;
+      line-height: 1.5 !important;
+      margin: 0 !important;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .pill {
+      background: #e8f0f8;
+      color: var(--yale-navy);
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      border: 1px solid #a1c3e3;
+    }
+
+    /* Visual panels */
+    .visual-panel {
+      background: linear-gradient(180deg, #f0f6fc 0%, #e8f0f8 100%);
+      border: 1px solid #c5d9ed;
+      border-radius: 1.1rem;
+      padding: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 220px;
+    }
+
+    .visual-panel svg { max-width: 100%; height: auto; }
+
+    /* Pipeline */
+    .pipeline {
+      display: flex;
+      align-items: stretch;
+      gap: 0.5rem;
+      margin: 1.25rem 0;
+      flex-wrap: wrap;
+    }
+
+    .pipe-step {
+      flex: 1;
+      min-width: 120px;
+      background: #f8fafc;
+      border: 2px solid #e2e8f0;
+      border-radius: 0.85rem;
+      padding: 0.9rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .pipe-step.highlight {
+      border-color: var(--yale-blue);
+      background: #e8f0f8;
+    }
+
+    .pipe-step .icon {
+      font-size: 1.75rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .pipe-step h5 {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--yale-navy);
+      margin-bottom: 0.2rem;
+    }
+
+    .pipe-step p {
+      font-size: 0.72rem !important;
+      color: var(--text-muted) !important;
+      margin: 0 !important;
+      line-height: 1.35 !important;
+    }
+
+    .pipe-arrow {
+      display: flex;
+      align-items: center;
+      color: var(--yale-blue);
+      font-size: 1.4rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* Code block */
+    .code-block {
+      margin-top: 1.25rem;
+      background: #0f172a;
+      border-radius: 0.85rem;
+      overflow: hidden;
+      border: 1px solid #1e293b;
+    }
+
+    .code-header {
+      background: #1e293b;
+      color: #94a3b8;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.5rem 1rem;
+    }
+
+    .code-block pre {
+      font-family: 'JetBrains Mono', ui-monospace, monospace;
+      font-size: 0.72rem;
+      line-height: 1.55;
+      color: #e2e8f0;
+      padding: 1rem 1.1rem;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .code-block .cmd { color: #7dd3fc; }
+    .code-block .flag { color: #fcd34d; }
+    .code-block .str { color: #86efac; }
+    .code-block .comment { color: #64748b; }
+
+    /* Lux hero slide */
+    .lux-hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 1rem;
+    }
+
+    .lux-hero img {
+      width: 140px;
+      height: 140px;
+      filter: drop-shadow(0 12px 32px rgba(212, 175, 55, 0.35));
+      animation: luxGlow 3s ease-in-out infinite;
+    }
+
+    @keyframes luxGlow {
+      0%, 100% { filter: drop-shadow(0 12px 32px rgba(212, 175, 55, 0.35)); }
+      50% { filter: drop-shadow(0 16px 40px rgba(74, 143, 212, 0.45)); }
+    }
+
+    .lux-tagline {
+      font-size: 1.15rem !important;
+      font-weight: 600 !important;
+      color: var(--yale-navy) !important;
+    }
+
+    /* Demo slide */
+    .demo-slide {
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+
+    .demo-slide .big {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800;
+      color: var(--yale-navy);
+      margin-bottom: 0.5rem;
+    }
+
+    .demo-slide p {
+      margin: 0 auto !important;
+    }
+
+    .demo-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+      background: var(--yale-blue);
+      color: white;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 0.85rem 1.75rem;
+      border-radius: 999px;
+      text-decoration: none;
+      box-shadow: 0 8px 24px rgba(40, 109, 192, 0.4);
+      transition: transform 0.15s, background 0.15s;
+    }
+
+    .demo-btn:hover {
+      background: var(--yale-navy);
+      transform: translateY(-2px);
+    }
+
+    /* Title slide special */
+    .title-slide .slide-header {
+      padding: 3rem 2.5rem;
+      text-align: center;
+    }
+
+    .title-slide .slide-title {
+      font-size: clamp(2rem, 4.5vw, 3rem);
+    }
+
+    .title-slide .subtitle {
+      margin-top: 0.75rem;
+      font-size: 1.15rem;
+      font-weight: 400;
+      opacity: 0.9;
+      line-height: 1.5;
+    }
+
+    .title-slide .slide-body {
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .title-meta {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+    }
+
+    .title-meta span {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .title-meta strong { color: var(--yale-navy); }
+
+    /* Brilliant comparison */
+    .compare-row {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 1rem;
+      align-items: center;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 700px) {
+      .compare-row { grid-template-columns: 1fr; }
+      .compare-row .vs { text-align: center; }
+    }
+
+    .compare-box {
+      background: #f8fafc;
+      border-radius: 1rem;
+      padding: 1.25rem;
+      border: 2px solid #e2e8f0;
+      text-align: center;
+    }
+
+    .compare-box.lux { border-color: var(--yale-blue); background: #e8f0f8; }
+
+    .compare-box h4 {
+      font-size: 1.1rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+
+    .compare-box.brilliant h4 { color: #1a472a; }
+    .compare-box.lux h4 { color: var(--yale-navy); }
+
+    .compare-box ul {
+      list-style: none;
+      text-align: left;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .compare-box li::before {
+      content: '✓ ';
+      color: var(--yale-blue);
+      font-weight: 700;
+    }
+
+    .vs {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--yale-gold);
+    }
+
+    /* Footer nav */
+    .nav-bar {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 0.85rem;
+      gap: 1rem;
+    }
+
+    .progress-dots {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      flex: 1;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.25);
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      padding: 0;
+    }
+
+    .dot.active {
+      background: var(--yale-gold);
+      transform: scale(1.2);
+    }
+
+    .dot:hover { background: rgba(255, 255, 255, 0.5); }
+
+    .nav-btn {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: white;
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.55rem 1.1rem;
+      border-radius: 0.65rem;
+      cursor: pointer;
+      transition: background 0.15s;
+      flex-shrink: 0;
+    }
+
+    .nav-btn:hover { background: rgba(255, 255, 255, 0.22); }
+    .nav-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+
+    .slide-counter {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.82rem;
+      font-weight: 500;
+      min-width: 4rem;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .motto {
+      display: inline-block;
+      margin-top: 0.75rem;
+      font-style: italic;
+      font-size: 1rem !important;
+      color: var(--yale-blue) !important;
+      font-weight: 600 !important;
+    }
+
+    /* Persistent Lux side rail */
+    .lux-rail {
+      position: fixed;
+      right: 1.25rem;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.65rem;
+      pointer-events: none;
+    }
+
+    .lux-rail img {
+      width: 72px;
+      height: 72px;
+      filter: drop-shadow(0 8px 24px rgba(212, 175, 55, 0.4));
+      animation: luxGlow 3s ease-in-out infinite;
+    }
+
+    .lux-rail-label {
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      transform: rotate(180deg);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.55);
+    }
+
+    @media (max-width: 900px) {
+      .lux-rail { display: none; }
+    }
+
+    /* Pipeline step slides */
+    .step-slide .slide-body {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1.5rem;
+      align-items: start;
+    }
+
+    @media (max-width: 768px) {
+      .step-slide .slide-body { grid-template-columns: 1fr; }
+      .step-slide .step-lux { display: none; }
+    }
+
+    .step-main { min-width: 0; }
+
+    .step-lux {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem;
+      background: linear-gradient(180deg, #f0f6fc 0%, #e8f0f8 100%);
+      border: 1px solid #c5d9ed;
+      border-radius: 1.1rem;
+      flex-shrink: 0;
+      width: 130px;
+    }
+
+    .step-lux img {
+      width: 88px;
+      height: 88px;
+      filter: drop-shadow(0 10px 28px rgba(212, 175, 55, 0.35));
+      animation: luxGlow 3s ease-in-out infinite;
+    }
+
+    .step-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--yale-navy);
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      margin-bottom: 0.85rem;
+    }
+
+    .step-badge span {
+      background: var(--yale-gold);
+      color: var(--yale-navy);
+      width: 1.35rem;
+      height: 1.35rem;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      font-weight: 800;
+    }
+
+    .step-flow {
+      display: flex;
+      gap: 0.35rem;
+      margin-bottom: 1rem;
+    }
+
+    .step-flow .flow-item {
+      flex: 1;
+      text-align: center;
+      font-size: 0.65rem;
+      font-weight: 600;
+      color: #94a3b8;
+      padding: 0.4rem 0.25rem;
+      border-radius: 0.5rem;
+      background: #f1f5f9;
+      border: 1px solid #e2e8f0;
+    }
+
+    .step-flow .flow-item.done {
+      background: #e8f0f8;
+      color: var(--yale-navy);
+      border-color: #a1c3e3;
+    }
+
+    .step-flow .flow-item.current {
+      background: var(--yale-blue);
+      color: white;
+      border-color: var(--yale-blue);
+    }
+
+    .output-file {
+      display: inline-block;
+      margin-top: 0.65rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem;
+      background: #e8f0f8;
+      color: var(--yale-navy);
+      padding: 0.3rem 0.65rem;
+      border-radius: 0.4rem;
+      border: 1px solid #a1c3e3;
+    }
+  </style>
+</head>
+<body>
+  <div class="deck" id="deck">
+    <aside class="lux-rail" aria-hidden="true">
+      <img src="public/lux-favicon.svg" alt="" />
+      <span class="lux-rail-label">LuxAI</span>
+    </aside>
+
+    <header class="topbar">
+      <div class="topbar-brand">
+        <img src="public/lux-favicon.svg" alt="Lux" />
+        <span>Yale SOM · LuxAI Faculty Seminar</span>
+      </div>
+      <span class="topbar-hint">← → or Space to navigate · F for fullscreen</span>
+    </header>
+
+    <main class="stage" id="stage">
+
+      <!-- Slide 0: Title -->
+      <section class="slide title-slide active" data-index="0">
+        <div class="slide-header">
+          <div class="slide-num">Welcome</div>
+          <h1 class="slide-title">From PDF Slides to Interactive AI Tutors</h1>
+          <p class="subtitle">Yale SOM faculty · PDF → interactive web lecture + AI tutor</p>
+        </div>
+        <div class="slide-body">
+          <div class="title-meta">
+            <span><strong>LuxAI</strong> — forkable course template</span>
+            <span><strong>Today</strong> — vision, 4-step pipeline, demo</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 1 -->
+      <section class="slide" data-index="1">
+        <div class="slide-header">
+          <div class="slide-num">1 · The Opportunity</div>
+          <h2 class="slide-title">AI Can Be a Better Professor</h2>
+        </div>
+        <div class="slide-body two-col">
+          <div>
+            <p class="lead">An AI tutor knows your whole course — and never runs out of patience.</p>
+            <div class="card-grid">
+              <div class="mini-card">
+                <h4>Deep context</h4>
+                <p>Reads slides, notes, and problem sets across the course.</p>
+              </div>
+              <div class="mini-card">
+                <h4>Always available</h4>
+                <p>Re-explains concepts at 2 a.m. before an exam — no judgment.</p>
+              </div>
+              <div class="mini-card">
+                <h4>Socratic help</h4>
+                <p>Hints and scaffolding — not answer dumps.</p>
+              </div>
+            </div>
+          </div>
+          <div class="visual-panel">
+            <svg viewBox="0 0 320 240" width="300" aria-hidden="true">
+              <rect x="20" y="30" width="130" height="90" rx="12" fill="#00356b"/>
+              <text x="85" y="68" text-anchor="middle" fill="white" font-size="11" font-weight="600">Professor</text>
+              <text x="85" y="88" text-anchor="middle" fill="#a1c3e3" font-size="9">One pace · one explanation</text>
+              <rect x="170" y="30" width="130" height="90" rx="12" fill="#286dc0"/>
+              <text x="235" y="68" text-anchor="middle" fill="white" font-size="11" font-weight="600">AI Tutor (Lux)</text>
+              <text x="235" y="88" text-anchor="middle" fill="#dbeafe" font-size="9">Personalized · always on</text>
+              <path d="M85 120 L85 155 L160 155 L160 175" stroke="#d4af37" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+              <path d="M235 120 L235 155 L160 155" stroke="#d4af37" stroke-width="2" fill="none"/>
+              <rect x="60" y="175" width="200" height="50" rx="10" fill="#e8f0f8" stroke="#286dc0" stroke-width="2"/>
+              <text x="160" y="205" text-anchor="middle" fill="#00356b" font-size="12" font-weight="700">Each student gets their own path</text>
+              <defs>
+                <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                  <path d="M0,0 L6,3 L0,6 Z" fill="#d4af37"/>
+                </marker>
+              </defs>
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 2 -->
+      <section class="slide" data-index="2">
+        <div class="slide-header">
+          <div class="slide-num">2 · New Learning Experience</div>
+          <h2 class="slide-title">Interactive, Dynamic, Real-Time</h2>
+        </div>
+        <div class="slide-body">
+          <p class="lead">Not a chatbot bolted on — the tutor lives inside the lesson.</p>
+          <div class="two-col" style="margin-top:1rem;">
+            <div>
+              <div class="card-grid" style="grid-template-columns:1fr;">
+                <div class="mini-card" style="border-left-color:#d4af37;">
+                  <h4>Q&amp;A mid-slide</h4>
+                  <p>Tap Lux without leaving the interactive slide.</p>
+                </div>
+                <div class="mini-card" style="border-left-color:#286dc0;">
+                  <h4>Fresh practice</h4>
+                  <p>Same concept, new numbers — generated on demand.</p>
+                </div>
+                <div class="mini-card" style="border-left-color:#00356b;">
+                  <h4>Hands-on visuals</h4>
+                  <p>Drag, build, explore — not static PDFs.</p>
+                </div>
+              </div>
+            </div>
+            <div class="visual-panel">
+              <svg viewBox="0 0 300 220" width="280" aria-hidden="true">
+                <rect x="10" y="10" width="280" height="200" rx="14" fill="#fff" stroke="#c5d9ed" stroke-width="2"/>
+                <rect x="10" y="10" width="280" height="36" rx="14" fill="#00356b"/>
+                <rect x="10" y="36" width="280" height="10" fill="#00356b"/>
+                <text x="150" y="33" text-anchor="middle" fill="white" font-size="11" font-weight="600">Interactive Lecture Slide</text>
+                <rect x="30" y="60" width="120" height="130" rx="8" fill="#f0f6fc" stroke="#a1c3e3"/>
+                <circle cx="70" cy="100" r="18" fill="#eab308" stroke="#ca8a04"/>
+                <rect x="55" y="78" width="30" height="6" rx="2" fill="#c49a6c"/>
+                <text x="90" y="105" fill="#00356b" font-size="9">Explain concept…</text>
+                <rect x="170" y="60" width="100" height="60" rx="6" fill="#286dc0" opacity="0.15"/>
+                <text x="220" y="95" text-anchor="middle" fill="#00356b" font-size="9" font-weight="600">Live viz</text>
+                <rect x="30" y="165" width="240" height="28" rx="6" fill="#e8f0f8"/>
+                <text x="150" y="183" text-anchor="middle" fill="#286dc0" font-size="9">💬 "Why is P(X=1) = 2/4?" → Lux responds</text>
+              </svg>
+            </div>
+          </div>
+          <div class="pill-row">
+            <span class="pill">Lux sees the slide &amp; student inputs</span>
+            <span class="pill">Learn by doing</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 3: Brilliant -->
+      <section class="slide" data-index="3">
+        <div class="slide-header">
+          <div class="slide-num">3 · Inspiration</div>
+          <h2 class="slide-title">Brilliant.com — The Gold Standard</h2>
+        </div>
+        <div class="slide-body">
+          <p class="lead">Brilliant's playbook — adapted for graduate business education.</p>
+          <div class="compare-row">
+            <div class="compare-box brilliant">
+              <h4>Brilliant</h4>
+              <ul>
+                <li>Koji — AI assistant</li>
+                <li>Modular lesson paths</li>
+                <li>Interactive web slides</li>
+                <li>Real-time feedback</li>
+                <li>Auto-generated practice</li>
+              </ul>
+            </div>
+            <div class="vs">→</div>
+            <div class="compare-box lux">
+              <h4>LuxAI for Yale</h4>
+              <ul>
+                <li>Lux — lightbulb AI tutor</li>
+                <li>Your lecture PDFs → modules</li>
+                <li>Yale-themed interactives</li>
+                <li>Socratic hints + voice</li>
+                <li>MGT 403 &amp; your courses</li>
+              </ul>
+            </div>
+          </div>
+          <p style="margin-top:1rem;"><strong>Explain → practice → feedback → repeat</strong></p>
+        </div>
+      </section>
+
+      <!-- Slide 4: LuxAI -->
+      <section class="slide" data-index="4">
+        <div class="slide-header">
+          <div class="slide-num">4 · Our Platform</div>
+          <h2 class="slide-title">LuxAI — Brilliant for Yale</h2>
+        </div>
+        <div class="slide-body two-col">
+          <div>
+            <p class="lead">Fork, customize, deploy — any SOM course.</p>
+            <p>Named for Yale's <em>Lux et Veritas</em> — Lux is the lightbulb tutor that illuminates your subject.</p>
+            <div class="pill-row">
+              <span class="pill">React + Vite</span>
+              <span class="pill">Gemini chat</span>
+              <span class="pill">ElevenLabs / Gemini voice</span>
+              <span class="pill">4-step PDF pipeline</span>
+            </div>
+          </div>
+          <div class="visual-panel">
+            <svg viewBox="0 0 260 200" width="240" aria-hidden="true">
+              <rect x="20" y="20" width="220" height="160" rx="16" fill="#00356b"/>
+              <text x="130" y="55" text-anchor="middle" fill="white" font-size="22" font-weight="800">LuxAI</text>
+              <text x="130" y="78" text-anchor="middle" fill="#a1c3e3" font-size="10">Interactive AI Tutor Platform</text>
+              <circle cx="130" cy="120" r="28" fill="#eab308" opacity="0.9"/>
+              <rect x="115" y="95" width="30" height="8" rx="2" fill="#c49a6c"/>
+              <text x="130" y="125" text-anchor="middle" fill="#4a3728" font-size="8">Lux</text>
+              <rect x="60" y="155" width="140" height="22" rx="6" fill="#286dc0"/>
+              <text x="130" y="170" text-anchor="middle" fill="white" font-size="9" font-weight="600">yale-som-course.onrender.com</text>
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 5: Lux agent -->
+      <section class="slide" data-index="5">
+        <div class="slide-header">
+          <div class="slide-num">5 · Meet Lux</div>
+          <h2 class="slide-title">Lux — Your Lightbulb AI Agent</h2>
+        </div>
+        <div class="slide-body">
+          <div class="lux-hero">
+            <img src="public/lux-favicon.svg" alt="Lux — AI tutor lightbulb avatar" />
+            <p class="lux-tagline">Socratic tutor · sees the slide &amp; student work</p>
+            <p>Tap the bulb to ask questions, get hints, or request new practice — without leaving the lesson.</p>
+          </div>
+          <div class="card-grid" style="margin-top:1.5rem;">
+            <div class="mini-card">
+              <h4>Context-aware</h4>
+              <p>Current slide, inputs, and course material.</p>
+            </div>
+            <div class="mini-card">
+              <h4>Socratic</h4>
+              <p>Questions and hints — not spoilers.</p>
+            </div>
+            <div class="mini-card">
+              <h4>Voice</h4>
+              <p>Pre-baked slide narration + live TTS (ElevenLabs or Gemini).</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 6: Pipeline overview -->
+      <section class="slide" data-index="6">
+        <div class="slide-header">
+          <div class="slide-num">6 · The Pipeline</div>
+          <h2 class="slide-title">PDF Lecture → Interactive LuxAI App</h2>
+        </div>
+        <div class="slide-body">
+          <p class="lead">Four Python agents. Run from <code style="background:#e8f0f8;padding:0.1rem 0.35rem;border-radius:4px;font-size:0.9rem;">luxai_template/</code>.</p>
+          <div class="pipeline">
+            <div class="pipe-step highlight">
+              <div class="icon">📄</div>
+              <h5>1 · Describe</h5>
+              <p>PDF pages → JSON catalog</p>
+            </div>
+            <div class="pipe-arrow">→</div>
+            <div class="pipe-step highlight">
+              <div class="icon">🗺️</div>
+              <h5>2 · Outline</h5>
+              <p>Interactive lesson plan</p>
+            </div>
+            <div class="pipe-arrow">→</div>
+            <div class="pipe-step highlight">
+              <div class="icon">⚛️</div>
+              <h5>3 · Build</h5>
+              <p>React slide deck</p>
+            </div>
+            <div class="pipe-arrow">→</div>
+            <div class="pipe-step highlight">
+              <div class="icon">🔊</div>
+              <h5>4 · Bake audio</h5>
+              <p>Lux narration MP3s</p>
+            </div>
+          </div>
+          <div class="card-grid" style="margin-top:1.25rem;">
+            <div class="mini-card">
+              <h4>describe_slides.py</h4>
+              <p>→ <code style="font-size:0.82rem;">lecture04_slide_descriptions.json</code></p>
+            </div>
+            <div class="mini-card">
+              <h4>outline_lecture.py</h4>
+              <p>→ <code style="font-size:0.82rem;">lecture04_outline_refined.json</code></p>
+            </div>
+            <div class="mini-card">
+              <h4>build_slides.py</h4>
+              <p>→ <code style="font-size:0.82rem;">lecture04Slides.js</code></p>
+            </div>
+            <div class="mini-card">
+              <h4>bake_narration_audio.py</h4>
+              <p>→ <code style="font-size:0.82rem;">public/audio/lecture04/*.mp3</code></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 7: Step 1 — describe_slides -->
+      <section class="slide step-slide" data-index="7">
+        <div class="slide-header">
+          <div class="slide-num">7 · Conversion Step 1 of 4</div>
+          <h2 class="slide-title">Describe Your PDF Slides</h2>
+        </div>
+        <div class="slide-body">
+          <div class="step-main">
+            <div class="step-badge"><span>1</span> describe_slides.py</div>
+            <div class="step-flow">
+              <div class="flow-item current">① Describe</div>
+              <div class="flow-item">② Outline</div>
+              <div class="flow-item">③ Build</div>
+              <div class="flow-item">④ Bake audio</div>
+            </div>
+            <p class="lead">Gemini vision reads each PDF page and writes a structured JSON catalog.</p>
+            <p><strong>In:</strong> PDF in <code style="background:#e8f0f8;padding:0.1rem 0.35rem;border-radius:4px;font-size:0.9rem;">lectures/</code> · <strong>Out:</strong> <span class="output-file">lecture04_slide_descriptions.json</span></p>
+            <div class="code-block">
+              <div class="code-header">Step 1 — run from luxai_template/</div>
+              <pre><span class="cmd">python</span> agents/describe_slides.py \
+  <span class="flag">--pdf</span> <span class="str">"../lectures/MGT 403 - Lecture 04 - Binomial Distribution.pdf"</span> \
+  <span class="flag">--json</span> lecture04_slide_descriptions.json \
+  <span class="flag">--context</span> <span class="str">"MGT 403 Lecture 04: Binomial Distribution"</span></pre>
+            </div>
+          </div>
+          <div class="step-lux">
+            <img src="public/lux-favicon.svg" alt="Lux" />
+            <span style="font-size:0.72rem;font-weight:700;color:#00356b;text-align:center;line-height:1.3;">Lux reads<br/>your slides</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 8: Step 2 — outline_lecture -->
+      <section class="slide step-slide" data-index="8">
+        <div class="slide-header">
+          <div class="slide-num">8 · Conversion Step 2 of 4</div>
+          <h2 class="slide-title">Design the Interactive Outline</h2>
+        </div>
+        <div class="slide-body">
+          <div class="step-main">
+            <div class="step-badge"><span>2</span> outline_lecture.py</div>
+            <div class="step-flow">
+              <div class="flow-item done">① Describe</div>
+              <div class="flow-item current">② Outline</div>
+              <div class="flow-item">③ Build</div>
+              <div class="flow-item">④ Bake audio</div>
+            </div>
+            <p class="lead">Instructional-design AI plans explain / problem / interactive slides — not a PDF clone.</p>
+            <p><strong>In:</strong> <span class="output-file">lecture04_slide_descriptions.json</span> · <strong>Out:</strong> <span class="output-file">lecture04_outline_refined.json</span> (pass 1 + 2)</p>
+            <div class="code-block">
+              <div class="code-header">Step 2 — pass 1 + pass 2 in one command</div>
+              <pre><span class="cmd">python</span> agents/outline_lecture.py \
+  <span class="flag">--input</span> lecture04_slide_descriptions.json \
+  <span class="flag">--output</span> lecture04_outline.json \
+  <span class="flag">--refined-output</span> lecture04_outline_refined.json \
+  <span class="flag">--lecture-id</span> lecture04 \
+  <span class="flag">--lecture-title</span> <span class="str">"Binomial Distribution"</span></pre>
+            </div>
+          </div>
+          <div class="step-lux">
+            <img src="public/lux-favicon.svg" alt="Lux" />
+            <span style="font-size:0.72rem;font-weight:700;color:#00356b;text-align:center;line-height:1.3;">Lux plans<br/>the lesson</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 9: Step 3 — build_slides -->
+      <section class="slide step-slide" data-index="9">
+        <div class="slide-header">
+          <div class="slide-num">9 · Conversion Step 3 of 4</div>
+          <h2 class="slide-title">Build the React Slide Deck</h2>
+        </div>
+        <div class="slide-body">
+          <div class="step-main">
+            <div class="step-badge"><span>3</span> build_slides.py</div>
+            <div class="step-flow">
+              <div class="flow-item done">① Describe</div>
+              <div class="flow-item done">② Outline</div>
+              <div class="flow-item current">③ Build</div>
+              <div class="flow-item">④ Bake audio</div>
+            </div>
+            <p class="lead">Outline → JavaScript slide deck in the React app.</p>
+            <p><strong>In:</strong> <span class="output-file">lecture04_outline_refined.json</span> · <strong>Out:</strong> <span class="output-file">src/data/lectures/lecture04Slides.js</span> — then set <code style="background:#e8f0f8;padding:0.1rem 0.35rem;border-radius:4px;font-size:0.9rem;">available: true</code> in the catalog.</p>
+            <div class="code-block">
+              <div class="code-header">Step 3 — generate the slide deck</div>
+              <pre><span class="cmd">python</span> agents/build_slides.py \
+  <span class="flag">--outline</span> lecture04_outline_refined.json \
+  <span class="flag">--lecture-id</span> lecture04
+
+<span class="comment"># Then run the app:</span>
+<span class="cmd">npm run dev</span>   <span class="comment">→ /course/mgt-403/lecture/04</span></pre>
+            </div>
+          </div>
+          <div class="step-lux">
+            <img src="public/lux-favicon.svg" alt="Lux" />
+            <span style="font-size:0.72rem;font-weight:700;color:#00356b;text-align:center;line-height:1.3;">Lux teaches<br/>the class</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 10: Step 4 — bake_narration_audio -->
+      <section class="slide step-slide" data-index="10">
+        <div class="slide-header">
+          <div class="slide-num">10 · Conversion Step 4 of 4</div>
+          <h2 class="slide-title">Bake Lux AI Narration Audio</h2>
+        </div>
+        <div class="slide-body">
+          <div class="step-main">
+            <div class="step-badge"><span>4</span> bake_narration_audio.py</div>
+            <div class="step-flow">
+              <div class="flow-item done">① Describe</div>
+              <div class="flow-item done">② Outline</div>
+              <div class="flow-item done">③ Build</div>
+              <div class="flow-item current">④ Bake audio</div>
+            </div>
+            <p class="lead">Each slide's <code style="background:#e8f0f8;padding:0.1rem 0.35rem;border-radius:4px;font-size:0.9rem;">narration</code> → MP3 for instant playback in class.</p>
+            <div class="card-grid" style="grid-template-columns:1fr 1fr;margin-top:0.75rem;">
+              <div class="mini-card">
+                <h4>ElevenLabs (default)</h4>
+                <p>Lisa Manoban · <code style="font-size:0.78rem;">eleven_v3</code> · <code style="font-size:0.78rem;">[excited]</code> tags</p>
+              </div>
+              <div class="mini-card">
+                <h4>Gemini TTS</h4>
+                <p>Sulafat voice · needs <code style="font-size:0.78rem;">ffmpeg</code></p>
+              </div>
+            </div>
+            <p style="margin-top:0.75rem;"><strong>Out:</strong> <span class="output-file">public/audio/lecture04/slide_XX.mp3</span></p>
+            <div class="code-block">
+              <div class="code-header">Step 4 — bake narration</div>
+              <pre><span class="cmd">python</span> agents/bake_narration_audio.py \
+  <span class="flag">--lecture-id</span> lecture04 \
+  <span class="flag">--provider</span> elevenlabs
+
+<span class="comment"># or --provider gemini · re-bake: add --clean</span></pre>
+            </div>
+          </div>
+          <div class="step-lux">
+            <img src="public/lux-favicon.svg" alt="Lux" />
+            <span style="font-size:0.72rem;font-weight:700;color:#00356b;text-align:center;line-height:1.3;">Lux speaks<br/>instantly</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 11: Demo -->
+      <section class="slide" data-index="11">
+        <div class="slide-header">
+          <div class="slide-num">11 · Live Demo</div>
+          <h2 class="slide-title">Demo Time</h2>
+        </div>
+        <div class="slide-body demo-slide">
+          <div class="visual-panel" style="max-width:420px;margin:0 auto 1.5rem;background:linear-gradient(135deg,#e8f0f8,#f0f6fc);">
+            <img src="public/lux-favicon.svg" alt="Lux" width="100" height="100" style="animation:luxGlow 3s ease-in-out infinite;" />
+          </div>
+          <p class="big">Live demo →</p>
+          <p><strong>Lecture 04: Binomial Distribution</strong> — 15 interactive slides from the PDF pipeline.</p>
+          <a class="demo-btn" href="http://localhost:5173/course/mgt-403/lecture/04" target="_blank" rel="noopener">
+            Open LuxAI Demo ↗
+          </a>
+          <p style="margin-top:1.25rem;font-size:0.88rem !important;"><code style="background:#e8f0f8;padding:0.15rem 0.4rem;border-radius:4px;font-size:0.85rem;">npm run dev</code> in <code style="background:#e8f0f8;padding:0.15rem 0.4rem;border-radius:4px;font-size:0.85rem;">luxai_template/</code></p>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="nav-bar">
+      <button class="nav-btn" id="prevBtn" aria-label="Previous slide">← Prev</button>
+      <div class="progress-dots" id="dots"></div>
+      <span class="slide-counter" id="counter">1 / 12</span>
+      <button class="nav-btn" id="nextBtn" aria-label="Next slide">Next →</button>
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      const slides = Array.from(document.querySelectorAll('.slide'));
+      const total = slides.length;
+      let current = 0;
+
+      const dotsEl = document.getElementById('dots');
+      const counterEl = document.getElementById('counter');
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+
+      slides.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.className = 'dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+        dot.addEventListener('click', () => goTo(i));
+        dotsEl.appendChild(dot);
+      });
+
+      const dots = Array.from(dotsEl.querySelectorAll('.dot'));
+
+      function goTo(index) {
+        if (index < 0 || index >= total) return;
+        slides[current].classList.remove('active');
+        dots[current].classList.remove('active');
+        current = index;
+        slides[current].classList.add('active');
+        dots[current].classList.add('active');
+        counterEl.textContent = `${current + 1} / ${total}`;
+        prevBtn.disabled = current === 0;
+        nextBtn.disabled = current === total - 1;
+      }
+
+      function next() { goTo(current + 1); }
+      function prev() { goTo(current - 1); }
+
+      prevBtn.addEventListener('click', prev);
+      nextBtn.addEventListener('click', next);
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+          e.preventDefault();
+          next();
+        } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+          e.preventDefault();
+          prev();
+        } else if (e.key === 'Home') {
+          goTo(0);
+        } else if (e.key === 'End') {
+          goTo(total - 1);
+        } else if (e.key === 'f' || e.key === 'F') {
+          if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen?.();
+          } else {
+            document.exitFullscreen?.();
+          }
+        }
+      });
+
+      // Touch swipe
+      let touchStartX = 0;
+      document.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+      document.addEventListener('touchend', (e) => {
+        const dx = e.changedTouches[0].screenX - touchStartX;
+        if (Math.abs(dx) > 50) dx < 0 ? next() : prev();
+      }, { passive: true });
+
+      goTo(0);
+    })();
+  </script>
+</body>
+</html>

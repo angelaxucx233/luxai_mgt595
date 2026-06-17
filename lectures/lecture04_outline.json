@@ -1,0 +1,592 @@
+{
+  "lecture_id": "lecture04",
+  "lecture_title": "Binomial Distribution",
+  "design_principles": [
+    {
+      "principle": "Show, don't tell combinatorial paths",
+      "pdf_approach": "Lists outcomes like HT, TH on slides.",
+      "app_approach": "Use interactive probability trees where the student drags and drops to discover the binomial coefficients."
+    },
+    {
+      "principle": "Dynamic Distribution Exploration",
+      "pdf_approach": "Shows static bar charts for different values of n and p.",
+      "app_approach": "Provide a reactive Binomial Distribution plotter with sliders for n and p, letting students see symmetry and spread change in real-time."
+    },
+    {
+      "principle": "Concepts over Syntax",
+      "pdf_approach": "Teaches specific Excel BINOM.DIST syntax.",
+      "app_approach": "Abstract tool syntax into an interactive 'Cumulative Probability Visualizer' that highlights ranges (bars) and emphasizes discrete complement rules."
+    }
+  ],
+  "blocks": [
+    {
+      "block_id": "A",
+      "block_title": "Building the Binomial Formula",
+      "pdf_page_range": "1-13",
+      "target_app_slide_count": 4,
+      "slides": [
+        {
+          "app_slide_number": 1,
+          "type": "interactive",
+          "title": "Multiple Coin Tosses",
+          "pdf_page_refs": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "pdf_pages_skipped": [],
+          "content_summary": "Introduction to multiple independent trials. Students manually build the probability tree for n=2 to discover why P(X=1) has a coefficient of 2 (HT and TH paths).",
+          "interactivity": "Drag-and-drop tree building. Students attach 'Heads' or 'Tails' nodes to a root to form a 2-level tree, revealing the 4 distinct paths.",
+          "visual": "Interactive Probability Tree",
+          "visual_spec": {
+            "component": "ProbabilityTreeBuilder",
+            "student_actions": "Drag nodes to construct combinations, click paths to highlight sequences resulting in X=1.",
+            "implementation": "React Flow or custom SVG canvas",
+            "ties_to_concept": "Establishes that probability depends on the number of distinct sequences yielding k successes."
+          },
+          "problem_template_id": null,
+          "problem_template_new": null,
+          "problem_spec": null,
+          "lux_integration": "Lux asks: 'What do you notice about the paths that lead to exactly one Head?' If stuck, highlights HT and TH.",
+          "system_prompt_notes": "Guide the student to realize that order matters for combinations, but not for the final count X."
+        },
+        {
+          "app_slide_number": 2,
+          "type": "problem",
+          "title": "Expanding to n=3",
+          "pdf_page_refs": [
+            6
+          ],
+          "pdf_pages_skipped": [],
+          "content_summary": "Extending the logic to n=3 trials. Students predict the number of ways to get k successes before seeing the formula.",
+          "interactivity": "Input fields for combinatorial coefficients.",
+          "visual": "Combinatorial Table",
+          "visual_spec": {
+            "component": "CoefficientTable",
+            "student_actions": "Fills in the number of paths for X=0, X=1, X=2, X=3.",
+            "implementation": "HTML/React form grid",
+            "ties_to_concept": "Derives the 1-3-3-1 pattern empirically."
+          },
+          "problem_template_id": "binomial_coefficient_discovery",
+          "problem_template_new": "binomial_coefficient_discovery",
+          "problem_spec": {
+            "when_to_place": "After n=2 tree exploration.",
+            "prompt": "For 3 coin tosses, how many distinct paths result in exactly 2 Heads? List the count.",
+            "inputs": [
+              "Numeric keypad"
+            ],
+            "correct_answer_form": "3",
+            "params_for_regenerate": [
+              "n_trials",
+              "k_successes"
+            ],
+            "difficulty": "warmup"
+          },
+          "lux_integration": "Lux confirms: 'Correct! HHT, HTH, and THH.'",
+          "system_prompt_notes": "Emphasize counting mechanisms."
+        },
+        {
+          "app_slide_number": 3,
+          "type": "explain",
+          "title": "Factorials & The Formula",
+          "pdf_page_refs": [
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13
+          ],
+          "pdf_pages_skipped": [],
+          "content_summary": "Introduces k! (including 0!=1) and formally presents the Binomial Probability Mass Function (PMF). Includes the (1/2)! Gamma function trivia as a fun AI fact.",
+          "interactivity": "Factorial slider: Drag from 0 to 5 to see values jump.",
+          "visual": "Factorial Scale / Formula Breakout",
+          "visual_spec": {
+            "component": "FactorialSlider",
+            "student_actions": "Drag a slider for k, watching k! grow exponentially and the PMF formula parts highlight.",
+            "implementation": "React slider with animated math formulas",
+            "ties_to_concept": "Connects factorials directly to the 'ways to arrange' part of the PMF."
+          },
+          "problem_template_id": null,
+          "problem_template_new": null,
+          "problem_spec": null,
+          "lux_integration": "Lux pops up: 'Did you know factorials exist for fractions too? (1/2)! is actually related to pi! But for coins, we stick to whole numbers.'",
+          "system_prompt_notes": "Use the Gamma function trivia to show depth, but firmly anchor back to discrete integers for Binomial."
+        },
+        {
+          "app_slide_number": 4,
+          "type": "problem",
+          "title": "Practice: Tossing a Fair Coin",
+          "pdf_page_refs": [
+            14
+          ],
+          "pdf_pages_skipped": [],
+          "content_summary": "Application of the PMF formula to a scenario with 10 fair coin tosses.",
+          "interactivity": "Multiple calculations for different values of k.",
+          "visual": null,
+          "visual_spec": null,
+          "problem_template_id": "binomial_pmf_calculator",
+          "problem_template_new": "binomial_pmf_calculator",
+          "problem_spec": {
+            "when_to_place": "Immediately after formal PMF definition.",
+            "prompt": "You toss a fair coin 10 times. Calculate the probability of getting exactly 5 heads.",
+            "inputs": [
+              "Formula entry / numeric keypad"
+            ],
+            "correct_answer_form": "0.2461",
+            "params_for_regenerate": [
+              "n_trials",
+              "p_success",
+              "k_target"
+            ],
+            "difficulty": "core"
+          },
+          "lux_integration": "Provides step-by-step scaffolding: 'First, find the binomial coefficient 10 choose 5. Then multiply by (0.5)^5 and (1-0.5)^5.'",
+          "system_prompt_notes": "Tutor should identify if the error is in the combinatorial part or the probability exponent part."
+        }
+      ]
+    },
+    {
+      "block_id": "B",
+      "block_title": "Properties and Visualizing the Distribution",
+      "pdf_page_range": "15-17",
+      "target_app_slide_count": 2,
+      "slides": [
+        {
+          "app_slide_number": 5,
+          "type": "explain",
+          "title": "Mean, Variance, and Standard Deviation",
+          "pdf_page_refs": [
+            15
+          ],
+          "pdf_pages_skipped": [],
+          "content_summary": "Introduces the expected value E(X) = np and Variance Var(X) = np(1-p).",
+          "interactivity": "Tap to reveal derivations/intuition.",
+          "visual": "Parameter Dashboard",
+          "visual_spec": {
+            "component": "MathHighlightBox",
+            "student_actions": "Tap properties to see how they behave with p=0.5 vs p=0.1.",
+            "implementation": "HTML/CSS styled cards",
+            "ties_to_concept": "Establishes formulas for center and spread."
+          },
+          "problem_template_id": null,
+          "problem_template_new": null,
+          "problem_spec": null,
+          "lux_integration": "Lux asks: 'When is variance maximized? Try testing p=0.5 versus p=0.9.'",
+          "system_prompt_notes": "Reinforce that maximum uncertainty (variance) happens when a coin is perfectly fair (p=0.5)."
+        },
+        {
+          "app_slide_number": 6,
+          "type": "interactive",
+          "title": "Shaping the Binomial Distribution",
+          "pdf_page_refs": [
+            16,
+            17
+          ],
+          "pdf_pages_skipped": [],
+          "content_summary": "Interactive plotter showing how altering n and p changes the shape, center, and symmetry of the distribution.",
+          "interactivity": "Two sliders: n (1 to 100) and p (0 to 1).",
+          "visual": "Binomial Plotter",
+          "visual_spec": {
+            "component": "BinomialDistributionPlotter",
+            "student_actions": "Drag sliders and watch the bar chart shift left/right and flatten out.",
+            "implementation": "Recharts or D3.js animated bar chart",
+            "ties_to_concept": "Visualizes the shift of the mean and the spread (variance) practically."
+          },
+          "problem_template_id": null,
+          "problem_template_new": null,
+          "problem_spec": null,
+          "lux_integration": "Lux challenges: 'Set n=50. Can you find a value of p that makes the distribution perfectly symmetrical?'",
+          "system_prompt_notes": "Acknowledge when the student sets p=0.5 and points out the symmetry."
+        }
+      ]
+    },
+    {
+      "block_id": "C",
+      "block_title": "Cumulative Probabilities",
+      "pdf_page_range": "18-23",
+      "target_app_slide_count": 3,
+      "slides": [
+        {
+          "app_slide_number": 7,
+          "type": "interactive",
+          "title": "Ranges & The Complement Rule",
+          "pdf_page_refs": [
+            18,
+            19,
+            20
+          ],
+          "pdf_pages_skipped": [],
+          "content_summary": "Replaces Excel syntax with a conceptual visualizer for PMF (exact) vs CDF (cumulative). Teaches calculating P(X > k) using 1 - P(X <= k).",
+          "interactivity": "Select a range of bars on a histogram (e.g., 'X >= 5') and see the math transform it to '1 - P(X <= 4)'.",
+          "visual": "Cumulative Area Visualizer",
+          "visual_spec": {
+            "component": "InteractiveHistogramSelector",
+            "student_actions": "Click and drag to select bars; see the formula toggle between direct sum and complement rule.",
+            "implementation": "D3.js interactive chart",
+            "ties_to_concept": "Teaches the underlying logic of discrete ranges and CDF calculations without locking into software-specific syntax."
+          },
+          "problem_template_id": null,
+          "problem_template_new": null,
+          "problem_spec": null,
+          "lux_integration": "Lux notes: 'Software like Excel uses TRUE/FALSE for this, but the math trick is the same—subtracting the area you DON'T want.'",
+          "system_prompt_notes": "If a student asks how to do this in Excel, Lux can provide the BINOM.DIST syntax."
+        },
+        {
+          "app_slide_number": 8,
+          "type": "problem",
+          "title": "Practice: Open Heart Surgery",
+          "pdf_page_refs": [
+            21
+          ],
+          "pdf_pages_skipped": [],
+          "content_summary": "Application of cumulative probability and complement rule in a real-world medical scenario (n=20, p=0.05).",
+          "interactivity": "Problem-solving input.",
+          "visual": null,
+          "visual_spec": null,
+          "problem_template_id": "binomial_cdf_range",
+          "problem_template_new": "binomial_cdf_range",
+          "problem_spec": {
+            "when_to_place": "After the complement rule interactive slide.",
+            "prompt": "With a 0.05 probability of failure, what is the probability of having AT LEAST 2 failures in 20 surgeries? (Use the complement rule).",
+            "inputs": [
+              "Numeric input"
+            ],
+            "correct_answer_form": "0.264",
+            "params_for_regenerate": [
+              "n",
+              "p",
+              "k_lower",
+              "k_upper",
+              "condition"
+            ],
+            "difficulty": "core"
+          },
+          "lux_integration": "Hint: 'At least 2 means 2, 3, ... 20. That is tedious! Try 1 minus the probability of 0 or 1 failures.'",
+          "system_prompt_notes": "Monitor for off-by-one errors (e.g., subtracting P(X<=2) instead of P(X<=1))."
+        },
+        {
+          "app_slide_number": 9,
+          "type": "problem",
+          "title": "Practice: TV Taste Test",
+          "pdf_page_refs": [
+            22,
+            23
+          ],
+          "pdf_pages_skipped": [],
+          "content_summary": "Word problem where students must infer parameters (p=0.5 from 'blind guess') and calculate probabilities for a large sample (n=100).",
+          "interactivity": "Multi-step problem: First find Expected Value, then a range probability.",
+          "visual": "Taste Test Distribution",
+          "visual_spec": {
+            "component": "StaticPlot",
+            "student_actions": "View the symmetric curve for n=100, p=0.5.",
+            "implementation": "SVG static asset based on PDF page 23",
+            "ties_to_concept": "Validates the symmetric expectation."
+          },
+          "problem_template_id": "binomial_cdf_range",
+          "problem_template_new": null,
+          "problem_spec": {
+            "when_to_place": "Follow up to the surgery problem to test parameter inference.",
+            "prompt": "If 100 people guess completely randomly between 2 drinks, what is the expected number of correct guesses? What is the probability that between 45 and 55 people (inclusive) guess correctly?",
+            "inputs": [
+              "Expected Value input",
+              "Probability input"
+            ],
+            "correct_answer_form": "E(X)=50, P=0.728",
+            "params_for_regenerate": [
+              "n",
+              "p_implied"
+            ],
+            "difficulty": "stretch"
+          },
+          "lux_integration": "Lux: 'The problem doesn't state p explicitly. If they are truly guessing blind between 2 options, what is the chance they pick a specific one?'",
+          "system_prompt_notes": "Guide them to use cumulative logic P(X<=55) - P(X<=44)."
+        }
+      ]
+    },
+    {
+      "block_id": "D",
+      "block_title": "The Law of Large Numbers",
+      "pdf_page_range": "24-31",
+      "target_app_slide_count": 4,
+      "slides": [
+        {
+          "app_slide_number": 10,
+          "type": "problem",
+          "title": "Extreme Rates in Small Samples",
+          "pdf_page_refs": [
+            24
+          ],
+          "pdf_pages_skipped": [],
+          "content_summary": "The 'Going Pro' problem. Calculates the probability of exceeding a high win rate with small sample sizes to show why small samples are noisy.",
+          "interactivity": "Compare probabilities for n=1 vs n=10.",
+          "visual": null,
+          "visual_spec": null,
+          "problem_template_id": "binomial_pmf_calculator",
+          "problem_template_new": null,
+          "problem_spec": {
+            "when_to_place": "Intro to LLN concept.",
+            "prompt": "A player has a true win rate of p=0.8. They need a sample win rate > 0.9 to go pro. Calculate the probability they achieve this if judged on n=1 game vs n=10 games.",
+            "inputs": [
+              "P(n=1)",
+              "P(n=10)"
+            ],
+            "correct_answer_form": "0.8, 0.107",
+            "params_for_regenerate": [
+              "p_true",
+              "threshold_rate"
+            ],
+            "difficulty": "core"
+          },
+          "lux_integration": "Lux asks: 'Why does the probability drop so drastically when they play 10 games?'",
+          "system_prompt_notes": "Use this as the conceptual hook for LLN—averages settle to the true mean."
+        },
+        {
+          "app_slide_number": 11,
+          "type": "explain",
+          "title": "Deriving the Law of Large Numbers",
+          "pdf_page_refs": [
+            25,
+            26,
+            27,
+            28,
+            29
+          ],
+          "pdf_pages_skipped": [],
+          "content_summary": "Mathematical derivation showing that the expected value of X/n is p, and the variance of X/n shrinks by a factor of 1/n.",
+          "interactivity": "Scroll/tap to reveal steps of the variance derivation.",
+          "visual": "Math Derivation Sandbox",
+          "visual_spec": {
+            "component": "StepByStepMath",
+            "student_actions": "Tap to see how Var(X/n) pulls out the 1/n^2 constant.",
+            "implementation": "HTML/React with KaTeX",
+            "ties_to_concept": "Rigorous proof that uncertainty goes to zero as n goes to infinity."
+          },
+          "problem_template_id": null,
+          "problem_template_new": null,
+          "problem_spec": null,
+          "lux_integration": "Lux: 'Notice the n squared in the denominator. This is the mathematical engine behind the Law of Large Numbers!'",
+          "system_prompt_notes": "Ensure student understands the distinction between Var(X) which grows, and Var(X/n) which shrinks."
+        },
+        {
+          "app_slide_number": 12,
+          "type": "interactive",
+          "title": "Simulating the LLN",
+          "pdf_page_refs": [
+            30
+          ],
+          "pdf_pages_skipped": [],
+          "content_summary": "Visual summary of the LLN showing the sample proportion converging to the true probability.",
+          "interactivity": "Run a simulation of 1,000 coin flips and watch the running proportion graph.",
+          "visual": "Convergence Graph",
+          "visual_spec": {
+            "component": "LLNConvergenceSimulator",
+            "student_actions": "Click 'Flip 10', 'Flip 100', 'Flip 1000' and watch the line graph of X/n settle onto the p line.",
+            "implementation": "Recharts line chart updating over time",
+            "ties_to_concept": "Provides visual intuition for the shrinking variance proven in the previous slide."
+          },
+          "problem_template_id": null,
+          "problem_template_new": null,
+          "problem_spec": null,
+          "lux_integration": "Lux notes: 'See how chaotic the line is at the beginning? That is the variance of small samples!'",
+          "system_prompt_notes": "Connect the visual flat-lining to the mathematical limit as n approaches infinity."
+        },
+        {
+          "app_slide_number": 13,
+          "type": "problem",
+          "title": "Challenge: Complex Independent Trials",
+          "pdf_page_refs": [
+            31
+          ],
+          "pdf_pages_skipped": [],
+          "content_summary": "A complex problem requiring Law of Total Probability to find the 'success' rate of a single trial, followed by binomial independence across n=7 trials.",
+          "interactivity": "Two-part problem input.",
+          "visual": null,
+          "visual_spec": null,
+          "problem_template_id": "nested_probability_binomial",
+          "problem_template_new": "nested_probability_binomial",
+          "problem_spec": {
+            "when_to_place": "End of module synthesis.",
+            "prompt": "Find the probability of conviction in a single trial using the conditional probabilities. Then, find the probability of being acquitted in all 7 trials.",
+            "inputs": [
+              "P(Convict single)",
+              "P(Acquit all 7)"
+            ],
+            "correct_answer_form": "0.55, (0.45)^7",
+            "params_for_regenerate": [
+              "n_trials",
+              "p_show",
+              "p_convict_show",
+              "p_convict_no_show"
+            ],
+            "difficulty": "stretch"
+          },
+          "lux_integration": "Hint: 'Break it down. First, build a probability tree for ONE trial. Then use that result as your 'p' for a Binomial distribution with n=7.'",
+          "system_prompt_notes": "This synthesizes lecture 3 (conditional) with lecture 4 (binomial). Guide step-by-step."
+        }
+      ]
+    },
+    {
+      "block_id": "E",
+      "block_title": "Wrap Up",
+      "pdf_page_range": "32",
+      "target_app_slide_count": 1,
+      "slides": [
+        {
+          "app_slide_number": 14,
+          "type": "recap",
+          "title": "Summary & What's Next",
+          "pdf_page_refs": [
+            32
+          ],
+          "pdf_pages_skipped": [],
+          "content_summary": "Quick recap of the Binomial distribution and a teaser for the continuous Normal Distribution ('Bell Curve').",
+          "interactivity": "None",
+          "visual": "Discrete to Continuous Transition",
+          "visual_spec": {
+            "component": "TransitionAnimation",
+            "student_actions": "Watch the discrete binomial bars morph into a smooth normal curve.",
+            "implementation": "CSS/SVG animation",
+            "ties_to_concept": "Primes the mental model shift from discrete counts to continuous areas."
+          },
+          "problem_template_id": null,
+          "problem_template_new": null,
+          "problem_spec": null,
+          "lux_integration": "Lux: 'You've mastered discrete events! Next time, we smooth things out with the Normal Distribution.'",
+          "system_prompt_notes": "Celebrate completion and offer extra practice problems if requested."
+        }
+      ]
+    }
+  ],
+  "new_problem_templates": [
+    {
+      "id": "binomial_coefficient_discovery",
+      "label": "Combinatorial Path Counter",
+      "description": "Asks students to input the number of distinct arrangements for given successes.",
+      "input_fields": [
+        "path_count"
+      ],
+      "randomizable_params": [
+        "n_trials",
+        "k_successes"
+      ],
+      "used_on_app_slides": [
+        2
+      ]
+    },
+    {
+      "id": "binomial_pmf_calculator",
+      "label": "Binomial PMF Solver",
+      "description": "Calculates point probability for exact k successes.",
+      "input_fields": [
+        "exact_probability"
+      ],
+      "randomizable_params": [
+        "n_trials",
+        "p_success",
+        "k_target"
+      ],
+      "used_on_app_slides": [
+        4,
+        10
+      ]
+    },
+    {
+      "id": "binomial_cdf_range",
+      "label": "Binomial Cumulative Range Solver",
+      "description": "Calculates P(X <= k), P(X > k), or range probabilities.",
+      "input_fields": [
+        "expected_value",
+        "range_probability"
+      ],
+      "randomizable_params": [
+        "n",
+        "p",
+        "k_lower",
+        "k_upper",
+        "condition"
+      ],
+      "used_on_app_slides": [
+        8,
+        9
+      ]
+    },
+    {
+      "id": "nested_probability_binomial",
+      "label": "Conditional Base to Binomial",
+      "description": "Calculates a base probability using Law of Total Prob, then applies it as p in a binomial framework.",
+      "input_fields": [
+        "base_p",
+        "binomial_result"
+      ],
+      "randomizable_params": [
+        "n_trials",
+        "p_branch1",
+        "p_result_branch1",
+        "p_result_branch2"
+      ],
+      "used_on_app_slides": [
+        13
+      ]
+    }
+  ],
+  "visual_toolkit": [
+    {
+      "name": "ProbabilityTreeBuilder",
+      "used_on_app_slides": [
+        1
+      ],
+      "implementation": "React Flow or custom SVG interactive canvas for drag-and-drop tree nodes."
+    },
+    {
+      "name": "FactorialSlider",
+      "used_on_app_slides": [
+        3
+      ],
+      "implementation": "React slider linked to reactive math text rendering k! equations."
+    },
+    {
+      "name": "BinomialDistributionPlotter",
+      "used_on_app_slides": [
+        6
+      ],
+      "implementation": "Recharts or D3.js animated bar chart reacting to n and p sliders."
+    },
+    {
+      "name": "InteractiveHistogramSelector",
+      "used_on_app_slides": [
+        7
+      ],
+      "implementation": "D3.js chart where bars are clickable to toggle inclusion in cumulative probability sums."
+    },
+    {
+      "name": "LLNConvergenceSimulator",
+      "used_on_app_slides": [
+        12
+      ],
+      "implementation": "Time-series line chart in Recharts that plots running mean X/n over number of trials."
+    }
+  ],
+  "recommended_build_order": [
+    "Build the BinomialDistributionPlotter, as it forms the visual foundation for both shape visualization and CDF interactions.",
+    "Implement the InteractiveHistogramSelector by extending the plotter with click-events and state for selected ranges.",
+    "Develop the ProbabilityTreeBuilder for the intuitive combinatorial introduction.",
+    "Create the LLNConvergenceSimulator for dynamic visualization of limits.",
+    "Wire up problem templates (PMF, CDF) to Lux's state machine for hint generation."
+  ],
+  "gap_analysis": {
+    "notes": "The PDF heavily relies on Excel syntax for CDF concepts. The app outline abstract this into visual math widgets to fit the Brilliant style while retaining the underlying discrete math logic (complement rule).",
+    "proposed_total_app_slides": 14
+  },
+  "skipped_admin_pdf_pages": [],
+  "skipped_admin_reason": "No strict administrative pages were found in this deck. All pages contained pedagogical content, including the title and next-time pages which were repurposed for course flow.",
+  "source_descriptions": "C:\\Users\\trz2\\Dropbox\\ChatGPTs\\ai_university\\luxai_template\\lectures\\MGT 403 - Lecture 04 - Binomial Distribution.pdf",
+  "source_descriptions_file": "lecture04_slide_descriptions.json",
+  "extra_context": "LuxAI — Brilliant-style interactive SPA for MGT 403. Yale navy theme. Lux is a Socratic AI tutor with chat, optional voice, and interactive demos. Lecture 04 covers Bernoulli trials and the binomial distribution. Prefer interactive problems and visuals over static text. Keep the deck concise for a teaching demo.",
+  "model": "gemini-3.1-pro-preview",
+  "generated_at": "2026-06-17T01:17:28.102745+00:00",
+  "source_pdf_pages": 32
+}

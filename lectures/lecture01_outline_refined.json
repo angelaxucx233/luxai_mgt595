@@ -1,0 +1,1205 @@
+{
+  "lecture_id": "lecture01",
+  "lecture_title": "Probability Experiments",
+  "design_principles": [
+    {
+      "principle": "Active Discovery",
+      "pdf_approach": "Shows static lists of outcomes and manually calculated tables.",
+      "app_approach": "Students generate outcomes through 3D interactive sandboxes (coins/dice) before formalizing them."
+    },
+    {
+      "principle": "Visual Set Logic",
+      "pdf_approach": "Defines sets using algebraic notation and text descriptions.",
+      "app_approach": "Uses interactive Venn diagrams and drag-and-drop set builders to physically group outcomes into events."
+    },
+    {
+      "principle": "Step-by-Step Scaffolding",
+      "pdf_approach": "Presents multi-step formulas (Conditional Probability, Bayes-lite) as full slides.",
+      "app_approach": "Breaks complex problems into sequential interactions: build the sample space, highlight the condition, then calculate."
+    }
+  ],
+  "refinement_changelog": [
+    {
+      "action": "upgraded_slide",
+      "app_slide_number": 3,
+      "detail": "Changed from basic list generation to a clever prediction problem ('How many outcomes for 3 coins?') to build intuition before brute-forcing."
+    },
+    {
+      "action": "added_visual",
+      "app_slide_number": 8,
+      "detail": "Added 'InteractiveVennSelector' so students can physically click regions of a Venn diagram to answer the AND/OR event logic problem, rather than just text."
+    },
+    {
+      "action": "added_slide",
+      "app_slide_number": 13,
+      "detail": "Inserted a 'Spot the Mistake' checkpoint for the Never Fail Method. Instead of just doing drills, students must debug a pre-filled table, building deeper mastery."
+    },
+    {
+      "action": "upgraded_slide",
+      "app_slide_number": 16,
+      "detail": "Upgraded the Addition Rule problem to feature a 'Double Count' trap visual that glows red when they forget to subtract the intersection."
+    },
+    {
+      "action": "added_visual",
+      "app_slide_number": 20,
+      "detail": "Added a 'Probability Matrix Grid' to visually prove independence (showing area = width * height), moving away from pure algebra."
+    },
+    {
+      "action": "added_slide",
+      "app_slide_number": 27,
+      "detail": "Added a final stretch problem for sampling without replacement (3 consecutive draws) to synthesize conditional probability and trees."
+    }
+  ],
+  "refinement_summary": "Pass 2 transformed static questions into highly visual, manipulative exercises. By adding interactive Venn selectors, a 'Spot the Mistake' debugging exercise, and visual proofs for independence, the lecture now prioritizes intuition over rote memorization. The pacing was also improved with a mid-lecture debugging checkpoint and a final stretch synthesis problem.",
+  "blocks": [
+    {
+      "block_id": "A",
+      "block_title": "The Science of Uncertainty",
+      "pdf_page_range": "6-11",
+      "target_app_slide_count": 1,
+      "slides": [
+        {
+          "app_slide_number": 1,
+          "type": "explain",
+          "title": "Why Probability?",
+          "pdf_page_refs": [
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "pdf_pages_skipped": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "content_summary": "Introduction to probability theory as the science of uncertainty. Real-world examples (elections, finance, medicine, sports) show how we model the unknown.",
+          "interactivity": "Tap cards to flip them and reveal the hidden 'probability' behind real-world uncertainties.",
+          "visual": "Interactive Scenario Cards",
+          "visual_spec": {
+            "component": "ScenarioCardGrid",
+            "student_actions": "Taps on cards labeled 'Elections', 'Crypto', 'Medical Test', 'UFC' to reveal the core probability question behind each.",
+            "implementation": "React grid with CSS flip animations and a dynamic 'odds' counter that updates rapidly before settling.",
+            "ties_to_concept": "Motivates the study of probability for decision-making under uncertainty."
+          },
+          "problem_template_id": null,
+          "problem_template_new": null,
+          "problem_spec": null,
+          "lux_integration": "Lux greets the student: 'We can't predict the future, but we can measure the exact shape of our uncertainty. Let's look at the dice.'",
+          "system_prompt_notes": "Introduce probability not as math, but as a superpower for predicting real-world outcomes."
+        }
+      ]
+    },
+    {
+      "block_id": "B",
+      "block_title": "Experiments and Outcomes",
+      "pdf_page_range": "12-20",
+      "target_app_slide_count": 2,
+      "slides": [
+        {
+          "app_slide_number": 2,
+          "type": "explain",
+          "title": "What is an Experiment?",
+          "pdf_page_refs": [
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18
+          ],
+          "pdf_pages_skipped": [],
+          "content_summary": "Defines probability experiments and outcomes. Highlights that outcomes must be mutually exclusive and at the 'finest grain'.",
+          "interactivity": "Tap to simulate a coin toss and see the branching outcomes physically log on screen.",
+          "visual": "3D Coin Toss Simulator",
+          "visual_spec": {
+            "component": "BuiltinDemoCanvas",
+            "student_actions": "Click 'Toss Coin' to watch a 3D coin land on Heads or Tails, registering the outcome in an ongoing timeline log.",
+            "implementation": "Three.js 3D coin physics simulation.",
+            "ties_to_concept": "Grounds the abstract definition of an 'experiment' in physical reality."
+          },
+          "problem_template_id": null,
+          "problem_template_new": null,
+          "problem_spec": null,
+          "lux_integration": "Lux points out that 'finest grain' means we cannot break the outcome down any further. 'A coin can't be mostly heads.'",
+          "system_prompt_notes": "Ensure student understands 'mutually exclusive' (cannot be both H and T at the same time)."
+        },
+        {
+          "app_slide_number": 3,
+          "type": "problem",
+          "title": "Predicting Outcomes: Multiple Coins",
+          "pdf_page_refs": [
+            19,
+            20
+          ],
+          "pdf_pages_skipped": [],
+          "content_summary": "Applies the definition to a multi-coin toss, asking the student to predict total unique outcomes before listing them.",
+          "interactivity": "Problem check.",
+          "visual": "Outcome Multiplier Visual",
+          "visual_spec": {
+            "component": "BranchingDots",
+            "student_actions": "After guessing the number, a branching tree of dots unfurls to visually prove the 2^N growth of outcomes.",
+            "implementation": "D3.js or Framer Motion SVG.",
+            "ties_to_concept": "Builds intuition for permutations and the size of a sample space."
+          },
+          "problem_template_id": "coin_outcomes",
+          "problem_template_new": null,
+          "problem_spec": {
+            "when_to_place": "Immediately after explaining outcomes.",
+            "prompt": "If we toss THREE distinct coins (Coin 1, 2, and 3), how many total fine-grained outcomes exist? (Hint: Order matters. HHT is different from HTH).",
+            "inputs": [
+              "integer input"
+            ],
+            "correct_answer_form": "8",
+            "params_for_regenerate": [
+              "number of coins"
+            ],
+            "difficulty": "warmup"
+          },
+          "lux_integration": "If student inputs 6 (3*2) or 4 (H, T, HT, etc.), Lux gives a hint: 'Try drawing a tree. The first coin has 2 paths. From each of those, the second coin has 2 paths...'",
+          "system_prompt_notes": "Distinguish between combinations and permutations intuitively here."
+        }
+      ]
+    },
+    {
+      "block_id": "C",
+      "block_title": "The Sample Space",
+      "pdf_page_range": "21-26",
+      "target_app_slide_count": 2,
+      "slides": [
+        {
+          "app_slide_number": 4,
+          "type": "explain",
+          "title": "Defining the Sample Space",
+          "pdf_page_refs": [
+            21,
+            22,
+            23,
+            24
+          ],
+          "pdf_pages_skipped": [],
+          "content_summary": "Introduces the sample space (S) as the set of all possible outcomes of an experiment.",
+          "interactivity": "Hover over mathematical notation to reveal plain-English definitions.",
+          "visual": "Notation Tooltip",
+          "visual_spec": {
+            "component": "MathTooltipText",
+            "student_actions": "Hovering over script S, curly braces {}, and lowercase o reveals interactive tooltips describing the Master Set and Individual Elements.",
+            "implementation": "React DOM with Framer Motion hover states.",
+            "ties_to_concept": "Teaches proper mathematical notation without overwhelming text walls."
+          },
+          "problem_template_id": null,
+          "problem_template_new": null,
+          "problem_spec": null,
+          "lux_integration": "Lux clarifies that curly braces {} literally mean 'a collection of'.",
+          "system_prompt_notes": "Focus on the transition from conceptual list to formal mathematical set."
+        },
+        {
+          "app_slide_number": 5,
+          "type": "problem",
+          "title": "Build the Sample Space",
+          "pdf_page_refs": [
+            25,
+            26
+          ],
+          "pdf_pages_skipped": [],
+          "content_summary": "Practice formally writing out the sample space for the two-coin experiment.",
+          "interactivity": "Drag and drop outcomes into the set bracket.",
+          "visual": "Interactive Set Builder",
+          "visual_spec": {
+            "component": "SetBuilderWidget",
+            "student_actions": "Drag visual outcome chips (H1H2, H1T2, T1H2, T1T2) into a pulsing bounding box marked S = { }. Chips snap into place.",
+            "implementation": "HTML5 Drag and Drop API.",
+            "ties_to_concept": "Reinforces that S is a collection of specific outcome elements."
+          },
+          "problem_template_id": null,
+          "problem_template_new": "set_builder",
+          "problem_spec": {
+            "when_to_place": "After introducing Set notation.",
+            "prompt": "Construct the Sample Space S for a two-coin toss by dragging all valid outcomes into the set brackets.",
+            "inputs": [
+              "draggable tokens"
+            ],
+            "correct_answer_form": "S = {H1H2, H1T2, T1H2, T1T2}",
+            "params_for_regenerate": [
+              "experiment type (e.g. coin and die)"
+            ],
+            "difficulty": "warmup"
+          },
+          "lux_integration": "When the set is complete, Lux celebrates: 'Perfect! That is the entire universe of possibilities for this experiment.'",
+          "system_prompt_notes": "Provide immediate visual validation when a set is complete."
+        }
+      ]
+    },
+    {
+      "block_id": "D",
+      "block_title": "Events and Set Logic",
+      "pdf_page_range": "27-35",
+      "target_app_slide_count": 3,
+      "slides": [
+        {
+          "app_slide_number": 6,
+          "type": "explain",
+          "title": "Events are Subsets",
+          "pdf_page_refs": [
+            27,
+            28,
+            29,
+            30,
+            31
+          ],
+          "pdf_pages_skipped": [],
+          "content_summary": "Defines an Event as a subset of outcomes. Shows how to extract outcomes that meet a specific logical condition.",
+          "interactivity": "Toggle conditions to see which outcomes in the sample space light up.",
+          "visual": "Outcome Glow Grid",
+          "visual_spec": {
+            "component": "SampleSpaceGrid",
+            "student_actions": "Click chips labeled 'At least one Heads', 'Second coin is Heads'. The corresponding set elements illuminate with a neon outline.",
+            "implementation": "React dynamic CSS styling.",
+            "ties_to_concept": "Visually connects plain English conditions to mathematical subsets."
+          },
+          "problem_template_id": null,
+          "problem_template_new": null,
+          "problem_spec": null,
+          "lux_integration": "Lux emphasizes that an event is just a 'bucket' we put specific outcomes into based on a rule.",
+          "system_prompt_notes": "Define event formally but explain intuitively."
+        },
+        {
+          "app_slide_number": 7,
+          "type": "interactive",
+          "title": "Combining Events (AND / OR)",
+          "pdf_page_refs": [
+            32,
+            33,
+            34,
+            35
+          ],
+          "pdf_pages_skipped": [],
+          "content_summary": "Introduces set operations. AND creates an intersection, OR creates a union.",
+          "interactivity": "Manipulate a Venn diagram to observe intersections and unions.",
+          "visual": "Hover-Glow Venn Diagram",
+          "visual_spec": {
+            "component": "VennDiagram",
+            "student_actions": "Hover over 'A AND B' vs 'A OR B' text to see the intersection or total area glow on the Venn SVG. The outcome list below updates dynamically.",
+            "implementation": "SVG with CSS transitions.",
+            "ties_to_concept": "Shows the mechanical outcome of set logic operators visually."
+          },
+          "problem_template_id": null,
+          "problem_template_new": null,
+          "problem_spec": null,
+          "lux_integration": "Lux reminds the student that OR is inclusive in math—it means A, B, or BOTH.",
+          "system_prompt_notes": "Ensure OR is explicitly defined as inclusive."
+        },
+        {
+          "app_slide_number": 8,
+          "type": "problem",
+          "title": "Practice: Event Logic",
+          "pdf_page_refs": [
+            35
+          ],
+          "pdf_pages_skipped": [],
+          "content_summary": "Students must identify the outcomes in a combined event using AND/OR logic.",
+          "interactivity": "Click regions of a Venn diagram to select the outcomes.",
+          "visual": "Interactive Venn Selector",
+          "visual_spec": {
+            "component": "VennDiagramSelector",
+            "student_actions": "Click the distinct zones of the Venn diagram (A-only, overlap, B-only, outside) to answer the prompt.",
+            "implementation": "Interactive SVG with clickable path elements.",
+            "ties_to_concept": "Connects spatial reasoning to algebraic set notation."
+          },
+          "problem_template_id": null,
+          "problem_template_new": "venn_logic_problem",
+          "problem_spec": {
+            "when_to_place": "Following the Venn diagram explanation.",
+            "prompt": "If Event A is 'First coin is Heads' and Event B is 'At least one Tails', click the region representing (A AND B). Which outcome lives there?",
+            "inputs": [
+              "Venn region click",
+              "multi-select grid"
+            ],
+            "correct_answer_form": "Click overlap. Outcome: {H1T2}",
+            "params_for_regenerate": [
+              "event conditions",
+              "logic operator"
+            ],
+            "difficulty": "core"
+          },
+          "lux_integration": "If they click the union (entire circles), Lux says: 'That's A OR B! We want A AND B—where do the two circles overlap?'",
+          "system_prompt_notes": "Step-by-step guidance on intersection."
+        }
+      ]
+    },
+    {
+      "block_id": "E",
+      "block_title": "Calculating Probability",
+      "pdf_page_range": "36-47",
+      "target_app_slide_count": 3,
+      "slides": [
+        {
+          "app_slide_number": 9,
+          "type": "explain",
+          "title": "The Probability Number",
+          "pdf_page_refs": [
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43
+          ],
+          "pdf_pages_skipped": [],
+          "content_summary": "Defines probability as a number between 0 and 1. Explains the additive property: P(A) is the sum of probabilities of its outcomes.",
+          "interactivity": "Slide a bar from 0 (Impossible) to 1 (Certain) to see example events populate.",
+          "visual": "Probability Scale",
+          "visual_spec": {
+            "component": "ProbabilitySlider",
+            "student_actions": "Drag a slider. At 0, shows 'Rolling a 7 on a 6-sided die'. At 0.5, shows 'Flipping Heads'. At 1, shows 'Flipping Heads or Tails'.",
+            "implementation": "HTML Range Input with dynamic labels.",
+            "ties_to_concept": "Establishes the absolute bounds of probability and P(S) = 1."
+          },
+          "problem_template_id": null,
+          "problem_template_new": null,
+          "problem_spec": null,
+          "lux_integration": "Lux notes that if probabilities of a sample space sum to anything other than 1, you've missed an outcome or miscalculated.",
+          "system_prompt_notes": "Focus on the axiom P(S) = 1."
+        },
+        {
+          "app_slide_number": 10,
+          "type": "interactive",
+          "title": "Symmetry and Summation",
+          "pdf_page_refs": [
+            44,
+            45,
+            46,
+            47
+          ],
+          "pdf_pages_skipped": [],
+          "content_summary": "Demonstrates calculating P(A) for 'at least one head' by summing equally likely outcomes (1/4 each).",
+          "interactivity": "Click outcomes to 'add' them to the probability total.",
+          "visual": "Outcome Accumulator",
+          "visual_spec": {
+            "component": "MathAccumulator",
+            "student_actions": "Click H1H2, H1T2, T1H2. As each is clicked, an equation physically builds: 1/4 + 1/4 + 1/4 = 3/4. A pie chart fills up.",
+            "implementation": "React dynamic equation builder and SVG pie chart.",
+            "ties_to_concept": "Visualizes the additive property of probability for mutually exclusive outcomes."
+          },
+          "problem_template_id": null,
+          "problem_template_new": null,
+          "problem_spec": null,
+          "lux_integration": "Lux validates that 'symmetry' means a fair coin makes all specific fine-grained outcomes equally likely.",
+          "system_prompt_notes": "Define symmetry clearly as it applies to fair experiments."
+        },
+        {
+          "app_slide_number": 11,
+          "type": "problem",
+          "title": "Calculate P(A)",
+          "pdf_page_refs": [
+            47
+          ],
+          "pdf_pages_skipped": [],
+          "content_summary": "Calculate the exact probability of a specific event using summation.",
+          "interactivity": "Input a fraction.",
+          "visual": "Sample Space Highlight Tracker",
+          "visual_spec": {
+            "component": "SampleSpaceGrid",
+            "student_actions": "As the student types their numerator, the corresponding number of outcomes glow in the visual grid.",
+            "implementation": "React state bound to input value.",
+            "ties_to_concept": "Ties the abstract fraction to the physical count of outcomes."
+          },
+          "problem_template_id": null,
+          "problem_template_new": "probability_calculator",
+          "problem_spec": {
+            "when_to_place": "After showing the summation method.",
+            "prompt": "What is the probability of the event 'Exactly one head occurs' in a two-coin toss?",
+            "inputs": [
+              "fraction input field"
+            ],
+            "correct_answer_form": "1/2 (or 2/4)",
+            "params_for_regenerate": [
+              "event description"
+            ],
+            "difficulty": "warmup"
+          },
+          "lux_integration": "Lux asks: 'Which specific outcomes give you exactly one head? How many are there out of the total 4?'",
+          "system_prompt_notes": "Guide student to count target outcomes and divide by total outcomes."
+        }
+      ]
+    },
+    {
+      "block_id": "F",
+      "block_title": "The Never Fail Method",
+      "pdf_page_range": "48-54",
+      "target_app_slide_count": 3,
+      "slides": [
+        {
+          "app_slide_number": 12,
+          "type": "explain",
+          "title": "A Systematic Approach",
+          "pdf_page_refs": [
+            48,
+            49,
+            50,
+            51,
+            52
+          ],
+          "pdf_pages_skipped": [],
+          "content_summary": "Introduces the 4-step Never Fail Method: Set up sample space, assign probabilities, identify outcomes for the event, add them up.",
+          "interactivity": "Step through a dice roll example.",
+          "visual": "Never Fail Checklist Table",
+          "visual_spec": {
+            "component": "InteractiveProbabilityTable",
+            "student_actions": "Click 'Next Step' to watch a table automatically populate with outcomes (1-6), probabilities (1/6), and checkmarks for Event A (At least 4).",
+            "implementation": "React animated table grid.",
+            "ties_to_concept": "Models the exact tabular approach from the PDF."
+          },
+          "problem_template_id": null,
+          "problem_template_new": null,
+          "problem_spec": null,
+          "lux_integration": "Lux explains: 'It seems slow, but this table guarantees you won't make a mistake on tricky overlap questions.'",
+          "system_prompt_notes": "Emphasize reliability of the method over speed."
+        },
+        {
+          "app_slide_number": 13,
+          "type": "problem",
+          "title": "Spot the Mistake!",
+          "pdf_page_refs": [
+            53,
+            54
+          ],
+          "pdf_pages_skipped": [],
+          "content_summary": "A clever problem to ensure they understand the logic, not just the rote steps. A pre-filled table has one fatal error.",
+          "interactivity": "Click the incorrect cell in the table.",
+          "visual": "Buggy Probability Table",
+          "visual_spec": {
+            "component": "InteractiveProbabilityTable",
+            "student_actions": "Hover over cells. Click to flag the 'bug'.",
+            "implementation": "React grid with clickable state.",
+            "ties_to_concept": "Forces critical evaluation of set intersections and complements."
+          },
+          "problem_template_id": null,
+          "problem_template_new": "spot_the_mistake_table",
+          "problem_spec": {
+            "when_to_place": "Immediately after teaching the method.",
+            "prompt": "Someone used the Never Fail Method to find P(Even OR >4) on a die roll, but they got 5/6. Click the cell where they made a mistake checking an outcome.",
+            "inputs": [
+              "table cell click"
+            ],
+            "correct_answer_form": "Click the checkmark on outcome '5' under the 'Even' column (or similar manufactured error).",
+            "params_for_regenerate": [
+              "Event logic",
+              "Specific error injected"
+            ],
+            "difficulty": "core"
+          },
+          "lux_integration": "Lux: 'Wait, look at row 5. Is 5 an even number? Check your ANDs and ORs carefully!'",
+          "system_prompt_notes": "Focus on debugging to build deeper mastery of the method."
+        },
+        {
+          "app_slide_number": 14,
+          "type": "problem",
+          "title": "Apply the Never Fail Method",
+          "pdf_page_refs": [
+            53,
+            54
+          ],
+          "pdf_pages_skipped": [],
+          "content_summary": "Students fill out a mini Never Fail table from scratch to solve a combined event problem.",
+          "interactivity": "Check boxes in a table and calculate the final sum.",
+          "visual": "Fillable Probability Table",
+          "visual_spec": {
+            "component": "ProbabilityTableInput",
+            "student_actions": "Check boxes in a column for 'Event: Even AND > 3', then enter the final fraction.",
+            "implementation": "React form table.",
+            "ties_to_concept": "Forces the student to execute the steps they just learned."
+          },
+          "problem_template_id": null,
+          "problem_template_new": "never_fail_table_problem",
+          "problem_spec": {
+            "when_to_place": "After the debugging checkpoint.",
+            "prompt": "Roll a fair die. Let A = 'even number' and B = 'greater than 3'. Check the outcomes that belong to (A AND B), then enter the final probability.",
+            "inputs": [
+              "checkboxes for 1-6",
+              "fraction input field"
+            ],
+            "correct_answer_form": "Check 4, 6. Answer: 2/6 (or 1/3).",
+            "params_for_regenerate": [
+              "Event A",
+              "Event B",
+              "AND/OR logic"
+            ],
+            "difficulty": "core"
+          },
+          "lux_integration": "If the sum is wrong but checkboxes are right, Lux prompts: 'You found the correct outcomes! Now just add up their probabilities (1/6 each).'",
+          "system_prompt_notes": "Scaffold: Check outcomes first, then verify the math."
+        }
+      ]
+    },
+    {
+      "block_id": "G",
+      "block_title": "Probability Shortcuts: NOT and OR",
+      "pdf_page_range": "55-59",
+      "target_app_slide_count": 2,
+      "slides": [
+        {
+          "app_slide_number": 15,
+          "type": "explain",
+          "title": "The Complement Rule (NOT)",
+          "pdf_page_refs": [
+            55,
+            56,
+            57,
+            58
+          ],
+          "pdf_pages_skipped": [],
+          "content_summary": "Introduces the rule P(NOT A) = 1 - P(A). Shows how finding the probability of what you *don't* want is sometimes easier.",
+          "interactivity": "Toggle between calculating 'at least one head' directly vs calculating 'no heads' and subtracting from 1.",
+          "visual": "Balance Scale Concept",
+          "visual_spec": {
+            "component": "ComplementBar",
+            "student_actions": "Click to toggle view. A horizontal bar representing '1' splits into P(A) [75%] and P(not A) [25%]. They perfectly tile the 100% space.",
+            "implementation": "CSS Flexbox with percentage widths and transitions.",
+            "ties_to_concept": "Visually proves that an event and its complement perfectly make up the whole sample space."
+          },
+          "problem_template_id": null,
+          "problem_template_new": null,
+          "problem_spec": null,
+          "lux_integration": "Lux: 'Whenever you see 'at least one', always think of the NOT rule. What is the opposite of at least one?'",
+          "system_prompt_notes": "Highlight 'at least one' as a major keyword for the complement rule."
+        },
+        {
+          "app_slide_number": 16,
+          "type": "problem",
+          "title": "The Addition Rule (Don't Double Count!)",
+          "pdf_page_refs": [
+            56,
+            59
+          ],
+          "pdf_pages_skipped": [],
+          "content_summary": "Practice calculating P(A OR B) using the formula P(A) + P(B) - P(A AND B) to avoid double counting.",
+          "interactivity": "Calculate and enter the probability.",
+          "visual": "Double Count Warning Indicator",
+          "visual_spec": {
+            "component": "VennDiagram",
+            "student_actions": "If a student inputs an answer that implies double counting (e.g., adding P(A) and P(B) directly), the intersection of the Venn diagram flashes red and buzzes.",
+            "implementation": "SVG with keyframe animations triggered by specific incorrect input states.",
+            "ties_to_concept": "Visually reinforces the subtraction of the intersection in the formula."
+          },
+          "problem_template_id": null,
+          "problem_template_new": "probability_calculator",
+          "problem_spec": {
+            "when_to_place": "After introducing the OR rule formula.",
+            "prompt": "Roll a fair die. A = 'Even number', B = 'Less than 4'. Find P(A OR B).",
+            "inputs": [
+              "fraction input field"
+            ],
+            "correct_answer_form": "4/6 or 2/3",
+            "params_for_regenerate": [
+              "Event A",
+              "Event B"
+            ],
+            "difficulty": "core"
+          },
+          "lux_integration": "If student answers 5/6, Lux says: 'You added P(Even) and P(<4), but what about the number 2? You counted it twice! Subtract the overlap.'",
+          "system_prompt_notes": "Catch double-counting errors immediately."
+        }
+      ]
+    },
+    {
+      "block_id": "H",
+      "block_title": "Conditional Probability",
+      "pdf_page_range": "60-70",
+      "target_app_slide_count": 3,
+      "slides": [
+        {
+          "app_slide_number": 17,
+          "type": "explain",
+          "title": "Updating with New Information",
+          "pdf_page_refs": [
+            60,
+            61,
+            62,
+            63,
+            64,
+            65
+          ],
+          "pdf_pages_skipped": [],
+          "content_summary": "Introduces Conditional Probability. Shows how a prior baseline forecast is adjusted when a new condition (clouds) is known.",
+          "interactivity": "Slide to reveal 'new information' and watch the probability shift.",
+          "visual": "Forecast Adjuster",
+          "visual_spec": {
+            "component": "StateShiftWidget",
+            "student_actions": "Drag a slider labeled 'Look out the window (See Clouds)'. The displayed probability of rain dynamically shifts from 20% to 80% with an animated gauge.",
+            "implementation": "React state update with D3/SVG gauge animation.",
+            "ties_to_concept": "Demonstrates the conceptual shift from unconditional to conditional probability."
+          },
+          "problem_template_id": null,
+          "problem_template_new": null,
+          "problem_spec": null,
+          "lux_integration": "Lux introduces the vertical bar notation '|', reading it as 'given that'.",
+          "system_prompt_notes": "Anchor notation to plain English immediately."
+        },
+        {
+          "app_slide_number": 18,
+          "type": "interactive",
+          "title": "The Conditional Formula",
+          "pdf_page_refs": [
+            66,
+            67,
+            68,
+            69
+          ],
+          "pdf_pages_skipped": [],
+          "content_summary": "Presents P(A|B) = P(A and B) / P(B). Visually explains how the condition 'shrinks' the sample space.",
+          "interactivity": "Apply a condition to a sample space to watch the irrelevant outcomes fade out.",
+          "visual": "Sample Space Shrinker",
+          "visual_spec": {
+            "component": "SampleSpaceFilter",
+            "student_actions": "View 6 dice outcomes. Click 'Given it is EVEN'. The odd outcomes physically dissolve. The remaining 3 outcomes visually snap together to become the new denominator.",
+            "implementation": "React grid with Framer Motion layout transitions.",
+            "ties_to_concept": "Shows physically why P(B) becomes the new denominator."
+          },
+          "problem_template_id": null,
+          "problem_template_new": null,
+          "problem_spec": null,
+          "lux_integration": "Lux points out: 'The new 'universe' of possibilities is just the condition B. Everything outside of B is now impossible.'",
+          "system_prompt_notes": "Emphasize the shrinking sample space concept."
+        },
+        {
+          "app_slide_number": 19,
+          "type": "problem",
+          "title": "Calculate Conditional Probability",
+          "pdf_page_refs": [
+            70
+          ],
+          "pdf_pages_skipped": [],
+          "content_summary": "Calculate P(A|B) using the formula and values derived from the Never Fail method.",
+          "interactivity": "Problem check.",
+          "visual": null,
+          "visual_spec": null,
+          "problem_template_id": null,
+          "problem_template_new": "probability_calculator",
+          "problem_spec": {
+            "when_to_place": "After explaining the formula visually.",
+            "prompt": "Roll a fair die. Event A is 'at least 4'. Event B is 'the die is even'. What is P(A|B)?",
+            "inputs": [
+              "fraction input field"
+            ],
+            "correct_answer_form": "2/3",
+            "params_for_regenerate": [
+              "Event A",
+              "Event B"
+            ],
+            "difficulty": "core"
+          },
+          "lux_integration": "If incorrect, Lux asks: 'First, what is P(B)? Now, what is P(A and B)? Divide the overlap by the new total.'",
+          "system_prompt_notes": "Walk through the numerator and denominator separately."
+        }
+      ]
+    },
+    {
+      "block_id": "I",
+      "block_title": "Independent Events",
+      "pdf_page_range": "71-74",
+      "target_app_slide_count": 3,
+      "slides": [
+        {
+          "app_slide_number": 20,
+          "type": "explain",
+          "title": "Independence",
+          "pdf_page_refs": [
+            71,
+            72,
+            73,
+            74
+          ],
+          "pdf_pages_skipped": [],
+          "content_summary": "Defines independence intuitively (knowing B tells you nothing about A) and mathematically (P(A and B) = P(A)P(B) and P(A|B) = P(A)).",
+          "interactivity": "Compare two scenarios: coin flips vs drawing cards without replacement.",
+          "visual": "Independence Concept Cards",
+          "visual_spec": {
+            "component": "ScenarioCompare",
+            "student_actions": "Click 'Flip a Coin Twice' vs 'Draw Two Cards'. Sees a live probability tree update to show one set of branches is constant, while the other changes based on the first draw.",
+            "implementation": "React two-column layout with dynamic data.",
+            "ties_to_concept": "Contrasts independent vs dependent events clearly."
+          },
+          "problem_template_id": null,
+          "problem_template_new": null,
+          "problem_spec": null,
+          "lux_integration": "Lux points out that 'independence' is a specific mathematical property, not just a feeling.",
+          "system_prompt_notes": "Define mathematical independence strictly."
+        },
+        {
+          "app_slide_number": 21,
+          "type": "interactive",
+          "title": "Visualizing Independence",
+          "pdf_page_refs": [
+            72
+          ],
+          "pdf_pages_skipped": [],
+          "content_summary": "A geometric proof of independence. Shows that P(A and B) is literally the area of a rectangle formed by P(A) width and P(B) height.",
+          "interactivity": "Drag event bounds to see if the intersection area matches the product of the sides.",
+          "visual": "Probability Matrix Grid",
+          "visual_spec": {
+            "component": "AreaGrid",
+            "student_actions": "Drag grid lines representing P(A) and P(B). If the events are independent, the overlapping block perfectly matches the mathematical product area.",
+            "implementation": "SVG with draggable bounds.",
+            "ties_to_concept": "Connects the algebraic rule P(A and B) = P(A)P(B) to geometric intuition."
+          },
+          "problem_template_id": null,
+          "problem_template_new": null,
+          "problem_spec": null,
+          "lux_integration": "Lux: 'Think of independence like a perfect rectangle. If P(A and B) doesn't perfectly match the width times the height, they are dependent.'",
+          "system_prompt_notes": "Use area models to explain probability multiplication."
+        },
+        {
+          "app_slide_number": 22,
+          "type": "problem",
+          "title": "Testing for Independence",
+          "pdf_page_refs": [
+            74
+          ],
+          "pdf_pages_skipped": [],
+          "content_summary": "Test if two events are independent using the multiplication rule.",
+          "interactivity": "Select Yes/No and calculate the product.",
+          "visual": null,
+          "visual_spec": null,
+          "problem_template_id": null,
+          "problem_template_new": "independence_test",
+          "problem_spec": {
+            "when_to_place": "Following the mathematical definition and visual proof.",
+            "prompt": "Roll a die. A = 'Even', B = 'Greater than 4'. Are A and B independent? (Hint: Does P(A and B) equal P(A) * P(B)?)",
+            "inputs": [
+              "Yes/No radio",
+              "fraction input for P(A and B)",
+              "fraction input for P(A)*P(B)"
+            ],
+            "correct_answer_form": "No, 1/6 != 1/2 * 1/3",
+            "params_for_regenerate": [
+              "Event A",
+              "Event B"
+            ],
+            "difficulty": "stretch"
+          },
+          "lux_integration": "Lux guides the proof: 'Let's check the math. What is P(A)*P(B)? Now, look at our sample space. What is the actual P(A and B)? Do they match?'",
+          "system_prompt_notes": "Require mathematical proof for independence, not just intuition."
+        }
+      ]
+    },
+    {
+      "block_id": "J",
+      "block_title": "Probability Trees",
+      "pdf_page_range": "75-87",
+      "target_app_slide_count": 3,
+      "slides": [
+        {
+          "app_slide_number": 23,
+          "type": "explain",
+          "title": "Mapping Sequences: Probability Trees",
+          "pdf_page_refs": [
+            75,
+            76,
+            77,
+            78,
+            79,
+            80
+          ],
+          "pdf_pages_skipped": [],
+          "content_summary": "Introduces probability trees for multi-stage experiments. Explains nodes, branches, leaves, and the multiplication rule along paths.",
+          "interactivity": "Trace a path to see the multiplication happen automatically.",
+          "visual": "Interactive Probability Tree",
+          "visual_spec": {
+            "component": "InteractiveTreeDiagram",
+            "student_actions": "Click nodes left to right to build a path. The app highlights the path in gold and displays the multiplied probability formula at the leaf.",
+            "implementation": "SVG or D3.js interactive tree.",
+            "ties_to_concept": "Teaches the fundamental rule that probabilities along branches are multiplied."
+          },
+          "problem_template_id": null,
+          "problem_template_new": null,
+          "problem_spec": null,
+          "lux_integration": "Lux emphasizes that second-level branches are ALWAYS conditional probabilities based on the first branch.",
+          "system_prompt_notes": "Drill path multiplication."
+        },
+        {
+          "app_slide_number": 24,
+          "type": "problem",
+          "title": "Build a Tree: Fair & Unfair Coins",
+          "pdf_page_refs": [
+            83,
+            84,
+            85
+          ],
+          "pdf_pages_skipped": [],
+          "content_summary": "Construct a tree for an experiment with a fair coin, followed by an unfair coin (if H) or a fair coin (if T).",
+          "interactivity": "Fill in the missing probabilities on the branches.",
+          "visual": "Fill-in-the-blank Tree",
+          "visual_spec": {
+            "component": "TreeBuilderWidget",
+            "student_actions": "Type fractions into empty boxes located on the branches of a 2-stage tree.",
+            "implementation": "React SVG overlay with inputs.",
+            "ties_to_concept": "Validates understanding of conditional assignment on tree branches."
+          },
+          "problem_template_id": null,
+          "problem_template_new": "tree_builder",
+          "problem_spec": {
+            "when_to_place": "After introducing the rules of trees.",
+            "prompt": "You toss a fair coin. If Heads, you toss an unfair coin (P(H)=1/3). If Tails, you toss a fair coin again. Fill in the probabilities for the second set of branches.",
+            "inputs": [
+              "4 fraction text inputs on branches"
+            ],
+            "correct_answer_form": "1/3, 2/3 (top branches); 1/2, 1/2 (bottom branches)",
+            "params_for_regenerate": [
+              "unfair coin probability"
+            ],
+            "difficulty": "core"
+          },
+          "lux_integration": "If an input is wrong, Lux hints: 'Remember, branches leaving a single node must add up to 1 (100% of possibilities).'",
+          "system_prompt_notes": "Check that sub-branches sum to 1."
+        },
+        {
+          "app_slide_number": 25,
+          "type": "problem",
+          "title": "Calculating from the Tree",
+          "pdf_page_refs": [
+            81,
+            82,
+            86,
+            87
+          ],
+          "pdf_pages_skipped": [],
+          "content_summary": "Use the completed tree to calculate a complex conditional probability (Bayes-lite logic).",
+          "interactivity": "Problem check with a static completed tree visible.",
+          "visual": "Reference Tree",
+          "visual_spec": {
+            "component": "StaticTreeWithHighlights",
+            "student_actions": "Student can click leaves to highlight the relevant paths for their scratchpad calculation. Calculates path products automatically.",
+            "implementation": "SVG with stateful highlights.",
+            "ties_to_concept": "Synthesizes trees and conditional probability formulas."
+          },
+          "problem_template_id": null,
+          "problem_template_new": "probability_calculator",
+          "problem_spec": {
+            "when_to_place": "After building the tree.",
+            "prompt": "Using your tree, what is the probability the first toss was heads, given that the two tosses resulted in different faces?",
+            "inputs": [
+              "fraction input"
+            ],
+            "correct_answer_form": "4/7",
+            "params_for_regenerate": [
+              "P(H) of unfair coin"
+            ],
+            "difficulty": "stretch"
+          },
+          "lux_integration": "Lux breaks it down: 'Step 1: Find P(different faces). Which paths give different faces? Add them up. Step 2: Which of those paths started with Heads?'",
+          "system_prompt_notes": "Guide through Bayes theorem logic without explicitly naming it yet."
+        }
+      ]
+    },
+    {
+      "block_id": "K",
+      "block_title": "Sampling Without Replacement",
+      "pdf_page_range": "88-92",
+      "target_app_slide_count": 3,
+      "slides": [
+        {
+          "app_slide_number": 26,
+          "type": "explain",
+          "title": "The Changing Sample Space",
+          "pdf_page_refs": [
+            88,
+            89
+          ],
+          "pdf_pages_skipped": [],
+          "content_summary": "Introduces the Colored Balls problem. Visualizes how drawing without replacement fundamentally alters the sample space for the next draw.",
+          "interactivity": "Draw a ball from an urn and watch the total counts update.",
+          "visual": "Interactive Urn Model",
+          "visual_spec": {
+            "component": "UrnDrawSim",
+            "student_actions": "Click to draw a blue ball from an urn containing 2 Blue, 2 Red. The ball physically exits. The denominator for the next draw updates to /3.",
+            "implementation": "React/Canvas physics or DOM animation.",
+            "ties_to_concept": "Makes the abstract concept of 'without replacement' tangible."
+          },
+          "problem_template_id": null,
+          "problem_template_new": null,
+          "problem_spec": null,
+          "lux_integration": "Lux points out that this is conditional probability in physical form: the second draw depends entirely on the first.",
+          "system_prompt_notes": "Connect 'without replacement' to dependent events."
+        },
+        {
+          "app_slide_number": 27,
+          "type": "interactive",
+          "title": "Calculate Conditional Urn Probability",
+          "pdf_page_refs": [
+            90,
+            91,
+            92
+          ],
+          "pdf_pages_skipped": [
+            93
+          ],
+          "content_summary": "Calculate P(2nd Blue | 1st Blue).",
+          "interactivity": "Solve the problem.",
+          "visual": "Urn State Tracker",
+          "visual_spec": {
+            "component": "UrnDrawSim",
+            "student_actions": "Provides a visual aid where they can 'test' drawing the first ball before answering.",
+            "implementation": "React component.",
+            "ties_to_concept": "Validates the tree math with a physical count."
+          },
+          "problem_template_id": "urn_conditional",
+          "problem_template_new": null,
+          "problem_spec": {
+            "when_to_place": "Application of 2-stage draw.",
+            "prompt": "An urn has 2 Blue balls and 2 Red balls. What is the probability of drawing a 2nd Blue ball given that the 1st ball drawn was Blue (and not replaced)?",
+            "inputs": [
+              "fraction input"
+            ],
+            "correct_answer_form": "1/3",
+            "params_for_regenerate": [
+              "starting counts of blue and red balls"
+            ],
+            "difficulty": "core"
+          },
+          "lux_integration": "If the student struggles, Lux asks: 'After taking out one Blue ball, how many balls are left in total? How many of those are Blue?'",
+          "system_prompt_notes": "Urge the intuitive physical counting method as a verification of the math formula."
+        },
+        {
+          "app_slide_number": 28,
+          "type": "problem",
+          "title": "Synthesis: 3 Draws",
+          "pdf_page_refs": [
+            92
+          ],
+          "pdf_pages_skipped": [],
+          "content_summary": "A final synthesis problem challenging students to calculate the probability of a specific 3-draw sequence without replacement.",
+          "interactivity": "Calculate a 3-part multiplied fraction.",
+          "visual": "Extended Tree Placeholder",
+          "visual_spec": {
+            "component": "InteractiveTreeDiagram",
+            "student_actions": "A 3-stage tree that is mostly empty, prompting them to visualize the changing probabilities.",
+            "implementation": "SVG.",
+            "ties_to_concept": "Combines multiplication rules with changing sample spaces."
+          },
+          "problem_template_id": null,
+          "problem_template_new": "probability_calculator",
+          "problem_spec": {
+            "when_to_place": "Final challenge slide of the lecture.",
+            "prompt": "An urn has 3 Blue balls and 2 Red balls. If you draw 3 balls without replacement, what is the exact probability of drawing Blue, then Red, then Blue in that specific order?",
+            "inputs": [
+              "fraction input field"
+            ],
+            "correct_answer_form": "1/10 (3/5 * 2/4 * 2/3)",
+            "params_for_regenerate": [
+              "starting counts",
+              "target sequence"
+            ],
+            "difficulty": "stretch"
+          },
+          "lux_integration": "Lux applauds correct answers: 'Incredible! You mapped out the changing future three steps ahead.'",
+          "system_prompt_notes": "Guide them to multiply the three conditional probabilities."
+        }
+      ]
+    }
+  ],
+  "new_problem_templates": [
+    {
+      "id": "set_builder",
+      "label": "Interactive Set Builder",
+      "description": "Validates drag-and-drop construction of a mathematical set from discrete elements.",
+      "input_fields": [
+        "draggable array of strings/objects"
+      ],
+      "randomizable_params": [
+        "sample space size",
+        "experiment type"
+      ],
+      "used_on_app_slides": [
+        5
+      ]
+    },
+    {
+      "id": "venn_logic_problem",
+      "label": "Venn Selection Logic",
+      "description": "Validates selecting the correct geometric region of a Venn diagram corresponding to a boolean logic statement.",
+      "input_fields": [
+        "selected SVG region ID",
+        "outcome array"
+      ],
+      "randomizable_params": [
+        "event logic (AND/OR/NOT)"
+      ],
+      "used_on_app_slides": [
+        8
+      ]
+    },
+    {
+      "id": "probability_calculator",
+      "label": "Fraction Probability Input",
+      "description": "A reusable generic input for final probability calculations (accepts equivalent fractions).",
+      "input_fields": [
+        "numerator",
+        "denominator"
+      ],
+      "randomizable_params": [
+        "event conditions"
+      ],
+      "used_on_app_slides": [
+        11,
+        16,
+        19,
+        25,
+        28
+      ]
+    },
+    {
+      "id": "spot_the_mistake_table",
+      "label": "Debug Never Fail Table",
+      "description": "Presents a completed table with an injected logic error that the student must locate by clicking.",
+      "input_fields": [
+        "clicked cell coordinates"
+      ],
+      "randomizable_params": [
+        "injected bug type",
+        "event logic"
+      ],
+      "used_on_app_slides": [
+        13
+      ]
+    },
+    {
+      "id": "never_fail_table_problem",
+      "label": "Never Fail Method Table",
+      "description": "Validates checking the correct subset of outcomes and calculating the final sum.",
+      "input_fields": [
+        "array of boolean checkboxes",
+        "fraction input"
+      ],
+      "randomizable_params": [
+        "event logic",
+        "sample space size"
+      ],
+      "used_on_app_slides": [
+        14
+      ]
+    },
+    {
+      "id": "independence_test",
+      "label": "Independence Mathematical Test",
+      "description": "Requires binary classification (Yes/No) plus proof fields (P(A and B) vs P(A)*P(B)).",
+      "input_fields": [
+        "boolean yes/no",
+        "fraction 1",
+        "fraction 2"
+      ],
+      "randomizable_params": [
+        "event definitions"
+      ],
+      "used_on_app_slides": [
+        22
+      ]
+    },
+    {
+      "id": "tree_builder",
+      "label": "Tree Diagram Builder",
+      "description": "Validates assigning correct probabilities to branches in a 2-stage tree.",
+      "input_fields": [
+        "array of branch fractions"
+      ],
+      "randomizable_params": [
+        "initial probability weights"
+      ],
+      "used_on_app_slides": [
+        24
+      ]
+    }
+  ],
+  "visual_toolkit": [
+    {
+      "name": "BuiltinDemoCanvas (Coin)",
+      "used_on_app_slides": [
+        2
+      ],
+      "implementation": "Three.js"
+    },
+    {
+      "name": "SetBuilderWidget",
+      "used_on_app_slides": [
+        5
+      ],
+      "implementation": "HTML5 Drag and Drop"
+    },
+    {
+      "name": "VennDiagramSelector",
+      "used_on_app_slides": [
+        7,
+        8,
+        16
+      ],
+      "implementation": "Interactive SVG with hover/click states"
+    },
+    {
+      "name": "InteractiveProbabilityTable",
+      "used_on_app_slides": [
+        12,
+        13,
+        14
+      ],
+      "implementation": "React animated grid"
+    },
+    {
+      "name": "AreaGrid",
+      "used_on_app_slides": [
+        21
+      ],
+      "implementation": "SVG with draggable bounds for area visualization"
+    },
+    {
+      "name": "ProbabilityTreeWidget",
+      "used_on_app_slides": [
+        23,
+        24,
+        25,
+        28
+      ],
+      "implementation": "D3.js or pure React SVG"
+    },
+    {
+      "name": "UrnDrawSim",
+      "used_on_app_slides": [
+        26,
+        27
+      ],
+      "implementation": "React DOM animations"
+    }
+  ],
+  "recommended_build_order": [
+    "1. Build the foundational reusable fraction input and probability_calculator template.",
+    "2. Implement the Sample Space grid and set_builder drag-and-drop to establish the core visual language of outcomes.",
+    "3. Build the VennDiagram widgets for Block D and G.",
+    "4. Construct the InteractiveProbabilityTable (and Spot the Mistake logic) for the Never Fail Method, as it anchors Block F.",
+    "5. Develop the ProbabilityTreeWidget, ensuring it supports static display, fill-in-the-blank modes, and path highlighting.",
+    "6. Integrate the Three.js BuiltinDemoCanvas for the coin toss and the UrnDrawSim to polish the physical intuition."
+  ],
+  "gap_analysis": {
+    "notes": "The pass-2 outline expands the app to 28 slides. It replaces static multi-step PDF pages with high-fidelity manipulatives: Spot the Mistake debugging, interactive Venns, and geometric proofs for independence.",
+    "proposed_total_app_slides": 28
+  },
+  "skipped_admin_pdf_pages": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    93
+  ],
+  "skipped_admin_reason": "Skipped pages 1-5 as they contain syllabus details, instructor bios, TA office hours, and homework grading rules. Skipped page 93 as it is a pure administrative 'preview' of the next lecture.",
+  "refined_from": "lecture01_outline.json",
+  "refinement_model": "gemini-3.1-pro-preview",
+  "refinement_generated_at": "2026-06-05T05:09:40.180673+00:00",
+  "refinement_context": "LuxAI Brilliant-style tutor. Pass 1 outline exists — your job is to make it significantly better for students: more hands-on, more delightful visuals, clever problems that teach (not just quiz), and Lux-friendly Socratic moments. Existing templates: coin_outcomes, urn_conditional, equation_roots. You may add slides, split explain into explain+problem, upgrade type to interactive, or deepen problem_spec / visual_spec. Keep Yale navy aesthetic.",
+  "outline_pass1_generated_at": "2026-06-05T05:07:52.903896+00:00"
+}

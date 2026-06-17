@@ -1,0 +1,59 @@
+{
+  "lectureId": "lecture04",
+  "provider": "elevenlabs",
+  "slides": [
+    {
+      "slideId": 1,
+      "file": "slide_01.mp3",
+      "chars": 140
+    },
+    {
+      "slideId": 2,
+      "file": "slide_02.mp3",
+      "chars": 126
+    },
+    {
+      "slideId": 3,
+      "file": "slide_03.mp3",
+      "chars": 162
+    },
+    {
+      "slideId": 4,
+      "file": "slide_04.mp3",
+      "chars": 146
+    },
+    {
+      "slideId": 5,
+      "file": "slide_05.mp3",
+      "chars": 144
+    },
+    {
+      "slideId": 6,
+      "file": "slide_06.mp3",
+      "chars": 142
+    },
+    {
+      "slideId": 7,
+      "file": "slide_07.mp3",
+      "chars": 153
+    },
+    {
+      "slideId": 8,
+      "file": "slide_08.mp3",
+      "chars": 141
+    },
+    {
+      "slideId": 9,
+      "file": "slide_09.mp3",
+      "chars": 105
+    },
+    {
+      "slideId": 10,
+      "file": "slide_10.mp3",
+      "chars": 124
+    }
+  ],
+  "voiceId": "dR1Ptm3rjBUIbHiaywdJ",
+  "voiceName": "Lisa Manoban",
+  "model": "eleven_v3"
+}

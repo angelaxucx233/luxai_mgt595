@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MGT 403: Probability Tutor Platform</title>
+    <!-- Tailwind CSS for clean layout styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Three.js Library for 3D Renders -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        .slide-content { display: none; }
+        .slide-content.active { display: flex; }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-100 font-sans h-screen flex flex-col overflow-hidden">
+
+    <!-- TOP HEADER -->
+    <header class="bg-slate-800 border-b border-slate-700 px-6 py-4 flex justify-between items-center shadow-md">
+        <div>
+            <h1 class="text-xl font-bold tracking-wide text-indigo-400">MGT 403: Probability & Statistics</h1>
+            <p class="text-xs text-slate-400">Lecture 01: Probability Experiments — Module Prototype</p>
+        </div>
+        <div class="text-sm bg-slate-900 px-3 py-1.5 rounded border border-slate-700 font-mono">
+            Slide Context Tracker: <span id="slide-badge" class="text-emerald-400 font-bold">1 / 2</span>
+        </div>
+    </header>
+
+    <!-- MAIN PLATFORM WORKSPACE -->
+    <main class="flex-1 flex overflow-hidden">
+        
+        <!-- LEFT PANEL: Dynamic HTML Lecture Slides -->
+        <section class="w-[60%] bg-slate-950 p-8 flex flex-col justify-between relative border-r border-slate-800">
+            
+            <!-- Dynamic Slide Frame Container -->
+            <div id="slide-deck-container" class="flex-1 flex items-center justify-center">
+                
+                <!-- SLIDE 1: Two Coin Toss Experiment -->
+                <div id="slide-1" class="slide-content active flex-col w-full max-w-2xl">
+                    <span class="text-xs font-semibold tracking-widest text-indigo-400 uppercase mb-2">Probability Experiments</span>
+                    <h2 class="text-3xl font-extrabold mb-4">Example: Two Coin Toss Experiment</h2>
+                    <p class="text-slate-300 mb-6 leading-relaxed">
+                        Let's establish our sample space $\mathcal{S}$ for tossing two independent, fair coins. 
+                        By symmetry, each fine-grained outcome has an identical likelihood of occurring.
+                    </p>
+                    <div class="bg-slate-900 border border-slate-800 rounded-lg p-4 font-mono text-sm shadow-inner">
+                        <span class="text-amber-400 font-bold">$\mathcal{S}$ (Sample Space)</span> = { H₁H₂, H₁T₂, T₁H₂, T₁T₂ }
+                    </div>
+                </div>
+
+                <!-- SLIDE 2: The Colored Urn Problem -->
+                <div id="slide-2" class="slide-content flex-col w-full max-w-2xl">
+                    <span class="text-xs font-semibold tracking-widest text-indigo-400 uppercase mb-2">Conditional Probability</span>
+                    <h2 class="text-3xl font-extrabold mb-4">Problem: Colored Balls in an Urn</h2>
+                    <p class="text-slate-300 mb-6 leading-relaxed">
+                        An urn contains <span class="text-sky-400">1 Light Blue</span>, <span class="text-blue-500">1 Dark Blue</span>, 
+                        <span class="text-rose-400">1 Light Red</span>, and <span class="text-red-500">1 Dark Red</span> ball. 
+                        We draw two balls sequentially <span class="text-amber-400 font-semibold">without replacement</span>.
+                    </p>
+                    <div class="bg-slate-900 border border-slate-800 rounded-lg p-4 font-serif text-base italic text-slate-300 border-l-4 border-l-indigo-500">
+                        "The 1st ball happens to be blue. What is the probability that also the 2nd ball is blue?"
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- AUDIO & NAVIGATION SLIDE BAR -->
+            <div class="border-t border-slate-800 pt-6 flex justify-between items-center">
+                <!-- ElevenLabs Audio Player Node Container -->
+                <div class="flex items-center gap-3 bg-slate-900 px-4 py-2 rounded-lg border border-slate-800">
+                    <button id="play-audio-btn" class="w-8 h-8 rounded-full bg-indigo-600 hover:bg-indigo-500 flex items-center justify-center transition shadow">
+                        <svg class="w-4 h-4 text-white fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    </button>
+                    <div class="text-xs">
+                        <p id="audio-track-label" class="text-slate-200 font-medium font-mono">lecture1_slide1.mp3</p>
+                        <p class="text-slate-500">ElevenLabs Narrator Engine Active</p>
+                    </div>
+                    <!-- Hidden audio node orchestrated via JS -->
+                    <audio id="slide-audio-player" src="./audio/lecture1/slide_1.mp3"></audio>
+                </div>
+
+                <!-- Directional Navigation Arrows -->
+                <div class="flex gap-2">
+                    <button id="prev-btn" class="px-4 py-2 bg-slate-800 border border-slate-700 rounded text-sm font-semibold hover:bg-slate-700 transition disabled:opacity-40 disabled:hover:bg-slate-800">← Back</button>
+                    <button id="next-btn" class="px-4 py-2 bg-indigo-600 rounded text-sm font-semibold hover:bg-indigo-500 transition">Next Slide →</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- CENTER PANEL: Dynamic Interactive Three.js Engine Container -->
+        <section class="w-[40%] bg-slate-950 border-r border-slate-800 flex flex-col">
+            <div class="p-4 bg-slate-900 border-b border-slate-800 flex justify-between items-center">
+                <span class="text-xs font-bold font-mono tracking-wider text-slate-400">INTERACTIVE TOOL CANVAS</span>
+                <span id="canvas-status" class="text-[10px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-mono px-2 py-0.5 rounded">SYSTEM_BUILTIN_READY</span>
+            </div>
+            
+            <!-- Canvas Mount Block -->
+            <div id="threejs-canvas-mount" class="flex-1 relative bg-slate-950">
+                <!-- Three.js renderer attaches here directly -->
+            </div>
+
+            <!-- Live Dashboard Tool Control Board -->
+            <div class="p-4 bg-slate-900 border-t border-slate-800 text-center">
+                <button id="simulation-trigger-btn" class="w-full bg-slate-800 hover:bg-slate-700 text-indigo-400 font-mono font-bold text-xs py-3 border border-slate-700 rounded transition uppercase tracking-wider">
+                    Execute Simulation Iteration
+                </button>
+            </div>
+        </section>
+
+        <!-- RIGHT PANEL: Context-Aware AI Chatbot Interface -->
+        <section class="w-[30%] bg-slate-900 flex flex-col justify-between">
+            <!-- Chat Logs Panel Header -->
+            <div class="p-4 bg-slate-800 border-b border-slate-700">
+                <h3 class="text-sm font-bold text-slate-200 flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-indigo-400 animate-pulse"></span>
+                    Probability AI Tutor
+                </h3>
+                <p class="text-[11px] text-slate-400 mt-0.5 font-mono">Loaded Context Frame: <span id="ai-context-label" class="text-indigo-400 font-bold">Slide 1 (Coins)</span></p>
+            </div>
+
+            <!-- Dynamic Chat Thread Window -->
+            <div id="chat-messages-box" class="flex-1 p-4 overflow-y-auto space-y-4 text-xs font-sans">
+                <!-- System Prompt Injected Message Indicator -->
+                <div class="text-[10px] font-mono text-indigo-400/70 text-center bg-indigo-950/40 py-1.5 border border-indigo-900/30 rounded">
+                    [SYSTEM_STATE_UPDATED: Injected slide payload context]
+                </div>
+                <!-- Default Initial Welcome Message -->
+                <div class="bg-slate-800 border border-slate-700 p-3 rounded-lg text-slate-300 max-w-[85%] leading-relaxed">
+                    Hello, Your Highness. I am ready to guide you through these probability concepts[cite: 1]. Ask me anything about the active slide, or let me know if you would like me to unpack an animation simulation experiment!
+                </div>
+            </div>
+
+            <!-- Chat Entry Input System Footer -->
+            <div class="p-4 bg-slate-800 border-t border-slate-700">
+                <form id="chat-input-form" class="flex gap-2">
+                    <input type="text" id="chat-user-field" placeholder="Ask a question about this slide..." class="flex-1 bg-slate-950 border border-slate-700 rounded px-3 py-2 text-xs focus:outline-none focus:border-indigo-500 text-slate-200">
+                    <button type="submit" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold px-4 py-2 rounded text-xs transition shadow">Send</button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- CORE PLATFORM SCRIPT FRAMEWORK -->
+    <script>
+        // Track the general system navigation state variables
+        let currentSlide = 1;
+        const totalSlides = 2;
+
+        // Structured metadata mappings to dynamically inject slide context straight into the chatbot state layer
+        const slideContexts = {
+            1: {
+                title: "Slide 1 (Coins)",
+                audioFile: "lecture1_slide1.mp3",
+                systemPromptContext: "The user is currently studying Slide 1: Two Coin Toss Experiment. The sample space is S={H1H2, H1T2, T1H2, T1T2}. All 4 fine outcomes are uniform at 1/4 probability. You can tell the application to trigger built-in animations via the pre-made viz tool."
+            },
+            2: {
+                title: "Slide 2 (Urn Problem)",
+                audioFile: "lecture1_slide2.mp3",
+                systemPromptContext: "The user is studying Slide 2: The Urn Problem with colored balls. Urn contains 4 balls: Light Blue, Dark Blue, Light Red, Dark Red. Experiment draws 2 balls sequentially without replacement. First ball is verified blue. Target conditional probability statement: P(2nd Blue | 1st Blue) = 1/3."
+            }
+        };
+
+        // UI Element Selectors
+        const nextBtn = document.getElementById('prev-btn');
+        const prevBtn = document.getElementById('prev-btn');
+        const slideBadge = document.getElementById('slide-badge');
+        const audioTrackLabel = document.getElementById('audio-track-label');
+        const slideAudioPlayer = document.getElementById('slide-audio-player');
+        const aiContextLabel = document.getElementById('ai-context-label');
+        const chatMessagesBox = document.getElementById('chat-messages-box');
+        const simTriggerBtn = document.getElementById('simulation-trigger-btn');
+        const canvasStatus = document.getElementById('canvas-status');
+
+        // Three.js Global State Elements
+        let scene, camera, renderer;
+        let activeMeshes = [];
+
+        // INITIALIZATION LOGIC RUN ON BOOT
+        window.onload = function() {
+            initThreeJS();
+            renderSlideVisualization(1);
+            setupSlideEventListeners();
+            setupChatInterface();
+        };
+
+        // SETUP THREE.JS ENGINE CORE WINDOW
+        function initThreeJS() {
+            const container = document.getElementById('threejs-canvas-mount');
+            
+            scene = new THREE.Scene();
+            scene.background = new THREE.Color(0x090d16);
+
+            camera = new THREE.PerspectiveCamera(60, container.clientWidth / container.clientHeight, 0.1, 100);
+            camera.position.set(0, 0, 7);
+
+            renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(container.clientWidth, container.clientHeight);
+            container.appendChild(renderer.domElement);
+
+            // Append ambient + tracking directional lights to standard viewport mesh arrays
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+            scene.add(ambientLight);
+
+            const dirLight = new THREE.DirectionalLight(0xffffff, 0.8);
+            dirLight.position.set(5, 10, 7);
+            scene.add(dirLight);
+
+            // Boot continuous frame rendering animation pipeline loop
+            function animate() {
+                requestAnimationFrame(animate);
+                
+                // Spin elements gently inside the viewport to prove full structural 3D activity
+                activeMeshes.forEach(mesh => {
+                    if(mesh.userData.shouldRotate) {
+                        mesh.rotation.x += 0.005;
+                        mesh.rotation.y += 0.01;
+                    }
+                });
+
+                renderer.render(scene, camera);
+            }
+            animate();
+
+            // Bind window resize event listener
+            window.addEventListener('resize', () => {
+                camera.aspect = container.clientWidth / container.clientHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(container.clientWidth, container.clientHeight);
+            });
+        }
+
+        // TOOL METHOD 1: DYNAMIC FACTORY FOR BUILT-IN CHASSIS DEMOS
+        function renderSlideVisualization(slideNumber) {
+            // Flush out existing mesh memory maps
+            activeMeshes.forEach(m => scene.remove(m));
+            activeMeshes = [];
+            canvasStatus.innerText = "SYSTEM_BUILTIN_READY";
+            canvasStatus.className = "text-[10px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-mono px-2 py-0.5 rounded";
+
+            if (slideNumber === 1) {
+                // VISUALIZATION 1: Render 2 distinct 3D Coins side-by-side
+                simTriggerBtn.innerText = "TOSS COINS SIMULATION";
+                
+                const coinGeo = new THREE.CylinderGeometry(1.5, 1.5, 0.15, 32);
+                const coinMat1 = new THREE.MeshStandardMaterial({ color: 0xd4af37, roughness: 0.3 }); // Gold Coin
+                const coinMat2 = new THREE.MeshStandardMaterial({ color: 0xc0c0c0, roughness: 0.3 }); // Silver Coin
+
+                const coin1 = new THREE.Mesh(coinGeo, coinMat1);
+                coin1.position.set(-2, 0, 0);
+                coin1.rotation.x = Math.PI / 2;
+                coin1.userData = { shouldRotate: true };
+
+                const coin2 = new THREE.Mesh(coinGeo, coinMat2);
+                coin2.position.set(2, 0, 0);
+                coin2.rotation.x = Math.PI / 2;
+                coin2.userData = { shouldRotate: true };
+
+                scene.add(coin1);
+                scene.add(coin2);
+                activeMeshes.push(coin1, coin2);
+
+            } else if (slideNumber === 2) {
+                // VISUALIZATION 2: Render a semi-transparent glass Urn container with 4 nested spheres
+                simTriggerBtn.innerText = "DRAW RANDOM BALL OUTCOME";
+
+                // Create the physical glass container frame array components
+                const glassGeo = new THREE.CylinderGeometry(2, 1.5, 4, 32, 1, true);
+                const glassMat = new THREE.MeshStandardMaterial({ 
+                    color: 0x88ccff, 
+                    transparent: true, 
+                    opacity: 0.25, 
+                    side: THREE.DoubleSide,
+                    roughness: 0.1 
+                });
+                const urnContainer = new THREE.Mesh(glassGeo, glassMat);
+                scene.add(urnContainer);
+                activeMeshes.push(urnContainer);
+
+                // Add the 4 discrete colored math ball mesh geometries
+                const ballGeo = new THREE.SphereGeometry(0.5, 32, 32);
+                const ballColors = [0x38bdf8, 0x1d4ed8, 0xfb7185, 0xb91c1c]; // Light Blue, Dark Blue, Light Red, Dark Red
+                const positions = [
+                    new THREE.Vector3(-0.6, -1.2, 0),
+                    new THREE.Vector3(0.6, -1.2, 0.2),
+                    new THREE.Vector3(-0.2, -0.4, -0.4),
+                    new THREE.Vector3(0.3, -0.5, 0.4)
+                ];
+
+                ballColors.forEach((color, idx) => {
+                    const ballMat = new THREE.MeshStandardMaterial({ color: color, roughness: 0.4 });
+                    const ballMesh = new THREE.Mesh(ballGeo, ballMat);
+                    ballMesh.position.copy(positions[idx]);
+                    ballMesh.userData = { shouldRotate: false, baseColor: color };
+                    scene.add(ballMesh);
+                    activeMeshes.push(ballMesh);
+                });
+            }
+        }
+
+        // NAVIGATION SWITCH LOGIC LAYER
+        function setupSlideEventListeners() {
+            document.getElementById('next-btn').addEventListener('click', () => {
+                if (currentSlide < totalSlides) {
+                    changeSlide(currentSlide + 1);
+                }
+            });
+
+            document.getElementById('prev-btn').addEventListener('click', () => {
+                if (currentSlide > 1) {
+                    changeSlide(currentSlide - 1);
+                }
+            });
+
+            // Local simulation physics interaction executor triggers
+            simTriggerBtn.addEventListener('click', () => {
+                executeBuiltInAnimationEvent();
+            });
+        }
+
+        function changeSlide(targetSlide) {
+            // Toggle HTML presentation node structures visibility rules
+            document.getElementById(`slide-${currentSlide}`).classList.remove('active');
+            document.getElementById(`slide-${targetSlide}`).classList.add('active');
+
+            currentSlide = targetSlide;
+
+            // Sync slide tracking values across state dashboard trackers
+            slideBadge.innerText = `${currentSlide} / ${totalSlides}`;
+            const meta = slideContexts[currentSlide];
+            audioTrackLabel.innerText = meta.audioFile;
+            aiContextLabel.innerText = meta.title;
+
+            // Route dynamic ElevenLabs local MP3 source targets natively
+            slideAudioPlayer.src = `./audio/lecture1/slide_${currentSlide}.mp3`;
+            
+            // Re-render corresponding standard visualization canvas components automatically
+            renderSlideVisualization(currentSlide);
+
+            // Log navigation state change alerts straight into user visible tracking outputs
+            const inlineAlert = document.createElement('div');
+            inlineAlert.className = "text-[10px] font-mono text-indigo-400/70 text-center bg-indigo-950/40 py-1.5 border border-indigo-900/30 rounded mt-2";
+            inlineAlert.innerText = `[SYSTEM_STATE_UPDATED: Navigated to Slide ${currentSlide}]`;
+            chatMessagesBox.appendChild(inlineAlert);
+            chatMessagesBox.scrollTop = chatMessagesBox.scrollHeight;
+        }
+
+        // TRIGGER ANIMATION ROUTINES FOR STANDARD DEMOS
+        function executeBuiltInAnimationEvent() {
+            if (currentSlide === 1) {
+                // Rapidly flip 3D asset dimensions inside rendering context loop to mimic coin activity
+                activeMeshes.forEach(mesh => {
+                    mesh.rotation.z += Math.PI * (Math.random() * 4 + 2);
+                });
+                logSystemBotMessage("Simulated double-coin flip routine executed. Output recorded inside tracking arrays.");
+            } else if (currentSlide === 2) {
+                // Elevate one random ball asset from container model base to visualize pull simulation event
+                if (activeMeshes.length > 1) {
+                    const targetBall = activeMeshes[Math.floor(Math.random() * (activeMeshes.length - 1)) + 1];
+                    targetBall.position.y = 2.5; // Lift up clear out of the container baseline
+                    logSystemBotMessage("Random sample element ball drawn successfully. Urn database adjusted without replacement.");
+                }
+            }
+        }
+
+        // CONTEXT-AWARE CHAT BOT EMULATION DRIVER
+        function setupChatInterface() {
+            document.getElementById('chat-input-form').addEventListener('submit', (e) => {
+                e.preventDefault();
+                const userField = document.getElementById('chat-user-field');
+                const userText = userField.value.trim();
+                if (!userText) return;
+
+                // Append user message directly onto active window display
+                appendChatMessage("You", userText, "bg-indigo-600/10 border border-indigo-500/20 text-slate-200 self-end ml-auto");
+                userField.value = "";
+
+                // Emulate dynamic AI server pipeline context verification loop
+                setTimeout(() => {
+                    processEmulatedAIResponse(userText);
+                }, 750);
+            });
+        }
+
+        function appendChatMessage(sender, text, styleClasses) {
+            const msgNode = document.createElement('div');
+            msgNode.className = `p-3 rounded-lg max-w-[85%] leading-relaxed ${styleClasses}`;
+            msgNode.innerHTML = `<strong class="block text-[10px] uppercase text-slate-400 font-mono mb-0.5">${sender}</strong> ${text}`;
+            chatMessagesBox.appendChild(msgNode);
+            chatMessagesBox.scrollTop = chatMessagesBox.scrollHeight;
+        }
+
+        function logSystemBotMessage(alertText) {
+            appendChatMessage("AI Tutor", alertText, "bg-slate-800 border border-slate-700 text-indigo-300");
+        }
+
+        // MOCK PIPELINE PROCESSING SYSTEM CONTEXT APPENDING ACTIONS
+        function processEmulatedAIResponse(userInput) {
+            const currentContext = slideContexts[currentSlide].systemPromptContext;
+            const queryLower = userInput.toLowerCase();
+
+            // Simulate code-gen tool calling invocation or contextual response patterns[cite: 1]
+            if (queryLower.includes("create") || queryLower.includes("make a new")) {
+                canvasStatus.innerText = "RENDERED_SANDBOX_ACTIVE";
+                canvasStatus.className = "text-[10px] bg-amber-500/10 text-amber-400 border border-amber-500/20 font-mono px-2 py-0.5 rounded";
+                
+                // Switch rendering model structures to display dynamic box to confirm tool processing execution
+                activeMeshes.forEach(m => scene.remove(m));
+                activeMeshes = [];
+                
+                const sandboxGeo = new THREE.TorusKnotGeometry(1.2, 0.4, 100, 16);
+                const sandboxMat = new THREE.MeshStandardMaterial({ color: 0xec4899, wireframe: true });
+                const sandboxMesh = new THREE.Mesh(sandboxGeo, sandboxMat);
+                sandboxMesh.userData = { shouldRotate: true };
+                scene.add(sandboxMesh);
+                activeMeshes.push(sandboxMesh);
+
+                appendChatMessage("AI Tutor", `Your Highness, I recognized your instruction to create a new bespoke visualization tool[cite: 1]! I invoked the code generation tool payload sandbox container, rendering a custom Three.js matrix matching your request framework dynamically.`, "bg-slate-800 border border-slate-700 text-slate-300");
+            } else {
+                // Fall back into classic textbook contextual feedback answers based on loaded active frame metrics
+                let aiTextResponse = `I read your question while tracking the hidden context metrics state for ${slideContexts[currentSlide].title}. `;
+                if (currentSlide === 1) {
+                    aiTextResponse += "Remember that because each outcome has equivalent geometric mass proportions, we can assume symmetry, yielding 1/4 likelihood for each outcome.";
+                } else {
+                    aiTextResponse += "Since the first draw outcome is verified to belong to the Blue set, our remaining operational universe updates down to 3 balls, only 1 of which is Blue, establishing a 1/3 outcome density.";
+                }
+                appendChatMessage("AI Tutor", aiTextResponse, "bg-slate-800 border border-slate-700 text-slate-300");
+            }
+        }
+    </script>
+</body>
+</html>
