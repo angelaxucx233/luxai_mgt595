@@ -1,67 +1,67 @@
 /**
  * Course & lecture catalog — slide PDFs live in /lectures (project root).
- * Filenames: "MGT 403 - Lecture NN - Title.pdf"
- * Notes/solutions PDFs are excluded.
+ * MGT 595 · Quantitative Investing (Yale SOM)
+ * Filenames follow the source deck names, e.g. "MGT595_Lecture_0_1_2026v12_full.pdf".
  */
 
 export const courses = [
   {
-    id: 'mgt-403',
-    code: 'MGT 403',
-    title: 'Probability and Statistics',
+    id: 'mgt-595',
+    code: 'MGT 595',
+    title: 'Quantitative Investing',
     description:
-      'Build a foundation in probability and statistics — experiments, models, and distributions.',
+      'From expected utility and the efficient frontier to estimation risk and the CAPM — the statistical machinery behind systematic investing.',
     accent: 'yale',
-    /** Interactive practice problems in the live lecture deck (Lecture 4). */
-    exerciseCount: 3,
+    /** Interactive "Your Turn" problems in the live Lecture 0/1 deck. */
+    exerciseCount: 6,
     lectures: [
       {
         number: 1,
-        title: 'Probability Experiments',
+        title: 'Statistics & Portfolio Theory',
         slug: '01',
-        pdfFilename: 'MGT 403 - Lecture 01 - Probability Experiments.pdf',
-        available: false,
+        pdfFilename: 'MGT595_Lecture_0_1_2026v12_full.pdf',
+        available: true,
       },
       {
         number: 2,
-        title: 'Probability Modeling',
+        title: 'Asset Pricing Tests',
         slug: '02',
-        pdfFilename: 'MGT 403 - Lecture 02 - Probability Modeling.pdf',
+        pdfFilename: 'MGT595_Lecture_2_2026_v6.pdf',
         available: false,
       },
       {
         number: 3,
-        title: 'Random Variables',
+        title: 'Market Efficiency',
         slug: '03',
-        pdfFilename: 'MGT 403 - Lecture 03 -Random Variables.pdf',
+        pdfFilename: 'MGT595_Lecture_3_2026_v3.pdf',
         available: false,
       },
       {
         number: 4,
-        title: 'Binomial Distribution',
+        title: 'The Value Premium',
         slug: '04',
-        pdfFilename: 'MGT 403 - Lecture 04 - Binomial Distribution.pdf',
-        available: true,
+        pdfFilename: 'MGT595_Lecture_4_2026v1.pdf',
+        available: false,
       },
       {
         number: 5,
-        title: 'Normal Distribution',
+        title: 'Momentum',
         slug: '05',
-        pdfFilename: 'MGT 403 - Lecture 05 - Normal Distribution.pdf',
+        pdfFilename: 'MGT595_Lecture_5_2026v3.pdf',
         available: false,
       },
       {
         number: 6,
-        title: 'Sums and Covariance',
+        title: 'Quality & Defensive Investing',
         slug: '06',
-        pdfFilename: 'MGT 403 - Lecture 06 -Sums and Covariance.pdf',
+        pdfFilename: 'MGT595_Lecture_6_2026v2.pdf',
         available: false,
       },
       {
         number: 7,
-        title: 'Differences, Scaling and CLT',
+        title: 'Robustness of Anomalies',
         slug: '07',
-        pdfFilename: 'MGT 403 - Lecture 07 - Differences, Scaling and CLT.pdf',
+        pdfFilename: 'MGT595_Lecture_7_2026v2.pdf',
         available: false,
       },
     ],

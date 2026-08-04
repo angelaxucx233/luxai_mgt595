@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { useApp } from '../context/AppContext.jsx';
 import { isLuxSpeechConfigured } from '../services/geminiTtsService.js';
-import { isGeminiConfigured } from '../services/geminiService.js';
+import { isGeminiConfigured } from '../services/anthropicService.js';
 import { LUX_LINES } from '../utils/luxSpeechText.js';
 
 function SpeakerButton({ onClick, isSpeaking, disabled }) {

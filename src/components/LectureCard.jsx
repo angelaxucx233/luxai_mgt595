@@ -47,7 +47,7 @@ function LectureCardContent({ lecture, isFeatured, linked }) {
 }
 
 export default function LectureCard({ courseId, lecture }) {
-  const isFeatured = lecture.slug === '04';
+  const isFeatured = Boolean(lecture.available);
 
   if (!isFeatured) {
     return (

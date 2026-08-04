@@ -21,7 +21,26 @@ import BinomialFormulaBuilder from './BinomialFormulaBuilder.jsx';
 import BinomialFormulaReveal from './BinomialFormulaReveal.jsx';
 import BinomialPmfExplainer from './BinomialPmfExplainer.jsx';
 
+import UtilityCurveExplorer from './UtilityCurveExplorer.jsx';
+import CdfDominanceExplorer from './CdfDominanceExplorer.jsx';
+import ReturnDistributionLab from './ReturnDistributionLab.jsx';
+import DiversificationLab from './DiversificationLab.jsx';
+import FrontierExplorer from './FrontierExplorer.jsx';
+import EfficientSetMath from './EfficientSetMath.jsx';
+import EstimationRiskSim from './EstimationRiskSim.jsx';
+import SmlExplorer from './SmlExplorer.jsx';
+import QuantNumericProblem from './QuantNumericProblem.jsx';
+
 const VISUALS = {
+  UtilityCurveExplorer,
+  CdfDominanceExplorer,
+  ReturnDistributionLab,
+  DiversificationLab,
+  FrontierExplorer,
+  EfficientSetMath,
+  EstimationRiskSim,
+  SmlExplorer,
+  QuantNumericProblem,
   ScenarioCardGrid,
   FairCoinRow,
   UrnBallsVisual,

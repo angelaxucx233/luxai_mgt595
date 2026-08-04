@@ -16,7 +16,7 @@ import {
   sendTutorMessage,
   getOfflineTutorReply,
   isGeminiConfigured,
-} from '../services/geminiService.js';
+} from '../services/anthropicService.js';
 import {
   isLuxSpeechConfigured,
   playLuxSpeech,
@@ -355,6 +355,7 @@ export function AppProvider({ children, lectureSlug = '01' }) {
 
   const value = useMemo(
     () => ({
+      lectureSlug,
       currentSlide,
       totalSlides,
       activeSlide,
@@ -390,6 +391,7 @@ export function AppProvider({ children, lectureSlug = '01' }) {
       addLuxReply,
     }),
     [
+      lectureSlug,
       currentSlide,
       totalSlides,
       activeSlide,
