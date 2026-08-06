@@ -1,4 +1,4 @@
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import LuxAvatar from './LuxAvatar.jsx';
 
 const navBtn =
@@ -28,14 +28,9 @@ export default function Navbar() {
         </span>
       </Link>
 
-      <div className="flex items-center gap-2">
-        <NavLink to="/" end className={navClass}>
-          Home
-        </NavLink>
-        <NavLink to="/courses" className={navClass}>
-          Courses
-        </NavLink>
-      </div>
+      <span className="hidden sm:inline text-xs font-semibold uppercase tracking-widest text-slate-400">
+        MGT 595 · Quantitative Investing
+      </span>
     </nav>
   );
 }
