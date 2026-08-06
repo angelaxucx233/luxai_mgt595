@@ -1,0 +1,100 @@
+{
+  "lecture_id": "lecture03",
+  "lecture_title": "Market Efficiency",
+  "course": "MGT 595 — Quantitative Investing",
+  "refinement_model": "Claude (Anthropic) — substituting for agents/outline_lecture.py (both passes)",
+  "math_verification": "All problem answers recomputed by hand (see problem_spec.verification). REVIEW BEFORE BUILDING PER RUNBOOK.",
+  "design_principles": [
+    {"principle": "News should hit a price you can watch", "app_approach": "A live event-study lab: fire an announcement and compare efficient (jump), underreaction (drift), overreaction (reversal) — then overlay the real Keown–Pinkerton takeover path."},
+    {"principle": "Randomness is an experience", "app_approach": "Simulate random walks and feel the drift/volatility cone; then hunt for autocorrelation in your own simulated data and discover how weak the evidence in T months really is."},
+    {"principle": "Anomalies with the original numbers", "app_approach": "The size decile table, the January bar chart, and the DeBondt–Thaler curves ship with the actual figures from the deck — students explore evidence, not cartoons."},
+    {"principle": "End on the best story in finance", "app_approach": "A 3Com/Palm stub calculator: type the two prices, watch the market value a profitable business at −$25 billion, then walk the stub back to zero along the real 2000 timeline."}
+  ],
+  "skipped_admin_pdf_pages": [1, 2],
+  "blocks": [
+    {"block_id": "A", "block_title": "What Efficiency Means", "pdf_page_range": "3-6",
+     "slides": [
+      {"app_slide_number": 1, "type": "interactive", "title": "Prices Are Forecasts", "pdf_page_refs": [3],
+       "content_summary": "P = E[Σ discounted dividends]. Interactive DCF: dividend and discount-rate dials move the price; a 'news' button shocks cash flows and the price jumps instantly. The hidden assumption: 'correct' presumes a pricing model.",
+       "visual": "EventStudyLab", "visual_props": {"mode": "dcf"},
+       "lux_integration": "Lux: 'Raise the discount rate with dividends fixed — why did the price fall if nothing about cash flows changed?'"},
+      {"app_slide_number": 2, "type": "explain", "title": "Three Forms, One Paradox, One Trap", "pdf_page_refs": [4, 5, 6, 7, 9],
+       "content_summary": "Nested information sets ⟹ weak/semi-strong/strong. Grossman–Stiglitz: efficiency only up to information + trading costs. The joint hypothesis problem: efficiency is never tested alone.",
+       "visual": "EfficiencyForms",
+       "lux_integration": "Lux: 'If rejecting a test can always be blamed on the model, what evidence COULD move you?'"}
+     ]},
+    {"block_id": "B", "block_title": "Event Studies", "pdf_page_range": "7-9",
+     "slides": [
+      {"app_slide_number": 3, "type": "interactive", "title": "How Fast Is the Market? The Event Study", "pdf_page_refs": [8],
+       "content_summary": "CAR around announcements, averaged over firms. Toggle efficient / underreaction / overreaction paths; overlay the real Keown–Pinkerton takeover data: run-up (leakage), jump from ~12% to ~26% at t=0, flat after.",
+       "visual": "EventStudyLab", "visual_props": {"mode": "car"},
+       "lux_integration": "Lux: 'The price ran up for 20 days BEFORE the announcement. Which form of efficiency does that threaten — weak, semi-strong, or strong?'"},
+      {"app_slide_number": 4, "type": "problem", "title": "Your Turn: Compute a CAR", "pdf_page_refs": [8],
+       "visual": "QuantNumericProblem",
+       "problem_spec": {"scenario": "Market model with α=0, β=1.2. Around the announcement: day −1: stock +0.5%, market +0.4%; day 0: stock +6.0%, market +1.0%; day +1: stock +0.2%, market 0.0%.",
+        "verification": "AR_{−1}=0.5−1.2·0.4=0.02. AR_0=6.0−1.2·1.0=4.80. AR_{+1}=0.2−0=0.20. CAR = 0.02+4.80+0.20 = 5.02%.",
+        "answers": [{"label": "CAR(−1,+1) (%)", "value": 5.02, "tolerance": 0.05}]}}
+     ]},
+    {"block_id": "C", "block_title": "Random Walks & Predictability", "pdf_page_range": "10-16",
+     "slides": [
+      {"app_slide_number": 5, "type": "interactive", "title": "Martingales and Random Walks", "pdf_page_refs": [10, 11, 12],
+       "content_summary": "Martingale: E[P_{t+1}|history]=P_t — the fair game, but risk-blind. RW1: P_t=μ+P_{t−1}+ε; mean μt, variance σ²t. RW2/RW3 weaken iid to independence to mere uncorrelatedness (volatility clustering lives in RW3). Simulate paths, drag drift and σ, watch the cone.",
+       "visual": "RandomWalkLab", "visual_props": {"mode": "paths"}},
+      {"app_slide_number": 6, "type": "interactive", "title": "Hunting for Autocorrelation", "pdf_page_refs": [13, 14, 15, 16],
+       "content_summary": "Set a true ρ, simulate T months, and see how often you'd detect it (SE≈1/√T). The puzzle: individual stocks slightly negative, portfolios positive — the decomposition shows cross-autocovariances (large stocks lead small) must be large and positive. Microstructure caveats.",
+       "visual": "RandomWalkLab", "visual_props": {"mode": "autocorr"},
+       "lux_integration": "Lux: 'Your portfolio autocorrelation is positive while every stock's own autocorrelation is negative. Where is the predictability hiding?'"},
+      {"app_slide_number": 7, "type": "problem", "title": "Your Turn: How Big Is Small Predictability?", "pdf_page_refs": [13],
+       "visual": "QuantNumericProblem",
+       "problem_spec": {"scenario": "Monthly returns, iid variance. Estimated first-order autocorrelation γ1 = 0.10 with T = 400 months (SE ≈ 1/√T).",
+        "verification": "Variance explained = ρ² = 0.01 ⟹ 1.0%. SE = 1/√400 = 0.05 ⟹ t = 0.10/0.05 = 2.0 — statistically borderline, economically tiny.",
+        "answers": [{"label": "% of next month's variance explained", "value": 1.0, "tolerance": 0.1}, {"label": "t-statistic", "value": 2.0, "tolerance": 0.1}]}}
+     ]},
+    {"block_id": "D", "block_title": "Anomalies & the Three Readings", "pdf_page_range": "17-36",
+     "slides": [
+      {"app_slide_number": 8, "type": "explain", "title": "The Anomaly Recipe — and Its Three Readings", "pdf_page_refs": [17, 18, 19, 20],
+       "content_summary": "Anomaly = characteristic-sorted strategy that beats the market's Sharpe. Recipe: sort, measure, subtract costs. Then triage: risk (payoffs in bad times — consumption logic), inefficiency, or data mining (peso problems lurk).",
+       "visual": "EfficiencyDebate", "visual_props": {"mode": "triage"}},
+      {"app_slide_number": 9, "type": "explain", "title": "Where Do Factors Come From?", "pdf_page_refs": [21, 22, 23, 24, 25, 26, 29],
+       "content_summary": "APT (factor structure + no arbitrage, silent on identity) vs ICAPM (state variables, named). Three hunting methods: statistical (PCA: top eigenvectors of Ω̂; ~5 factors suffice), macro (CRR 1986 five), characteristics (FF SMB/HML). Each with advantage/disadvantage.",
+       "visual": "EfficiencyDebate", "visual_props": {"mode": "factors"},
+       "lux_integration": "Lux: 'CRR motivate macro factors with the APT. What's uncomfortable about that?' (APT prices covariance-matrix factors; macro series needn't drive it.)"},
+      {"app_slide_number": 10, "type": "problem", "title": "Your Turn: Read the CRR Table", "pdf_page_refs": [27, 28],
+       "visual": "QuantNumericProblem",
+       "problem_spec": {"scenario": "Chen–Roll–Ross report the industrial-production (MP) premium as 11.756, in units of percent per month × 10 (1958–84, t = 3.05).",
+        "verification": "Annual premium = 11.756 × 12 / 10 = 14.11 ⟹ ≈14.1% per year (vs ≈6.5% for the market premium).",
+        "answers": [{"label": "Annualized MP premium (%)", "value": 14.1, "tolerance": 0.15}]}},
+      {"app_slide_number": 11, "type": "interactive", "title": "The Anomaly Gallery (Original Numbers)", "pdf_page_refs": [30, 31, 32, 33, 34, 35, 36],
+       "content_summary": "Four tabs with the deck's real data: SIZE (deciles 19.8%→11.9%, betas 1.17→0.95); JANUARY (0.70% Jan bar vs the rest; 3/4 in the first five days); CONTRARIAN (DeBondt–Thaler loser +0.30 / winner −0.10 CARs over 60 months); MOMENTUM & VALUE (the strategies and their dueling readings).",
+       "visual": "AnomalyGallery",
+       "lux_integration": "Lux: 'Contrarian says losers win over 3–5 years; momentum says winners win over 3–12 months. Reconcile them.'"}
+     ]},
+    {"block_id": "E", "block_title": "Limits to Arbitrage & 3Com/Palm", "pdf_page_range": "37-51",
+     "slides": [
+      {"app_slide_number": 12, "type": "explain", "title": "Why Doesn't Arbitrage Fix It?", "pdf_page_refs": [37, 38, 39],
+       "content_summary": "Shleifer's three defenses of efficiency and their three rebuttals. The limits: no close substitutes, drawdowns, short horizons, costs, short-sale constraints. Shleifer–Vishny: clients pull money after losses — arbitrage capital vanishes exactly when mispricing widens. Plus the data-mining histogram (≈5 of 100 random series look 'significant').",
+       "visual": "EfficiencyDebate", "visual_props": {"mode": "limits"}},
+      {"app_slide_number": 13, "type": "interactive", "title": "The −$25 Billion Business: 3Com/Palm", "pdf_page_refs": [41, 42, 43, 45, 46],
+       "content_summary": "Stub calculator: 3Com $81.81, Palm $95.06, ratio 1.5 ⟹ stub −$60.78/share. Trade: buy 1 3Com, short 1.5 Palm, wait for the announced spin-off. The real stub timeline 3/2–9/18/00 with the 3/20, 5/8 (IRS) and 7/27 (distribution) events. Table of the six negative stubs.",
+       "visual": "StubCalculator",
+       "lux_integration": "Lux: 'Why did the announced intention to spin off matter so much for the trade?'"},
+      {"app_slide_number": 14, "type": "problem", "title": "Your Turn: Price a Stub", "pdf_page_refs": [42, 49],
+       "visual": "QuantNumericProblem",
+       "problem_spec": {"scenario": "Parent trades at $50 and owns 0.8 shares of the carved-out issuer per parent share; the issuer trades at $80. Separately, Lamont–Thaler back out a 14% cost of shorting Palm over two months.",
+        "verification": "Implied holding = 0.8 × 80 = $64 ⟹ stub = 50 − 64 = −$14.00. Annualized shorting cost = 1.14^6 − 1: 1.14²=1.2996; 1.2996×1.14=1.48154 (=^3); 1.48154²=2.1950 ⟹ ≈119%/yr (matches the paper's ≈119%).",
+        "answers": [{"label": "Stub ($/parent share)", "value": -14.0, "tolerance": 0.2}, {"label": "Annualized shorting cost (%)", "value": 119.5, "tolerance": 3.0}]}},
+      {"app_slide_number": 15, "type": "explain", "title": "Prices Can Be Wrong Without Being Exploitable", "pdf_page_refs": [44, 47, 48, 49, 50, 51],
+       "content_summary": "Parents beat issuers by 33% over ~6 months; put–call parity massively violated; borrowing Palm cost ≈119%/yr. Fama's operational definition tolerates it all — a stock can be infinitely overpriced with infinite shorting costs and the market stays 'efficient'. Closing triage for any predictability: rational premia, limited-arbitrage mispricing, or chance.",
+       "visual": "EfficiencyForms", "visual_props": {"summaryMode": true}}
+     ]}
+  ],
+  "new_problem_templates": [
+    {"id": "event_study_car", "answer_rule": "AR_t = r_t − (alpha + beta·r_mt); CAR = ΣAR"},
+    {"id": "autocorr_r2", "answer_rule": "R² = rho²; t = rho·√T"},
+    {"id": "crr_units", "answer_rule": "annual = coeff × 12 / 10"},
+    {"id": "stub_value", "answer_rule": "stub = P_parent − ratio × P_issuer; annualized cost = (1+c)^(12/m) − 1"}
+  ],
+  "visual_toolkit_new": ["EventStudyLab", "EfficiencyForms", "RandomWalkLab", "EfficiencyDebate", "AnomalyGallery", "StubCalculator"],
+  "visual_toolkit_reused": ["QuantNumericProblem"],
+  "gap_analysis": "Strong-form frame (p.9) folded into slide 2's nesting diagram. Consumption-based frame (p.20) compressed to two sentences of slide 8 context — the full stochastic-discount-factor treatment belongs to a later lecture. Seasonals beyond January (p.32) live inside the gallery's January tab as a footnote list."
+}

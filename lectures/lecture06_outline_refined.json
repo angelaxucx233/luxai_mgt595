@@ -1,0 +1,87 @@
+{
+  "lecture_id": "lecture06",
+  "lecture_title": "Quality and Defensive Investing",
+  "refinement_model": "Claude (Anthropic) — both outline passes",
+  "math_verification": "All problem answers hand-verified in problem_spec.verification.",
+  "design_principles": [
+    {"principle": "One ratio first, the zoo second", "app_approach": "Students master gross profitability — a fraction a twelve-year-old can compute — before meeting Graham's seven criteria and the spanning tests that crown it."},
+    {"principle": "The SML you can bend", "app_approach": "A ψ slider physically flattens the security market line, making Frazzini–Pedersen's funding-constraint theory a thing you operate, with alpha = ψ(1−β) as the payoff formula."},
+    {"principle": "Buffett as a regression", "app_approach": "The course's most famous investor becomes a six-factor decomposition students can audit: 12.1% alpha in, 6.3% (insignificant) out."}
+  ],
+  "skipped_admin_pdf_pages": [1, 2],
+  "blocks": [
+    {"block_id": "A", "block_title": "Profitability: The Other Side of Value", "pdf_page_range": "3-19",
+     "slides": [
+      {"app_slide_number": 1, "type": "explain", "title": "Pay Up — But Not Too Much", "pdf_page_refs": [3, 4, 5],
+       "content_summary": "Quality has no single definition (profitable, safe, well-run, high payout…); buying quality without paying premium prices IS value investing (Buffett: wonderful business at a fair price). Key structural fact: quality strategies are short value and value strategies short quality — a natural hedge. Two questions: standalone premium, or value enhancer? Stakes: market efficiency.",
+       "visual": "ProfitabilityLab", "visual_props": {"mode": "map"}},
+      {"app_slide_number": 2, "type": "interactive", "title": "One Ratio: Gross Profits over Assets", "pdf_page_refs": [6, 7, 8],
+       "content_summary": "GP/A = (revenues − COGS)/assets. Sorts: high−low 0.31%/mo (t 2.49) but FF3 alpha 0.52 (t 4.49) — profitable firms are growth-like, so risk adjustment RAISES the anomaly. FM slope 0.75 (t 5.49), industry-demeaned 1.00 (t 8.99); survives earnings and FCF. The economic argument works for risk AND behavioral stories.",
+       "visual": "ProfitabilityLab", "visual_props": {"mode": "sorts"},
+       "lux_integration": "Lux: 'Why does the ALPHA exceed the raw spread here, when for momentum the same thing happened for the same reason?'"},
+      {"app_slide_number": 3, "type": "interactive", "title": "Each Hides the Other", "pdf_page_refs": [9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19],
+       "content_summary": "Double sorts: conditional profitability spread 58bp vs 31 unconditional; conditional value 68 vs 41 — controlling for each widens the other. Joint 50/50 roughly doubles the Sharpe (0.65–0.78 vs market 0.41) with shallow drawdowns; trailing Sharpes negatively related (value insurance). The measure zoo (Graham's 7, Greenblatt ROIC+EBIT/EV, accruals, Piotroski, defensive): only gross profitability stands alone and survives spanning (alphas 2.34–4.62%/yr); PMU absorbs ROE/market-power/default/net-issuance/org-capital anomalies.",
+       "visual": "ProfitabilityLab", "visual_props": {"mode": "double"},
+       "lux_integration": "Lux: 'Value and profitability are negatively correlated. Why does that make the COMBINATION stronger, not weaker?'"},
+      {"app_slide_number": 4, "type": "problem", "title": "Your Turn: Score Two Firms", "pdf_page_refs": [5],
+       "visual": "QuantNumericProblem",
+       "problem_spec": {"scenario": "Firm A: revenues $100m, COGS $60m, assets $200m. Firm B: revenues $150m, COGS $135m, assets $100m.",
+        "verification": "GP/A_A = (100−60)/200 = 40/200 = 0.20. GP/A_B = (150−135)/100 = 15/100 = 0.15. A is higher quality despite lower revenue — productivity per asset dollar is what the measure prices.",
+        "answers": [{"label": "Firm A GP/A", "value": 0.20, "tolerance": 0.005}, {"label": "Firm B GP/A", "value": 0.15, "tolerance": 0.005}]}}
+     ]},
+    {"block_id": "B", "block_title": "Betting Against Beta", "pdf_page_range": "20-29",
+     "slides": [
+      {"app_slide_number": 5, "type": "interactive", "title": "The Anomaly Fischer Black Couldn't Sell", "pdf_page_refs": [20, 21, 22, 23, 24],
+       "content_summary": "1969: Black finds low-beta stocks beat the CAPM at Wells Fargo; the bank refuses to trade it. Theory: investors who can't lever overweight high-beta assets, so E[r] = rf + ψ + βλ with λ = E[rM]−rf−ψ: intercept up, slope down, CAPM-alpha = ψ(1−β). Evidence: flat SML in US stocks 1926–2010 AND bonds 1952–2010.",
+       "visual": "BabLab", "visual_props": {"mode": "theory"},
+       "lux_integration": "Lux: 'If you can\\'t borrow, how do you reach for return? And what does that crowd of reachers do to high-beta prices?'"},
+      {"app_slide_number": 6, "type": "interactive", "title": "Bet Against Beta, Everywhere", "pdf_page_refs": [25, 26, 27, 28, 29],
+       "content_summary": "US-stock BAB Sharpe 0.75 vs HML 0.39, UMD 0.50, SMB 0.25; alphas decline in beta across every asset class tested. Embedded leverage: options and leveraged ETFs earn negative returns per unit exposure — constrained investors pay for built-in leverage. Prop 3: BAB loses when TED spikes (deleveraging). Prop 5: mutual funds and individuals hold high beta; Berkshire and LBO funds buy low beta and lever.",
+       "visual": "BabLab", "visual_props": {"mode": "evidence"}},
+      {"app_slide_number": 7, "type": "problem", "title": "Your Turn: Price a Stock When Leverage Is Scarce", "pdf_page_refs": [22],
+       "visual": "QuantNumericProblem",
+       "problem_spec": {"scenario": "Funding-liquidity CAPM: E[r] = rf + ψ + β·λ with λ = E[rM] − rf − ψ. Take rf = 2%, ψ = 1.5%, E[rM] − rf = 6%. Consider a low-beta stock with β = 0.5.",
+        "verification": "λ = 6 − 1.5 = 4.5%. Funding-CAPM E[r] = 2 + 1.5 + 0.5×4.5 = 5.75%. Standard CAPM predicts 2 + 0.5×6 = 5.0%. CAPM-alpha = 5.75 − 5.0 = +0.75% = ψ(1−β) = 1.5×0.5. Symmetric check: β=1.5 gives alpha −0.75% — high beta is low alpha.",
+        "answers": [{"label": "Risk premium λ (%)", "value": 4.5, "tolerance": 0.05}, {"label": "CAPM-alpha of the β=0.5 stock (%)", "value": 0.75, "tolerance": 0.05}]}}
+     ]},
+    {"block_id": "C", "block_title": "Quality Minus Junk", "pdf_page_range": "30-43",
+     "slides": [
+      {"app_slide_number": 8, "type": "explain", "title": "Price Quality, Then Ask Why It's Cheap", "pdf_page_refs": [30, 31, 32, 33, 34, 35],
+       "content_summary": "Cochrane's challenge: explain prices. Gordon rewrite: P/B = profitability×payout/(required return − growth) — the four QMJ components (Profitability, Growth, Safety, Payout), combined as rank z-scores. The price of quality is positive and significant — but R² is only 0.05–0.31. Three hypotheses for the low R²: better measures / hidden risk / underreaction — each with a testable return implication.",
+       "visual": "QmjLab", "visual_props": {"mode": "score"}},
+      {"app_slide_number": 9, "type": "interactive", "title": "Quality Pays — and Hedges", "pdf_page_refs": [36, 37, 38, 39, 40, 41, 42],
+       "content_summary": "Decile returns and alphas rise nearly monotonically: US H−L 0.47%/mo (t 2.80), 4F alpha 0.97 (t 8.55), H−L beta −0.38; QMJ factor 4F alpha 0.66 (t 10.2) US, 0.45 (t 5.5) global, with NEGATIVE market/size/value loadings; IR positive in all countries but one; flight-to-quality (negative convex vs market). Analysts price quality — but not enough: implied E[r] falls with quality while realized rises. Verdict: hypothesis (c), underreaction; Graham–Dodd over efficiency, joint hypothesis noted.",
+       "visual": "QmjLab", "visual_props": {"mode": "results"},
+       "lux_integration": "Lux: 'QMJ has negative loadings on MKT, SMB, and HML, and it GAINS in crashes. Why does AFP say any theory of size and value can get into trouble here?'"},
+      {"app_slide_number": 10, "type": "problem", "title": "Your Turn: The Gordon Price of Quality", "pdf_page_refs": [32],
+       "visual": "QuantNumericProblem",
+       "problem_spec": {"scenario": "QMJ's identity: P/B = profitability × payout / (required return − growth). Firm X: profitability 0.30, payout 0.5, required return 10%, growth 5%. Firm Y trades at P/B = 2 with profitability×payout = 0.15 and growth 5%.",
+        "verification": "X: P/B = (0.30×0.5)/(0.10−0.05) = 0.15/0.05 = 3.0. Y: r = g + prof·payout/(P/B) = 0.05 + 0.15/2 = 0.125 ⟹ 12.5%. Identical quality, different price ⟹ Y's implied required return is higher — quality at a discount is exactly what QMJ buys.",
+        "answers": [{"label": "Firm X P/B", "value": 3.0, "tolerance": 0.05}, {"label": "Firm Y implied required return (%)", "value": 12.5, "tolerance": 0.1}]}}
+     ]},
+    {"block_id": "D", "block_title": "Decomposing Buffett", "pdf_page_range": "44-52",
+     "slides": [
+      {"app_slide_number": 11, "type": "interactive", "title": "Decomposing Buffett", "pdf_page_refs": [44, 45, 46],
+       "content_summary": "Frazzini–Kabiller–Pedersen split Berkshire into public (13F) and private (inferred) books; leverage L = (TA−Cash)/Equity. Six-factor regression: positive MKT and HML, negative SMB; add BAB (0.29, t 2.67) and QMJ (0.43, t 2.34) and the alpha falls from 12.1% (t 3.19) to 6.3% (t 1.58) — statistically indistinguishable from zero. A systematic leveraged cheap-safe-quality portfolio tracks Berkshire's public book.",
+       "visual": "BuffettDecomposer",
+       "lux_integration": "Lux: 'Does alpha falling to insignificance diminish Buffett — or is identifying BAB+QMJ fifty years early the achievement?'"},
+      {"app_slide_number": 12, "type": "problem", "title": "Your Turn: How Much of Buffett Is Factors?", "pdf_page_refs": [45],
+       "visual": "QuantNumericProblem",
+       "problem_spec": {"scenario": "Berkshire's annualized alpha is 12.1% under the four-factor model. Adding BAB and QMJ reduces it to 6.3%.",
+        "verification": "Absorbed by BAB+QMJ = 12.1 − 6.3 = 5.8 points. Share = 5.8/12.1 = 47.9%. Nearly half the legend is systematic exposure to cheap, safe, quality stocks — implementable, in principle, by anyone. The remaining 6.3% carries t = 1.58: not statistically distinguishable from zero.",
+        "answers": [{"label": "Alpha absorbed (pts)", "value": 5.8, "tolerance": 0.1}, {"label": "Share absorbed (%)", "value": 47.9, "tolerance": 0.5}]}},
+      {"app_slide_number": 13, "type": "explain", "title": "The Defensive Verdict", "pdf_page_refs": [47],
+       "content_summary": "Synthesis: profitability hedges value and subsumes rival quality signals; BAB flattens the SML through leverage constraints, pervasive and tied to funding tightness; QMJ earns large alpha with negative risk loadings and flight-to-quality behavior. Together they recover the size effect, explain a swath of anomalies, and decompose Buffett. The lean: constraints + behavior — Graham–Dodd, formalized. Course thread: but with hundreds of published factors, how do we know THESE are real? Lecture 7.",
+       "visual": "QmjLab", "visual_props": {"mode": "verdict"}}
+     ]}
+  ],
+  "new_problem_templates": [
+    {"id": "gpa", "answer_rule": "GP/A = (rev − COGS)/assets"},
+    {"id": "funding_capm", "answer_rule": "λ = E[rM]−rf−ψ; alpha = ψ(1−β)"},
+    {"id": "gordon_pb", "answer_rule": "P/B = prof·payout/(r−g); r = g + prof·payout/(P/B)"},
+    {"id": "alpha_attribution", "answer_rule": "absorbed = α_before − α_after; share = absorbed/α_before"}
+  ],
+  "visual_toolkit_new": ["ProfitabilityLab", "BabLab", "QmjLab", "BuffettDecomposer"],
+  "visual_toolkit_reused": ["QuantNumericProblem"],
+  "gap_analysis": "BAB related-literature list (p.20 refs) lives in slide 5 Lux context. Frontier-geometry theory figures (pp.21) verbalized in BabLab theory caption. QMJ data-construction detail (p.33) compressed to one line in slide 8 context. Systematic-Buffett chart (p.46) summarized as one card in BuffettDecomposer."
+}

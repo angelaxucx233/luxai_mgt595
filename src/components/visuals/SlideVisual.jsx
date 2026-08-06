@@ -30,6 +30,33 @@ import EfficientSetMath from './EfficientSetMath.jsx';
 import EstimationRiskSim from './EstimationRiskSim.jsx';
 import SmlExplorer from './SmlExplorer.jsx';
 import QuantNumericProblem from './QuantNumericProblem.jsx';
+import ProfitabilityLab from './ProfitabilityLab.jsx';
+import BabLab from './BabLab.jsx';
+import QmjLab from './QmjLab.jsx';
+import BuffettDecomposer from './BuffettDecomposer.jsx';
+import SharpeUncertaintyLab from './SharpeUncertaintyLab.jsx';
+import MultipleTestingLab from './MultipleTestingLab.jsx';
+import DecayLab from './DecayLab.jsx';
+import FactorGauntlet from './FactorGauntlet.jsx';
+import LsvLab from './LsvLab.jsx';
+import Ff96Scoreboard from './Ff96Scoreboard.jsx';
+import CharCovLab from './CharCovLab.jsx';
+import ValueDrawdownLab from './ValueDrawdownLab.jsx';
+import MomentumLab from './MomentumLab.jsx';
+import MomentumEvidence from './MomentumEvidence.jsx';
+import CrashLab from './CrashLab.jsx';
+import UnderreactionGallery from './UnderreactionGallery.jsx';
+import SystematicRiskLab from './SystematicRiskLab.jsx';
+import FamaMacbethLab from './FamaMacbethLab.jsx';
+import CrossSectionExplorer from './CrossSectionExplorer.jsx';
+import GrsGeometry from './GrsGeometry.jsx';
+import FactorBuilder from './FactorBuilder.jsx';
+import EventStudyLab from './EventStudyLab.jsx';
+import EfficiencyForms from './EfficiencyForms.jsx';
+import RandomWalkLab from './RandomWalkLab.jsx';
+import EfficiencyDebate from './EfficiencyDebate.jsx';
+import AnomalyGallery from './AnomalyGallery.jsx';
+import StubCalculator from './StubCalculator.jsx';
 
 const VISUALS = {
   UtilityCurveExplorer,
@@ -41,6 +68,33 @@ const VISUALS = {
   EstimationRiskSim,
   SmlExplorer,
   QuantNumericProblem,
+  ProfitabilityLab,
+  BabLab,
+  QmjLab,
+  BuffettDecomposer,
+  SharpeUncertaintyLab,
+  MultipleTestingLab,
+  DecayLab,
+  FactorGauntlet,
+  LsvLab,
+  Ff96Scoreboard,
+  CharCovLab,
+  ValueDrawdownLab,
+  MomentumLab,
+  MomentumEvidence,
+  CrashLab,
+  UnderreactionGallery,
+  SystematicRiskLab,
+  FamaMacbethLab,
+  CrossSectionExplorer,
+  GrsGeometry,
+  FactorBuilder,
+  EventStudyLab,
+  EfficiencyForms,
+  RandomWalkLab,
+  EfficiencyDebate,
+  AnomalyGallery,
+  StubCalculator,
   ScenarioCardGrid,
   FairCoinRow,
   UrnBallsVisual,

@@ -4,12 +4,22 @@
  */
 
 import { lecture01Slides } from './lectures/lecture01Slides.js';
+import { lecture02Slides } from './lectures/lecture02Slides.js';
+import { lecture03Slides } from './lectures/lecture03Slides.js';
 import { lecture04Slides } from './lectures/lecture04Slides.js';
+import { lecture05Slides } from './lectures/lecture05Slides.js';
+import { lecture06Slides } from './lectures/lecture06Slides.js';
+import { lecture07Slides } from './lectures/lecture07Slides.js';
 
 const LECTURE_DECKS = {
+  '07': lecture07Slides,
+  '06': lecture06Slides,
   '01': lecture01Slides,
+  '02': lecture02Slides,
+  '03': lecture03Slides,
   '1': lecture01Slides,
   '04': lecture04Slides,
+  '05': lecture05Slides,
   '4': lecture04Slides,
 };
 

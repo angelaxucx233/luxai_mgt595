@@ -1,0 +1,98 @@
+{
+  "lecture_id": "lecture05",
+  "lecture_title": "Momentum",
+  "refinement_model": "Claude (Anthropic) — both outline passes",
+  "math_verification": "All problem answers hand-verified in problem_spec.verification.",
+  "design_principles": [
+    {"principle": "The effect before the theory", "app_approach": "Students meet the decile ladder and the horizon map first — the raw fact — then the decomposition machinery that assigns blame."},
+    {"principle": "Crashes as physics", "app_approach": "Losers become out-of-the-money options; a state toggle shows the beta math (0.05 → −1.44 in a bear rebound) and lets students precompute the crash."},
+    {"principle": "The fix is a formula", "app_approach": "Constant-vol and dynamic weights are two one-line formulas students compute by hand, then see doubling Sharpe ratios across every market."}
+  ],
+  "skipped_admin_pdf_pages": [1, 2],
+  "blocks": [
+    {"block_id": "A", "block_title": "JT 1993: The Effect", "pdf_page_range": "3-5, 12-14",
+     "slides": [
+      {"app_slide_number": 1, "type": "interactive", "title": "Winners Keep Winning — At One Horizon", "pdf_page_refs": [3, 4],
+       "content_summary": "Definition; ~12%/yr zero-investment; violates weak-form efficiency. The horizon map with real Sharpe bars: reversal <1mo (−0.82), momentum 3–12mo (up to 0.58), reversal 3–5yr (−0.42 to −0.58). Profits dissipate after a year and reverse — a temporary price effect.",
+       "visual": "MomentumLab", "visual_props": {"mode": "horizons"},
+       "lux_integration": "Lux: 'Momentum at 12 months and reversal at 60 — can one investor-psychology story produce both?'"},
+      {"app_slide_number": 2, "type": "interactive", "title": "The Decile Ladder", "pdf_page_refs": [5, 12, 13, 14],
+       "content_summary": "Construction (rank 6–12mo, overlapping 6/6 windows). Real decile returns P1 0.46 → P10 1.63%/mo; 10−1 = 1.17. FF regressions: WML alpha 1.53%/mo (t 5.93); losers load value-like (s 0.51, h 0.38), winners growth-like — the factors push the WRONG way. Momentum becomes Carhart's fourth factor (UMD).",
+       "visual": "MomentumLab", "visual_props": {"mode": "deciles"},
+       "lux_integration": "Lux: 'The 3-factor model prices momentum's VARIATION (R² 0.94) but not its MEAN. What does that distinction tell you?'"},
+      {"app_slide_number": 3, "type": "problem", "title": "Your Turn: Annualize the Anomaly", "pdf_page_refs": [5, 13],
+       "visual": "QuantNumericProblem",
+       "problem_spec": {"scenario": "The decile table shows a winners-minus-losers spread of 1.17%/month. The FF regression shows a WML three-factor alpha of 1.53%/month.",
+        "verification": "Simple annualized spread: 1.17×12 = 14.0%. Compounded annual alpha: 1.0153^12 − 1: 1.0153²=1.03083; ^4=1.06262; ^8=1.12916; ^12=1.12916×1.06262=1.19988 ⟹ 20.0%.",
+        "answers": [{"label": "Annualized spread, simple (%)", "value": 14.0, "tolerance": 0.15}, {"label": "Annualized alpha, compounded (%)", "value": 20.0, "tolerance": 0.3}]}}
+     ]},
+    {"block_id": "B", "block_title": "Where the Profits Come From", "pdf_page_range": "6-11",
+     "slides": [
+      {"app_slide_number": 4, "type": "explain", "title": "Three Suspects, One Equation", "pdf_page_refs": [6, 7, 8, 9],
+       "content_summary": "E[π] = σμ² + σβ²·Cov(F,F₋₁) + avg own-autocovariance. Factor timing is wrong-signed (market autocovariance < 0); Conrad–Kaul's σμ² needs no predictability; JT's verdict: positive firm-specific autocovariance — delayed reaction to firm news. Skipping a week RAISES profits, against the lead-lag alternative. Ω decomposition: own − cross + dispersion.",
+       "visual": "MomentumLab", "visual_props": {"mode": "decompose"}},
+      {"app_slide_number": 5, "type": "interactive", "title": "Moskowitz–Grinblatt: It's (Mostly) Industries", "pdf_page_refs": [10, 11],
+       "content_summary": "Split ε into industry + idiosyncratic. MG Table 1 (real): raw WML 0.43%/mo (t 4.65) collapses to 0.08 (t 0.91) once industry-neutral; industry momentum itself 0.43 (t 4.24); RANDOM industries earn −0.05 (t −1.09). Dispute: Grundy–Martin find both terms positive; Conrad–Kaul rejected by both.",
+       "visual": "MomentumLab", "visual_props": {"mode": "industry"},
+       "lux_integration": "Lux: 'Why is the random-industry row the crucial control?'"},
+      {"app_slide_number": 6, "type": "problem", "title": "Your Turn: How Much Is Industry?", "pdf_page_refs": [11],
+       "visual": "QuantNumericProblem",
+       "problem_spec": {"scenario": "MG Table 1: raw individual-stock momentum earns 0.43%/month; after industry-neutralizing, 0.08%/month remains.",
+        "verification": "Industry share = (0.43−0.08)/0.43 = 0.35/0.43 = 81.4%.",
+        "answers": [{"label": "Share attributable to industry (%)", "value": 81.4, "tolerance": 1.0}]}}
+     ]},
+    {"block_id": "C", "block_title": "Real, Everywhere — and Which Story Fits", "pdf_page_range": "15-20",
+     "slides": [
+      {"app_slide_number": 7, "type": "interactive", "title": "The Data-Mining Test It Keeps Passing", "pdf_page_refs": [17, 18],
+       "content_summary": "Out-of-sample over time (real numbers): pre-sample 1927–64 mean 0.64 (t 2.60); post-publication 1990–2012 alpha 1.17 (t 3.27) — biggest AFTER fame. Across assets (AMP): positive in every market and class; EW-all Sharpe 0.81 (12.1%/yr); Japan the weak spot (0.12).",
+       "visual": "MomentumEvidence", "visual_props": {"mode": "oos"}},
+      {"app_slide_number": 8, "type": "explain", "title": "Risk Says No, Behavior Says Maybe", "pdf_page_refs": [15, 16, 19, 20],
+       "content_summary": "Risk fails on signs: bear markets mkt −4.43 vs WML +1.46; recessions +0.89 — momentum PAYS in bad states. Behavioral: slow diffusion (DHS/BSV/Hong–Stein) + disposition; strongest where news travels slowly — small, low-coverage (concentrated in LOSERS: bad news hides), high-volume, growth. Needs limits to arbitrage. Tension: short-horizon underreaction vs value's long-horizon overreaction.",
+       "visual": "MomentumEvidence", "visual_props": {"mode": "states"},
+       "lux_integration": "Lux: 'A strategy that pays +1.46%/mo in bear markets — why is that fatal for a risk-premium story?'"}
+     ]},
+    {"block_id": "D", "block_title": "Momentum Crashes (Daniel–Moskowitz)", "pdf_page_range": "21-42",
+     "slides": [
+      {"app_slide_number": 9, "type": "interactive", "title": "Steady Gains, Violent Crashes", "pdf_page_refs": [21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31],
+       "content_summary": "WML 1927–2010: mean 14.4%, Sharpe 0.52, beta −0.54, alpha 18.4% (t 6.5) — and monthly skew −6.32. Worst months −79/−60/−46/−44/−42%; like a short OTM put. The crash signature: negative 2-yr market + POSITIVE contemporaneous month. 1932: market +82%, losers +236%; 2009: market +29%, losers +156%.",
+       "visual": "CrashLab", "visual_props": {"mode": "anatomy"},
+       "lux_integration": "Lux: 'Reconcile Sharpe 0.52 with five months worse than −40%. What moment does the Sharpe ratio ignore?'"},
+      {"app_slide_number": 10, "type": "interactive", "title": "Losers Become Options", "pdf_page_refs": [32, 33, 34, 35, 36],
+       "content_summary": "2009 losers (Citi, Ford, GM) down 90%+, levered: equity = OTM call (Merton) ⟹ loser beta spikes to ≈3.7 in the rebound; winner beta ≈1. Regression: normal WML beta 0.05; bear −0.79; bear-and-up a further −0.70. Hedging the rolling beta (Grundy–Martin) removes the 1932 collapse.",
+       "visual": "CrashLab", "visual_props": {"mode": "betas"},
+       "lux_integration": "Lux: 'Commodities and currencies crash the same way (JFE Table 10) — why is that a problem for the Merton leverage story?'"},
+      {"app_slide_number": 11, "type": "problem", "title": "Your Turn: Precompute a Crash", "pdf_page_refs": [36],
+       "visual": "QuantNumericProblem",
+       "problem_spec": {"scenario": "DM's regression: WML market beta is 0.05 in normal times, falls by 0.79 in bear markets, and by a further 0.70 when the bear-market month is UP. A bear-market rebound month arrives with the market +10%.",
+        "verification": "Rebound-state beta = 0.05 − 0.79 − 0.70 = −1.44. Expected WML move ≈ β×market = −1.44×10 = −14.4%.",
+        "answers": [{"label": "WML beta in the rebound state", "value": -1.44, "tolerance": 0.02}, {"label": "Expected WML return (%)", "value": -14.4, "tolerance": 0.3}]}},
+      {"app_slide_number": 12, "type": "interactive", "title": "The Fix: Scale by the Forecast", "pdf_page_refs": [37, 38, 39, 40, 41, 42],
+       "content_summary": "Constant-vol (σtgt/σ̂) vs dynamic (w ∝ μ̂/σ̂² / 2λ). Sharpes 1927–2011: 0.52 → 0.87 → 1.12; dynamic wins every sub-period and every market (Japan 0.07→0.42; all-asset dynamic 1.22); skew flips positive. The crash pattern and the fix replicate in Europe/Japan/UK and in indices, FX, bonds, commodities.",
+       "visual": "CrashLab", "visual_props": {"mode": "dynamic"}},
+      {"app_slide_number": 13, "type": "problem", "title": "Your Turn: Size the Position", "pdf_page_refs": [37],
+       "visual": "QuantNumericProblem",
+       "problem_spec": {"scenario": "Target volatility 12%/yr. This month the volatility forecast is σ̂=24%. Separately, the dynamic rule is w = (1/2λ)·μ̂/σ̂² with λ=2, forecast mean μ̂=1%/mo and forecast vol σ̂=5%/mo.",
+        "verification": "Constant-vol weight = 12/24 = 0.5. Dynamic weight = (1/4)·(0.01/0.0025) = 0.25×4 = 1.0.",
+        "answers": [{"label": "Constant-vol weight", "value": 0.5, "tolerance": 0.02}, {"label": "Dynamic weight", "value": 1.0, "tolerance": 0.05}]}}
+     ]},
+    {"block_id": "E", "block_title": "The Underreaction Family", "pdf_page_range": "43-55",
+     "slides": [
+      {"app_slide_number": 14, "type": "interactive", "title": "One Mechanism, Many Costumes", "pdf_page_refs": [43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54],
+       "content_summary": "PEAD (CAR drifts by SUE quintile for ~60 days) and earnings momentum (revision drift ~12 months; distinct from price momentum; 34 markets). Disposition effect: sell winners early, ride losers ⟹ underreaction; Frazzini's overhang g=(P−RP)/P — drift 2.1–2.5%/mo when news and overhang align. Hvidkjaer: SMALL trades drive it. Cohen–Frazzini: customer momentum, 4-factor alpha 1.38%/mo (t 3.1); +3.9% on the news, +4.7% drift.",
+       "visual": "UnderreactionGallery",
+       "lux_integration": "Lux: 'Coastcast's biggest customer fell 30% on public news. Why did Coastcast take WEEKS to react?'"},
+      {"app_slide_number": 15, "type": "explain", "title": "Momentum: The Closing Argument", "pdf_page_refs": [55],
+       "content_summary": "Confident: large, monotone, out-of-sample robust; the fourth factor; much is industry momentum; the danger is conditional crash risk. Open: erosion as capital chases it; risk vs behavior; falling transaction costs cut both ways. Investor's job: size to survive the crashes; hedge/scale the time-varying betas.",
+       "visual": "CrashLab", "visual_props": {"mode": "verdict"}}
+     ]}
+  ],
+  "new_problem_templates": [
+    {"id": "annualize", "answer_rule": "simple = m×12; compound = (1+m)^12 − 1"},
+    {"id": "industry_share", "answer_rule": "share = (raw − industry_neutral)/raw"},
+    {"id": "crash_beta", "answer_rule": "beta_state = 0.05 − 0.79 − 0.70; E[WML] = beta×mkt"},
+    {"id": "position_sizing", "answer_rule": "w_constvol = σtgt/σ̂; w_dyn = μ̂/(2λσ̂²)"}
+  ],
+  "visual_toolkit_new": ["MomentumLab", "MomentumEvidence", "CrashLab", "UnderreactionGallery"],
+  "visual_toolkit_reused": ["QuantNumericProblem"],
+  "gap_analysis": "Full Ω-decomposition algebra (p.9) lives in slide 4's Lux context for on-demand reconstruction. Long-only $1-growth chart (p.25) summarized as one line in slide 9 context ($44,290 vs $1.37). Lee–Ready mechanics (p.50) compressed into the gallery's flow tab. Prospect-theory value-function figures (p.46) described verbally in the disposition tab."
+}
