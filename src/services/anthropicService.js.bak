@@ -7,22 +7,23 @@
  *   isTutorConfigured()  (also exported as isGeminiConfigured for zero-diff swaps)
  *   getOfflineTutorReply(userMessage, slideTitle, wantsPractice)
  *
- * HOW LUX TALKS TO CLAUDE (two modes, picked automatically):
- *   - npm run dev (local): calls api.anthropic.com directly from the browser using
- *     VITE_ANTHROPIC_API_KEY from your .env — unchanged from before. Fine on your
- *     own machine; set a spend limit on the key at console.anthropic.com regardless.
- *   - production build (Render): calls our own /api/lux endpoint on the same host.
- *     server.js attaches the secret ANTHROPIC_API_KEY there, so the key is NEVER
- *     in the browser bundle and never visible to visitors.
+ * Only two import lines in the app need to change:
+ *   src/context/AppContext.jsx  →  from '../services/anthropicService.js'
+ *   src/components/ChatDrawer.jsx → from '../services/anthropicService.js'
+ *
+ * SECURITY NOTE: this calls the Anthropic API directly from the browser using the
+ * `anthropic-dangerous-direct-browser-access` header. Any VITE_* env var is baked
+ * into the client bundle, so your API key is visible to anyone using the site.
+ * That is acceptable for a personal/classroom demo IF you set a hard monthly spend
+ * limit on the key in console.anthropic.com (Settings → Limits) and use a dedicated
+ * key you can revoke. For a public deployment, put a tiny proxy in front instead.
  */
 
 import { parseSandboxFromResponse } from '../utils/sandboxParser.js';
 import { env } from '../config/env.js';
 import { PROBLEM_TEMPLATE_IDS } from '../data/problemTemplates.js';
 
-/** Production builds talk to our own proxy; dev talks to Anthropic directly. */
-const USE_PROXY = import.meta.env.PROD;
-const ANTHROPIC_URL = USE_PROXY ? '/api/lux' : 'https://api.anthropic.com/v1/messages';
+const ANTHROPIC_URL = 'https://api.anthropic.com/v1/messages';
 const ANTHROPIC_VERSION = '2023-06-01';
 
 const TUTOR_SYSTEM_INSTRUCTION = `You are Lux, the friendly lightbulb AI tutor inside the LuxAI app (Brilliant-style interactive lessons for MGT 595 Quantitative Investing at Yale SOM). Speak in a warm, concise voice as Lux. Guide with Socratic hints — do not give final answers immediately unless the student is stuck after 2+ attempts.
@@ -127,17 +128,14 @@ function extractFromContent(contentBlocks) {
 }
 
 async function callClaude(modelId, systemPrompt, messages) {
-  const headers = { 'content-type': 'application/json' };
-  if (!USE_PROXY) {
-    // dev only: key comes from .env and the request goes straight to Anthropic
-    headers['x-api-key'] = env.anthropicApiKey;
-    headers['anthropic-version'] = ANTHROPIC_VERSION;
-    headers['anthropic-dangerous-direct-browser-access'] = 'true';
-  }
-
   const res = await fetch(ANTHROPIC_URL, {
     method: 'POST',
-    headers,
+    headers: {
+      'content-type': 'application/json',
+      'x-api-key': env.anthropicApiKey,
+      'anthropic-version': ANTHROPIC_VERSION,
+      'anthropic-dangerous-direct-browser-access': 'true',
+    },
     body: JSON.stringify({
       model: modelId,
       max_tokens: 1024,
@@ -171,7 +169,7 @@ export async function sendTutorMessage(
   studentWorkContext,
   history = []
 ) {
-  if (!USE_PROXY && !env.anthropicApiKey) {
+  if (!env.anthropicApiKey) {
     throw new Error(
       'Anthropic API key missing. Set VITE_ANTHROPIC_API_KEY in .env and restart the dev server.'
     );
@@ -210,8 +208,7 @@ export async function sendTutorMessage(
 }
 
 export function isTutorConfigured() {
-  // In production the proxy holds the key, so Lux is always "configured".
-  return USE_PROXY || Boolean(env.anthropicApiKey);
+  return Boolean(env.anthropicApiKey);
 }
 
 /** Alias so existing imports (`isGeminiConfigured`) keep working with a 1-line path change. */
