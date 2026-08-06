@@ -1,0 +1,25 @@
+{
+  "lecture": 9, "title": "Carry", "module": "carry", "slide_count": 14,
+  "blocks": [
+    { "id": "A", "label": "What carry is", "slides": [
+      { "slideId": 1, "type": "explain", "visual": "CarryLab", "mode": "concept", "content": "Carry = the return if market conditions stay constant; return = carry + E(price appreciation) + shock; futures C = (S-F)/F; directly observable ex ante; generalized UIP/EH test." },
+      { "slideId": 2, "type": "interactive", "visual": "CarryLab", "mode": "classes", "content": "Clickable per-class definitions with formulas: FX interest differential; equities E(D)/S - rf with Gordon link; commodities convenience yield - rf; bonds slope - D x rolldown (YTM curve figure); options -theta + vega x vol-rolldown." },
+      { "slideId": 3, "type": "problem", "answers": [ { "label": "Futures carry (%)", "value": 2.04, "tolerance": 0.02 }, { "label": "Bond carry (%)", "value": 2.7, "tolerance": 0.03 } ], "content": "S=100, F=98: C=(100-98)/98=2.04%. Bond: y10=4%, rf=2%, D=7, y9-y10=-0.1%: slope 2.0 + rolldown 0.7 = 2.7%." }
+    ] },
+    { "id": "B", "label": "Currency carry and crashes (BNP)", "slides": [
+      { "slideId": 4, "type": "interactive", "visual": "FxCrashLab", "mode": "carry", "content": "Yen-Aussie Nov 2007 (0.87% vs 7.09%); z = (i*-i) - ds; REAL cross-section: skewness declines in carry (AUD -0.32 ... JPY +0.32), risk reversals ditto (NZD -0.47 ... JPY +1.06), speculator positions rise in carry (JPY -0.097 ... CAD +0.059); up the stairs, down the elevator." },
+      { "slideId": 5, "type": "problem", "answers": [ { "label": "Carry (%/yr)", "value": 6.22, "tolerance": 0.02 }, { "label": "Net return if JPY +2% (%)", "value": 4.22, "tolerance": 0.05 } ], "content": "7.09-0.87=6.22; funding-currency appreciation of 2% cuts it to 4.22." },
+      { "slideId": 6, "type": "interactive", "visual": "FxCrashLab", "mode": "predict", "content": "REAL panel regressions on i*-i by horizon: z(t+1) 2.17 fading to -0.04 at t+10; futures 8.26 fading; skewness -23.92 persisting to t+9 (-12.9): carry predicts returns (UIP violation), positioning, and CRASH RISK." },
+      { "slideId": 7, "type": "interactive", "visual": "FxCrashLab", "mode": "unwind", "content": "REAL: dVIX x sign(carry): futures -1.47, risk reversals -5.33, returns -0.43; after losses skewness rises (z coeff -3.34) but insurance price RISES (RiskRev on z +7.87 - the earthquake effect, slow-moving capital); co-movement |i1-i2| coefficient -10.89: carry creates a common factor." },
+      { "slideId": 8, "type": "explain", "visual": "FxCrashLab", "mode": "verdict", "content": "Speculators partly correct UIP but their own funding constraints create endogenous crash risk that limits arbitrage - the forward premium puzzle survives; links to L6 BAB (funding) and L7 (tradability)." }
+    ] },
+    { "id": "C", "label": "Carry everywhere (KMP)", "slides": [
+      { "slideId": 9, "type": "interactive", "visual": "GlobalCarryLab", "mode": "returns", "content": "REAL Sharpe bars carry vs EW per 9 classes (equities 0.88 vs 0.32; puts 1.80 vs -1.01; commodities 0.60 vs 0.08) + Global Carry Factor: mean 6.75, vol 6.12, SR 1.10, skew -0.02, cumulative plot vs currency carry." },
+      { "slideId": 10, "type": "problem", "answers": [ { "label": "GCF Sharpe", "value": 1.10, "tolerance": 0.01 }, { "label": "Puts carry-minus-EW SR gap", "value": 2.81, "tolerance": 0.02 } ], "content": "6.75/6.12=1.10; 1.80-(-1.01)=2.81. And note the skewness: -0.02 diversified vs -0.68 for currency carry alone." },
+      { "slideId": 11, "type": "interactive", "visual": "GlobalCarryLab", "mode": "anatomy", "content": "REAL static-vs-dynamic decomposition (% dynamic: equities 101, slope 99, puts 100, Treasuries 42, credit 30): carry is a timing signal more than a tilt; cross-class carry correlations tiny (max 0.31) - diversification is the engine; carry distinct from value/momentum (GCF alpha 0.44-0.53, t>5.5, IR 1.05-1.24)." },
+      { "slideId": 12, "type": "interactive", "visual": "GlobalCarryLab", "mode": "risks", "content": "REAL: liquidity-shock exposures (currencies +0.88 t3.62, credit +1.24 t3.78), volatility exposures (currencies -1.03 t-6.46), expansions vs drawdowns per class, and the three GCF drawdowns 1972-75 -19.6% / 1980-82 -26.8% / 2008-09 -7.2% - all spanning recessions." },
+      { "slideId": 13, "type": "problem", "answers": [ { "label": "Currencies swing (pts)", "value": 16.87, "tolerance": 0.1 }, { "label": "Commodities swing (pts)", "value": 34.72, "tolerance": 0.1 } ], "content": "Expansion minus drawdown mean: 10.06-(-6.81)=16.87; 21.49-(-13.23)=34.72 - the state-dependence that a risk story needs." },
+      { "slideId": 14, "type": "explain", "visual": "GlobalCarryLab", "mode": "verdict", "content": "Carry rejects UIP/EH in every class; expected returns vary over time and across assets and are observable ex ante; compensation looks like recession + liquidity + volatility risk, not simple crash risk at the global level; course links: L1 Gordon, L6 BAB, L7 robustness gauntlet applied." }
+    ] }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "lecture": 10, "title": "Trading Costs & Liquidity", "module": "liquidity", "slide_count": 15,
+  "blocks": [
+    { "id": "A", "label": "Implementation shortfall", "slides": [
+      { "slideId": 1, "type": "explain", "visual": "TcostLab", "mode": "shortfall", "content": "Paper vs real portfolio; Shortfall = execution costs + opportunity costs; fast-vs-slow tradeoff; manage effort by which component dominates; E(TC)=f(size, speed, volume, vol...); backtest adjustment recipe." },
+      { "slideId": 2, "type": "problem", "answers": [ { "label": "Shortfall (bp)", "value": 120, "tolerance": 1 }, { "label": "Opportunity cost (bp)", "value": 50, "tolerance": 1 } ], "content": "Paper 12.0%, real 10.8% -> 120bp; execution measured at 70bp -> opportunity 50bp. Diagnosis: trade a bit faster." },
+      { "slideId": 3, "type": "interactive", "visual": "TcostLab", "mode": "literature", "content": "Costs over the century (falling; turnover 54%->99% daily 1994-2004); Korajczyk-Sadka TAQ momentum costs (REAL: effective 0.19 EW / 0.12 VW, quoted 0.26 / 0.17 %/mo for extreme winners) + price impact -> small break-even sizes; caveats: assumes demanding liquidity, average trade." }
+    ] },
+    { "id": "B", "label": "What a real arbitrageur pays (FIM)", "slides": [
+      { "slideId": 4, "type": "interactive", "visual": "TcostLab", "mode": "anatomy", "content": "The $1.7T live-trade database (1998-2016, 21 markets, ~9,543 stocks, liquidity-providing algos); MI anatomy REAL example: average 11bp = permanent 8.5 + temporary 2.5; price path around execution." },
+      { "slideId": 5, "type": "problem", "answers": [ { "label": "Temporary MI (bp)", "value": 2.5, "tolerance": 0.05 }, { "label": "Annual cost drag (%)", "value": 0.55, "tolerance": 0.01 } ], "content": "11-8.5=2.5bp temporary; a strategy trading 500%/yr at 11bp per trade pays 5x0.11=0.55%/yr." },
+      { "slideId": 6, "type": "interactive", "visual": "MarketImpactLab", "mode": "function", "content": "REAL curves (bps vs %DTV): total 2.46->18.51, permanent LINEAR 2.25->11.88 (cannot reject), temporary CONCAVE 0.21->10.19 (sqrt, log-log coeff 0.49); trade-size histogram (94% of orders <1% DTV)." },
+      { "slideId": 7, "type": "interactive", "visual": "MarketImpactLab", "mode": "endogeneity", "content": "Why concave: discretion. Aggressive trades -> linear; passive -> sqrt; NEW INFLOWS (exogenous size, REAL curves 2.59->25.70 vs 1.17->20.83) linear and steeper; with stock+day FE inflows are linear: the true forced-trade cost function is closer to LINEAR." },
+      { "slideId": 8, "type": "explain", "visual": "TcostLab", "mode": "verdict", "content": "Costs ~1/10 of literature estimates; Size, Value, Momentum survive at high capacity; short-term reversal does not; two reasons (arbitrageur != average trade; supply liquidity); build portfolios net of E(TC) along the tracking-error frontier." }
+    ] },
+    { "id": "C", "label": "Liquidity level and prices", "slides": [
+      { "slideId": 9, "type": "explain", "visual": "LiquidityLab", "mode": "pricing", "content": "Sources of illiquidity (5 cards); price = PV(CF) - PV(trading costs); E(R) = rf + risk premium + mu x c; clientele: patient investors hold illiquid assets and earn more than their amortized costs; LOOP violations (3Com/Palm callback, on/off-run, restricted shares)." },
+      { "slideId": 10, "type": "problem", "answers": [ { "label": "Liquidity premium (%/yr)", "value": 2.0, "tolerance": 0.02 }, { "label": "AP total liquidity premia (%/yr)", "value": 4.6, "tolerance": 0.05 } ], "content": "c=1%, mu=2 turns/yr -> 2.0%/yr; Acharya-Pedersen level 3.5 + risk 1.1 = 4.6%/yr." }
+    ] },
+    { "id": "D", "label": "Liquidity risk", "slides": [
+      { "slideId": 11, "type": "interactive", "visual": "LiquidityLab", "mode": "lcapm", "content": "Liquidity-adjusted CAPM: net-return CAPM; four betas with signs and interpretations (standard, +commonality, -return-to-aggregate-liquidity, -liquidity-to-market); clickable beta cards." },
+      { "slideId": 12, "type": "problem", "answers": [ { "label": "Net beta", "value": 1.20, "tolerance": 0.01 }, { "label": "Required premium (%)", "value": 7.2, "tolerance": 0.05 } ], "content": "cov(R,Rm)=0.9, cov(c,cm)=0.1, cov(R,cm)=-0.05, cov(c,Rm)=-0.15, var(Rm-cm)=1: net beta = 0.9+0.1+0.05+0.15 = 1.20; at 6% net market premium -> 7.2%." },
+      { "slideId": 13, "type": "interactive", "visual": "LiquidityLab", "mode": "spirals", "content": "Funding drives market liquidity; BP loss/margin/risk-management spirals (interactive diagram); run-for-the-exit price path: smooth decline, sharp rebound (the fingerprint vs fundamentals), ends lower." },
+      { "slideId": 14, "type": "interactive", "visual": "LiquidityLab", "mode": "crises", "content": "Case cards: quant Aug 2007 (invisible without a long/short lens), converts 2005 (redemption spiral), flash crash 2010, GFC spillover chain; funding measures (TED, on/off-run, VIX); pricing: AP 1.1% risk + 3.5% level, Bekaert local EM 85bp/mo." },
+      { "slideId": 15, "type": "explain", "visual": "LiquidityLab", "mode": "verdict", "content": "Course capstone: alpha only counts net of costs (L7 Chen-Welch closed loop); liquidity level and risk are priced; the practitioner stack: signal -> gauntlet -> E(TC)-aware portfolio -> survivable sizing." }
+    ] }
+  ]
+}

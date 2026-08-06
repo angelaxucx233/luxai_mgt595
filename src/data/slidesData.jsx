@@ -10,8 +10,16 @@ import { lecture04Slides } from './lectures/lecture04Slides.js';
 import { lecture05Slides } from './lectures/lecture05Slides.js';
 import { lecture06Slides } from './lectures/lecture06Slides.js';
 import { lecture07Slides } from './lectures/lecture07Slides.js';
+import { lecture08Slides } from './lectures/lecture08Slides.js';
+import { lecture09Slides } from './lectures/lecture09Slides.js';
+import { lecture10Slides } from './lectures/lecture10Slides.js';
 
 const LECTURE_DECKS = {
+  '10': lecture10Slides,
+  '9': lecture09Slides,
+  '09': lecture09Slides,
+  '8': lecture08Slides,
+  '08': lecture08Slides,
   '07': lecture07Slides,
   '06': lecture06Slides,
   '01': lecture01Slides,

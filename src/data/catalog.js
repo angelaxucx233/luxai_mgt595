@@ -64,6 +64,27 @@ export const courses = [
         pdfFilename: 'MGT595_Lecture_7_2026v2.pdf',
         available: true,
       },
+      {
+        number: 8,
+        title: 'Other Asset Classes',
+        slug: '08',
+        pdfFilename: 'Lecture8_MGT595_2023.pdf',
+        available: true,
+      },
+      {
+        number: 9,
+        title: 'Carry',
+        slug: '09',
+        pdfFilename: 'Lecture9_MGT595_2023.pdf',
+        available: true,
+      },
+      {
+        number: 10,
+        title: 'Trading Costs & Liquidity',
+        slug: '10',
+        pdfFilename: 'Lecture10_MGT595_2025.pdf',
+        available: true,
+      },
     ],
   },
 ];

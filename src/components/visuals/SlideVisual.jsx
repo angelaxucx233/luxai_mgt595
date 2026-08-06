@@ -30,6 +30,15 @@ import EfficientSetMath from './EfficientSetMath.jsx';
 import EstimationRiskSim from './EstimationRiskSim.jsx';
 import SmlExplorer from './SmlExplorer.jsx';
 import QuantNumericProblem from './QuantNumericProblem.jsx';
+import EverywhereLab from './EverywhereLab.jsx';
+import TsmomLab from './TsmomLab.jsx';
+import SportsLab from './SportsLab.jsx';
+import CarryLab from './CarryLab.jsx';
+import FxCrashLab from './FxCrashLab.jsx';
+import GlobalCarryLab from './GlobalCarryLab.jsx';
+import TcostLab from './TcostLab.jsx';
+import MarketImpactLab from './MarketImpactLab.jsx';
+import LiquidityLab from './LiquidityLab.jsx';
 import ProfitabilityLab from './ProfitabilityLab.jsx';
 import BabLab from './BabLab.jsx';
 import QmjLab from './QmjLab.jsx';
@@ -68,6 +77,15 @@ const VISUALS = {
   EstimationRiskSim,
   SmlExplorer,
   QuantNumericProblem,
+  EverywhereLab,
+  TsmomLab,
+  SportsLab,
+  CarryLab,
+  FxCrashLab,
+  GlobalCarryLab,
+  TcostLab,
+  MarketImpactLab,
+  LiquidityLab,
   ProfitabilityLab,
   BabLab,
   QmjLab,

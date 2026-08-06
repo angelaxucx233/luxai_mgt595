@@ -1,0 +1,25 @@
+{
+  "lecture": 8, "title": "Other Asset Classes", "module": "everywhere", "slide_count": 14,
+  "blocks": [
+    { "id": "A", "label": "Value & momentum everywhere", "slides": [
+      { "slideId": 1, "type": "explain", "visual": "EverywhereLab", "mode": "map", "content": "One recipe, every market: momentum = t-12..t-2 return everywhere; value = B/P (stocks/indices), 5-years-ago spot (commodities), 5yr excess-return reversal / UIP deviation (currencies), real yield (bonds). Clickable class cards." },
+      { "slideId": 2, "type": "interactive", "visual": "EverywhereLab", "mode": "results", "content": "Stylized per-class result strip: value +, momentum +, negative V-M correlation everywhere, combo dominates; Japan card: momentum weak there but value strong and combo fine - exactly what negative correlation predicts." },
+      { "slideId": 3, "type": "problem", "answers": [ { "label": "Combo volatility (leg vol = 1)", "value": 0.447, "tolerance": 0.005 }, { "label": "Combo Sharpe", "value": 0.89, "tolerance": 0.01 } ], "content": "Two strategies, SR 0.4 each (mean 0.4, vol 1), correlation -0.6; 50/50 combo: sigma = sqrt(0.25+0.25+0.5*(-0.6)) = sqrt(0.2) = 0.447; SR = 0.4/0.447 = 0.894." },
+      { "slideId": 4, "type": "interactive", "visual": "EverywhereLab", "mode": "comovement", "content": "Value here correlates with value there; first PC separates V and M globally; funding-liquidity loadings: value + (3.8), momentum - (-3.2) once noise is diversified; post-1998 dynamics." }
+    ] },
+    { "id": "B", "label": "Time-series momentum", "slides": [
+      { "slideId": 5, "type": "explain", "visual": "TsmomLab", "mode": "definition", "content": "TS vs XS momentum; 2x2 literature table (FF/Lo-MacKinlay autocorrelation, JT cross-sectional, MOP fills TS m-predicts-n); most direct random-walk test; sign of own 12M return, 58 futures." },
+      { "slideId": 6, "type": "interactive", "visual": "TsmomLab", "mode": "everywhere", "content": "REAL AQR 1880-2017 trend Sharpe bars, class-filterable, 66 instruments nearly all positive (Germany 5yr 1.02 ... Cocoa 0.08)." },
+      { "slideId": 7, "type": "problem", "answers": [ { "label": "Commodity position (x notional)", "value": 1.33, "tolerance": 0.02 }, { "label": "Bond position (x notional)", "value": 6.67, "tolerance": 0.05 } ], "content": "MOP position sizing 40%/sigma: commodity sigma 30% -> 1.33x; bond sigma 6% -> 6.67x; equal ex-ante risk so every market votes equally." },
+      { "slideId": 8, "type": "interactive", "visual": "TsmomLab", "mode": "smile", "content": "REAL ten worst 60/40 drawdowns 1880-2015 vs trend (net of 2/20): +36.1% in 1929-32, +95.4% in 1973-74, +21.6% in GFC; positive in 8 of 10; the TSMOM smile (does best in extremes)." },
+      { "slideId": 9, "type": "problem", "answers": [ { "label": "1973-74 spread (pts)", "value": 126.0, "tolerance": 1 }, { "label": "GFC spread (pts)", "value": 52.1, "tolerance": 0.5 } ], "content": "Trend minus 60/40: 95.4-(-30.6)=126.0; 21.6-(-30.5)=52.1 percentage points. Crisis alpha quantified." },
+      { "slideId": 10, "type": "explain", "visual": "TsmomLab", "mode": "mechanism", "content": "Impulse response: ~12 months continuation then partial reversal (under- then over-reaction); speculators ride trends, hedgers pay; roll returns (hedging pressure) persist, price-change component reverses." }
+    ] },
+    { "id": "C", "label": "The sports-betting laboratory", "slides": [
+      { "slideId": 11, "type": "explain", "visual": "SportsLab", "mode": "lab", "content": "Why betting markets: idiosyncratic bets (no risk premium possible) + terminal date reveals truth independent of beliefs. Three contracts with exact payoffs: spread ($110->210/110/0 at -N), moneyline, over/under; the vig." },
+      { "slideId": 12, "type": "problem", "answers": [ { "label": "Break-even win rate (%)", "value": 52.38, "tolerance": 0.05 }, { "label": "Edge at 55% (% of stake)", "value": 5.0, "tolerance": 0.1 } ], "content": "110/210 = 52.38%; at 55%: E[payoff]=0.55*210=115.5, profit 5.5 on 110 = 5.0%." },
+      { "slideId": 13, "type": "interactive", "visual": "SportsLab", "mode": "results", "content": "H1-H4 framework (beta1, betaT); finding: strong momentum in line moves open->close, COMPLETELY reversed by game end = overreaction/mispricing; value weaker, size zero; effects 1/5 financial size; no covariance structure; Fama & Thaler quotes." },
+      { "slideId": 14, "type": "explain", "visual": "SportsLab", "mode": "verdict", "content": "Uncertainty interaction (momentum stronger with uncertainty, value with less - matches DHS/Rabin, replicated in US equities); the vig as limits to arbitrage; what transfers to finance and what doesn't." }
+    ] }
+  ]
+}
