@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useApp } from '../context/AppContext.jsx';
 import ExplainSlide from './ExplainSlide.jsx';
@@ -19,11 +20,18 @@ export default function SlideViewer() {
   const { courseId } = useParams();
   const isLastSlide = currentSlide >= totalSlides;
   const isProblem = activeSlide.type === 'problem';
+  const [solvedSlides, setSolvedSlides] = useState({});
+  const markSolved = (id) => setSolvedSlides((m) => ({ ...m, [id]: true }));
+  const nextBlocked =
+    isProblem &&
+    activeSlide.requireCompletion &&
+    Boolean(activeSlide.visual) &&
+    !solvedSlides[activeSlide.slideId];
 
   return (
     <section className="h-full w-full flex flex-col bg-black min-h-0">
       <div className="flex-1 flex flex-col items-center justify-start min-h-0 overflow-y-auto px-6 md:px-10 pt-8 pb-6 md:pt-10">
-        {isProblem && (
+        {isProblem && !activeSlide.visual && (
           <div className="w-full max-w-2xl flex flex-col items-center gap-4 mb-2">
             <span className="text-xs font-semibold tracking-widest text-yale-400 uppercase">
               Your turn
@@ -36,6 +44,17 @@ export default function SlideViewer() {
             content={activeSlide.content}
             visual={activeSlide.visual}
             visualProps={activeSlide.visualProps}
+            slideTitle={activeSlide.title}
+          />
+        ) : activeSlide.visual ? (
+          <ExplainSlide
+            key={activeSlide.slideId}
+            content={activeSlide.content}
+            visual={activeSlide.visual}
+            visualProps={{
+              ...(activeSlide.visualProps ?? {}),
+              onComplete: () => markSolved(activeSlide.slideId),
+            }}
             slideTitle={activeSlide.title}
           />
         ) : (
@@ -80,9 +99,15 @@ export default function SlideViewer() {
           <button
             type="button"
             onClick={nextSlide}
-            className="px-8 py-2.5 rounded-full bg-yale-600 hover:bg-yale-500 text-white font-bold text-sm"
+            disabled={nextBlocked}
+            title={nextBlocked ? 'Solve the problem to continue' : undefined}
+            className={`px-8 py-2.5 rounded-full font-bold text-sm ${
+              nextBlocked
+                ? 'bg-slate-700 text-slate-400 cursor-not-allowed'
+                : 'bg-yale-600 hover:bg-yale-500 text-white'
+            }`}
           >
-            Next
+            {nextBlocked ? 'Solve to continue' : 'Next'}
           </button>
         )}
       </footer>
