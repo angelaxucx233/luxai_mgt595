@@ -124,6 +124,54 @@ export function AppProvider({ children, lectureSlug = '01' }) {
   );
 
   /** Slide narration → pre-baked MP3; chat replies → live Gemini TTS. */
+  /** Convert $...$ math into speakable plain text for TTS. */
+  const speakableText = (text) => {
+    if (typeof text !== 'string' || !text.includes('$')) return text;
+    let out = '';
+    let i = 0;
+    const nd = (from) => {
+      let j = from;
+      while (j < text.length) {
+        j = text.indexOf('$', j);
+        if (j === -1) return -1;
+        if (j > 0 && text[j - 1] === '\\') {
+          j += 1;
+          continue;
+        }
+        return j;
+      }
+      return -1;
+    };
+    while (i < text.length) {
+      const a = nd(i);
+      if (a === -1) {
+        out += text.slice(i);
+        break;
+      }
+      const b = nd(a + 1);
+      if (b === -1) {
+        out += text.slice(i);
+        break;
+      }
+      const inner = text.slice(a + 1, b);
+      if (inner.length > 0 && !/^[0-9]/.test(inner)) {
+        out +=
+          text.slice(i, a) +
+          inner
+            .replace(/\\text\{([^}]*)\}/g, '$1')
+            .replace(/\\[a-zA-Z]+/g, (w) => ' ' + w.slice(1) + ' ')
+            .replace(/[{}]/g, '')
+            .replace(/\s+/g, ' ')
+            .trim();
+        i = b + 1;
+      } else {
+        out += text.slice(i, a + 1);
+        i = a + 1;
+      }
+    }
+    return out;
+  };
+
   const speakChatMessage = useCallback(
     async (messageId) => {
       const msg = messages.find((m) => m.id === messageId);
@@ -142,7 +190,7 @@ export function AppProvider({ children, lectureSlug = '01' }) {
         const audioUrl = isSlideNarration
           ? slideNarrationAudioUrl(lectureSlug, msg.slideId)
           : undefined;
-        await playLuxSpeech(msg.text, { audioUrl });
+        await playLuxSpeech(speakableText(msg.text), { audioUrl });
       } catch (err) {
         console.warn('[Lux TTS]', err?.message ?? err);
       } finally {

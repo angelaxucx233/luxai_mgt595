@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { useApp } from '../context/AppContext.jsx';
+import { MathText } from './visuals/MathTex.jsx';
 import { isLuxSpeechConfigured } from '../services/geminiTtsService.js';
 import { isGeminiConfigured } from '../services/anthropicService.js';
 import { LUX_LINES } from '../utils/luxSpeechText.js';
@@ -68,7 +69,7 @@ function ChatBubble({
               : 'bg-slate-800 text-white border border-teal-400/70 shadow-[0_0_14px_rgba(45,212,191,0.12)]'
           }`}
         >
-          {text}
+          <MathText text={text} />
         </p>
       </div>
     );
@@ -90,7 +91,7 @@ function ChatBubble({
             : 'bg-slate-900/40 text-slate-500 border border-transparent'
         }`}
       >
-        {text}
+        <MathText text={text} />
       </p>
     </div>
   );
