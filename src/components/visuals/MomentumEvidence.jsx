@@ -43,7 +43,7 @@ function Oos() {
               </div>
             ))}
           </div>
-          <p className="text-[11px] text-slate-500 leading-snug">Significant in data JT never saw (1927–64) and — remarkably — <b>strongest after publication</b>: the 1990–2012 three-factor alpha is 1.17%/month. Flukes fade when the world learns about them; this didn\u2019t.</p>
+          <p className="text-[11px] text-slate-500 leading-snug">Significant in data JT never saw (1927–64) and — remarkably — <b>strongest after publication</b>: the 1990–2012 three-factor alpha is 1.17%/month. Flukes fade when the world learns about them; this didn’t.</p>
         </>
       )}
       {tab === 'assets' && (
@@ -93,7 +93,7 @@ function States() {
       <div className="w-full rounded-xl bg-rose-50 border border-rose-200 px-3 py-2 text-[11px] text-rose-900">
         <b>The sign test risk cannot pass:</b> momentum earns <b>+1.46%/month in bear markets</b> and +0.89% in recessions — it pays off precisely when marginal utility is high. A risk premium is compensation for hurting in bad times; this strategy is the insurance, not the insured.
       </div>
-      <p className="text-[11px] text-slate-500 leading-snug">The behavioral alternative fits where profits live — small, low-coverage stocks, concentrated in losers (bad news travels slowly) — but owes an answer on limits to arbitrage. The answer, it turns out, is crash risk: next slides. (One caution for this table: it\u2019s unconditional averages — the crashes hide inside the bear-market cell.)</p>
+      <p className="text-[11px] text-slate-500 leading-snug">The behavioral alternative fits where profits live — small, low-coverage stocks, concentrated in losers (bad news travels slowly) — but owes an answer on limits to arbitrage. The answer, it turns out, is crash risk: next slides. (One caution for this table: it’s unconditional averages — the crashes hide inside the bear-market cell.)</p>
     </div>
   );
 }

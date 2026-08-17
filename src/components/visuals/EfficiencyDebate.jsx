@@ -72,7 +72,7 @@ function Factors() {
         <Card tone="rose" title="Disadvantage">{x.con}</Card>
         <Card tone="slate" title="Classic papers">{x.ex}</Card>
       </div>
-      <Card tone="amber" title="The theory scoreboard">APT: factor structure + no arbitrage ⟹ E[r] linear in loadings, factors anonymous. ICAPM: state variables investors hedge, factors named. Notice both classic empirical papers motivate their method with the <b>other</b> theory — Lux will press you on why that\u2019s uncomfortable.</Card>
+      <Card tone="amber" title="The theory scoreboard">APT: factor structure + no arbitrage ⟹ E[r] linear in loadings, factors anonymous. ICAPM: state variables investors hedge, factors named. Notice both classic empirical papers motivate their method with the <b>other</b> theory — Lux will press you on why that’s uncomfortable.</Card>
     </div>
   );
 }
@@ -82,20 +82,20 @@ function Limits() {
   const DEF = [
     ['Investors are rational', 'Psychology says otherwise: framing, loss aversion, over- and under-reaction are documented in experiments and markets.'],
     ['Irrationality is random and cancels', 'Errors are correlated — whole crowds make the same mistake in the same direction at the same time.'],
-    ['Arbitrageurs erase what\u2019s left', 'Arbitrage is limited: imperfect substitutes, drawdown risk, short horizons, costs, and short-sale constraints.'],
+    ['Arbitrageurs erase what’s left', 'Arbitrage is limited: imperfect substitutes, drawdown risk, short horizons, costs, and short-sale constraints.'],
   ];
   return (
     <div className="w-full max-w-lg flex flex-col items-center gap-3">
       <button onClick={() => setRebut((r) => !r)} className={`px-4 py-1.5 rounded-lg text-xs font-bold ${rebut ? 'bg-rose-600 text-white' : 'bg-yale-700 text-white'}`}>
-        {rebut ? 'Showing Shleifer\u2019s rebuttals — click for the defenses' : 'Showing the classical defenses — click to rebut'}
+        {rebut ? 'Showing Shleifer’s rebuttals — click for the defenses' : 'Showing the classical defenses — click to rebut'}
       </button>
       <div className="w-full flex flex-col gap-2">
         {DEF.map(([d, r], i) => (
           <Card key={i} tone={rebut ? 'rose' : 'navy'} title={`${i + 1} · ${rebut ? 'Rebuttal' : 'Defense'}`}>{rebut ? r : d}</Card>
         ))}
       </div>
-      <Card tone="amber" title="Shleifer–Vishny (1997): the funding spiral">Arbitrageurs manage other people\u2019s money. When mispricing <b>widens</b>, their marks show losses — clients pull capital — positions get cut — the mispricing widens further. Arbitrage capacity is scarcest exactly when expected returns are highest.</Card>
-      <Card tone="slate" title="And always: data mining">Regress returns on 100 random series and ≈5 come back \u201csignificant.\u201d A glorious backtest is the <i>beginning</i> of the argument, not the end — demand out-of-sample proof.</Card>
+      <Card tone="amber" title="Shleifer–Vishny (1997): the funding spiral">Arbitrageurs manage other people’s money. When mispricing <b>widens</b>, their marks show losses — clients pull capital — positions get cut — the mispricing widens further. Arbitrage capacity is scarcest exactly when expected returns are highest.</Card>
+      <Card tone="slate" title="And always: data mining">Regress returns on 100 random series and ≈5 come back “significant.” A glorious backtest is the <i>beginning</i> of the argument, not the end — demand out-of-sample proof.</Card>
     </div>
   );
 }

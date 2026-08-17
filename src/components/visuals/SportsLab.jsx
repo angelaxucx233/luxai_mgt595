@@ -13,7 +13,7 @@ export default function SportsLab({ mode = 'lab' }) {
 }
 
 const CONTRACTS = [
-  { k: 'Spread', ex: '$110 on team A at −N points', pay: [['A wins by > N (\u201ccover\u201d)', '$210'], ['wins by exactly N (\u201cpush\u201d)', '$110'], ['otherwise (\u201cfail\u201d)', '$0']], note: 'Risk 110 to win 100 — the 10-point asymmetry is the vig, the bookmaker\u2019s trading cost.' },
+  { k: 'Spread', ex: '$110 on team A at −N points', pay: [['A wins by > N (“cover”)', '$210'], ['wins by exactly N (“push”)', '$110'], ['otherwise (“fail”)', '$0']], note: 'Risk 110 to win 100 — the 10-point asymmetry is the vig, the bookmaker’s trading cost.' },
   { k: 'Moneyline', ex: '$100 on team A listed at −$M', pay: [['A wins', '$M + 100'], ['tie', 'max(M, 100)'], ['A loses', '$0']], note: 'Bet on the winner outright; M scales with how heavy the favorite is.' },
   { k: 'Over/Under', ex: '$110 on total points over T', pay: [['total > T', '$210'], ['total = T', '$110'], ['total < T', '$0']], note: 'A bet on the sum, not the winner — characteristics enter as team sums.' },
 ];
@@ -30,7 +30,7 @@ function Lab() {
         </div>
         <div className="rounded-xl border border-emerald-300 bg-emerald-50 px-3 py-2">
           <div className="font-bold text-emerald-800">Terminal truth</div>
-          <div className="text-emerald-700 mt-0.5">Every contract ends, graded by a final score no bettor\u2019s beliefs can move — <b>mispricing must reveal itself</b> by game end.</div>
+          <div className="text-emerald-700 mt-0.5">Every contract ends, graded by a final score no bettor’s beliefs can move — <b>mispricing must reveal itself</b> by game end.</div>
         </div>
       </div>
       <div className="flex gap-1.5">
@@ -51,7 +51,7 @@ function Lab() {
         </div>
         <div className="text-slate-500 mt-1.5">{c.note}</div>
       </div>
-      <p className="text-[11px] text-slate-500 leading-snug">A $500B\u20131T market; NBA/NFL/MLB/NHL, 1999\u20132013; opening line → closing line → outcome. The measures mirror finance: momentum from recent game results, value from long-term performance and payroll-to-price, size from franchise value. Sentiment moves lines; only information should predict scores.</p>
+      <p className="text-[11px] text-slate-500 leading-snug">A $500B–1T market; NBA/NFL/MLB/NHL, 1999–2013; opening line → closing line → outcome. The measures mirror finance: momentum from recent game results, value from long-term performance and payroll-to-price, size from franchise value. Sentiment moves lines; only information should predict scores.</p>
     </div>
   );
 }
@@ -87,11 +87,11 @@ function Results() {
         ))}
       </div>
       <div className="w-full rounded-xl bg-yale-50 border border-yale-100 px-3 py-2 text-[11px] text-yale-900">
-        <b>The ledger:</b> momentum — strong in line moves, completely reversed by game end (replicated on BetFair). Value — same signature, weaker. Size — nothing. Magnitudes ≈ <b>1/5</b> of the financial-market analogs; net of the vig, unprofitable; and contracts sharing a characteristic <b>don\u2019t co-move</b> — no covariance structure for any risk story to grab.
+        <b>The ledger:</b> momentum — strong in line moves, completely reversed by game end (replicated on BetFair). Value — same signature, weaker. Size — nothing. Magnitudes ≈ <b>1/5</b> of the financial-market analogs; net of the vig, unprofitable; and contracts sharing a characteristic <b>don’t co-move</b> — no covariance structure for any risk story to grab.
       </div>
       <div className="w-full grid grid-cols-2 gap-1.5 text-[10.5px]">
-        <div className="rounded-lg border border-yale-200 bg-white px-2.5 py-1.5 text-slate-600"><b className="text-yale-900">Fama</b> (shown the measures): \u201cMost of these make sense to me\u2026 past team record longer-term for value, shorter-term for momentum.\u201d</div>
-        <div className="rounded-lg border border-yale-200 bg-white px-2.5 py-1.5 text-slate-600"><b className="text-yale-900">Thaler</b>: \u201cMomentum is easier. For value, since that\u2019s my measure with DeBondt, I guess I have to like that one.\u201d</div>
+        <div className="rounded-lg border border-yale-200 bg-white px-2.5 py-1.5 text-slate-600"><b className="text-yale-900">Fama</b> (shown the measures): “Most of these make sense to me… past team record longer-term for value, shorter-term for momentum.”</div>
+        <div className="rounded-lg border border-yale-200 bg-white px-2.5 py-1.5 text-slate-600"><b className="text-yale-900">Thaler</b>: “Momentum is easier. For value, since that’s my measure with DeBondt, I guess I have to like that one.”</div>
       </div>
     </div>
   );
@@ -110,7 +110,7 @@ function Verdict() {
       {tab === 'unc' ? (
         <>
           <svg viewBox="0 0 400 108" className="w-full">
-            <text x="14" y="12" fontSize="8.5" fill="#64748b">overreaction theory\u2019s prediction (DHS \u201998, Rabin \u201902) — confirmed in betting, then in equities</text>
+            <text x="14" y="12" fontSize="8.5" fill="#64748b">overreaction theory’s prediction (DHS ’98, Rabin ’02) — confirmed in betting, then in equities</text>
             <line x1="60" y1="88" x2="380" y2="88" stroke="#94a3b8" />
             <line x1="60" y1="88" x2="60" y2="24" stroke="#94a3b8" />
             <line x1="66" y1="80" x2="372" y2="34" stroke="#0f766e" strokeWidth="2.4" />
@@ -131,10 +131,10 @@ function Verdict() {
           </div>
           <div className="rounded-xl border border-amber-300 bg-amber-50 px-3 py-2">
             <div className="font-bold text-amber-800">The cautious reading</div>
-            <div className="text-amber-700 mt-0.5">Characteristics aren\u2019t perfect matches; financial effects are ~5× larger; and financial factors have real covariance structure — room remains for the risk stories of Lectures 4\u20137.</div>
+            <div className="text-amber-700 mt-0.5">Characteristics aren’t perfect matches; financial effects are ~5× larger; and financial factors have real covariance structure — room remains for the risk stories of Lectures 4–7.</div>
           </div>
           <div className="rounded-xl bg-yale-50 border border-yale-100 px-3 py-2 text-yale-900">
-            <b>What\u2019s licensed either way:</b> genuine mispricing exists, and limits to arbitrage protect it — the vig here, trading costs on Wall Street. Grossman\u2013Stiglitz in a petri dish, and the perfect bridge to Lecture 10, where the real vig gets measured.
+            <b>What’s licensed either way:</b> genuine mispricing exists, and limits to arbitrage protect it — the vig here, trading costs on Wall Street. Grossman–Stiglitz in a petri dish, and the perfect bridge to Lecture 10, where the real vig gets measured.
           </div>
         </div>
       )}

@@ -47,7 +47,7 @@ export const lecture04Slides = [
     visual: 'QuantNumericProblem', requireCompletion: true,
     visualProps: {
       slideId: 4,
-      scenario: 'Both stocks are priced with r = 9% in the Gordon model P = D/(r−g). Value stock: P = $40, D = $2.00. Glamour stock: P = $60, D = $1.20.',
+      scenario: 'Both stocks are priced with $r = 9\\%$ in the Gordon model $P = D/(r-g)$. Value stock: P = $40, D = $2.00. Glamour stock: P = $60, D = $1.20.',
       question: 'What growth rate is the market implicitly forecasting for each stock?',
       given: [['r', '9%'], ['Value', 'P=$40, D=$2.00'], ['Glamour', 'P=$60, D=$1.20']],
       answers: [
@@ -55,15 +55,15 @@ export const lecture04Slides = [
         { label: 'Glamour implied g (%)', value: 7.0, tolerance: 0.1 },
       ],
       steps: [
-        'Rearrange Gordon: g = r − D/P.',
-        'Value: D/P = 2/40 = 5% ⟹ g = 9 − 5 = 4.0%.',
-        'Glamour: D/P = 1.20/60 = 2% ⟹ g = 9 − 2 = 7.0%.',
+        'Rearrange Gordon: $g = r - D/P$.',
+        'Value: $D/P = 2/40 = 5\\% \\Rightarrow g = 9 - 5 = 4.0\\%$.',
+        'Glamour: $D/P = 1.20/60 = 2\\% \\Rightarrow g = 9 - 2 = 7.0\\%$.',
         'The market is betting glamour out-grows value by 3 points forever. LSV\'s Table V: that advantage evaporates by year 3 — the bet is extrapolation, and it fails.',
       ],
     },
     narration: '[encouraging] Rearrange the Gordon formula and the price confesses its forecast.',
     systemPromptContext: 'BLOCK A PROBLEM — VERIFIED: g = r − D/P; value 4.0%, glamour 7.0%. Common error: computing D/P and forgetting to subtract from r (answering 5 and 2). Extension if asked: at the 2020 value-spread extreme, the implied growth gap was 80–110% over five years — never realized in any historical data (slide 12).',
-    content: { eyebrow: 'Your turn', heading: 'Read the Market\'s Growth Bet', problemTitle: 'Your Turn: Read the Market\'s Growth Bet', footnote: 'g = r − D/P. Prices are forecasts.' },
+    content: { eyebrow: 'Your turn', heading: 'Read the Market\'s Growth Bet', problemTitle: 'Your Turn: Read the Market\'s Growth Bet', footnote: '$g = r - D/P$. Prices are forecasts.' },
   },
 
   // ── Block B: FF96 ──
@@ -97,7 +97,7 @@ export const lecture04Slides = [
     visual: 'QuantNumericProblem', requireCompletion: true,
     visualProps: {
       slideId: 7,
-      scenario: 'A value fund earned 11.2% excess return this year. Its loadings: b = 1.0, s = 0.3, h = 0.5. Premia: market 6%, SMB 2%, HML 4%.',
+      scenario: 'A value fund earned 11.2% excess return this year. Its loadings: $b = 1.0$, $s = 0.3$, $h = 0.5$. Premia: market 6%, SMB 2%, HML 4%.',
       question: 'What is the fund\'s three-factor alpha?',
       given: [['Excess return', '11.2%'], ['b, s, h', '1.0, 0.3, 0.5'], ['Premia', '6%, 2%, 4%']],
       answers: [{ label: 'Three-factor alpha (%)', value: 2.6, tolerance: 0.1 }],
@@ -109,7 +109,7 @@ export const lecture04Slides = [
     },
     narration: '[calm] Alpha is what remains after every loading has been paid its premium.',
     systemPromptContext: 'BLOCK B PROBLEM — VERIFIED: required 8.6%, alpha 2.6%; CAPM alpha would be 5.2%. Common error: subtracting factor RETURNS not loading-weighted premia. Discussion: if HML is risk, the 2.6% is skill; if HML is mispricing (LSV), the fund is partly harvesting others\' mistakes — same number, two philosophies.',
-    content: { eyebrow: 'Your turn', heading: 'Compute a Fund\'s Alpha', problemTitle: 'Your Turn: Compute a Fund\'s Alpha', footnote: 'α = excess − (b·MKT + s·SMB + h·HML).' },
+    content: { eyebrow: 'Your turn', heading: 'Compute a Fund\'s Alpha', problemTitle: 'Your Turn: Compute a Fund\'s Alpha', footnote: '$\\alpha = \\text{excess} - (b\\cdot\\mathrm{MKT} + s\\cdot\\mathrm{SMB} + h\\cdot\\mathrm{HML})$.' },
   },
 
   // ── Block C: Daniel–Titman ──
@@ -147,18 +147,18 @@ export const lecture04Slides = [
       question: 'What Q5−Q1 return spread does the risk model predict — and what did DT observe?',
       given: [['λ_HML', '0.40%/mo'], ['h range', '0.0 → 2.0'], ['Observed extremes', '0.740, 0.806']],
       answers: [
-        { label: 'Predicted spread (%/mo)', value: 0.8, tolerance: 0.02 },
-        { label: 'Observed spread (%/mo)', value: 0.066, tolerance: 0.012 },
+        { label: 'Predicted spread $(\\%/mo)$', value: 0.8, tolerance: 0.02 },
+        { label: 'Observed spread $(\\%/mo)$', value: 0.066, tolerance: 0.012 },
       ],
       steps: [
-        'Risk model: E[r] rises by Δh × λ = (2.0−0.0) × 0.40 = 0.80%/month across the quintiles.',
-        'Observed: 0.806 − 0.740 = 0.066%/month.',
+        'Risk model: $E[r]$ rises by $\\Delta h \\times \\lambda = (2.0-0.0) \\times 0.40$ = 0.80%/month across the quintiles.',
+        'Observed: ${}0.806 - 0.740 = 0.066\\%/\\text{month}$.',
         'The data delivered one-twelfth of the risk-model prediction. In this sample, being value paid; co-moving like value did not.',
       ],
     },
     narration: '[serious] The gap between prediction and observation is the whole paper. [calm] Two subtractions and you have it.',
     systemPromptContext: 'BLOCK C PROBLEM — VERIFIED: predicted 0.80; observed 0.066. Common error: averaging instead of differencing the extremes. Follow-up: over 1927–97 (DFF 2000) the loading spread reappears — sample matters, and the profession still hasn\'t settled it.',
-    content: { eyebrow: 'Your turn', heading: 'What Should Risk Have Delivered?', problemTitle: 'Your Turn: What Should Risk Have Delivered?', footnote: 'Predicted = Δh × λ_HML; observed = Q5 − Q1.' },
+    content: { eyebrow: 'Your turn', heading: 'What Should Risk Have Delivered?', problemTitle: 'Your Turn: What Should Risk Have Delivered?', footnote: 'Predicted $= \\Delta h \\times \\lambda_{\\mathrm{HML}}$; observed $= Q_5 - Q_1$.' },
   },
 
   // ── Block D: The drawdown ──
@@ -171,7 +171,7 @@ export const lecture04Slides = [
     content: {
       eyebrow: 'The great drawdown', heading: 'The Arithmetic of Patience',
       body: 'Every standard value measure fell roughly in half between 2017 and 2020 — the worst run in about a century of records. But run the numbers before the funeral: a premium with a 0.4 Sharpe ratio underperforms cash in about 34% of years and 10% of decades, purely by chance. Long droughts aren\'t evidence a premium is dead; they\'re a property of every premium worth having. The question is whether this one was ordinary — which is testable.',
-      footnote: 'P(lose to cash) = Φ(−SR·√h). Drag both dials.',
+      footnote: '$P(\\text{lose to cash}) = \\Phi(-\\mathrm{SR}\\cdot\\sqrt{h})$. Drag both dials.',
     },
   },
   {
@@ -192,16 +192,16 @@ export const lecture04Slides = [
     visual: 'QuantNumericProblem', requireCompletion: true,
     visualProps: {
       slideId: 13,
-      scenario: 'A premium has an annual Sharpe ratio of 0.4. Assume normal returns, so the probability of underperforming cash over h years is Φ(−SR·√h). Useful values: Φ(−0.40) = 0.345, Φ(−1.26) ≈ 0.103.',
+      scenario: 'A premium has an annual Sharpe ratio of 0.4. Assume normal returns, so the probability of underperforming cash over h years is $\\Phi (-\\mathrm{SR}\\cdot \\sqrt{h})$. Useful values: $\\Phi (-0.40) = 0.345$, $\\Phi (-1.26) \\approx 0.103$.',
       question: 'Find the probability of losing to cash over one year, and over a decade.',
-      given: [['SR', '0.4'], ['Formula', 'Φ(−SR·√h)'], ['Φ(−0.40)', '0.345'], ['Φ(−1.26)', '≈0.103']],
+      given: [['SR', '0.4'], ['Formula', 'Φ(−SR·√h)'], ['$\\Phi (-0.40)$', '0.345'], ['$\\Phi (-1.26)$', '≈0.103']],
       answers: [
         { label: 'P(lose to cash, 1 yr) (%)', value: 34.5, tolerance: 0.5 },
         { label: 'P(lose to cash, 10 yr) (%)', value: 10.3, tolerance: 0.5 },
       ],
       steps: [
-        '1 year: Φ(−0.4×1) = Φ(−0.40) = 34.5%.',
-        '10 years: SR·√10 = 0.4×3.162 = 1.265 ⟹ Φ(−1.26) ≈ 10.3%.',
+        '1 year: $\\Phi (-0.4\\times 1) = \\Phi (-0.40) = 34.5\\%$.',
+        '10 years: $\\mathrm{SR}\\cdot \\sqrt{10} = 0.4\\times 3.162 = 1.265 \\Rightarrow \\Phi (-1.26) \\approx 10.3\\%$.',
         'One decade in ten, a perfectly healthy 0.4-Sharpe premium loses to cash. The 2017–20 value drought was extreme — but "extreme" and "dead" are different claims.',
       ],
     },

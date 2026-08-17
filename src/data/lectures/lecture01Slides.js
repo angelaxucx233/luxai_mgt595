@@ -17,12 +17,12 @@ export const lecture01Slides = [
     narration:
       '[curious] Here is a fifty-fifty gamble around the same average wealth. [thoughtful] Widen the spread and watch your expected utility. The mean never moves — so why does your score keep falling?',
     systemPromptContext:
-      'BLOCK A — Concave utility u(W)=sqrt(W). Chord below curve: E[u(W)] < u(E[W]) (Jensen). Guide student to: concavity means each dollar gained adds less utility than each dollar lost removes. vNM: rational investors maximize E[u(W)], not E[W]. Arrow-Pratt A(W)=-u\'\'/u\' only if asked. Socratic: "The mean never moved — why did your utility fall?"',
+      'BLOCK A — Concave utility $u(W)$=sqrt(W). Chord below curve: E[u(W)] < u(E[W]) (Jensen). Guide student to: concavity means each dollar gained adds less utility than each dollar lost removes. vNM: rational investors maximize E[u(W)], not E[W]. Arrow-Pratt A(W)=-u\'\'/u\' only if asked. Socratic: "The mean never moved — why did your utility fall?"',
     content: {
       eyebrow: 'Expected utility',
       heading: 'Why a Fair Gamble Feels Unfair',
       body: 'Rational investors rank gambles by expected utility of wealth, not expected wealth. When the utility curve is concave, spreading outcomes around the same mean always lowers the score. Drag the spread and watch the gap open.',
-      footnote: 'The red dot is E[u(W)] on the chord; the gold dot is u(E[W]) on the curve.',
+      footnote: 'The red dot is $E[u(W)]$ on the chord; the gold dot is $u(E[W])$ on the curve.',
     },
   },
   {
@@ -41,7 +41,7 @@ export const lecture01Slides = [
     content: {
       eyebrow: 'CE and π',
       heading: 'Certainty Equivalent & Risk Premium',
-      body: 'The certainty equivalent solves u(CE) = E[u(W)]; the risk premium is π = E[W] − CE. For small fair gambles, Pratt showed π ≈ ½·A(W)·σ² — risk aversion times variance. This is why mean–variance analysis works: with quadratic utility or normal returns, only the mean and variance matter.',
+      body: 'The certainty equivalent solves $u(\\mathrm{CE}) = E[u(W)]$; the risk premium is $\\pi = E[W] - \\mathrm{CE}$. For small fair gambles, Pratt showed $\\pi \\approx \\tfrac{1}{2}\\cdot A(W)\\cdot \\sigma ^{2}$ — risk aversion times variance. This is why mean–variance analysis works: with quadratic utility or normal returns, only the mean and variance matter.',
       footnote: 'Families to know: quadratic, CRRA (power), CARA (exponential), log.',
     },
   },
@@ -57,22 +57,22 @@ export const lecture01Slides = [
     visualProps: {
       slideId: 3,
       scenario:
-        'You have log utility, u(W) = ln W. A coin flip leaves you with wealth of $50 or $150, each with probability ½.',
-      question: 'Find your certainty equivalent CE and your risk premium π.',
+        'You have log utility, $u(W) = \\ln W$. A coin flip leaves you with wealth of $50 or $150, each with probability $\\tfrac{1}{2}$.',
+      question: 'Find your certainty equivalent CE and your risk premium $\\pi$.',
       given: [
-        ['u(W)', 'ln W'],
+        ['u(W)', '$\\ln W$'],
         ['Outcomes', '$50 or $150'],
         ['Probabilities', '½ each'],
       ],
       answers: [
         { label: 'CE ($)', value: 86.6, tolerance: 0.5 },
-        { label: 'π ($)', value: 13.4, tolerance: 0.5 },
+        { label: '$\\pi$ ($)', value: 13.4, tolerance: 0.5 },
       ],
       steps: [
-        'E[W] = ½·50 + ½·150 = 100.',
-        'E[u(W)] = ½·ln 50 + ½·ln 150 = ½(3.912 + 5.011) = 4.4613.',
-        'CE = e^{4.4613} ≈ $86.60 — the sure wealth with the same utility.',
-        'π = E[W] − CE = 100 − 86.60 ≈ $13.40.',
+        '$E[W] = \\tfrac{1}{2}\\cdot 50 + \\tfrac{1}{2}\\cdot 150 = 100$.',
+        '$E[u(W)] = \\tfrac{1}{2}\\cdot \\ln 50 + \\tfrac{1}{2}\\cdot \\ln 150 = \\tfrac{1}{2}(3.912 + 5.011) = 4.4613$.',
+        '$\\mathrm{CE} = e^{4.4613}$ ≈ $86.60 — the sure wealth with the same utility.',
+        '$\\pi = E[W] - \\mathrm{CE} = 100 - 86.60 \\approx \\${}13.40$.',
       ],
     },
     narration:
@@ -122,8 +122,8 @@ export const lecture01Slides = [
     content: {
       eyebrow: 'Random variables',
       heading: 'Two Numbers That Do Most of the Work',
-      body: 'Mean and variance summarize a return distribution — and if returns are normal they summarize it completely: ±1σ covers 68.3%, ±2σ covers 95.5%. In data we only ever have estimates: the sample mean converges at rate 1/√T, so doubling precision means quadrupling the history.',
-      footnote: 'Drag μ and σ; the shaded bands are the 1σ and 2σ regions.',
+      body: 'Mean and variance summarize a return distribution — and if returns are normal they summarize it completely: $\\pm 1\\sigma$ covers 68.3%, $\\pm 2\\sigma$ covers 95.5%. In data we only ever have estimates: the sample mean converges at rate ${}1/\\sqrt{T}$, so doubling precision means quadrupling the history.',
+      footnote: 'Drag $\\mu$ and $\\sigma$; the shaded bands are the ${}1\\sigma$ and ${}2\\sigma$ regions.',
     },
   },
   {
@@ -158,21 +158,21 @@ export const lecture01Slides = [
     visualProps: {
       slideId: 7,
       scenario: 'An analyst gives you a three-state forecast for a stock\'s return next year.',
-      question: 'Compute the expected return E[r] and the standard deviation σ(r), in percent.',
+      question: 'Compute the expected return $E[r]$ and the standard deviation $\\sigma (r)$, in percent.',
       given: [
-        ['State 1', 'r = −10%, p = 0.30'],
-        ['State 2', 'r = +5%, p = 0.40'],
-        ['State 3', 'r = +20%, p = 0.30'],
+        ['State 1', '$r = -10\\%$, $p = 0.30$'],
+        ['State 2', '$r = +5\\%$, $p = 0.40$'],
+        ['State 3', '$r = +20\\%$, $p = 0.30$'],
       ],
       answers: [
-        { label: 'E[r] (%)', value: 5.0, tolerance: 0.1 },
-        { label: 'σ(r) (%)', value: 11.62, tolerance: 0.15 },
+        { label: '$E[r]$ (%)', value: 5.0, tolerance: 0.1 },
+        { label: '$\\sigma (r)$ (%)', value: 11.62, tolerance: 0.15 },
       ],
       steps: [
-        'E[r] = 0.3(−10) + 0.4(5) + 0.3(20) = −3 + 2 + 6 = 5%.',
+        '$E[r] = 0.3(-10) + 0.4(5) + 0.3(20) = -3 + 2 + 6 = 5\\%$.',
         'Deviations from the mean: −15, 0, +15.',
-        'Var = 0.3(225) + 0.4(0) + 0.3(225) = 135 (%²).',
-        'σ = √135 ≈ 11.62%.',
+        '$\\operatorname{Var} = 0.3(225) + 0.4(0) + 0.3(225) = 135 (\\%^{2})$.',
+        '$\\sigma = \\sqrt{135} \\approx 11.62\\%$.',
       ],
     },
     narration:
@@ -204,8 +204,8 @@ export const lecture01Slides = [
     content: {
       eyebrow: 'Portfolio math',
       heading: 'Weights, Portfolio Return, Covariance',
-      body: 'Weights are dollar shares that sum to one, and the portfolio return is the weighted sum of asset returns. Expected return averages linearly — but variance picks up 2w₁w₂σ₁₂, so how assets move together matters as much as how they move alone.',
-      footnote: 'Correlation ρ = σ₁₂ / (σ₁σ₂) rescales covariance to [−1, 1].',
+      body: 'Weights are dollar shares that sum to one, and the portfolio return is the weighted sum of asset returns. Expected return averages linearly — but variance picks up 2$w_{1}w_{2}\\sigma _{12}$, so how assets move together matters as much as how they move alone.',
+      footnote: 'Correlation $\\rho = \\sigma_{12}/(\\sigma_1\\sigma_2)$ rescales covariance to $[-1, 1]$.',
     },
   },
   {
@@ -223,7 +223,7 @@ export const lecture01Slides = [
     content: {
       eyebrow: 'Diversification',
       heading: 'The Only Free Lunch',
-      body: 'With two stocks of variance 0.04 held 50/50, portfolio variance is 0.02 + 0.02ρ. At ρ = +1 you gain nothing; at ρ = 0 variance is halved; at ρ = −1 risk vanishes entirely. And with N assets it is the 9,900 covariances, not the 100 variances, that set portfolio risk.',
+      body: 'With two stocks of variance 0.04 held 50/50, portfolio variance is 0.02 + 0.02ρ. At $\\rho = +1$ you gain nothing; at $\\rho = 0$ variance is halved; at $\\rho = -1$ risk vanishes entirely. And with N assets it is the 9,900 covariances, not the 100 variances, that set portfolio risk.',
       footnote: 'Diversification cuts variance. It never cuts the mean.',
     },
   },
@@ -241,17 +241,17 @@ export const lecture01Slides = [
       scenario: 'You hold 60% in stock 1 and 40% in stock 2.',
       question: 'Compute the portfolio standard deviation σ_p, in percent.',
       given: [
-        ['σ₁', '20%'],
-        ['σ₂', '10%'],
-        ['ρ₁₂', '0.30'],
-        ['Weights', 'w₁ = 0.6, w₂ = 0.4'],
+        ['$\\sigma _{1}$', '20%'],
+        ['$\\sigma _{2}$', '10%'],
+        ['$\\rho _{12}$', '0.30'],
+        ['Weights', '$w_{1} = 0.6$, $w_{2} = 0.4$'],
       ],
       answers: [{ label: 'σ_p (%)', value: 13.74, tolerance: 0.15 }],
       steps: [
-        'σ₁₂ = ρσ₁σ₂ = 0.3 × 0.20 × 0.10 = 0.006.',
-        'σ²_p = 0.36(0.04) + 0.16(0.01) + 2(0.6)(0.4)(0.006)',
-        '     = 0.0144 + 0.0016 + 0.00288 = 0.01888.',
-        'σ_p = √0.01888 ≈ 0.1374 = 13.74%.',
+        '$\\sigma _{12} = \\rho \\sigma _{1}\\sigma _{2} = 0.3 \\times 0.20 \\times 0.10 = 0.006$.',
+        '$\\sigma ^{2}_p = 0.36(0.04) + 0.16(0.01) + 2(0.6)(0.4)(0.006)$',
+        '$= 0.0144 + 0.0016 + 0.00288 = 0.01888$.',
+        '$\\sigma _p = \\sqrt{0.01888} \\approx 0.1374 = 13.74\\%$.',
       ],
     },
     narration:
@@ -283,8 +283,8 @@ export const lecture01Slides = [
     content: {
       eyebrow: 'Case 1: one risky + riskless',
       heading: 'The Capital Allocation Line',
-      body: 'Every mix of a riskless asset and one risky asset lies on a straight line: E rises with w while σ = w·σ_risky. Past w = 1 you are borrowing at the riskless rate to lever up. The slope — extra expected return per unit of risk — is the Sharpe ratio, identical at every point on the line.',
-      footnote: 'Lecture numbers: rf = 5.5%, S&P E = 7.9%, σ = 12.1%.',
+      body: 'Every mix of a riskless asset and one risky asset lies on a straight line: E rises with w while $\\sigma$ = w·σ_risky. Past $w = 1$ you are borrowing at the riskless rate to lever up. The slope — extra expected return per unit of risk — is the Sharpe ratio, identical at every point on the line.',
+      footnote: 'Lecture numbers: $r_f = 5.5\\%$, S&P $E = 7.9\\%$, $\\sigma = 12.1\\%$.',
     },
   },
   {
@@ -299,20 +299,20 @@ export const lecture01Slides = [
     visualProps: {
       slideId: 12,
       scenario:
-        'Maximizing U = E − ασ² over the weight ω in the risky asset gives the closed form ω* = (E_P − r_f) / (2ασ²_P).',
-      question: 'With the CAL numbers and risk aversion α = 2, find ω* in percent.',
+        'Maximizing U = E − $\\alpha$σ² over the weight ω in the risky asset gives the closed form ω* = (E_P − r_f) / (2ασ²_P).',
+      question: 'With the CAL numbers and risk aversion $\\alpha = 2$, find $\\omega^*$ in percent.',
       given: [
         ['E_P', '7.9%'],
         ['r_f', '5.5%'],
         ['σ_P', '12.1%'],
         ['α', '2'],
       ],
-      answers: [{ label: 'ω* (%)', value: 41.0, tolerance: 1.0 }],
+      answers: [{ label: '$\\omega^*$ (%)', value: 41.0, tolerance: 1.0 }],
       steps: [
         'Work in decimals: excess return = 0.079 − 0.055 = 0.024.',
-        'σ²_P = 0.121² = 0.014641.',
-        'ω* = 0.024 / (2 × 2 × 0.014641) = 0.024 / 0.058564 ≈ 0.410.',
-        'ω* ≈ 41% in the S&P, 59% in T-bills.',
+        '$\\sigma ^{2}_P = 0.121^{2} = 0.014641$.',
+        '$\\omega * = 0.024 / (2 \\times 2 \\times 0.014641) = 0.024 / 0.058564 \\approx 0.410$.',
+        '$\\omega^* \\approx 41\\%$ in the S&P, 59% in T-bills.',
       ],
     },
     narration:
@@ -323,7 +323,7 @@ export const lecture01Slides = [
       eyebrow: 'Your turn',
       heading: 'The Optimal Risky Share',
       problemTitle: 'Your Turn: The Optimal Risky Share',
-      footnote: 'ω* = (E_P − r_f) / (2ασ²_P). Mind the units.',
+      footnote: '$\\omega^* = (E_P - r_f)/(2\\alpha\\sigma_P^2)$. Mind the units.',
     },
   },
   {
@@ -342,8 +342,8 @@ export const lecture01Slides = [
     content: {
       eyebrow: 'Case 2: two risky assets',
       heading: 'The Curve Bends with ρ',
-      body: 'The feasible set between two risky assets is a curve whose bow depends entirely on correlation: a straight line at ρ = +1, a leftward bulge at ρ = 0, and a perfect hedge touching zero risk at ρ = −1. The leftmost point is the minimum-variance portfolio.',
-      footnote: 'Assets from the lecture: (σ = 18, E = 6) and (σ = 15, E = 12).',
+      body: 'The feasible set between two risky assets is a curve whose bow depends entirely on correlation: a straight line at $\\rho = +1$, a leftward bulge at $\\rho = 0$, and a perfect hedge touching zero risk at $\\rho = -1$. The leftmost point is the minimum-variance portfolio.',
+      footnote: 'Assets from the lecture: $(\\sigma = 18,\\ E = 6)$ and $(\\sigma = 15,\\ E = 12)$.',
     },
   },
   {
@@ -384,7 +384,7 @@ export const lecture01Slides = [
     content: {
       eyebrow: 'Efficient set mathematics',
       heading: 'The Frontier in Closed Form',
-      body: 'Minimizing W′VW subject to W′R = r_p and W′1 = 1 gives W* = V⁻¹[R 1]A⁻¹(r_p, 1)′, where A packs three scalars: a = R′V⁻¹R, b = 1′V⁻¹R, c = 1′V⁻¹1. Substituting back, the entire frontier is σ²_p = (a − 2b·r_p + c·r_p²)/(ac − b²).',
+      body: 'Minimizing W′VW subject to W′$R = r_p$ and W′1 = 1 gives $W^* = V^{-1}[R 1]A^{-1}(r_p, 1)$′, where A packs three scalars: $a = R\'V^{-1}R$, $b = \\mathbf{1}\'V^{-1}R$, $c = \\mathbf{1}\'V^{-1}\\mathbf{1}$. Substituting back, the entire frontier is $\\sigma ^{2}_p = (a - 2b\\cdot r_p + c\\cdot r_p^{2})/(ac - b^{2})$.',
       footnote: 'Three scalars — a, b, c — pin down every efficient portfolio.',
     },
   },
@@ -403,8 +403,8 @@ export const lecture01Slides = [
     content: {
       eyebrow: 'Play with the closed form',
       heading: 'Three Numbers Rule the Frontier',
-      body: 'The hyperbola redraws as you drag a, b, c. The MVP sits at r = b/c with σ = 1/√c — and it has a strange calling card: its covariance with every portfolio is the same constant, 1/c. If a candidate portfolio has equal covariance with everything, it is the MVP.',
-      footnote: 'Keep ac > b², or the frontier degenerates.',
+      body: 'The hyperbola redraws as you drag a, b, c. The MVP sits at $r = b/c$ with $\\sigma = 1/\\sqrt{c}$ — and it has a strange calling card: its covariance with every portfolio is the same constant, 1/c. If a candidate portfolio has equal covariance with everything, it is the MVP.',
+      footnote: 'Keep $ac > b^{2}$, or the frontier degenerates.',
     },
   },
   {
@@ -431,10 +431,10 @@ export const lecture01Slides = [
         { label: 'σ_MVP (%)', value: 20.0, tolerance: 0.2 },
       ],
       steps: [
-        'r_MVP = b/c = 2.0/25 = 0.08 = 8%.',
-        'σ²_MVP = 1/c = 1/25 = 0.04.',
-        'σ_MVP = √0.04 = 0.20 = 20%.',
-        'Sanity check: ac − b² = 5 − 4 = 1 > 0, so the frontier is well-defined.',
+        '$r_{MVP} = b/c = 2.0/25 = 0.08 = 8\\%$.',
+        '$\\sigma ^{2}_{MVP} = 1/c = 1/25 = 0.04$.',
+        '$\\sigma _{MVP} = \\sqrt{0.04} = 0.20 = 20\\%$.',
+        'Sanity check: $ac - b^{2} = 5 - 4 = 1 > 0$, so the frontier is well-defined.',
       ],
     },
     narration:
@@ -445,7 +445,7 @@ export const lecture01Slides = [
       eyebrow: 'Your turn',
       heading: 'Locate the MVP',
       problemTitle: 'Your Turn: Locate the MVP',
-      footnote: 'r_MVP = b/c and σ²_MVP = 1/c.',
+      footnote: '$r_{\\mathrm{MVP}} = b/c$ and $\\sigma^2_{\\mathrm{MVP}} = 1/c$.',
     },
   },
   {
@@ -527,8 +527,8 @@ export const lecture01Slides = [
     content: {
       eyebrow: 'The capstone',
       heading: 'From Tangency to the CAPM',
-      body: 'The tangency condition — equal excess return per unit of covariance — rearranges into E[rᵢ] = r_f + βᵢ(E[R_T] − r_f). With homogeneous beliefs and riskless borrowing, everyone holds T, so supply-equals-demand forces T to be the market portfolio. Risk that is priced is covariance with what everyone holds — the marginal, not the average, contribution.',
-      footnote: 'E[rᵢ] = r_f + βᵢ(E[R_M] − r_f), with βᵢ = Cov(rᵢ, R_M)/σ²(R_M).',
+      body: 'The tangency condition — equal excess return per unit of covariance — rearranges into $E[r_{i}] = r_f + \\beta _{i}(E[R_T] - r_f)$. With homogeneous beliefs and riskless borrowing, everyone holds T, so supply-equals-demand forces T to be the market portfolio. Risk that is priced is covariance with what everyone holds — the marginal, not the average, contribution.',
+      footnote: '$E[r_i] = r_f + \\beta_i($E[R_M]$ - r_f)$, with $\\beta_i = \\operatorname{Cov}(r_i, R_M)/\\sigma^2(R_M)$.',
     },
   },
   {
@@ -546,7 +546,7 @@ export const lecture01Slides = [
     content: {
       eyebrow: 'Beta space',
       heading: 'The Security Market Line',
-      body: 'In equilibrium every asset plots on the SML: expected return linear in beta, anchored at r_f and passing through the market at β = 1. An asset above the line offers positive alpha — and the buying it attracts is exactly the force that pushes it back down.',
+      body: 'In equilibrium every asset plots on the SML: expected return linear in beta, anchored at r_f and passing through the market at $\\beta = 1$. An asset above the line offers positive alpha — and the buying it attracts is exactly the force that pushes it back down.',
       footnote: 'Applications: cost of capital, fund evaluation, event studies, efficiency tests.',
     },
   },
@@ -561,7 +561,7 @@ export const lecture01Slides = [
     requireCompletion: true,
     visualProps: {
       slideId: 23,
-      scenario: 'A stock has β = 1.4. Your analyst forecasts it will return 12% next year.',
+      scenario: 'A stock has $\\beta = 1.4$. Your analyst forecasts it will return 12% next year.',
       question: 'What return does the CAPM require? (Then decide: over- or under-valued?)',
       given: [
         ['r_f', '3%'],
@@ -569,11 +569,11 @@ export const lecture01Slides = [
         ['β', '1.4'],
         ['Forecast return', '12%'],
       ],
-      answers: [{ label: 'Required E[r] (%)', value: 11.4, tolerance: 0.1 }],
+      answers: [{ label: 'Required $E[r]$ (%)', value: 11.4, tolerance: 0.1 }],
       steps: [
-        'Market risk premium: E[R_M] − r_f = 9 − 3 = 6%.',
-        'Required return: E[r] = 3 + 1.4 × 6 = 3 + 8.4 = 11.4%.',
-        'Forecast 12% > required 11.4% ⟹ α = +0.6%: the stock is undervalued.',
+        'Market risk premium: $E[R_M] - r_f = 9 - 3 = 6\\%$.',
+        'Required return: $E[r] = 3 + 1.4 \\times 6 = 3 + 8.4 = 11.4\\%$.',
+        'Forecast 12% > required ${}11.4\\% \\Rightarrow \\alpha = +0.6\\%$: the stock is undervalued.',
         'Buying pressure raises its price until the forecast return falls to the SML.',
       ],
     },
@@ -585,7 +585,7 @@ export const lecture01Slides = [
       eyebrow: 'Your turn',
       heading: 'Price an Asset with the CAPM',
       problemTitle: 'Your Turn: Price an Asset with the CAPM',
-      footnote: 'β multiplies the market risk premium (E[R_M] − r_f).',
+      footnote: '$\\beta$ multiplies the market risk premium $(E[R_M] - r_f)$.',
     },
   },
 ];

@@ -54,7 +54,7 @@ function Theory() {
       <div className="w-full rounded-xl bg-yale-50 border border-yale-100 px-3 py-2 text-[11px] text-yale-900">
         λ = E[r<sub>M</sub>]−r<sub>f</sub>−ψ = <b>{lambda.toFixed(1)}%</b> · CAPM-alpha = ψ(1−β): a β=0.5 stock earns <b className="text-emerald-700">+{aLow}%</b>, a β=1.5 stock <b className="text-rose-600">−{aLow}%</b>. {psi === 0 ? 'At ψ = 0 the two lines coincide — the CAPM is the special case of no constraints.' : 'Tighter funding ⟹ flatter line ⟹ bigger BAB prize.'}
       </div>
-      <p className="text-[11px] text-slate-500 leading-snug">1969: Fischer Black finds exactly this in Wells Fargo\u2019s data. The bank declines to trade it — \u201cthe nearly unique instance when Fischer lost his cool.\u201d Nine decades of stocks and six of bonds have kept drawing the too-flat line.</p>
+      <p className="text-[11px] text-slate-500 leading-snug">1969: Fischer Black finds exactly this in Wells Fargo’s data. The bank declines to trade it — “the nearly unique instance when Fischer lost his cool.” Nine decades of stocks and six of bonds have kept drawing the too-flat line.</p>
     </div>
   );
 }
@@ -78,7 +78,7 @@ function Evidence() {
       {tab === 'sharpe' && (
         <>
           <svg viewBox="0 0 400 140" className="w-full">
-            <text x="14" y="12" fontSize="8.5" fill="#64748b">annualized Sharpe ratio, US stocks (Frazzini\u2013Pedersen)</text>
+            <text x="14" y="12" fontSize="8.5" fill="#64748b">annualized Sharpe ratio, US stocks (Frazzini–Pedersen)</text>
             <line x1="26" y1="116" x2="390" y2="116" stroke="#94a3b8" />
             {[
               { l: 'SMB', v: 0.25, c: '#94a3b8' }, { l: 'HML', v: 0.39, c: '#94a3b8' },
@@ -92,7 +92,7 @@ function Evidence() {
             ))}
           </svg>
           <div className="w-full rounded-xl bg-yale-50 border border-yale-100 px-3 py-2 text-[11px] text-yale-900">
-            <b>BAB beats the classics</b> — long low-beta levered to β = 1, short high-beta delevered to β = 1. And it isn\u2019t a stock quirk: alphas decline in beta across Treasuries, credit, indices, FX, and commodities; anything with leverage <i>built in</i> (options, levered ETFs) earns significantly negative returns per unit of exposure.
+            <b>BAB beats the classics</b> — long low-beta levered to β = 1, short high-beta delevered to β = 1. And it isn’t a stock quirk: alphas decline in beta across Treasuries, credit, indices, FX, and commodities; anything with leverage <i>built in</i> (options, levered ETFs) earns significantly negative returns per unit of exposure.
           </div>
         </>
       )}
@@ -106,7 +106,7 @@ function Evidence() {
             <text x="262" y="118" textAnchor="middle" fontSize="8.5" fill="#e11d48" fontWeight="700">funding squeeze ⟹ BAB losses</text>
           </svg>
           <div className="w-full rounded-xl bg-amber-50 border border-amber-200 px-3 py-2 text-[11px] text-amber-900">
-            <b>Proposition 3, confirmed.</b> The two series move together: when the TED spread spikes, leveraged investors are forced to delever, and BAB — a leverage trade — loses contemporaneously. When constraints ease, the underpricing of low beta reasserts itself. The factor\u2019s losses are timed to its own mechanism.
+            <b>Proposition 3, confirmed.</b> The two series move together: when the TED spread spikes, leveraged investors are forced to delever, and BAB — a leverage trade — loses contemporaneously. When constraints ease, the underpricing of low beta reasserts itself. The factor’s losses are timed to its own mechanism.
           </div>
         </>
       )}
@@ -134,7 +134,7 @@ function Evidence() {
           </div>
         </>
       )}
-      <p className="text-[11px] text-slate-500 leading-snug">Betas illustrative of the paper\u2019s Figure — direction and ordering are the tested prediction.</p>
+      <p className="text-[11px] text-slate-500 leading-snug">Betas illustrative of the paper’s Figure — direction and ordering are the tested prediction.</p>
     </div>
   );
 }

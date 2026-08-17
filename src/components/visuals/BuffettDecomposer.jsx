@@ -37,7 +37,7 @@ export default function BuffettDecomposer() {
             <text x="200" y="143" textAnchor="middle" fontSize="8.5" fill="#64748b">— financed largely by insurance float: cheap, stable, and never subject to a margin call</text>
           </svg>
           <div className="w-full rounded-xl bg-yale-50 border border-yale-100 px-3 py-2 text-[11px] text-yale-900">
-            Berkshire\u2019s return decomposes into a weighted, levered mix of the public book and the private book. The private return is backed out of the balance-sheet identity — no guessing required. Now regress the whole thing on factors.
+            Berkshire’s return decomposes into a weighted, levered mix of the public book and the private book. The private return is backed out of the balance-sheet identity — no guessing required. Now regress the whole thing on factors.
           </div>
         </>
       )}
@@ -82,7 +82,7 @@ export default function BuffettDecomposer() {
       {tab === 'sys' && (
         <>
           <svg viewBox="0 0 400 122" className="w-full">
-            <text x="14" y="12" fontSize="8.5" fill="#64748b">cumulative return, log scale (stylized shape of the paper\u2019s figure)</text>
+            <text x="14" y="12" fontSize="8.5" fill="#64748b">cumulative return, log scale (stylized shape of the paper’s figure)</text>
             <path d="M 24 104 C 90 92, 150 74, 210 56 C 270 38, 330 26, 390 14" fill="none" stroke="#00356b" strokeWidth="2.4" />
             <path d="M 24 104 C 90 94, 150 78, 210 61 C 270 44, 330 32, 390 21" fill="none" stroke="#d97706" strokeWidth="2" strokeDasharray="6 4" />
             <path d="M 24 104 C 90 98, 150 90, 210 80 C 270 70, 330 62, 390 54" fill="none" stroke="#94a3b8" strokeWidth="1.8" strokeDasharray="2 3" />
@@ -91,11 +91,11 @@ export default function BuffettDecomposer() {
             <text x="320" y="66" fontSize="8.5" fill="#94a3b8">market, same vol</text>
           </svg>
           <div className="w-full rounded-xl bg-yale-50 border border-yale-100 px-3 py-2 text-[11px] text-yale-900">
-            A rules-based portfolio — cheap, safe, quality stocks, levered like Berkshire — <b>tracks Buffett\u2019s public book</b>. The honest reading doesn\u2019t diminish him: he identified BAB and QMJ four decades before academia named them, built a leverage source immune to margin calls, and never once got shaken out. Genius = ex-ante factor identification + implementation + discipline.
+            A rules-based portfolio — cheap, safe, quality stocks, levered like Berkshire — <b>tracks Buffett’s public book</b>. The honest reading doesn’t diminish him: he identified BAB and QMJ four decades before academia named them, built a leverage source immune to margin calls, and never once got shaken out. Genius = ex-ante factor identification + implementation + discipline.
           </div>
         </>
       )}
-      <p className="text-[11px] text-slate-500 leading-snug">Frazzini, Kabiller &amp; Pedersen, \u201cBuffett\u2019s Alpha.\u201d The most famous track record in investing, rendered as a regression you can audit.</p>
+      <p className="text-[11px] text-slate-500 leading-snug">Frazzini, Kabiller &amp; Pedersen, “Buffett’s Alpha.” The most famous track record in investing, rendered as a regression you can audit.</p>
     </div>
   );
 }

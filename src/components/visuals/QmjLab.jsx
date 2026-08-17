@@ -27,7 +27,7 @@ function Score() {
         <text x="200" y="18" textAnchor="middle" fontSize="12" fill="#0f172a" fontWeight="700">
           P/B = <tspan fill="#00356b">profitability</tspan> × <tspan fill="#7c3aed">payout</tspan> / (<tspan fill="#d97706">required return</tspan> − <tspan fill="#0f766e">growth</tspan>)
         </text>
-        <text x="200" y="42" textAnchor="middle" fontSize="9" fill="#64748b">Gordon\u2019s growth model, rewritten — the four things worth paying more for</text>
+        <text x="200" y="42" textAnchor="middle" fontSize="9" fill="#64748b">Gordon’s growth model, rewritten — the four things worth paying more for</text>
         <text x="200" y="62" textAnchor="middle" fontSize="10" fill="#0f172a" fontWeight="700">Quality = z( Profitability + Growth + Safety + Payout )</text>
       </svg>
       <div className="grid grid-cols-4 gap-1.5">
@@ -43,7 +43,7 @@ function Score() {
         <b>{COMPS[sel].k}:</b> {COMPS[sel].d} Each variable becomes a cross-sectional rank z-score, z = (r−μ)/σ, so no single accounting line dominates.
       </div>
       <div className="rounded-xl bg-amber-50 border border-amber-200 px-3 py-2 text-[11px] text-amber-900">
-        <b>The price of quality is positive — and weak.</b> Regressing price (z of market-to-book) on the quality score: the coefficient is significant in every specification, but average R² is only <b>0.05\u20130.31</b>. Three candidate explanations, each testable in returns: (a) the market uses <i>better</i> measures ⟹ ours shouldn\u2019t predict returns; (b) quality is secretly <i>risky</i> ⟹ quality stocks should act risky; (c) prices <i>underreact</i> ⟹ quality predicts returns. Next slide runs the test.
+        <b>The price of quality is positive — and weak.</b> Regressing price (z of market-to-book) on the quality score: the coefficient is significant in every specification, but average R² is only <b>0.05–0.31</b>. Three candidate explanations, each testable in returns: (a) the market uses <i>better</i> measures ⟹ ours shouldn’t predict returns; (b) quality is secretly <i>risky</i> ⟹ quality stocks should act risky; (c) prices <i>underreact</i> ⟹ quality predicts returns. Next slide runs the test.
       </div>
     </div>
   );
@@ -87,7 +87,7 @@ function Results() {
             </g>
           </svg>
           <div className="w-full rounded-xl bg-yale-50 border border-yale-100 px-3 py-2 text-[11px] text-yale-900">
-            <b>QMJ the factor:</b> 4-factor alpha <b>0.66%/mo (t = 10.2)</b> in the US, 0.45 (t = 5.5) globally, IR positive in every country but one — with <b>negative</b> MKT, SMB, and HML loadings. Safe, big, growth-like stocks earning high returns: \u201cany theory of size and value can get into trouble here.\u201d
+            <b>QMJ the factor:</b> 4-factor alpha <b>0.66%/mo (t = 10.2)</b> in the US, 0.45 (t = 5.5) globally, IR positive in every country but one — with <b>negative</b> MKT, SMB, and HML loadings. Safe, big, growth-like stocks earning high returns: “any theory of size and value can get into trouble here.”
           </div>
         </>
       )}
@@ -101,7 +101,7 @@ function Results() {
               <circle key={i} cx={200 + m * 13} cy={70 - q * 7.4} r="3" fill="#00356b" opacity="0.6" />
             ))}
             <path d="M 20 16 C 120 52, 240 76, 388 80" fill="none" stroke="#d97706" strokeWidth="2" strokeDasharray="5 4" />
-            <text x="52" y="30" fontSize="8.5" fill="#059669" fontWeight="700">crash months: QMJ\u2019s best</text>
+            <text x="52" y="30" fontSize="8.5" fill="#059669" fontWeight="700">crash months: QMJ’s best</text>
             <text x="330" y="104" fontSize="8" fill="#64748b">market return →</text>
           </svg>
           <div className="w-full rounded-xl bg-emerald-50 border border-emerald-200 px-3 py-2 text-[11px] text-emerald-900">
@@ -113,8 +113,8 @@ function Results() {
         <>
           <div className="w-full flex flex-col gap-1.5 text-[11px]">
             {[
-              ['(a) Market uses better measures', 'Then OUR measures shouldn\u2019t predict returns. They do — alpha t-stat of 10.', false],
-              ['(b) Quality is hidden risk', 'Then quality stocks should act risky. They\u2019re safer — negative beta, gains in distress.', false],
+              ['(a) Market uses better measures', 'Then OUR measures shouldn’t predict returns. They do — alpha t-stat of 10.', false],
+              ['(b) Quality is hidden risk', 'Then quality stocks should act risky. They’re safer — negative beta, gains in distress.', false],
               ['(c) Prices underreact to quality', 'Consistent with everything — including analysts, whose implied returns FALL with quality while realized returns RISE.', true],
             ].map(([h, d, win]) => (
               <div key={h} className={`rounded-lg border px-3 py-2 ${win ? 'bg-emerald-50 border-emerald-300' : 'bg-rose-50 border-rose-200 opacity-80'}`}>
@@ -124,7 +124,7 @@ function Results() {
             ))}
           </div>
           <div className="w-full rounded-xl bg-yale-50 border border-yale-100 px-3 py-2 text-[11px] text-yale-900">
-            <b>Graham\u2013Dodd over efficiency</b> — with the standing joint-hypothesis caveat. Bonus: put QMJ on the right-hand side and it <i>resurrects the size effect</i> and helps price private equity — and Warren Buffett (next slide).
+            <b>Graham–Dodd over efficiency</b> — with the standing joint-hypothesis caveat. Bonus: put QMJ on the right-hand side and it <i>resurrects the size effect</i> and helps price private equity — and Warren Buffett (next slide).
           </div>
         </>
       )}
@@ -136,10 +136,10 @@ function Verdict() {
   return (
     <div className="w-full max-w-lg flex flex-col gap-2">
       {[
-        { h: 'Profitability', d: 'One clean ratio predicts returns, insures value, and subsumes the quality zoo. Spanning alpha 2.3\u20134.6%/yr in every specification.', c: '#00356b' },
+        { h: 'Profitability', d: 'One clean ratio predicts returns, insures value, and subsumes the quality zoo. Spanning alpha 2.3–4.6%/yr in every specification.', c: '#00356b' },
         { h: 'Betting Against Beta', d: 'Leverage constraints flatten the SML in every asset class; Sharpe 0.75; losses timed to funding shocks; holdings sorted by constraint.', c: '#0f766e' },
         { h: 'Quality Minus Junk', d: 'Alpha 0.66%/mo (t 10.2) with negative risk loadings and flight-to-quality gains — the opposite shape of a risk premium.', c: '#d97706' },
-        { h: 'The synthesis', d: 'Together they recover the size effect, absorb a swath of accounting anomalies, and explain roughly half of Buffett. The lean: constraints + behavior — Graham\u2013Dodd, formalized.', c: '#7c3aed' },
+        { h: 'The synthesis', d: 'Together they recover the size effect, absorb a swath of accounting anomalies, and explain roughly half of Buffett. The lean: constraints + behavior — Graham–Dodd, formalized.', c: '#7c3aed' },
       ].map((x) => (
         <div key={x.h} className="rounded-xl border bg-white px-3 py-2 text-[11px]" style={{ borderColor: x.c }}>
           <div className="font-bold" style={{ color: x.c }}>{x.h}</div>
@@ -147,7 +147,7 @@ function Verdict() {
         </div>
       ))}
       <div className="rounded-xl bg-yale-800 text-white px-3 py-2 text-[11px]">
-        <b>The skeptic\u2019s question, teed up for Lecture 7:</b> hundreds of factors have been published and most are noise. Of 296 significant published factors, 132\u2013158 are likely false. What test would these three have to pass — and do they?
+        <b>The skeptic’s question, teed up for Lecture 7:</b> hundreds of factors have been published and most are noise. Of 296 significant published factors, 132–158 are likely false. What test would these three have to pass — and do they?
       </div>
     </div>
   );

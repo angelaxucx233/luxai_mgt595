@@ -26,8 +26,8 @@ export const lecture02Slides = [
     systemPromptContext: 'BLOCK A — Decomposition: sigma_i^2 = beta_i^2·sigma_M^2 (systematic, priced) + sigma^2(eps_i) (idiosyncratic, diversifiable, unpriced). beta = Cov(ri,RM)/Var(RM). Intuition: high-beta assets pay when the market is up — when you least need money — so they must offer high E[r]; a huge-variance zero-beta asset earns just rf because its noise washes out in a diversified portfolio. Pricing rewards co-movement with bad times, not raw volatility.',
     content: {
       eyebrow: 'Risk decomposition', heading: 'Only Covariance Gets Paid',
-      body: 'Total variance splits into β²σ²_M plus idiosyncratic variance. The second piece can be enormous — and worth nothing: held inside a diversified portfolio it averages away, so no one needs compensation to bear it. An asset with huge variance but zero market covariance is required to earn exactly the riskless rate.',
-      footnote: 'σ²ᵢ = β²ᵢσ²_M + σ²(εᵢ). Drag both dials.',
+      body: 'Total variance splits into $\\beta ^{2}\\sigma ^{2}$_M plus idiosyncratic variance. The second piece can be enormous — and worth nothing: held inside a diversified portfolio it averages away, so no one needs compensation to bear it. An asset with huge variance but zero market covariance is required to earn exactly the riskless rate.',
+      footnote: '$\\sigma^2_i = \\beta_i^2\\sigma_M^2 + \\sigma^2(\\varepsilon_i)$. Drag both dials.',
     },
   },
   {
@@ -36,17 +36,17 @@ export const lecture02Slides = [
     visual: 'QuantNumericProblem', requireCompletion: true,
     visualProps: {
       slideId: 3,
-      scenario: 'A stock has β = 1.2 against a market with σ_M = 15%. Its idiosyncratic volatility is σ(ε) = 10% (annual).',
+      scenario: 'A stock has $\\beta$ = 1.2 against a market with $\\sigma _M = 15\\%$. Its idiosyncratic volatility is $\\sigma (\\varepsilon ) = 10\\%$ (annual).',
       question: 'Find the stock\'s total volatility, and the share of its variance that is systematic.',
       given: [['β', '1.2'], ['σ_M', '15%'], ['σ(ε)', '10%']],
       answers: [
-        { label: 'Total σ (%)', value: 20.59, tolerance: 0.15 },
+        { label: 'Total $\\sigma$ (%)', value: 20.59, tolerance: 0.15 },
         { label: 'Systematic share (%)', value: 76.4, tolerance: 0.5 },
       ],
       steps: [
-        'Systematic variance = β²σ²_M = 1.44 × 225 = 324 %².',
-        'Total variance = 324 + 10² = 424 %².',
-        'Total σ = √424 ≈ 20.59%.',
+        'Systematic variance = $\\beta ^{2}\\sigma ^{2}_M = 1.44 \\times 225 = 324 \\%^{2}$.',
+        'Total variance = ${}324 + 10^{2} = 424 \\%^{2}$.',
+        '$\\text{Total} \\sigma = \\sqrt{424} \\approx 20.59\\%$.',
         'Systematic share = 324/424 ≈ 76.4%. Only this piece earns a premium.',
       ],
     },
@@ -76,8 +76,8 @@ export const lecture02Slides = [
     systemPromptContext: 'BLOCK B — EIV: beta-hat = beta + e, so cross-sectional slope gamma2-hat = Cov(r,beta)/(Var(beta)+Var(e)) — ATTENUATION toward zero as noise grows. beta-hat_i ~ N(beta_i, sigma^2(eps_i)/(T·sigmaM^2)): shrink noise via more T or diversification. Portfolios cut residual variance (tighter beta-hats) but also shrink Var(beta), the identifying spread — hence FF: sort to MAXIMIZE beta spread, then average within portfolios. Also in the toolbox: microstructure (nonsynchronous trading biases thin-stock betas; bid-ask bounce fakes negative autocorrelation) and the regression phenomenon (extreme beta-hats revert toward 1; sorting on noisy estimates picks up error).',
     content: {
       eyebrow: 'Errors in variables', heading: 'The Noisy Beta Problem',
-      body: 'The regressor is β̂ = β + noise, so the cross-sectional slope is Cov(r,β)/(Var(β) + Var(e)) — biased toward zero. Diversifying into portfolios kills the noise in β̂, but grouping carelessly also kills the beta spread you need for identification. The fix that built forty years of methodology: sort to maximize spread, then average within portfolios.',
-      footnote: 'γ̂₂ = Cov(r,β) / (Var(β) + Var(e)).',
+      body: 'The regressor is $\\beta$̂ = $\\beta$ + noise, so the cross-sectional slope is $\\operatorname{Cov}(r,\\beta )$/($\\operatorname{Var}(\\beta )$ + $\\operatorname{Var}(e)$) — biased toward zero. Diversifying into portfolios kills the noise in $\\beta$̂, but grouping carelessly also kills the beta spread you need for identification. The fix that built forty years of methodology: sort to maximize spread, then average within portfolios.',
+      footnote: '$\\hat{\\gamma}_2 = \\operatorname{Cov}(r,\\beta)/(\\operatorname{Var}(\\beta) + \\operatorname{Var}(e))$.',
     },
   },
   {
@@ -86,12 +86,12 @@ export const lecture02Slides = [
     visual: 'QuantNumericProblem', requireCompletion: true,
     visualProps: {
       slideId: 6,
-      scenario: 'The true premium slope is 0.60%/month. Across stocks, Var(β) = 0.09; beta-estimation noise contributes Var(e) = 0.09.',
+      scenario: 'The true premium slope is 0.60%/month. Across stocks, $\\operatorname{Var}(\\beta ) = 0.09$; beta-estimation noise contributes $\\operatorname{Var}(e) = 0.09$.',
       question: 'What slope should the cross-sectional regression deliver on average?',
       given: [['True slope', '0.60%/mo'], ['Var(β)', '0.09'], ['Var(e)', '0.09']],
-      answers: [{ label: 'Expected fitted slope (%/mo)', value: 0.3, tolerance: 0.02 }],
+      answers: [{ label: 'Expected fitted slope $(\\%/mo)$', value: 0.3, tolerance: 0.02 }],
       steps: [
-        'Attenuation factor = Var(β)/(Var(β)+Var(e)) = 0.09/0.18 = 0.5.',
+        'Attenuation factor = $\\operatorname{Var}(\\beta )/(\\operatorname{Var}(\\beta )+\\operatorname{Var}(e)) = 0.09/0.18 = 0.5$.',
         'Expected fitted slope = 0.60 × 0.5 = 0.30%/month.',
         'Half the premium vanishes into measurement error — the test loses power precisely against the null it wants to reject.',
       ],
@@ -123,7 +123,7 @@ export const lecture02Slides = [
     content: {
       eyebrow: 'Roll (1977) meets GRS (1989)', heading: 'One Hypothesis to Rule Them All',
       body: 'Roll\'s critique: the only genuinely testable CAPM claim is that the market portfolio is mean–variance efficient — everything else follows from it. The GRS test operationalizes exactly that: run N time-series regressions, and ask whether all the alphas are jointly zero. The quadratic form α′Σ⁻¹α turns out to equal the squared-Sharpe gap between the in-sample tangency and the market.',
-      footnote: 'J₁ = [(T−N−1)/N] · (θ²_q − θ²_m)/(1 + θ²_m) ~ F(N, T−N−1).',
+      footnote: '$J_1 = [(T{-}N{-}1)/N]\\cdot(\\theta_q^2 - \\theta_m^2)/(1 + \\theta_m^2) \\sim F(N,\\ T{-}N{-}1)$.',
     },
   },
   {
@@ -144,20 +144,20 @@ export const lecture02Slides = [
     visual: 'QuantNumericProblem', requireCompletion: true,
     visualProps: {
       slideId: 10,
-      scenario: 'Monthly data, T = 111 months, N = 10 test assets. The in-sample tangency has Sharpe θ_q = 0.25; the market has θ_m = 0.15 (monthly).',
-      question: 'Compute the GRS statistic J₁.',
+      scenario: 'Monthly data, $T = 111$ months, $N = 10$ test assets. The in-sample tangency has Sharpe $\\theta _q = 0.25$; the market has $\\theta _m = 0.15$ (monthly).',
+      question: 'Compute the GRS statistic $J_{1}$.',
       given: [['T', '111'], ['N', '10'], ['θ_q', '0.25'], ['θ_m', '0.15']],
       answers: [{ label: 'J₁', value: 0.391, tolerance: 0.01 }],
       steps: [
-        'Sharpe gap: 0.25² − 0.15² = 0.0625 − 0.0225 = 0.04.',
-        'Scale: (T−N−1)/N = 100/10 = 10.',
-        'J₁ = 10 × 0.04 / (1 + 0.0225) = 0.4/1.0225 ≈ 0.391.',
+        'Sharpe gap: ${}0.25^{2} - 0.15^{2} = 0.0625 - 0.0225 = 0.04$.',
+        'Scale: $(T-N-1)/N = 100/10 = 10$.',
+        '$J_{1} = 10 \\times 0.04 / (1 + 0.0225) = 0.4/1.0225 \\approx 0.391$.',
         'The 5% critical value of F(10,100) is ≈1.93 — we FAIL to reject. A Sharpe improvement that looks huge is statistically nothing in 111 months.',
       ],
     },
     narration: '[calm] The arithmetic is three lines. [thoughtful] The punchline is the comparison to the critical value — nine years of data cannot tell zero point two five from zero point one five.',
     systemPromptContext: 'BLOCK C PROBLEM — VERIFIED: gap 0.04; scale 10; J1 = 0.391; F(10,100) 5% crit ≈ 1.93 → fail to reject. Common errors: forgetting to SQUARE the Sharpes; using T/N instead of (T−N−1)/N; forgetting the 1+theta_m^2 denominator. Deep point if asked: this is why estimation risk (Lecture 1, Jorion) and test power are two faces of one problem — Sharpe gaps are hard to measure.',
-    content: { eyebrow: 'Your turn', heading: 'Compute a GRS Statistic', problemTitle: 'Your Turn: Compute a GRS Statistic', footnote: 'J₁ = [(T−N−1)/N]·(θ²_q − θ²_m)/(1+θ²_m).' },
+    content: { eyebrow: 'Your turn', heading: 'Compute a GRS Statistic', problemTitle: 'Your Turn: Compute a GRS Statistic', footnote: '$J_1 = [(T{-}N{-}1)/N]\\cdot(\\theta_q^2 - \\theta_m^2)/(1+\\theta_m^2)$.' },
   },
 
   // ── Block D: FF93 ──
@@ -181,7 +181,7 @@ export const lecture02Slides = [
     systemPromptContext: 'BLOCK D — 25 size×BE/ME portfolios, 7/63–12/91 (342 mo). Views: (1) mean excess returns (Table 1: rise with BE/ME, fall with size; corner value premium ≈0.6%/mo); (2) CAPM alphas (9a-ii: value column 0.5–0.57, t≈3 — CAPM misses value); (3) three-factor alphas (9a-iv: tiny everywhere EXCEPT small-growth −0.34 t=−3.16 and big-growth +0.21 t=3.27); (4) HML loadings (Table 6: monotone −0.5→+0.76 across BE/ME in every size row, |t| to 25). GRS F by model: bond-only 2.09, CAPM 1.91, SMB+HML 1.78, three-factor 1.56 (smallest), five-factor 1.66 — all reject formally, 3F wins practically; TERM/DEF absorbed by stock factors in the joint spec. Socratic: which corner survives? (small growth).',
     content: {
       eyebrow: 'FF93, touchable', heading: 'The 5×5 Grid',
-      body: 'Twenty-five portfolios, the actual published numbers. Average returns rise with book-to-market and fall with size; CAPM alphas light up the whole value column; three factors extinguish nearly everything. The residual embarrassment is the small-growth corner: α = −0.34%/month, t = −3.16 — an anomaly the model never cracked.',
+      body: 'Twenty-five portfolios, the actual published numbers. Average returns rise with book-to-market and fall with size; CAPM alphas light up the whole value column; three factors extinguish nearly everything. The residual embarrassment is the small-growth corner: $\\alpha$ = −0.34%/month, $t = -3.16$ — an anomaly the model never cracked.',
       footnote: 'GRS F: CAPM 1.91 → three-factor 1.56. Rejected, but least rejected.',
     },
   },
@@ -191,20 +191,20 @@ export const lecture02Slides = [
     visual: 'QuantNumericProblem', requireCompletion: true,
     visualProps: {
       slideId: 13,
-      scenario: 'A fund has loadings b = 1.0 on the market, s = 0.6 on SMB, h = 0.4 on HML. Annual premia: market 6%, SMB 2.5%, HML 4%.',
+      scenario: 'A fund has loadings $b = 1.0$ on the market, $s = 0.6$ on SMB, $h = 0.4$ on HML. Annual premia: market 6%, SMB 2.5%, HML 4%.',
       question: 'What expected excess return does the three-factor model require?',
-      given: [['b, s, h', '1.0, 0.6, 0.4'], ['E[Mkt−rf]', '6%'], ['E[SMB]', '2.5%'], ['E[HML]', '4%']],
+      given: [['b, s, h', '1.0, 0.6, 0.4'], ['$E[\\mathrm{Mkt}-rf]$', '6%'], ['$E[\\mathrm{SMB}]$', '2.5%'], ['$E[\\mathrm{HML}]$', '4%']],
       answers: [{ label: 'Expected excess return (%)', value: 9.1, tolerance: 0.1 }],
       steps: [
-        'Market piece: 1.0 × 6 = 6.0%.',
-        'Size piece: 0.6 × 2.5 = 1.5%.',
-        'Value piece: 0.4 × 4 = 1.6%.',
+        'Market piece: ${}1.0 \\times 6 = 6.0\\%$.',
+        'Size piece: ${}0.6 \\times 2.5 = 1.5\\%$.',
+        'Value piece: ${}0.4 \\times 4 = 1.6\\%$.',
         'Required excess return = 6 + 1.5 + 1.6 = 9.1%. (Add rf for the total.)',
       ],
     },
     narration: '[encouraging] The CAPM formula, twice more. [calm] Each loading multiplies its own premium — nothing else changes.',
     systemPromptContext: 'BLOCK D PROBLEM — VERIFIED: 6+1.5+1.6 = 9.1% excess. Common error: multiplying loadings by TOTAL factor returns rather than premia (only the market factor is stated as an excess return; SMB and HML are zero-cost spreads, already premia). Follow-up: a fund with alpha = actual − required; positive alpha after three factors is the modern bar for skill.',
-    content: { eyebrow: 'Your turn', heading: 'Price with Three Factors', problemTitle: 'Your Turn: Price with Three Factors', footnote: 'E[Rᵢ]−r_f = b·E[Mkt−r_f] + s·E[SMB] + h·E[HML].' },
+    content: { eyebrow: 'Your turn', heading: 'Price with Three Factors', problemTitle: 'Your Turn: Price with Three Factors', footnote: '$E[R_i] - r_f = b\\cdot E[\\mathrm{Mkt} - r_f] + s\\cdot E[\\mathrm{SMB}] + h\\cdot E[\\mathrm{HML}]$.' },
   },
   {
     slideId: 14, type: 'explain', title: 'What Rejecting the CAPM Buys Us',

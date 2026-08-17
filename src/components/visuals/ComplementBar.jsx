@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import MathTex from './MathTex.jsx';
 
 export default function ComplementBar() {
   const [useComplement, setUseComplement] = useState(false);
@@ -52,7 +53,7 @@ export default function ComplementBar() {
         )}
       </div>
 
-      <p className="font-mono text-xs text-slate-500">P(not A) = 1 − P(A)</p>
+      <p className="text-xs text-slate-500"><MathTex tex="P(\text{not } A) = 1 - P(A)" /></p>
     </div>
   );
 }

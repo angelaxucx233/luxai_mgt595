@@ -15,12 +15,12 @@ export default function MomentumLab({ mode = 'horizons' }) {
 }
 
 const HORIZONS = [
-  { m: 1, sr: -0.82, note: 'Short-term reversal (Jegadeesh 1990; Lehmann 1990): last month\u2019s winners lose — partly bid–ask bounce and liquidity provision.' },
+  { m: 1, sr: -0.82, note: 'Short-term reversal (Jegadeesh 1990; Lehmann 1990): last month’s winners lose — partly bid–ask bounce and liquidity provision.' },
   { m: 3, sr: 0.18, note: 'Continuation begins.' },
   { m: 6, sr: 0.46, note: 'The classic JT ranking window.' },
   { m: 12, sr: 0.58, note: 'The sweet spot — the standard UMD factor skips the most recent month and ranks on t−12:t−2.' },
   { m: 24, sr: 0.10, note: 'Profits dissipate after about a year.' },
-  { m: 36, sr: -0.42, note: 'Reversal territory — DeBondt–Thaler\u2019s horizon.' },
+  { m: 36, sr: -0.42, note: 'Reversal territory — DeBondt–Thaler’s horizon.' },
   { m: 60, sr: -0.58, note: 'Long-term losers now win: the contrarian effect from Lecture 3.' },
 ];
 
@@ -90,9 +90,9 @@ function Deciles() {
 function Decompose() {
   const [sel, setSel] = useState(2);
   const TERMS = [
-    { name: 'σ²μ — dispersion in true means', v: 0.35, sign: '+', color: '#64748b', note: 'Conrad–Kaul: if true expected returns differ permanently, past winners have higher means by construction — no predictability needed. Rejected empirically by MG and Grundy–Martin, but it\u2019s the null every decomposition must beat.' },
-    { name: 'σ²β·Cov(F,F₋₁) — factor timing', v: -0.25, sign: '−', color: '#e11d48', note: 'Betting the factor continues. But the market\u2019s own autocovariance is NEGATIVE at these horizons — this channel fights momentum. Whatever drives the profits, it isn\u2019t riding the market.' },
-    { name: 'avg Cov(εt, εt−1) — own autocovariance', v: 0.72, sign: '+', color: '#00356b', note: 'JT\u2019s verdict: delayed reaction to firm-specific news. The tell against the lead–lag alternative: skipping a week between ranking and holding should mute a lead–lag effect — profits instead GROW. Puzzle: firm-specific drift is diversifiable… so why hasn\u2019t arbitrage eaten it?' },
+    { name: 'σ²μ — dispersion in true means', v: 0.35, sign: '+', color: '#64748b', note: 'Conrad–Kaul: if true expected returns differ permanently, past winners have higher means by construction — no predictability needed. Rejected empirically by MG and Grundy–Martin, but it’s the null every decomposition must beat.' },
+    { name: 'σ²β·Cov(F,F₋₁) — factor timing', v: -0.25, sign: '−', color: '#e11d48', note: 'Betting the factor continues. But the market’s own autocovariance is NEGATIVE at these horizons — this channel fights momentum. Whatever drives the profits, it isn’t riding the market.' },
+    { name: 'avg Cov(εt, εt−1) — own autocovariance', v: 0.72, sign: '+', color: '#00356b', note: 'JT’s verdict: delayed reaction to firm-specific news. The tell against the lead–lag alternative: skipping a week between ranking and holding should mute a lead–lag effect — profits instead GROW. Puzzle: firm-specific drift is diversifiable… so why hasn’t arbitrage eaten it?' },
   ];
   const t = TERMS[sel];
   return (

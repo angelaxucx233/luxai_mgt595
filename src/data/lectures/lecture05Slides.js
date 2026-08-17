@@ -37,21 +37,21 @@ export const lecture05Slides = [
       slideId: 3,
       scenario: 'The decile table shows a winners-minus-losers spread of 1.17%/month. The Fama–French regression shows a WML three-factor alpha of 1.53%/month.',
       question: 'Annualize the spread (simple) and the alpha (compounded).',
-      given: [['Spread', '1.17%/mo'], ['3-factor α', '1.53%/mo'], ['Compound rule', '(1+m)¹² − 1']],
+      given: [['Spread', '1.17%/mo'], ['3-factor $\\alpha$', '1.53%/mo'], ['Compound rule', '$(1+m)$¹² − 1']],
       answers: [
         { label: 'Spread, simple annual (%)', value: 14.0, tolerance: 0.15 },
         { label: 'Alpha, compounded annual (%)', value: 20.0, tolerance: 0.3 },
       ],
       steps: [
-        'Simple: 1.17 × 12 = 14.0% per year.',
+        'Simple: ${}1.17 \\times 12 = 14.0\\% \\text{per} \\text{year}$.',
         'Compounded: (1.0153)¹² − 1.',
-        '1.0153² = 1.0308; ⁴ = 1.0626; ⁸ = 1.1292; ¹² = 1.1292×1.0626 ≈ 1.200.',
+        '${}1.0153^{2} = 1.0308$; $^{4} = 1.0626$; $^{8} = 1.1292$; $^{12} = 1.1292\\times 1.0626 \\approx 1.200$.',
         'Alpha ≈ 20.0% per year — on a zero-investment portfolio, after three risk factors.',
       ],
     },
     narration: '[encouraging] Twelve times for the quick answer; the twelfth power for the honest one.',
     systemPromptContext: 'BLOCK A PROBLEM — VERIFIED: 14.0% simple; (1.0153)^12−1 = 19.99% ≈ 20.0%. Common errors: compounding the 1.17 when asked for simple (14.98) or simple-annualizing the alpha (18.4). Note both conventions appear in papers — always check which a table uses.',
-    content: { eyebrow: 'Your turn', heading: 'Annualize the Anomaly', problemTitle: 'Your Turn: Annualize the Anomaly', footnote: 'Simple = ×12 · Compound = (1+m)¹²−1.' },
+    content: { eyebrow: 'Your turn', heading: 'Annualize the Anomaly', problemTitle: 'Your Turn: Annualize the Anomaly', footnote: 'Simple $= \\times 12$ · Compound $= (1+m)^{12} - 1$.' },
   },
 
   // ── Block B: sources ──
@@ -64,7 +64,7 @@ export const lecture05Slides = [
     content: {
       eyebrow: 'Where do the profits come from?', heading: 'Three Suspects, One Equation',
       body: 'Momentum profits decompose exactly: dispersion in true mean returns (no predictability needed — Conrad–Kaul\'s escape hatch), factor timing (betting the market continues — but the market\'s own autocovariance is negative, so this term fights momentum), and firm-specific autocovariance (delayed reaction to a company\'s own news — JT\'s verdict). The tell: put a week between ranking and holding, and a lead–lag story predicts weaker profits. They get stronger.',
-      footnote: 'E[π] = σ²μ + σ²β·Cov(F,F₋₁) + avg own-autocovariance.',
+      footnote: '$E[\\pi] = \\sigma^2_{\\mu} + \\sigma^2_{\\beta}\\cdot\\operatorname{Cov}(F,F_{-1}) + \\text{avg own-autocovariance}$.',
     },
   },
   {
@@ -92,7 +92,7 @@ export const lecture05Slides = [
       steps: [
         'Industry contribution = 0.43 − 0.08 = 0.35%/month.',
         'Share = 0.35 / 0.43 = 81.4%.',
-        'Four-fifths of "stock" momentum was industry momentum wearing a costume — and the residual 0.08 has t = 0.91: statistically nothing.',
+        'Four-fifths of "stock" momentum was industry momentum wearing a costume — and the residual 0.08 has $t = 0.91$: statistically nothing.',
       ],
     },
     narration: '[calm] One subtraction, one division — and most of the anomaly changes its name.',
@@ -159,9 +159,9 @@ export const lecture05Slides = [
       slideId: 11,
       scenario: 'Daniel–Moskowitz estimate WML\'s market beta at 0.05 in normal times, 0.79 lower in bear markets, and a further 0.70 lower when the bear-market month is an up month. A bear-market rebound arrives: the market gains 10% this month.',
       question: 'What is WML\'s beta in this state, and the beta-implied WML return?',
-      given: [['Normal β', '0.05'], ['Bear adjustment', '−0.79'], ['Bear-and-up adjustment', '−0.70'], ['Market this month', '+10%']],
+      given: [['Normal $\\beta$', '0.05'], ['Bear adjustment', '−0.79'], ['Bear-and-up adjustment', '−0.70'], ['Market this month', '+10%']],
       answers: [
-        { label: 'Rebound-state β', value: -1.44, tolerance: 0.02 },
+        { label: 'Rebound-state $\\beta$', value: -1.44, tolerance: 0.02 },
         { label: 'Implied WML return (%)', value: -14.4, tolerance: 0.3 },
       ],
       steps: [
@@ -172,14 +172,14 @@ export const lecture05Slides = [
     },
     narration: '[serious] The crash is not a surprise — it is a beta you can compute before it happens.',
     systemPromptContext: 'BLOCK D PROBLEM — VERIFIED: β = 0.05−0.79−0.70 = −1.44; −1.44×10 = −14.4%. Common error: applying only one adjustment (−0.74×10 = −7.4). Deep point: because the state is OBSERVABLE (past 2-yr market + volatility), the risk is forecastable — which is what the dynamic strategy exploits next slide.',
-    content: { eyebrow: 'Your turn', heading: 'Precompute a Crash', problemTitle: 'Your Turn: Precompute a Crash', footnote: 'β(state) = 0.05 − 0.79·bear − 0.70·(bear × up).' },
+    content: { eyebrow: 'Your turn', heading: 'Precompute a Crash', problemTitle: 'Your Turn: Precompute a Crash', footnote: '$\\beta(\\text{state}) = 0.05 - 0.79\\cdot\\text{bear} - 0.70\\cdot(\\text{bear}\\times\\text{up})$.' },
   },
   {
     slideId: 12, type: 'interactive', title: 'The Fix: Scale by the Forecast',
     contextLabel: 'Block D · Dynamic momentum', blockId: 'D', module: 'momentum',
     visual: 'CrashLab', visualProps: { mode: 'dynamic' },
     narration: '[excited] If the crash state is forecastable, size the position with the forecast. [clear] Constant-volatility scaling takes the Sharpe from point-five to point-nine. Scaling by the forecast Sharpe ratio takes it past one — in every market, including Japan.',
-    systemPromptContext: 'BLOCK D — Constant-vol (Barroso–Santa-Clara 2012): r_scaled = (σtgt/σ̂_{t−1})·r_WML. Dynamic (DM): w* = (1/2λ)·μ̂_{t−1}/σ̂²_{t−1} — scale by the forecast SHARPE, cutting exposure when past-2yr market is down and vol is high. REAL Sharpes 1927–2011: WML 0.52 → const-σ 0.87 → dynamic 1.12; sub-periods: 1927–50 .14/.40/.58; 1950–75 .90/1.04/1.34; 1975–2000 .93/1.09/1.39; 2000–11 .02/.22/.63. Replication (JFE Table 11): Europe .46→.89→1.13; Japan .07→.16→.42 (RESURRECTED); UK .47→.75→.89; US .28→.52→.65; commodities .59→.80; currencies .30→.65; ALL assets .75→.94→1.14, fully dynamic 1.22 (≈4× static US). Skew flips negative→positive: crashes ameliorated, not diluted; dynamic SPANS const-σ (alpha one way, zero the reverse).',
+    systemPromptContext: 'BLOCK D — Constant-vol (Barroso–Santa-Clara 2012): r_scaled = (σtgt/σ̂_{t−1})·r_WML. Dynamic (DM): w* = (1/2$\\lambda$)·$\\mu$̂_{t−1}/σ̂²_{t−1} — scale by the forecast SHARPE, cutting exposure when past-2yr market is down and vol is high. REAL Sharpes 1927–2011: WML 0.52 → const-σ 0.87 → dynamic 1.12; sub-periods: 1927–50 .14/.40/.58; 1950–75 .90/1.04/1.34; 1975–2000 .93/1.09/1.39; 2000–11 .02/.22/.63. Replication (JFE Table 11): Europe .46→.89→1.13; Japan .07→.16→.42 (RESURRECTED); UK .47→.75→.89; US .28→.52→.65; commodities .59→.80; currencies .30→.65; ALL assets .75→.94→1.14, fully dynamic 1.22 (≈4× static US). Skew flips negative→positive: crashes ameliorated, not diluted; dynamic SPANS const-σ (alpha one way, zero the reverse).',
     content: {
       eyebrow: 'Daniel–Moskowitz (2016)', heading: 'The Fix: Scale by the Forecast',
       body: 'Two one-line position rules. Constant-volatility: hold σ_target/σ̂ — shrink when volatility forecasts high. Dynamic: hold μ̂/(2λσ̂²) — shrink further when the forecast mean is low, which it reliably is after two-year market declines. The static 0.52 Sharpe becomes 0.87, then 1.12; Japan — where static momentum famously earns nothing — goes from 0.07 to 0.42; the all-asset dynamic combination reaches 1.22. And the skewness flips positive: the crashes aren\'t diluted, they\'re removed.',
@@ -194,20 +194,20 @@ export const lecture05Slides = [
       slideId: 13,
       scenario: 'Constant-vol rule: target 12% annual volatility; this month\'s forecast is σ̂ = 24%. Dynamic rule: w = μ̂/(2λσ̂²) with λ = 2, forecast mean μ̂ = 1%/month, forecast vol σ̂ = 5%/month.',
       question: 'Compute this month\'s weight under each rule.',
-      given: [['σ target', '12%'], ['σ̂ (annual)', '24%'], ['λ', '2'], ['μ̂', '0.01'], ['σ̂ (monthly)', '0.05']],
+      given: [['$\\sigma$ target', '12%'], ['$\\sigma$̂ (annual)', '24%'], ['λ', '2'], ['μ̂', '0.01'], ['$\\sigma$̂ (monthly)', '0.05']],
       answers: [
         { label: 'Constant-vol weight', value: 0.5, tolerance: 0.02 },
         { label: 'Dynamic weight', value: 1.0, tolerance: 0.05 },
       ],
       steps: [
-        'Constant-vol: w = 12/24 = 0.5 — halve the position when forecast vol doubles.',
-        'Dynamic: σ̂² = 0.0025; μ̂/σ̂² = 0.01/0.0025 = 4; w = 4/(2×2) = 1.0.',
-        'The dynamic rule also cuts w when μ̂ falls — as it does after two-year market declines. That extra channel is the entire Sharpe gap between 0.87 and 1.12.',
+        'Constant-vol: $w = 12/24 = 0.5$ — halve the position when forecast vol doubles.',
+        'Dynamic: $\\hat{\\sigma}^{2} = 0.0025$; $\\hat{\\mu}/\\hat{\\sigma}^{2} = 0.01/0.0025 = 4$; $w = 4/(2\\times 2) = 1.0$.',
+        'The dynamic rule also cuts w when $\\mu$̂ falls — as it does after two-year market declines. That extra channel is the entire Sharpe gap between 0.87 and 1.12.',
       ],
     },
     narration: '[calm] Position sizing is just the forecast, divided sensibly.',
     systemPromptContext: 'BLOCK D PROBLEM — VERIFIED: 12/24 = 0.5; 0.01/0.0025 = 4, /4 = 1.0. Common error: forgetting to square σ̂ in the dynamic rule (0.01/0.05/4 = 0.05). Extension: in a crash state with μ̂ = −0.5%/mo the dynamic weight goes NEGATIVE — the strategy briefly bets on losers, which is where much of the 2000–11 gain (0.02→0.63) comes from.',
-    content: { eyebrow: 'Your turn', heading: 'Size the Position', problemTitle: 'Your Turn: Size the Position', footnote: 'w_cv = σtgt/σ̂ · w_dyn = μ̂/(2λσ̂²).' },
+    content: { eyebrow: 'Your turn', heading: 'Size the Position', problemTitle: 'Your Turn: Size the Position', footnote: '$w_{cv} = \\sigma_{\\text{tgt}}/\\hat{\\sigma}$ · $w_{dyn} = \\hat{\\mu}/(2\\lambda\\hat{\\sigma}^2)$.' },
   },
 
   // ── Block E: family ──

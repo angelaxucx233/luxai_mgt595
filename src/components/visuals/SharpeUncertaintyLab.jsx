@@ -44,7 +44,7 @@ function Screen() {
         <text x={X(thr)} y="10" textAnchor="middle" fontSize="8.5" fill="#0f172a" fontWeight="800">screen t = {thr.toFixed(2)}</text>
         <text x={X(-1.4)} y="34" textAnchor="middle" fontSize="8.5" fill="#00356b" fontWeight="700">no real edge</text>
         <text x={X(3.15)} y="34" textAnchor="middle" fontSize="8.5" fill="#d97706" fontWeight="700">real edge</text>
-        <text x={X(2.75)} y="112" textAnchor="middle" fontSize="7.5" fill="#e11d48" fontWeight="700">\u201cdiscovered\u201d noise</text>
+        <text x={X(2.75)} y="112" textAnchor="middle" fontSize="7.5" fill="#e11d48" fontWeight="700">“discovered” noise</text>
         <text x={X(0.75)} y="112" textAnchor="middle" fontSize="7.5" fill="#b45309" fontWeight="700">real, thrown away</text>
       </svg>
       <div className="w-full flex items-center gap-2 text-[11px] text-yale-900">
@@ -90,7 +90,7 @@ function Interval() {
         <line x1={X(0)} y1="14" x2={X(0)} y2="58" stroke="#e2e8f0" />
         <line x1={Math.max(X(lo), 14)} y1="38" x2={Math.min(X(hi), 392)} y2="38" stroke={fat ? '#d97706' : '#00356b'} strokeWidth="3.5" strokeLinecap="round" />
         <circle cx={X(sr)} cy="38" r="5" fill={fat ? '#d97706' : '#00356b'} />
-        <text x={X(sr)} y="24" textAnchor="middle" fontSize="9.5" fill="#0f172a" fontWeight="800">SR\u0302 = {sr.toFixed(2)}</text>
+        <text x={X(sr)} y="24" textAnchor="middle" fontSize="9.5" fill="#0f172a" fontWeight="800">SR̂ = {sr.toFixed(2)}</text>
         <text x={Math.max(X(lo), 20)} y="52" textAnchor="middle" fontSize="8" fill="#64748b">{lo.toFixed(2)}</text>
         <text x={Math.min(X(hi), 386)} y="52" textAnchor="middle" fontSize="8" fill="#64748b">{hi.toFixed(2)}</text>
         <text x="200" y="92" textAnchor="middle" fontSize="8.5" fill="#64748b">95% confidence interval for the annualized Sharpe ratio</text>
@@ -108,12 +108,12 @@ function Interval() {
         {fat ? 'strategy B: skew −3.1, kurt 19.9 (selling insurance)' : 'strategy A: symmetric (skew 0, kurt 3) — click to sell insurance'}
       </button>
       <div className="w-full rounded-xl bg-yale-50 border border-yale-100 px-3 py-2 text-[11px] text-yale-900">
-        SE = <b>{se.toFixed(2)}</b> · 95% CI [{lo.toFixed(2)}, {hi.toFixed(2)}] · P(realized SR\u0302 &lt; 0) = <b>{pNeg.toFixed(1)}%</b>.
+        SE = <b>{se.toFixed(2)}</b> · 95% CI [{lo.toFixed(2)}, {hi.toFixed(2)}] · P(realized SR̂ &lt; 0) = <b>{pNeg.toFixed(1)}%</b>.
         {T === 60 && Math.abs(sr - 0.8) < 0.03 && (fat
-          ? ' — the deck\u2019s strategy B: same 0.80 point estimate, a 38%-wider error bar, and more than double the chance of a negative realized Sharpe.'
-          : ' — the deck\u2019s strategy A. Now click the insurance toggle: the point estimate won\u2019t move; the evidence will.')}
+          ? ' — the deck’s strategy B: same 0.80 point estimate, a 38%-wider error bar, and more than double the chance of a negative realized Sharpe.'
+          : ' — the deck’s strategy A. Now click the insurance toggle: the point estimate won’t move; the evidence will.')}
       </div>
-      <p className="text-[11px] text-slate-500 leading-snug">Var(SR\u0302) = (1/(T−1))(1 + SR²·kurt/4 − SR·skew). Negative skew and fat tails widen the interval — a smooth track record from an insurance-seller says less than it looks like it says. Jackknife the months and you\u2019ll see the same thing without any formula.</p>
+      <p className="text-[11px] text-slate-500 leading-snug">Var(SR̂) = (1/(T−1))(1 + SR²·kurt/4 − SR·skew). Negative skew and fat tails widen the interval — a smooth track record from an insurance-seller says less than it looks like it says. Jackknife the months and you’ll see the same thing without any formula.</p>
     </div>
   );
 }

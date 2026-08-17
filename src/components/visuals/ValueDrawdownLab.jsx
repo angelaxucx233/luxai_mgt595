@@ -62,7 +62,7 @@ function Patience() {
       <div className="w-full rounded-xl bg-yale-50 border border-yale-100 px-3 py-2 text-[11.5px] text-yale-900 font-mono">
         P(underperform cash, {h}yr) = Φ(−{sr.toFixed(2)}·√{h}) = <b>{p.toFixed(1)}%</b>
       </div>
-      <p className="text-[11px] text-slate-500 leading-snug">At SR = 0.4 — roughly the US market\u2019s own — you lose to cash ≈34% of years and ≈10% of decades. Every drawdown (all four value measures fell ≈−50% over 2017–20, the worst run since 1825) is either a broken premium or an ordinary draw of an unbroken one. This curve is the base rate.</p>
+      <p className="text-[11px] text-slate-500 leading-snug">At SR = 0.4 — roughly the US market’s own — you lose to cash ≈34% of years and ≈10% of decades. Every drawdown (all four value measures fell ≈−50% over 2017–20, the worst run since 1825) is either a broken premium or an ordinary draw of an unbroken one. This curve is the base rate.</p>
     </div>
   );
 }
@@ -111,7 +111,7 @@ function Spread() {
       </div>
       {checked.length === SUSPECTS.length && (
         <div className="w-full rounded-xl bg-amber-50 border border-amber-200 px-3 py-2 text-[11px] text-amber-900">
-          <b>What survives: re-pricing.</b> Justifying the 2020 spread required expensive firms to out-grow cheap ones by <b>80–110% over five years</b> — bigger than any differential ever realized. LSV\u2019s extrapolation error at full scale; last analog: 1999–2000. Recovery began Nov 2020 (post-2000 recoveries ran +75–108%); spreads in 2023–24 were still 80th–90th percentile.
+          <b>What survives: re-pricing.</b> Justifying the 2020 spread required expensive firms to out-grow cheap ones by <b>80–110% over five years</b> — bigger than any differential ever realized. LSV’s extrapolation error at full scale; last analog: 1999–2000. Recovery began Nov 2020 (post-2000 recoveries ran +75–108%); spreads in 2023–24 were still 80th–90th percentile.
         </div>
       )}
       <p className="text-[11px] text-slate-500 leading-snug">Click each suspect to put it on trial. A widening spread <i>is</i> the drawdown; a wide spread is the forward-looking setup.</p>
@@ -129,14 +129,14 @@ function Verdict() {
         </div>
         <div className="rounded-xl bg-amber-50 border border-amber-200 px-3 py-2">
           <div className="text-xs font-bold text-amber-900">Reads as risk (FF)</div>
-          <p className="text-[11px] text-amber-900/90 leading-snug">A genuine premium can go negative for a decade; in real time you can\u2019t tell a bad draw from a vanished premium; the spread could be a time-varying <i>price of risk</i>.</p>
+          <p className="text-[11px] text-amber-900/90 leading-snug">A genuine premium can go negative for a decade; in real time you can’t tell a bad draw from a vanished premium; the spread could be a time-varying <i>price of risk</i>.</p>
         </div>
       </div>
       <div className="rounded-xl bg-white border border-slate-200 px-3 py-2 text-[11px] text-slate-700">
-        <b>The commercial twin:</b> Dimensional (DFA) sells value as risk you\u2019re <i>paid to bear</i>; LSV Asset Management sells it as a <i>mistake you exploit</i>. Their portfolios are ≈<b>0.98 correlated</b> — same stocks, opposite stories. The story isn\u2019t decoration: it decides whether the client is still invested in November 2020 when the recovery starts.
+        <b>The commercial twin:</b> Dimensional (DFA) sells value as risk you’re <i>paid to bear</i>; LSV Asset Management sells it as a <i>mistake you exploit</i>. Their portfolios are ≈<b>0.98 correlated</b> — same stocks, opposite stories. The story isn’t decoration: it decides whether the client is still invested in November 2020 when the recovery starts.
       </div>
       <div className="rounded-xl bg-emerald-50 border border-emerald-200 px-3 py-2 text-[11px] text-emerald-900">
-        <b>The investor\u2019s job, either way:</b> size the exposure to <i>survive</i> the −50% stretch, treat the valuation spread (not recent returns) as the forward signal, and lean in when it\u2019s wide.
+        <b>The investor’s job, either way:</b> size the exposure to <i>survive</i> the −50% stretch, treat the valuation spread (not recent returns) as the forward signal, and lean in when it’s wide.
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import MathTex from './MathTex.jsx';
 
 /**
  * Lecture 10 — liquidity level, liquidity risk, spirals, and the course capstone.
@@ -30,7 +31,7 @@ function Pricing() {
         <div className="w-full grid grid-cols-2 gap-1.5 text-[10.5px]">
           {[
             ['Exogenous costs', 'Fees, order processing, transaction taxes — paid on every trade.'],
-            ['Demand pressure', 'Need to sell now; the buyer isn\u2019t here yet — search takes time.'],
+            ['Demand pressure', 'Need to sell now; the buyer isn’t here yet — search takes time.'],
             ['Inventory risk', 'The market maker who bridges you bears price risk, and charges.'],
             ['Private information', 'Whoever fills you might know something — adverse selection is priced in the spread.'],
             ['Search & negotiation', 'OTC: find a counterparty, then haggle — trade fast at a discount or slowly at cost.'],
@@ -46,10 +47,10 @@ function Pricing() {
         <>
           <div className="w-full rounded-xl border border-yale-200 bg-white px-3 py-2 text-center text-[12px]">
             <span className="text-slate-500">price = PV(cash flows) − PV(all future trading costs) ⟹ </span>
-            <span className="font-bold text-yale-900">E(R) = r_f + risk premium + μ·c</span>
+            <span className="font-bold text-yale-900"><MathTex tex="E(R) = r_f + \text{risk premium} + \mu c" /></span>
           </div>
           <div className="w-full rounded-xl bg-yale-50 border border-yale-100 px-3 py-2 text-[11px] text-yale-900">
-            <b>The clientele twist:</b> impatient investors crowd into liquid assets; patient investors hold the illiquid ones — and earn a premium calibrated to the <i>marginal</i> (frequent) trader\u2019s μ, more than their own amortized costs. Illiquidity is a tax on the impatient and a subsidy to patience. Fine print: with perfect borrowing everyone would just hold forever — <b>funding constraints are what make market liquidity priced at all</b>. Remember that for the spirals.
+            <b>The clientele twist:</b> impatient investors crowd into liquid assets; patient investors hold the illiquid ones — and earn a premium calibrated to the <i>marginal</i> (frequent) trader’s μ, more than their own amortized costs. Illiquidity is a tax on the impatient and a subsidy to patience. Fine print: with perfect borrowing everyone would just hold forever — <b>funding constraints are what make market liquidity priced at all</b>. Remember that for the spirals.
           </div>
         </>
       )}
@@ -57,7 +58,7 @@ function Pricing() {
         <div className="w-full flex flex-col gap-1.5 text-[11px]">
           {[
             ['On-the-run vs off-the-run Treasuries', 'Identical cash flows; the newly issued bond trades rich because it trades easily — μ·c made visible.'],
-            ['3Com / Palm (Lecture 3)', 'The \u201cimpossible\u201d stub value: shorting Palm was nearly impossible — a liquidity/shorting cost, not free money.'],
+            ['3Com / Palm (Lecture 3)', 'The “impossible” stub value: shorting Palm was nearly impossible — a liquidity/shorting cost, not free money.'],
             ['Restricted vs common shares · put-call parity', 'Same claims, different tradability, different prices — each gap is a trading-cost term, priced.'],
           ].map(([h, d]) => (
             <div key={h} className="rounded-xl border border-yale-200 bg-white px-3 py-2">
@@ -72,10 +73,10 @@ function Pricing() {
 }
 
 const BETAS = [
-  { k: 'cov(Rᵢ, Rₘ)', sign: '+', name: 'Standard market beta', d: 'The one you\u2019ve had since Lecture 1 — return co-movement with the market.', worst: 'high-beta anything', col: '#00356b' },
-  { k: 'cov(cᵢ, cₘ)', sign: '+', name: 'Commonality in liquidity', d: 'Your costs rise when everyone\u2019s do — you pay up to exit exactly when exits are crowded. Raises required return.', worst: 'assets whose spreads blow out in liquidity crunches', col: '#e11d48' },
-  { k: '−cov(Rᵢ, cₘ)', sign: '−', name: 'Return when markets seize', d: 'An asset that pays off when aggregate liquidity dries up is a hedge — investors accept less return. (Enters with a minus sign.)', worst: 'assets that crater in every liquidity event', col: '#059669' },
-  { k: '−cov(cᵢ, Rₘ)', sign: '−', name: 'Costs in down markets', d: 'Staying cheap to sell in a downturn is precious; costs that explode as prices fall must pay in advance.', worst: 'small caps, EM — spreads widen exactly in crashes', col: '#d97706' },
+  { k: '\\operatorname{cov}(R_i, R_m)', sign: '+', name: 'Standard market beta', d: 'The one you’ve had since Lecture 1 — return co-movement with the market.', worst: 'high-beta anything', col: '#00356b' },
+  { k: '\\operatorname{cov}(c_i, c_m)', sign: '+', name: 'Commonality in liquidity', d: 'Your costs rise when everyone’s do — you pay up to exit exactly when exits are crowded. Raises required return.', worst: 'assets whose spreads blow out in liquidity crunches', col: '#e11d48' },
+  { k: '-\\operatorname{cov}(R_i, c_m)', sign: '−', name: 'Return when markets seize', d: 'An asset that pays off when aggregate liquidity dries up is a hedge — investors accept less return. (Enters with a minus sign.)', worst: 'assets that crater in every liquidity event', col: '#059669' },
+  { k: '-\\operatorname{cov}(c_i, R_m)', sign: '−', name: 'Costs in down markets', d: 'Staying cheap to sell in a downturn is precious; costs that explode as prices fall must pay in advance.', worst: 'small caps, EM — spreads widen exactly in crashes', col: '#d97706' },
 ];
 
 function Lcapm() {
@@ -85,7 +86,7 @@ function Lcapm() {
     <div className="w-full max-w-lg flex flex-col gap-2.5">
       <div className="w-full rounded-xl border border-yale-200 bg-white px-3 py-2 text-center text-[11.5px]">
         <span className="text-slate-500">CAPM for what you keep: </span>
-        <span className="font-bold text-yale-900">E(R − c) = r_f + β·E(Rₘ − cₘ − r_f)</span>
+        <span className="font-bold text-yale-900"><MathTex tex="E(R - c) = r_f + \beta\, E(R_m - c_m - r_f)" /></span>
         <div className="text-[10px] text-slate-500 mt-0.5">expand the covariance and gross required returns pick up E(c) plus four betas:</div>
       </div>
       <div className="grid grid-cols-4 gap-1">
@@ -93,7 +94,7 @@ function Lcapm() {
           <button key={x.k} onClick={() => setSel(i)}
             className={`rounded-lg px-1 py-1.5 text-center border transition ${sel === i ? 'text-white' : 'bg-white text-yale-900 border-yale-200'}`}
             style={sel === i ? { background: x.col, borderColor: x.col } : {}}>
-            <div className="text-[10px] font-mono font-bold">{x.k}</div>
+            <div className="text-[10px] font-bold [&_.katex]:text-[1.15em]"><MathTex tex={x.k} /></div>
             <div className="text-[11px] font-extrabold">{x.sign}</div>
           </button>
         ))}
@@ -142,7 +143,7 @@ function Spirals() {
             <text x="200" y="108" textAnchor="middle" fontSize="8" fill="#64748b">loss spiral · margin spiral · risk-management spiral</text>
           </svg>
           <div className="w-full rounded-xl bg-yale-50 border border-yale-100 px-3 py-2 text-[11px] text-yale-900">
-            <b>Liquidity is manufactured by leveraged speculators</b> — and their leverage is the vulnerability. Funding drives market liquidity, market liquidity feeds back into margins, and one loss can turn the wheel until a new equilibrium. Corollaries you\u2019ve already met: commonality (the +cov(c,cₘ) beta), liquidity co-moving with volatility and with the market, flight to quality — and Lecture 9\u2019s carry unwinds, which are this machine running in FX.
+            <b>Liquidity is manufactured by leveraged speculators</b> — and their leverage is the vulnerability. Funding drives market liquidity, market liquidity feeds back into margins, and one loss can turn the wheel until a new equilibrium. Corollaries you’ve already met: commonality (the +cov(c,cₘ) beta), liquidity co-moving with volatility and with the market, flight to quality — and Lecture 9’s carry unwinds, which are this machine running in FX.
           </div>
         </>
       ) : (
@@ -158,7 +159,7 @@ function Spirals() {
             <circle cx="212" cy="96" r="3.5" fill="#e11d48" />
           </svg>
           <div className="w-full rounded-xl bg-amber-50 border border-amber-200 px-3 py-2 text-[11px] text-amber-900">
-            <b>Three testable signatures:</b> the decline is smooth (forced sellers exit sequentially), the rebound is <i>sudden</i> (fundamental news doesn\u2019t un-happen — only forced selling exhausts), and the resting price is lower than the start (some investors never came back). Learn the fingerprint; the next slide finds it in the wild three times.
+            <b>Three testable signatures:</b> the decline is smooth (forced sellers exit sequentially), the rebound is <i>sudden</i> (fundamental news doesn’t un-happen — only forced selling exhausts), and the resting price is lower than the start (some investors never came back). Learn the fingerprint; the next slide finds it in the wild three times.
           </div>
         </>
       )}
@@ -170,7 +171,7 @@ const CASES = [
   { k: 'Quant event · Aug 2007', d: 'Funding trouble at a few quant funds forces selling of the crowded value-momentum book. The spiral completes inside US large caps — the most liquid stocks on earth — and stays invisible to anyone not holding the long/short portfolio: indexes barely moved.', beta: 'commonality: cov(cᵢ,cₘ) — crowding is portfolio-space, not asset-space', col: '#00356b' },
   { k: 'Convertible bonds · 2005', d: 'Redemptions force convert desks to sell; converts cheapen against their own theoretical values; the cheapening causes losses, more redemptions, fired desks (Mitchell–Pedersen–Pulvino). Slow-moving capital eventually arrived — and was paid.', beta: 'return sensitivity to liquidity: cov(Rᵢ,cₘ)', col: '#0f766e' },
   { k: 'Flash crash · May 6, 2010', d: 'Between 2 and 3 PM, liquidity provision withdraws in minutes; prices carve the run-for-exit V at high frequency — smooth cascade, sudden rebound — and close lower.', beta: 'the spiral itself, at machine speed', col: '#d97706' },
-  { k: 'GFC spillover · 2007–08', d: 'Subprime credit → US quant equity → global quant books (Japan) → currency carry. Markets with no cash-flow links crash together because they share funders — Lecture 9\u2019s co-movement result at planetary scale.', beta: 'funding commonality across everything one balance sheet touches', col: '#e11d48' },
+  { k: 'GFC spillover · 2007–08', d: 'Subprime credit → US quant equity → global quant books (Japan) → currency carry. Markets with no cash-flow links crash together because they share funders — Lecture 9’s co-movement result at planetary scale.', beta: 'funding commonality across everything one balance sheet touches', col: '#e11d48' },
 ];
 
 function Crises() {

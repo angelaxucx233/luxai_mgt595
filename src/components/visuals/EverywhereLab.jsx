@@ -15,9 +15,9 @@ export default function EverywhereLab({ mode = 'map' }) {
 const CLASSES = [
   { k: 'Stocks (4 regions)', mom: 'return t−12 → t−2', val: 'book-to-price', note: 'US, UK, Japan, Continental Europe; top ~37.5% of names = 96–98% of market cap.' },
   { k: 'Country indices', mom: 'return t−12 → t−2', val: 'aggregate book-to-price', note: 'MSCI country equity indices — value and momentum on whole countries.' },
-  { k: 'Bonds', mom: 'return t−12 → t−2', val: 'real yield (yield − E[inflation])', note: '\u201cBook\u201d = cash flows discounted at expected inflation; Consensus Economics forecasts.' },
+  { k: 'Bonds', mom: 'return t−12 → t−2', val: 'real yield (yield − E[inflation])', note: '“Book” = cash flows discounted at expected inflation; Consensus Economics forecasts.' },
   { k: 'Currencies', mom: 'return t−12 → t−2', val: '5-yr excess-return reversal', note: 'Deviation from UIP over 5 years ≈ change in PPP if real rates are constant.' },
-  { k: 'Commodities', mom: 'return t−12 → t−2', val: 'spot price of 5 years ago ÷ today', note: '\u201cBook\u201d = average spot 4.5–5.5 years back — long-run reversal recast as cheapness.' },
+  { k: 'Commodities', mom: 'return t−12 → t−2', val: 'spot price of 5 years ago ÷ today', note: '“Book” = average spot 4.5–5.5 years back — long-run reversal recast as cheapness.' },
 ];
 
 function MeasureMap() {
@@ -86,14 +86,14 @@ function Results() {
       </svg>
       {s.jp ? (
         <div className="w-full rounded-xl bg-rose-50 border border-rose-200 px-3 py-2 text-[11px] text-rose-900">
-          <b>\u201cNo momentum in Japan? So what?\u201d</b> Momentum\u2019s famous Japanese failure coincides with value\u2019s <i>strongest</i> run anywhere — and with V-M correlation near −0.6, a weak momentum draw during a great value draw is exactly what the joint distribution predicts. The combo performed fine. Japan is a data point <i>for</i> the framework.
+          <b>“No momentum in Japan? So what?”</b> Momentum’s famous Japanese failure coincides with value’s <i>strongest</i> run anywhere — and with V-M correlation near −0.6, a weak momentum draw during a great value draw is exactly what the joint distribution predicts. The combo performed fine. Japan is a data point <i>for</i> the framework.
         </div>
       ) : (
         <div className="w-full rounded-xl bg-yale-50 border border-yale-100 px-3 py-2 text-[11px] text-yale-900">
-          <b>{s.k}:</b> both legs positive, combo higher than either — the pattern in every setting. The negative correlation means the combo\u2019s volatility collapses while its mean holds: the closest thing factor investing has to a free lunch.
+          <b>{s.k}:</b> both legs positive, combo higher than either — the pattern in every setting. The negative correlation means the combo’s volatility collapses while its mean holds: the closest thing factor investing has to a free lunch.
         </div>
       )}
-      <p className="text-[11px] text-slate-500 leading-snug">Bars are stylized to the paper\u2019s pattern (exact Table I values are image-only in the source deck); the deck\u2019s stated facts: positive everywhere, negative V-M correlation within every class, combo dominant, long/short legs roughly equal.</p>
+      <p className="text-[11px] text-slate-500 leading-snug">Bars are stylized to the paper’s pattern (exact Table I values are image-only in the source deck); the deck’s stated facts: positive everywhere, negative V-M correlation within every class, combo dominant, long/short legs roughly equal.</p>
     </div>
   );
 }
@@ -151,19 +151,19 @@ function Comovement() {
               <rect x="96" y="66" width="104" height="20" fill="#0f766e" rx="4" />
               <text x="90" y="80" textAnchor="end" fontSize="9" fill="#0f766e" fontWeight="800">momentum: − (t = −3.2)</text>
             </g>
-            <text x="200" y="112" textAnchor="middle" fontSize="8.5" fill="#64748b">\u201ccheap assets get cheaper during liquidity events, but trending assets do better\u201d</text>
+            <text x="200" y="112" textAnchor="middle" fontSize="8.5" fill="#64748b">“cheap assets get cheaper during liquidity events, but trending assets do better”</text>
           </svg>
           <div className="w-full rounded-xl bg-amber-50 border border-amber-200 px-3 py-2 text-[11px] text-amber-900">
-            <b>Only visible everywhere.</b> In any single market the loadings drown in noise; diversify across all of them and they emerge at |t| &gt; 3. Liquidity risk helps explain value\u2019s premium and the negative V-M correlation — but momentum earns a premium while <i>hedging</i> liquidity events, which makes it more puzzling, not less. Macro risks explain little. \u201cStill far from a full explanation.\u201d
+            <b>Only visible everywhere.</b> In any single market the loadings drown in noise; diversify across all of them and they emerge at |t| &gt; 3. Liquidity risk helps explain value’s premium and the negative V-M correlation — but momentum earns a premium while <i>hedging</i> liquidity events, which makes it more puzzling, not less. Macro risks explain little. “Still far from a full explanation.”
           </div>
         </>
       )}
       {tab === 'dyn' && (
         <div className="w-full flex flex-col gap-1.5 text-[11px]">
           {[
-            ['Summer 1998 (LTCM)', 'Liquidity risk\u2019s importance rises sharply after the LTCM crisis — the market learned what funding shocks do to these strategies.', '#00356b'],
+            ['Summer 1998 (LTCM)', 'Liquidity risk’s importance rises sharply after the LTCM crisis — the market learned what funding shocks do to these strategies.', '#00356b'],
             ['Rising correlations', 'Over time, value and momentum become more correlated across markets and with each other — consistent with common arbitrage capital trading them globally.', '#0f766e'],
-            ['Shrinking premia', 'Both become less profitable over the sample — capital chasing the published effects (McLean\u2013Pontiff\u2019s mechanism, met in Lecture 7).', '#d97706'],
+            ['Shrinking premia', 'Both become less profitable over the sample — capital chasing the published effects (McLean–Pontiff’s mechanism, met in Lecture 7).', '#d97706'],
           ].map(([h, d, c]) => (
             <div key={h} className="rounded-lg border bg-white px-3 py-2" style={{ borderColor: c }}>
               <div className="font-bold" style={{ color: c }}>{h}</div>

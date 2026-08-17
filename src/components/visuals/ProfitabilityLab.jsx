@@ -13,7 +13,7 @@ export default function ProfitabilityLab({ mode = 'map' }) {
 }
 
 const DEFS = [
-  { k: 'Profitable', d: 'Gross profits, margins, earnings — Novy-Marx\u2019s pick, and the one that survives.' },
+  { k: 'Profitable', d: 'Gross profits, margins, earnings — Novy-Marx’s pick, and the one that survives.' },
   { k: 'Safe', d: 'Low beta, low volatility, low leverage, low credit risk — the BAB dimension.' },
   { k: 'Well governed', d: 'Management quality, shareholder friendliness.' },
   { k: 'Growing', d: 'Asset growth, earnings growth over the past five years.' },
@@ -49,7 +49,7 @@ function QualityMap() {
         <text x="200" y="68" textAnchor="middle" fontSize="9" fill="#e11d48" fontWeight="700">each is implicitly SHORT the other</text>
         <text x="200" y="84" textAnchor="middle" fontSize="8.5" fill="#64748b">negatively correlated holdings ⟹ each pays off when the other bleeds: a natural hedge</text>
       </svg>
-      <p className="text-[11px] text-slate-500 leading-snug">Buffett\u2019s line is the definition: \u201cfar better to buy a wonderful business at a fair price than a fair business at a wonderful price.\u201d Quality investing is value investing where the numerator, not the denominator, does the work.</p>
+      <p className="text-[11px] text-slate-500 leading-snug">Buffett’s line is the definition: “far better to buy a wonderful business at a fair price than a fair business at a wonderful price.” Quality investing is value investing where the numerator, not the denominator, does the work.</p>
     </div>
   );
 }
@@ -62,7 +62,7 @@ function Sorts() {
   return (
     <div className="w-full max-w-lg flex flex-col items-center gap-2.5">
       <div className="flex gap-1.5">
-        {[['sorts', 'Decile sorts'], ['fm', 'Fama\u2013MacBeth']].map(([k, l]) => (
+        {[['sorts', 'Decile sorts'], ['fm', 'Fama–MacBeth']].map(([k, l]) => (
           <button key={k} onClick={() => setView(k)}
             className={`rounded-full px-3 py-1 text-[11px] font-semibold border ${view === k ? 'bg-yale-800 text-white border-yale-800' : 'bg-white text-yale-900 border-yale-200'}`}>{l}</button>
         ))}
@@ -95,7 +95,7 @@ function Sorts() {
       ) : (
         <>
           <svg viewBox="0 0 400 150" className="w-full">
-            <text x="14" y="12" fontSize="8.5" fill="#64748b">Fama\u2013MacBeth slope on gross profitability (×10²)</text>
+            <text x="14" y="12" fontSize="8.5" fill="#64748b">Fama–MacBeth slope on gross profitability (×10²)</text>
             <line x1="30" y1="120" x2="386" y2="120" stroke="#94a3b8" />
             <g>
               <rect x="90" y={120 - 0.75 * 110} width="70" height={0.75 * 110} fill="#00356b" rx="4" />
@@ -153,17 +153,17 @@ function DoubleSort() {
                 <text x={b.x + 26} y="131" textAnchor="middle" fontSize="7.5" fill="#64748b">{b.l}</text>
               </g>
             ))}
-            <text x="200" y="145" textAnchor="middle" fontSize="8.5" fill="#e11d48" fontWeight="700">controlling for each characteristic WIDENS the other\u2019s spread</text>
+            <text x="200" y="145" textAnchor="middle" fontSize="8.5" fill="#e11d48" fontWeight="700">controlling for each characteristic WIDENS the other’s spread</text>
           </svg>
           <div className="w-full rounded-xl bg-yale-50 border border-yale-100 px-3 py-2 text-[11px] text-yale-900">
-            Because quality and cheapness are negatively correlated, each hides the other in raw sorts. The joint 50/50 strategy roughly <b>doubles the Sharpe ratio</b> of either leg: 0.65\u20130.78 vs the market\u2019s 0.41 — with far shallower drawdowns.
+            Because quality and cheapness are negatively correlated, each hides the other in raw sorts. The joint 50/50 strategy roughly <b>doubles the Sharpe ratio</b> of either leg: 0.65–0.78 vs the market’s 0.41 — with far shallower drawdowns.
           </div>
         </>
       )}
       {tab === 'insure' && (
         <>
           <svg viewBox="0 0 400 130" className="w-full">
-            <text x="14" y="12" fontSize="8.5" fill="#64748b">trailing 5-yr Sharpe (stylized shape of Novy-Marx\u2019s figure)</text>
+            <text x="14" y="12" fontSize="8.5" fill="#64748b">trailing 5-yr Sharpe (stylized shape of Novy-Marx’s figure)</text>
             <line x1="20" y1="70" x2="392" y2="70" stroke="#e2e8f0" />
             <path d="M 24 60 C 80 30, 130 34, 170 24 C 220 12, 260 58, 310 88 C 340 104, 370 96, 388 84" fill="none" stroke="#00356b" strokeWidth="2.2" />
             <path d="M 24 78 C 80 96, 130 92, 170 104 C 220 116, 260 66, 310 40 C 340 26, 370 36, 388 46" fill="none" stroke="#d97706" strokeWidth="2.2" />
@@ -172,7 +172,7 @@ function DoubleSort() {
             <text x="196" y="124" textAnchor="middle" fontSize="8.5" fill="#64748b">late-1990s: profitability soars while value bleeds — and vice versa after</text>
           </svg>
           <div className="w-full rounded-xl bg-emerald-50 border border-emerald-200 px-3 py-2 text-[11px] text-emerald-900">
-            <b>Value insurance.</b> The two series are strongly negatively related: profitability\u2019s best runs are value\u2019s worst. The 50/50 mix is far more stable than either leg — this is why a growth-like factor belongs in a value shop.
+            <b>Value insurance.</b> The two series are strongly negatively related: profitability’s best runs are value’s worst. The 50/50 mix is far more stable than either leg — this is why a growth-like factor belongs in a value shop.
           </div>
         </>
       )}
@@ -180,7 +180,7 @@ function DoubleSort() {
         <>
           <div className="w-full grid grid-cols-2 gap-1.5 text-[10.5px]">
             {[
-              ['Graham\u2019s 7 criteria (1934)', 'size, liquidity, 10yr earnings, 20yr dividends, growth, P/E\u226415, P/B\u22641.5'],
+              ['Graham’s 7 criteria (1934)', 'size, liquidity, 10yr earnings, 20yr dividends, growth, P/E≤15, P/B≤1.5'],
               ['Greenblatt magic formula', 'ROIC + earnings yield (EBIT/EV), best combined ranks'],
               ['Sloan accruals (1996)', 'earnings quality — cash vs accrual earnings'],
               ['Piotroski F-score (2000)', 'nine binary financial-strength signals'],
@@ -194,7 +194,7 @@ function DoubleSort() {
             ))}
           </div>
           <div className="w-full rounded-xl bg-yale-50 border border-yale-100 px-3 py-2 text-[11px] text-yale-900">
-            <b>Spanning verdict (Novy-Marx 2014):</b> all measures have <i>some</i> power — in small caps, and with value — but only gross profitability earns significant standalone returns, and its alpha survives every spanning regression (2.34\u20134.62%/yr). It subsumes most of the others. Carry one quality signal: this one.
+            <b>Spanning verdict (Novy-Marx 2014):</b> all measures have <i>some</i> power — in small caps, and with value — but only gross profitability earns significant standalone returns, and its alpha survives every spanning regression (2.34–4.62%/yr). It subsumes most of the others. Carry one quality signal: this one.
           </div>
         </>
       )}

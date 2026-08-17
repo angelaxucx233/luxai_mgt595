@@ -62,7 +62,7 @@ function Fn() {
             {show.temp && <text x={px(5) - 4} y={py(F.temp[5]) - 6} textAnchor="end" fontSize="7.5" fill="#e11d48" fontWeight="800">10.2</text>}
           </svg>
           <div className="w-full rounded-xl bg-yale-50 border border-yale-100 px-3 py-2 text-[11px] text-yale-900">
-            <b>Two laws in one curve:</b> the <span className="text-emerald-700 font-semibold">permanent</span> component rises in a straight line (2.25 → 11.9 bp; linearity can\u2019t be rejected) — Kyle\u2019s information model. The <span className="text-rose-600 font-semibold">temporary</span> component does all the bending (0.2 → 10.2 bp; log-log slope 0.49 — a textbook square root; linearity easily rejected). The universal \u201csqrt cost model\u201d is really a statement about the price of immediacy.
+            <b>Two laws in one curve:</b> the <span className="text-emerald-700 font-semibold">permanent</span> component rises in a straight line (2.25 → 11.9 bp; linearity can’t be rejected) — Kyle’s information model. The <span className="text-rose-600 font-semibold">temporary</span> component does all the bending (0.2 → 10.2 bp; log-log slope 0.49 — a textbook square root; linearity easily rejected). The universal “sqrt cost model” is really a statement about the price of immediacy.
           </div>
         </>
       ) : (
@@ -83,7 +83,7 @@ function Fn() {
             <text x="200" y="143" textAnchor="middle" fontSize="8" fill="#64748b">% of daily trading volume</text>
           </svg>
           <div className="w-full rounded-xl bg-yale-50 border border-yale-100 px-3 py-2 text-[11px] text-yale-900">
-            <b>Where real trading lives:</b> 1.4 million of the orders — the overwhelming mass — were under half a percent of daily volume, in single-digit-bp territory on the curve. Trade duration clusters at 6\u20137 hours: the algorithms\u2019 patience is visible in the data. Capacity constraints bind eventually — but much later than the average-trade models claimed.
+            <b>Where real trading lives:</b> 1.4 million of the orders — the overwhelming mass — were under half a percent of daily volume, in single-digit-bp territory on the curve. Trade duration clusters at 6–7 hours: the algorithms’ patience is visible in the data. Capacity constraints bind eventually — but much later than the average-trade models claimed.
           </div>
         </>
       )}
@@ -107,7 +107,7 @@ function Endogeneity() {
       {tab === 'story' ? (
         <div className="w-full flex flex-col gap-1.5 text-[11px]">
           <div className="rounded-xl bg-yale-50 border border-yale-100 px-3 py-2 text-yale-900">
-            <b>The selection story:</b> traders are patient exactly when they expect impact to be high, and quick only when it\u2019s cheap — so the measured curve\u2019s right side is populated by the lucky. \u201cThe only large trades we do quickly are those with small MI, which makes the MI function <i>look</i> concave.\u201d
+            <b>The selection story:</b> traders are patient exactly when they expect impact to be high, and quick only when it’s cheap — so the measured curve’s right side is populated by the lucky. “The only large trades we do quickly are those with small MI, which makes the MI function <i>look</i> concave.”
           </div>
           <div className="grid grid-cols-2 gap-1.5">
             <div className="rounded-xl border border-emerald-300 bg-emerald-50 px-3 py-2">
@@ -120,7 +120,7 @@ function Endogeneity() {
             </div>
           </div>
           <div className="rounded-xl border border-yale-200 bg-white px-3 py-2 text-slate-600">
-            Third test: <b>volume-forecast errors.</b> Unexpected participation (%DTV you didn\u2019t choose) maps the true forced-trade function — again closer to linear. Brokers, for comparison, get <i>more</i> aggressive as orders surprise them, at an increasing rate.
+            Third test: <b>volume-forecast errors.</b> Unexpected participation (%DTV you didn’t choose) maps the true forced-trade function — again closer to linear. Brokers, for comparison, get <i>more</i> aggressive as orders surprise them, at an increasing rate.
           </div>
         </div>
       ) : (

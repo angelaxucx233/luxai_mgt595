@@ -68,9 +68,9 @@ function DoubleSort() {
         </div>
       </div>
       <div className="w-full rounded-xl bg-yale-50 border border-yale-100 px-3 py-2 text-[11px] text-yale-900">
-        <b>{p.name}:</b> glamour corner {p.glamour}%/yr, value corner {p.value}%/yr — a <b>{spread}-point</b> spread. Corner cells are LSV\u2019s published Table II returns (year-1 averages); interior cells are illustrative interpolation.
+        <b>{p.name}:</b> glamour corner {p.glamour}%/yr, value corner {p.value}%/yr — a <b>{spread}-point</b> spread. Corner cells are LSV’s published Table II returns (year-1 averages); interior cells are illustrative interpolation.
       </div>
-      <p className="text-[11px] text-slate-500 leading-snug">Cheap and boring beats expensive and exciting under every definition of \u201ccheap.\u201d Sorting on past growth too isolates the stocks the market is extrapolating hardest — and widens the gap.</p>
+      <p className="text-[11px] text-slate-500 leading-snug">Cheap and boring beats expensive and exciting under every definition of “cheap.” Sorting on past growth too isolates the stocks the market is extrapolating hardest — and widens the gap.</p>
     </div>
   );
 }
@@ -105,9 +105,9 @@ function Years() {
         <text x={X(7) + 6} y={Y(38.5) - 4} textAnchor="middle" fontSize="8" fill="#00356b" fontWeight="700">+38.5</text>
       </svg>
       <div className="w-full rounded-xl bg-yale-50 border border-yale-100 px-3 py-2 text-[11px] text-yale-900">
-        Value beats glamour in <b>{wins} of 22 years</b> — and in <b>every</b> 5-year window. The three losing years (\u201971, \u201979, \u201985) include no recession bottoms; value wins right through <b>R</b> (NBER recessions) and <b>D</b> (down-market years).
+        Value beats glamour in <b>{wins} of 22 years</b> — and in <b>every</b> 5-year window. The three losing years (’71, ’79, ’85) include no recession bottoms; value wins right through <b>R</b> (NBER recessions) and <b>D</b> (down-market years).
       </div>
-      <p className="text-[11px] text-slate-500 leading-snug">This is LSV\u2019s risk test. A premium that never concentrates its pain in bad states isn\u2019t behaving like compensation for bearing them.</p>
+      <p className="text-[11px] text-slate-500 leading-snug">This is LSV’s risk test. A premium that never concentrates its pain in bad states isn’t behaving like compensation for bearing them.</p>
     </div>
   );
 }

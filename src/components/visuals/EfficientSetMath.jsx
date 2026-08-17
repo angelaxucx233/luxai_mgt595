@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import MathTex from './MathTex.jsx';
 
 /**
  * Frontier from the fundamental scalars: sigma^2 = (a - 2b r + c r^2)/(ac - b^2).
@@ -15,12 +16,12 @@ export default function EfficientSetMath({ showDerivation = false, summaryMode =
       <div className="w-full max-w-lg grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
         <div className="rounded-xl border border-yale-200 bg-yale-50 p-4">
           <p className="font-bold text-yale-800 mb-2">MVP</p>
-          <p className="font-mono text-yale-700 text-center py-2">W = V⁻¹1 / (1′V⁻¹1)</p>
+          <p className="text-yale-700 text-center py-2"><MathTex tex="\mathbf{W} = \dfrac{V^{-1}\mathbf{1}}{\mathbf{1}'V^{-1}\mathbf{1}}" /></p>
           <p className="text-xs text-slate-600">Equal covariance with every asset: Cov(rᵢ, R_MVP) = 1/c for all i. Needs only V.</p>
         </div>
         <div className="rounded-xl border border-amber-200 bg-amber-50 p-4">
           <p className="font-bold text-amber-800 mb-2">Tangency</p>
-          <p className="font-mono text-amber-800 text-center py-2">W = V⁻¹(R − r_f1) / (1′V⁻¹(R − r_f1))</p>
+          <p className="text-amber-800 text-center py-2"><MathTex tex="\mathbf{W} = \dfrac{V^{-1}(R - r_f\mathbf{1})}{\mathbf{1}'V^{-1}(R - r_f\mathbf{1})}" /></p>
           <p className="text-xs text-slate-600">Max Sharpe. Equal (E[rᵢ] − r_f)/Cov(rᵢ, R_T) across assets. Needs V and the means.</p>
         </div>
         <div className="sm:col-span-2 rounded-xl border border-slate-200 bg-white p-3 text-xs text-slate-600 text-center">

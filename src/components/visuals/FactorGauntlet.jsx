@@ -41,7 +41,7 @@ function Gauntlet() {
       {tab === 'value' && view === 'robust' && (
         <>
           <svg viewBox="0 0 400 142" className="w-full">
-            <text x="14" y="12" fontSize="8.5" fill="#64748b">avg return %/yr, 1951\u20132014 — five constructions and the composite</text>
+            <text x="14" y="12" fontSize="8.5" fill="#64748b">avg return %/yr, 1951–2014 — five constructions and the composite</text>
             <line x1="26" y1="112" x2="392" y2="112" stroke="#94a3b8" />
             {[
               ['B/P', 3.6], ['E/P', 5.3], ['CF/P', 4.5], ['D/P', 1.8], ['LT-rev', 2.5], ['Composite', 3.5],
@@ -62,7 +62,7 @@ function Gauntlet() {
       {tab === 'value' && view === 'oos' && (
         <>
           <svg viewBox="0 0 400 138" className="w-full">
-            <text x="14" y="12" fontSize="8.5" fill="#64748b">value t-stats in and out of sample, 1/1920\u20132/2017</text>
+            <text x="14" y="12" fontSize="8.5" fill="#64748b">value t-stats in and out of sample, 1/1920–2/2017</text>
             <line x1="26" y1="112" x2="392" y2="112" stroke="#94a3b8" />
             {[
               ['US stocks · OOS', 3.62, '#00356b'], ['non-US · full', 4.49, '#0f766e'], ['non-US · OOS', 2.93, '#d97706'],
@@ -84,7 +84,7 @@ function Gauntlet() {
       {tab === 'mom' && view === 'robust' && (
         <>
           <svg viewBox="0 0 400 150" className="w-full">
-            <text x="14" y="12" fontSize="8.5" fill="#64748b">t-stats of 16 momentum constructions, 1965\u20131989 — lookback × holding period</text>
+            <text x="14" y="12" fontSize="8.5" fill="#64748b">t-stats of 16 momentum constructions, 1965–1989 — lookback × holding period</text>
             <line x1="26" y1="118" x2="392" y2="118" stroke="#94a3b8" />
             {MOM_GRID.flatMap((row, r) => row.map((v, cIdx) => {
               const i = r * 4 + cIdx;
@@ -104,14 +104,14 @@ function Gauntlet() {
             <text x="200" y="146" textAnchor="middle" fontSize="8.5" fill="#059669" fontWeight="700">15 of 16 clear t = 2 — the single failure is the 3-month/3-month cell (1.10), in grey</text>
           </svg>
           <div className="w-full rounded-xl bg-yale-50 border border-yale-100 px-3 py-2 text-[11px] text-yale-900">
-            <b>Criterion 2, passed.</b> Four look-backs × four holding periods, on a 25-year sample ending in 1989: every combination but the shortest-shortest clears t = 2. The result is a property of the <i>signal</i>, not of one formation/holding pair. Criterion 4: risk (winners\u2019 cost of capital shifts) and behavioral (underreaction, then delayed overreaction, reversing long term) stories both live.
+            <b>Criterion 2, passed.</b> Four look-backs × four holding periods, on a 25-year sample ending in 1989: every combination but the shortest-shortest clears t = 2. The result is a property of the <i>signal</i>, not of one formation/holding pair. Criterion 4: risk (winners’ cost of capital shifts) and behavioral (underreaction, then delayed overreaction, reversing long term) stories both live.
           </div>
         </>
       )}
       {tab === 'mom' && view === 'oos' && (
         <>
           <svg viewBox="0 0 400 138" className="w-full">
-            <text x="14" y="12" fontSize="8.5" fill="#64748b">momentum t-stats in and out of sample, 1/1920\u20132/2017</text>
+            <text x="14" y="12" fontSize="8.5" fill="#64748b">momentum t-stats in and out of sample, 1/1920–2/2017</text>
             <line x1="26" y1="112" x2="392" y2="112" stroke="#94a3b8" />
             {[
               ['US stocks · OOS', 2.78, '#00356b'], ['non-US · full', 4.49, '#0f766e'], ['non-US · OOS', 5.99, '#d97706'],
@@ -126,7 +126,7 @@ function Gauntlet() {
             <text x="380" y={112 - 3 * 14.5 - 4} textAnchor="end" fontSize="8" fill="#e11d48" fontWeight="700">t = 3</text>
           </svg>
           <div className="w-full rounded-xl bg-emerald-50 border border-emerald-200 px-3 py-2 text-[11px] text-emerald-900">
-            <b>The most convincing number in the lecture.</b> Momentum\u2019s non-US <i>out-of-sample</i> t-stat (5.99) exceeds its full-sample one (4.49). No selection bias, no data mining, no publication filter can manufacture strength in a sample nobody selected. Momentum did not merely survive leaving home — it got stronger.
+            <b>The most convincing number in the lecture.</b> Momentum’s non-US <i>out-of-sample</i> t-stat (5.99) exceeds its full-sample one (4.49). No selection bias, no data mining, no publication filter can manufacture strength in a sample nobody selected. Momentum did not merely survive leaving home — it got stronger.
           </div>
         </>
       )}
@@ -155,10 +155,10 @@ function Verdict() {
         <text x="200" y="137" textAnchor="middle" fontSize="8.5" fill="#d97706" fontWeight="700">≈ 90% of all factor citations sit in the first five bars</text>
       </svg>
       <div className="rounded-xl bg-yale-50 border border-yale-100 px-3 py-2 text-[11px] text-yale-900">
-        <b>Impact-weighted, the field already knows.</b> Value, size, momentum, beta, and quality dominate attention — and they are precisely the factors that clear the gauntlet. The equal-weighted index of survivors carries <b>t &gt; 11</b>: over a trillion random trials to fake, against the field\u2019s ~400. Time wasted on data-mined factors is smaller than the zoo\u2019s size suggests.
+        <b>Impact-weighted, the field already knows.</b> Value, size, momentum, beta, and quality dominate attention — and they are precisely the factors that clear the gauntlet. The equal-weighted index of survivors carries <b>t &gt; 11</b>: over a trillion random trials to fake, against the field’s ~400. Time wasted on data-mined factors is smaller than the zoo’s size suggests.
       </div>
       <div className="rounded-xl bg-yale-800 text-white px-3 py-2 text-[11.5px]">
-        <b>The rule to leave the course with:</b> before believing a factor exists, demand a t-stat ≥ 3, robustness to specification, out-of-sample evidence in time and geography, and an economic story. Then size every position so that being wrong is survivable. Most factors don\u2019t matter — <b>a few really do.</b>
+        <b>The rule to leave the course with:</b> before believing a factor exists, demand a t-stat ≥ 3, robustness to specification, out-of-sample evidence in time and geography, and an economic story. Then size every position so that being wrong is survivable. Most factors don’t matter — <b>a few really do.</b>
       </div>
       <p className="text-[11px] text-slate-500 leading-snug">Straight replication remains the harshest lens — Hou, Xue &amp; Zhang: 64% of 447 anomalies fail at 5%, 85% at t = 3 — which is exactly why the handful that passes everything is worth the entire zoo.</p>
     </div>

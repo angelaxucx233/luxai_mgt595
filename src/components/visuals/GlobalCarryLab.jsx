@@ -48,12 +48,12 @@ function Returns() {
         ))}
       </div>
       <div className="w-full rounded-xl bg-yale-50 border border-yale-100 px-3 py-2 text-[11px] text-yale-900 min-h-[48px]">
-        {sel === 8 ? <span><b>Puts, the extreme case:</b> passively <i>buying</i> index puts torches money at a −1.01 Sharpe (you\u2019re paying the insurance premium, L2/L6); sorting the same puts by carry flips it to +1.80. Carry finds which insurance is rich.</span>
+        {sel === 8 ? <span><b>Puts, the extreme case:</b> passively <i>buying</i> index puts torches money at a −1.01 Sharpe (you’re paying the insurance premium, L2/L6); sorting the same puts by carry flips it to +1.80. Carry finds which insurance is rich.</span>
           : sel === 4 ? <span><b>Commodities:</b> passive long earns almost nothing (SR 0.08) — but the carry <i>sort</i> inside commodities earns 0.60. The class average hides enormous cross-sectional predictability.</span>
           : sel === 1 ? <span><b>FI 10Y, the one exception:</b> passive long bonds (0.74) beat the carry sort (0.52) in-sample — the great bond bull market. The slope and Treasury versions still favor carry.</span>
           : <span><b>{s.k}:</b> carry {s.c.toFixed(2)} vs passive {s.e.toFixed(2)}. The expectations hypothesis — carry predicts nothing — fails here as everywhere.</span>}
       </div>
-      <p className="text-[11px] text-slate-500 leading-snug">The headline: currency carry\u2019s infamous skew (−0.68) nearly vanishes in the diversified factor (−0.02) — each class crashes on its own schedule, so the global book keeps the premium and diversifies the elevator.</p>
+      <p className="text-[11px] text-slate-500 leading-snug">The headline: currency carry’s infamous skew (−0.68) nearly vanishes in the diversified factor (−0.02) — each class crashes on its own schedule, so the global book keeps the premium and diversifies the elevator.</p>
     </div>
   );
 }
@@ -84,7 +84,7 @@ function Anatomy() {
             ))}
           </svg>
           <div className="w-full rounded-xl bg-yale-50 border border-yale-100 px-3 py-2 text-[11px] text-yale-900">
-            Split E[profit] into a <b>static tilt</b> (average weights × average returns) and a <b>dynamic part</b> (positions bigger exactly when returns are bigger). Equities: 101% dynamic — the tilt contributes <i>nothing</i>. Carry is a timing signal: live evidence that expected returns move, readable off today\u2019s term structure. Only Treasuries and credit are mostly tilts.
+            Split E[profit] into a <b>static tilt</b> (average weights × average returns) and a <b>dynamic part</b> (positions bigger exactly when returns are bigger). Equities: 101% dynamic — the tilt contributes <i>nothing</i>. Carry is a timing signal: live evidence that expected returns move, readable off today’s term structure. Only Treasuries and credit are mostly tilts.
           </div>
         </>
       )}
@@ -99,7 +99,7 @@ function Anatomy() {
             </div>
           </div>
           <div className="rounded-xl bg-yale-50 border border-yale-100 px-3 py-2 text-yale-900">
-            <b>The 1.10 Sharpe is diversification doing its work</b> — nine sleeves averaging ~0.65 each, nearly uncorrelated, is Lecture 1\u2019s formula compounding across asset classes. The same arithmetic as slide 3 of Lecture 8, one level up.
+            <b>The 1.10 Sharpe is diversification doing its work</b> — nine sleeves averaging ~0.65 each, nearly uncorrelated, is Lecture 1’s formula compounding across asset classes. The same arithmetic as slide 3 of Lecture 8, one level up.
           </div>
         </div>
       )}
@@ -172,7 +172,7 @@ function Risks() {
               </div>
               <div className="rounded-lg bg-rose-50 border border-rose-200 px-2.5 py-1.5">
                 <div className="font-bold text-rose-800">Volatility changes: −</div>
-                <div className="text-rose-700 text-[10px]">FX −1.03 (t −6.5) · FI −0.54 · comdty −0.42 — vol spikes are carry\u2019s enemy in every class…</div>
+                <div className="text-rose-700 text-[10px]">FX −1.03 (t −6.5) · FI −0.54 · comdty −0.42 — vol spikes are carry’s enemy in every class…</div>
               </div>
             </div>
             <div className="rounded-lg bg-emerald-50 border border-emerald-200 px-2.5 py-1.5 mt-1.5">
@@ -195,7 +195,7 @@ function Risks() {
             </div>
           ))}
           <div className="rounded-xl bg-yale-50 border border-yale-100 px-3 py-2 text-yale-900">
-            Forty years, exactly three drawdowns — <b>every one spans a global recession</b>. Not crash risk (global skew −0.02); recession-liquidity-volatility risk, amplified by Block B\u2019s funding spirals. A premium with a legible bill.
+            Forty years, exactly three drawdowns — <b>every one spans a global recession</b>. Not crash risk (global skew −0.02); recession-liquidity-volatility risk, amplified by Block B’s funding spirals. A premium with a legible bill.
           </div>
         </div>
       )}
@@ -215,10 +215,10 @@ function Verdict() {
         ))}
       </div>
       <div className="rounded-xl bg-yale-50 border border-yale-100 px-3 py-2 text-yale-900">
-        <b>The gauntlet, applied (L7):</b> alpha t-stats 5.5\u20136.5 ✓ · robust across nine classes and both constructions ✓ · out-of-sample every time a new class is added — and a century old in FX ✓ · two live stories: a recession-liquidity-volatility premium, plus funding-constrained amplification ✓. Carry passes.
+        <b>The gauntlet, applied (L7):</b> alpha t-stats 5.5–6.5 ✓ · robust across nine classes and both constructions ✓ · out-of-sample every time a new class is added — and a century old in FX ✓ · two live stories: a recession-liquidity-volatility premium, plus funding-constrained amplification ✓. Carry passes.
       </div>
       <div className="rounded-xl border border-amber-300 bg-amber-50 px-3 py-2 text-amber-900">
-        <b>What carry proves that nothing else in the course does:</b> expected returns vary over time and across assets, and part of that variation is <i>printed on today\u2019s screen</i> — no estimation, no history. The expectations hypothesis dies in nine asset classes simultaneously. One caveat stamped on everything: gross of trading costs. Lecture 10 sends the bill.
+        <b>What carry proves that nothing else in the course does:</b> expected returns vary over time and across assets, and part of that variation is <i>printed on today’s screen</i> — no estimation, no history. The expectations hypothesis dies in nine asset classes simultaneously. One caveat stamped on everything: gross of trading costs. Lecture 10 sends the bill.
       </div>
     </div>
   );

@@ -31,7 +31,7 @@ function Models() {
         <div className="text-xs text-slate-600 leading-snug">{m.body}</div>
         <div className="rounded-lg bg-amber-50 border border-amber-200 px-2.5 py-1.5 text-[11px] text-amber-900">{m.verdict}</div>
       </div>
-      <p className="text-[11px] text-slate-500 leading-snug">Note whose theory is on trial: covariance pricing is exactly the <b>FF risk</b> prediction. LSV\u2019s behavioral story is silent about covariances — DT\u2019s test can wound FF, not LSV.</p>
+      <p className="text-[11px] text-slate-500 leading-snug">Note whose theory is on trial: covariance pricing is exactly the <b>FF risk</b> prediction. LSV’s behavioral story is silent about covariances — DT’s test can wound FF, not LSV.</p>
     </div>
   );
 }
@@ -80,14 +80,14 @@ function Test() {
               Observed Q5−Q1 = 0.806−0.740 = 0.066 — <b>flat</b>.
             </div>
           </div>
-          <p className="text-[11px] text-slate-500 leading-snug">DT Table III, actual average row (1973–93). With the characteristic fixed, a higher distress <i>loading</i> earns nothing extra. Being value pays; co-moving like value doesn\u2019t.</p>
+          <p className="text-[11px] text-slate-500 leading-snug">DT Table III, actual average row (1973–93). With the characteristic fixed, a higher distress <i>loading</i> earns nothing extra. Being value pays; co-moving like value doesn’t.</p>
         </>
       )}
       {tab === 'replies' && (
         <div className="w-full flex flex-col gap-2">
           <div className="rounded-xl bg-rose-50 border border-rose-200 px-3 py-2 text-[11px] text-rose-900"><b>Davis–Fama–French (2000):</b> extend the window to 1927–1997 and the DT result <b>disappears</b> — the loading premium returns. The 1973–93 gap looks like a sample feature, not a law.</div>
-          <div className="rounded-xl bg-rose-50 border border-rose-200 px-3 py-2 text-[11px] text-rose-900"><b>Berk (2001), \u201cSorting Out Sorts\u201d:</b> a dependent sort (characteristic first, loading second) is biased toward failing to reject the characteristic model — use independent sorts.</div>
-          <div className="rounded-xl bg-yale-50 border border-yale-100 px-3 py-2 text-[11px] text-yale-900"><b>DT\u2019s reply:</b> the dependence is the <i>point</i> — it\u2019s the only way to hold the characteristic fixed while moving the loading; an independent sort re-confounds exactly what the test must separate.</div>
+          <div className="rounded-xl bg-rose-50 border border-rose-200 px-3 py-2 text-[11px] text-rose-900"><b>Berk (2001), “Sorting Out Sorts”:</b> a dependent sort (characteristic first, loading second) is biased toward failing to reject the characteristic model — use independent sorts.</div>
+          <div className="rounded-xl bg-yale-50 border border-yale-100 px-3 py-2 text-[11px] text-yale-900"><b>DT’s reply:</b> the dependence is the <i>point</i> — it’s the only way to hold the characteristic fixed while moving the loading; an independent sort re-confounds exactly what the test must separate.</div>
           <div className="rounded-xl bg-white border border-slate-200 px-3 py-2 text-[11px] text-slate-700"><b>And a quiet worry:</b> betas are estimated with error; characteristics are measured without. In a horse race, the error-free variable can win mechanically. Ask which stocks have precise betas — and check whether that pattern shows in the table.</div>
         </div>
       )}

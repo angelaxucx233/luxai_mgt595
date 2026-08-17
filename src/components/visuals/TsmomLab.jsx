@@ -30,8 +30,8 @@ function Definition() {
       </div>
       <div className="rounded-xl bg-yale-50 border border-yale-100 px-3 py-2 text-[11px] text-yale-900 min-h-[46px]">
         {sel === 'ts'
-          ? <span><b>Why it\u2019s the purer question:</b> the random walk says your own past return predicts nothing — TSMOM tests that head-on. And every under/over-reaction theory (BSV, DHS, Hong\u2013Stein) is a theory of <i>absolute</i> prices; none says anything about beating peers.</span>
-          : <span><b>The familiar version:</b> relative momentum can profit even if no asset trends — dispersion in means is enough. That\u2019s exactly why it can\u2019t cleanly test the random walk. The decomposition below shows how much of it was secretly time-series all along.</span>}
+          ? <span><b>Why it’s the purer question:</b> the random walk says your own past return predicts nothing — TSMOM tests that head-on. And every under/over-reaction theory (BSV, DHS, Hong–Stein) is a theory of <i>absolute</i> prices; none says anything about beating peers.</span>
+          : <span><b>The familiar version:</b> relative momentum can profit even if no asset trends — dispersion in means is enough. That’s exactly why it can’t cleanly test the random walk. The decomposition below shows how much of it was secretly time-series all along.</span>}
       </div>
       <div className="w-full overflow-hidden rounded-xl border border-yale-200 text-[10.5px]">
         <table className="w-full">
@@ -41,8 +41,8 @@ function Definition() {
             <th className="px-2 py-1.5 text-left font-semibold">Time series</th>
           </tr></thead>
           <tbody>
-            <tr className="bg-white"><td className="px-2 py-1.5 font-semibold text-slate-600">n mo → n mo</td><td className="px-2 py-1.5 text-slate-400">—</td><td className="px-2 py-1.5">\u201cAutocorrelation\u201d — Fama\u2013French \u201988, Lo\u2013MacKinlay \u201988</td></tr>
-            <tr className="bg-yale-50"><td className="px-2 py-1.5 font-semibold text-slate-600">m mo → n mo</td><td className="px-2 py-1.5">\u201cStandard momentum\u201d — JT \u201993, AMP</td><td className="px-2 py-1.5 font-bold text-yale-900">Moskowitz\u2013Ooi\u2013Pedersen ← the gap</td></tr>
+            <tr className="bg-white"><td className="px-2 py-1.5 font-semibold text-slate-600">n mo → n mo</td><td className="px-2 py-1.5 text-slate-400">—</td><td className="px-2 py-1.5">“Autocorrelation” — Fama–French ’88, Lo–MacKinlay ’88</td></tr>
+            <tr className="bg-yale-50"><td className="px-2 py-1.5 font-semibold text-slate-600">m mo → n mo</td><td className="px-2 py-1.5">“Standard momentum” — JT ’93, AMP</td><td className="px-2 py-1.5 font-bold text-yale-900">Moskowitz–Ooi–Pedersen ← the gap</td></tr>
           </tbody>
         </table>
       </div>
@@ -74,7 +74,7 @@ function Everywhere() {
         ))}
       </div>
       <svg viewBox="0 0 400 158" className="w-full">
-        <text x="14" y="12" fontSize="8.5" fill="#64748b">trend-following Sharpe by instrument, 1880\u20132017 (AQR, gross) — real data</text>
+        <text x="14" y="12" fontSize="8.5" fill="#64748b">trend-following Sharpe by instrument, 1880–2017 (AQR, gross) — real data</text>
         <line x1="22" y1="128" x2="392" y2="128" stroke="#94a3b8" />
         <line x1="22" y1={128 - 0.5 * 110} x2="392" y2={128 - 0.5 * 110} stroke="#e2e8f0" strokeDasharray="3 3" />
         <text x="16" y={128 - 0.5 * 110 + 3} textAnchor="end" fontSize="7.5" fill="#94a3b8">0.5</text>
@@ -92,23 +92,23 @@ function Everywhere() {
         {cls === 'Currencies' && <span><b>Even floating rates trend</b> — every pair positive except AUD/NZD (0.08), two economies so similar there is rarely a trend to ride.</span>}
         {cls === 'Commodities' && <span><b>Positive nearly everywhere</b>, from gas oil (0.60) to cocoa (0.08). Softs trend least — supply shocks reverse fast; energy trends most.</span>}
       </div>
-      <p className="text-[11px] text-slate-500 leading-snug">Diversified 12M TSMOM across all 58 liquid instruments: ~9\u201310% vol, large alpha to standard factors, robust across lookback/holding grids — and it subsumes cross-sectional momentum (the Lo\u2013MacKinlay decomposition traces both to the same auto-covariance).</p>
+      <p className="text-[11px] text-slate-500 leading-snug">Diversified 12M TSMOM across all 58 liquid instruments: ~9–10% vol, large alpha to standard factors, robust across lookback/holding grids — and it subsumes cross-sectional momentum (the Lo–MacKinlay decomposition traces both to the same auto-covariance).</p>
     </div>
   );
 }
 
 // REAL embedded data: ten largest 60/40 drawdowns 1880–2015, vs trend net of 2/20
 const DD = [
-  { l: 'Feb\u2013Aug 1893', p: -12.3, t: 8.6 },
-  { l: 'Oct 1906\u2013Dec 1907', p: -16.8, t: 26.5 },
-  { l: 'Dec 1916\u2013Dec 1917', p: -12.1, t: 25.6 },
-  { l: 'Sep 1929\u2013Jun 1932', p: -62.3, t: 36.1, note: 'The Great Depression: 34 months of trend to ride down.' },
-  { l: 'Mar 1937\u2013Mar 1938', p: -32.5, t: -8.1, note: 'Miss #1: a fast crash — the 12M signal never flipped short in time.' },
-  { l: 'Dec 1968\u2013Jun 1970', p: -19.9, t: 54.8 },
-  { l: 'Jan 1973\u2013Sep 1974', p: -30.6, t: 95.4, note: 'Stagflation: equities down, commodities and rates trending hard — trend\u2019s best crisis ever.' },
-  { l: 'Sep\u2013Nov 1987', p: -18.0, t: -2.4, note: 'Miss #2: the crash took one day. No trend develops in a day.' },
-  { l: 'Sep 2000\u2013Sep 2002', p: -21.2, t: 26.4 },
-  { l: 'Nov 2007\u2013Feb 2009', p: -30.5, t: 21.6, note: 'The GFC: a bear market that developed over 16 months — trend flipped short by mid-2008.' },
+  { l: 'Feb–Aug 1893', p: -12.3, t: 8.6 },
+  { l: 'Oct 1906–Dec 1907', p: -16.8, t: 26.5 },
+  { l: 'Dec 1916–Dec 1917', p: -12.1, t: 25.6 },
+  { l: 'Sep 1929–Jun 1932', p: -62.3, t: 36.1, note: 'The Great Depression: 34 months of trend to ride down.' },
+  { l: 'Mar 1937–Mar 1938', p: -32.5, t: -8.1, note: 'Miss #1: a fast crash — the 12M signal never flipped short in time.' },
+  { l: 'Dec 1968–Jun 1970', p: -19.9, t: 54.8 },
+  { l: 'Jan 1973–Sep 1974', p: -30.6, t: 95.4, note: 'Stagflation: equities down, commodities and rates trending hard — trend’s best crisis ever.' },
+  { l: 'Sep–Nov 1987', p: -18.0, t: -2.4, note: 'Miss #2: the crash took one day. No trend develops in a day.' },
+  { l: 'Sep 2000–Sep 2002', p: -21.2, t: 26.4 },
+  { l: 'Nov 2007–Feb 2009', p: -30.5, t: 21.6, note: 'The GFC: a bear market that developed over 16 months — trend flipped short by mid-2008.' },
 ];
 
 function Smile() {
@@ -117,7 +117,7 @@ function Smile() {
   return (
     <div className="w-full max-w-lg flex flex-col items-center gap-2.5">
       <svg viewBox="0 0 400 168" className="w-full">
-        <text x="14" y="12" fontSize="8.5" fill="#64748b">ten largest 60/40 drawdowns, 1880\u20132015 — 60/40 (grey) vs trend net of 2/20 (navy). Real data.</text>
+        <text x="14" y="12" fontSize="8.5" fill="#64748b">ten largest 60/40 drawdowns, 1880–2015 — 60/40 (grey) vs trend net of 2/20 (navy). Real data.</text>
         <line x1="20" y1="92" x2="392" y2="92" stroke="#94a3b8" />
         {DD.map((x, i) => (
           <g key={x.l} onClick={() => setSel(i)} className="cursor-pointer" opacity={sel === i ? 1 : 0.55}>
@@ -133,7 +133,7 @@ function Smile() {
         <b>{d.l}:</b> 60/40 {d.p.toFixed(1)}% · trend {d.t > 0 ? '+' : ''}{d.t.toFixed(1)}%.{' '}
         {d.note || 'A bear market that unfolded over months — long enough for the 12-month signal to flip short and ride it.'}
       </div>
-      <p className="text-[11px] text-slate-500 leading-snug">The \u201cTSMOM smile\u201d: regressed on market returns and squared market returns, trend shows positive convexity — best in large moves of either sign. Not crash risk, not compensation for bad times: it delivers <i>in</i> them. The failures are the fast crashes (1937, Oct 1987): no months, no trend.</p>
+      <p className="text-[11px] text-slate-500 leading-snug">The “TSMOM smile”: regressed on market returns and squared market returns, trend shows positive convexity — best in large moves of either sign. Not crash risk, not compensation for bad times: it delivers <i>in</i> them. The failures are the fast crashes (1937, Oct 1987): no months, no trend.</p>
     </div>
   );
 }
@@ -151,7 +151,7 @@ function Mechanism() {
       {tab === 'impulse' ? (
         <>
           <svg viewBox="0 0 400 132" className="w-full">
-            <text x="14" y="12" fontSize="8.5" fill="#64748b">cumulative response to a return shock (stylized shape of the paper\u2019s figure)</text>
+            <text x="14" y="12" fontSize="8.5" fill="#64748b">cumulative response to a return shock (stylized shape of the paper’s figure)</text>
             <line x1="26" y1="104" x2="392" y2="104" stroke="#94a3b8" />
             <path d="M 30 100 C 90 72, 150 48, 210 40 C 250 35, 280 40, 330 52 C 355 58, 375 62, 390 64" fill="none" stroke="#00356b" strokeWidth="2.4" />
             <line x1="210" y1="24" x2="210" y2="104" stroke="#e2e8f0" strokeDasharray="4 3" />
@@ -162,7 +162,7 @@ function Mechanism() {
             <text x="268" y="98" fontSize="8" fill="#64748b">…delayed over-reaction ends it</text>
           </svg>
           <div className="w-full rounded-xl bg-yale-50 border border-yale-100 px-3 py-2 text-[11px] text-yale-900">
-            <b>Split the futures return into spot price change + roll return</b> and the two theories separate: the <b>price-change</b> component continues and then <i>reverses</i> — over-reaction lives in prices; the <b>roll-return</b> component (the futures curve\u2019s tilt) is <i>persistent</i> and never reverses — that is hedging pressure, a payment, not a mistake. Same horizon map as Lecture 5\u2019s equity momentum.
+            <b>Split the futures return into spot price change + roll return</b> and the two theories separate: the <b>price-change</b> component continues and then <i>reverses</i> — over-reaction lives in prices; the <b>roll-return</b> component (the futures curve’s tilt) is <i>persistent</i> and never reverses — that is hedging pressure, a payment, not a mistake. Same horizon map as Lecture 5’s equity momentum.
           </div>
         </>
       ) : (
@@ -179,7 +179,7 @@ function Mechanism() {
             <text x="200" y="104" textAnchor="middle" fontSize="8.5" fill="#059669" fontWeight="700">the roll return: the fee flowing from hedgers to trend-followers</text>
           </svg>
           <div className="w-full rounded-xl bg-amber-50 border border-amber-200 px-3 py-2 text-[11px] text-amber-900">
-            Speculator positions, spot changes, and roll returns all predict TSMOM returns. The picture: trends form from slow information diffusion; speculators who ride them also absorb hedgers\u2019 inventory risk and collect the curve for it. \u201cA Trending Walk Down Wall Street.\u201d
+            Speculator positions, spot changes, and roll returns all predict TSMOM returns. The picture: trends form from slow information diffusion; speculators who ride them also absorb hedgers’ inventory risk and collect the curve for it. “A Trending Walk Down Wall Street.”
           </div>
         </>
       )}

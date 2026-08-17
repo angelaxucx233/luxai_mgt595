@@ -39,7 +39,7 @@ function Shortfall() {
         <text x="40" y="16" fontSize="8.5" fill="#64748b">one dial — patience — moves cost between the two components (total: {(exec + opp).toFixed(0)} bp)</text>
       </svg>
       <div className="w-full rounded-xl bg-yale-50 border border-yale-100 px-3 py-2 text-[11px] text-yale-900">
-        <b>The diagnosis chart:</b> shortfall low → your problem is the strategy, not the trading. Dominated by <span className="text-amber-700 font-semibold">execution</span> → slow down, supply liquidity. Dominated by <span className="text-purple-700 font-semibold">opportunity</span> → speed up and pay. A change pays off iff the component you reduce falls more than the other rises. Fast-decaying signals (reversal, news) can\u2019t wait; value can.
+        <b>The diagnosis chart:</b> shortfall low → your problem is the strategy, not the trading. Dominated by <span className="text-amber-700 font-semibold">execution</span> → slow down, supply liquidity. Dominated by <span className="text-purple-700 font-semibold">opportunity</span> → speed up and pay. A change pays off iff the component you reduce falls more than the other rises. Fast-decaying signals (reversal, news) can’t wait; value can.
       </div>
       <p className="text-[11px] text-slate-500 leading-snug">Paper portfolio: fills any size at the bid-ask midpoint, instantly. Everything your fund loses to that ideal — spreads, impact, and the trades you never got — is the shortfall. E(TC) = f(order size, speed, volume, volatility, float, date…).</p>
     </div>
@@ -73,13 +73,13 @@ function Literature() {
             </table>
           </div>
           <div className="w-full rounded-xl bg-amber-50 border border-amber-200 px-3 py-2 text-[11px] text-amber-900">
-            <b>The literature\u2019s verdict:</b> spreads alone drag momentum 1.4\u20133%/yr, price impact caps its capacity — most anomalies significantly bound by costs. <b>The buried assumptions:</b> you demand liquidity, all at once, at the <i>average</i> TAQ trade\u2019s price — and the average trade includes the informed, the impatient, and the panicked. Whether an arbitrageur pays that is the next slide\u2019s question.
+            <b>The literature’s verdict:</b> spreads alone drag momentum 1.4–3%/yr, price impact caps its capacity — most anomalies significantly bound by costs. <b>The buried assumptions:</b> you demand liquidity, all at once, at the <i>average</i> TAQ trade’s price — and the average trade includes the informed, the impatient, and the panicked. Whether an arbitrageur pays that is the next slide’s question.
           </div>
         </>
       ) : (
         <>
           <svg viewBox="0 0 400 108" className="w-full">
-            <text x="14" y="12" fontSize="8.5" fill="#64748b">one-way trading costs over the century (stylized shape of Jones\u2019s figure)</text>
+            <text x="14" y="12" fontSize="8.5" fill="#64748b">one-way trading costs over the century (stylized shape of Jones’s figure)</text>
             <line x1="30" y1="88" x2="390" y2="88" stroke="#94a3b8" />
             <path d="M 36 34 C 100 40, 150 36, 200 48 C 260 62, 320 76, 384 82" fill="none" stroke="#00356b" strokeWidth="2.4" />
             <text x="60" y="28" fontSize="8" fill="#64748b">fixed commissions era</text>
@@ -88,7 +88,7 @@ function Literature() {
             <text x="60" y="100" fontSize="8" fill="#94a3b8">1900</text>
           </svg>
           <div className="w-full rounded-xl bg-yale-50 border border-yale-100 px-3 py-2 text-[11px] text-yale-900">
-            Costs collapsed; turnover answered — NYSE daily turnover ran 54% in 1994 and 99% by 2004. Cheaper trading doesn\u2019t reduce total spend; it reprices <i>which strategies exist</i>. Grossman\u2013Stiglitz again: the cost of correcting sets how much mispricing survives.
+            Costs collapsed; turnover answered — NYSE daily turnover ran 54% in 1994 and 99% by 2004. Cheaper trading doesn’t reduce total spend; it reprices <i>which strategies exist</i>. Grossman–Stiglitz again: the cost of correcting sets how much mispricing survives.
           </div>
         </>
       )}
@@ -116,7 +116,7 @@ function Anatomy() {
         ))}
       </div>
       <svg viewBox="0 0 400 134" className="w-full">
-        <text x="14" y="12" fontSize="8.5" fill="#64748b">price around a buy order (the deck\u2019s worked example — real averages)</text>
+        <text x="14" y="12" fontSize="8.5" fill="#64748b">price around a buy order (the deck’s worked example — real averages)</text>
         <line x1="30" y1="104" x2="390" y2="104" stroke="#94a3b8" />
         <line x1="30" y1="104" x2="120" y2="104" stroke="#00356b" strokeWidth="2.2" />
         {phase >= 1 && <path d="M 120 104 C 160 96, 200 82, 250 78" fill="none" stroke="#d97706" strokeWidth="2.4" />}
@@ -137,7 +137,7 @@ function Anatomy() {
         <defs><marker id="aArr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#334155" /></marker></defs>
       </svg>
       <div className="w-full rounded-xl bg-yale-50 border border-yale-100 px-3 py-2 text-[11px] text-yale-900">
-        {phase === 0 && <span><b>Formation:</b> the model picks the trade at price P_theory. The algorithms can\u2019t choose <i>whether</i> to trade — only how patiently (mostly within a day) — which is what makes these costs interpretable as exogenous.</span>}
+        {phase === 0 && <span><b>Formation:</b> the model picks the trade at price P_theory. The algorithms can’t choose <i>whether</i> to trade — only how patiently (mostly within a day) — which is what makes these costs interpretable as exogenous.</span>}
         {phase === 1 && <span><b>Execution:</b> orders are sliced, randomized, and worked with <i>liquidity-providing</i> limit orders — buy at the bid or below, sell at the ask or above. The price drifts against the order as it fills.</span>}
         {phase === 2 && <span><b>Completed:</b> the price partially reverses. What remains — <b>8.5 bp</b> — is permanent impact: the market genuinely repriced. The <b>2.5 bp</b> that decays was the rent on immediacy. Total: <b>11 bp</b> per average trade.</span>}
       </div>
@@ -149,13 +149,13 @@ function Verdict() {
   return (
     <div className="w-full max-w-lg flex flex-col gap-1.5 text-[11px]">
       <div className="rounded-xl border-2 border-yale-800 bg-yale-50 px-3 py-2 text-center">
-        <span className="text-[15px] font-extrabold text-yale-900">Realized costs ≈ 1/10 of the literature\u2019s estimates</span>
+        <span className="text-[15px] font-extrabold text-yale-900">Realized costs ≈ 1/10 of the literature’s estimates</span>
         <div className="text-[10px] text-slate-500">break-even capacities many times larger — measured, not modeled, on $1.7T of live trades</div>
       </div>
       <div className="grid grid-cols-2 gap-1.5">
         <div className="rounded-xl border border-emerald-300 bg-emerald-50 px-3 py-2">
           <div className="font-bold text-emerald-800">Survive at scale</div>
-          <div className="text-emerald-700 mt-0.5">Size · Value · Momentum — net returns positive at institutional capacity, using actual dollars traded and realized costs. \u201cNo estimation here.\u201d</div>
+          <div className="text-emerald-700 mt-0.5">Size · Value · Momentum — net returns positive at institutional capacity, using actual dollars traded and realized costs. “No estimation here.”</div>
         </div>
         <div className="rounded-xl border border-rose-300 bg-rose-50 px-3 py-2">
           <div className="font-bold text-rose-800">Casualty</div>
@@ -164,10 +164,10 @@ function Verdict() {
       </div>
       <div className="rounded-xl border border-yale-200 bg-white px-3 py-2">
         <div className="font-bold text-yale-900">Why the literature was 10× too high</div>
-        <div className="text-slate-600 mt-0.5">1) The <b>average trade\u2019s</b> cost ≠ a patient arbitrageur\u2019s cost — averages include the informed and the panicked. 2) Portfolios and execution can be designed <b>endogenously to costs</b>: supply liquidity, slice, wait.</div>
+        <div className="text-slate-600 mt-0.5">1) The <b>average trade’s</b> cost ≠ a patient arbitrageur’s cost — averages include the informed and the panicked. 2) Portfolios and execution can be designed <b>endogenously to costs</b>: supply liquidity, slice, wait.</div>
       </div>
       <div className="rounded-xl bg-yale-50 border border-yale-100 px-3 py-2 text-yale-900">
-        <b>The constructive tool:</b> optimize against E(TC) subject to tracking error to the paper factor — tiny tolerated style drift buys large gains in net Sharpe and capacity. Build the portfolio net of costs; don\u2019t bill the paper portfolio afterwards. And the L7 reconciliation: Chen\u2013Welch\u2019s thin gross edge and FIM\u2019s cheap trading are both true — anomalies were arbitraged <i>toward</i> the cost boundary, and the boundary sits 10× lower than academics assumed.
+        <b>The constructive tool:</b> optimize against E(TC) subject to tracking error to the paper factor — tiny tolerated style drift buys large gains in net Sharpe and capacity. Build the portfolio net of costs; don’t bill the paper portfolio afterwards. And the L7 reconciliation: Chen–Welch’s thin gross edge and FIM’s cheap trading are both true — anomalies were arbitraged <i>toward</i> the cost boundary, and the boundary sits 10× lower than academics assumed.
       </div>
     </div>
   );

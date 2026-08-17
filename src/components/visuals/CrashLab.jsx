@@ -73,8 +73,8 @@ function Anatomy() {
 }
 
 const BETA_STATES = [
-  { id: 'normal', name: 'Normal market', loser: 1.2, winner: 1.0, wml: 0.05, note: 'In calm times winners and losers have similar market exposure — WML is nearly beta-neutral (β ≈ 0.05), which is why the CAPM can\u2019t explain the premium.' },
-  { id: 'bear', name: 'Bear market', loser: 2.0, winner: 1.1, wml: -0.74, note: 'After big market declines the loser portfolio fills with crushed, levered firms; its beta climbs and WML\u2019s beta drops by ≈0.79 (to ≈ −0.74).' },
+  { id: 'normal', name: 'Normal market', loser: 1.2, winner: 1.0, wml: 0.05, note: 'In calm times winners and losers have similar market exposure — WML is nearly beta-neutral (β ≈ 0.05), which is why the CAPM can’t explain the premium.' },
+  { id: 'bear', name: 'Bear market', loser: 2.0, winner: 1.1, wml: -0.74, note: 'After big market declines the loser portfolio fills with crushed, levered firms; its beta climbs and WML’s beta drops by ≈0.79 (to ≈ −0.74).' },
   { id: 'rebound', name: 'Bear market + up month', loser: 3.7, winner: 1.0, wml: -1.44, note: 'The crash state. Loser equity behaves like an out-of-the-money call (Merton 1974) — 1930s loser beta ≈2.5, 2009 ≈3.7 — a further −0.70 on WML. β ≈ −1.44: a +10% market month implies WML ≈ −14%.' },
 ];
 
@@ -106,7 +106,7 @@ function Betas() {
         {bar(s.wml, s.wml < -1 ? '#e11d48' : '#d97706', 'WML β')}
       </div>
       <div className={`w-full rounded-xl border px-3 py-2 text-[11px] ${sel === 2 ? 'bg-rose-50 border-rose-200 text-rose-900' : 'bg-yale-50 border-yale-100 text-yale-900'}`}>{s.note}</div>
-      <p className="text-[11px] text-slate-500 leading-snug">The fix follows from the diagnosis: estimate the rolling beta (42-day window, 10 market lags — Grundy–Martin) and hedge it out; the hedged strategy sails through 1932. And the pattern replicates in every equity market <i>and</i> in commodities and currencies — which aren\u2019t levered equity claims, a wrinkle the Merton story can\u2019t cover alone.</p>
+      <p className="text-[11px] text-slate-500 leading-snug">The fix follows from the diagnosis: estimate the rolling beta (42-day window, 10 market lags — Grundy–Martin) and hedge it out; the hedged strategy sails through 1932. And the pattern replicates in every equity market <i>and</i> in commodities and currencies — which aren’t levered equity claims, a wrinkle the Merton story can’t cover alone.</p>
     </div>
   );
 }
@@ -186,10 +186,10 @@ function Verdict() {
         <b>Confident:</b> large, monotone, robust across a century, every market, every asset class; the fourth factor (Carhart UMD); much of it is industry momentum; the danger is <i>conditional crash risk</i> at market turning points — not constant volatility.
       </div>
       <div className="rounded-xl bg-amber-50 border border-amber-200 px-3 py-2 text-[11px] text-amber-900">
-        <b>Open:</b> will crowding erode it (post-publication alpha was <i>larger</i> — but the future needn\u2019t repeat)? Risk or behavior — does the crash tail rationalize part of the premium, and which behavioral model wins? Falling trading costs cut both ways.
+        <b>Open:</b> will crowding erode it (post-publication alpha was <i>larger</i> — but the future needn’t repeat)? Risk or behavior — does the crash tail rationalize part of the premium, and which behavioral model wins? Falling trading costs cut both ways.
       </div>
       <div className="rounded-xl bg-yale-50 border border-yale-100 px-3 py-2 text-[11px] text-yale-900">
-        <b>The investor\u2019s job:</b> size the exposure to survive the crashes; hedge or scale the time-varying betas that cause them. And note the symmetry with Lecture 4 — value is slow <i>over</i>reaction, momentum is fast <i>under</i>reaction: held together, each insures the other\u2019s worst years (2000–03: momentum suffered, value shone).
+        <b>The investor’s job:</b> size the exposure to survive the crashes; hedge or scale the time-varying betas that cause them. And note the symmetry with Lecture 4 — value is slow <i>over</i>reaction, momentum is fast <i>under</i>reaction: held together, each insures the other’s worst years (2000–03: momentum suffered, value shone).
       </div>
     </div>
   );

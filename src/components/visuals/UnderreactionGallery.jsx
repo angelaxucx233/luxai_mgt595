@@ -47,7 +47,7 @@ function Pead() {
         <text x="38" y="12" fontSize="8.5" fill="#64748b">cumulative return (%)</text>
       </svg>
       <div className="w-full rounded-xl bg-yale-50 border border-yale-100 px-3 py-2 text-[11px] text-yale-900">
-        <b>Post-earnings-announcement drift:</b> after the announcement — when the news is fully public — prices keep drifting in the surprise\u2019s direction for ~60 trading days (Bernard–Thomas 1989). The analyst-revision version (earnings momentum) drifts for ~12 months, is <b>distinct</b> from price momentum, combines profitably with it, and appears in <b>34 markets</b>.
+        <b>Post-earnings-announcement drift:</b> after the announcement — when the news is fully public — prices keep drifting in the surprise’s direction for ~60 trading days (Bernard–Thomas 1989). The analyst-revision version (earnings momentum) drifts for ~12 months, is <b>distinct</b> from price momentum, combines profitably with it, and appears in <b>34 markets</b>.
       </div>
     </div>
   );
@@ -57,10 +57,10 @@ function Disp() {
   return (
     <div className="w-full flex flex-col gap-2">
       <div className="rounded-xl bg-white border border-slate-200 px-3 py-2 text-[11px] text-slate-700">
-        <b>The bias:</b> investors sell winners too early and ride losers too long — mental accounting anchors on the purchase price, and prospect theory makes people risk-averse over gains (sell!) and risk-seeking over losses (hold and hope). That selling pressure on winners and reluctant supply from losers slows the price\u2019s adjustment to news: <b>underreaction, mechanically produced</b>.
+        <b>The bias:</b> investors sell winners too early and ride losers too long — mental accounting anchors on the purchase price, and prospect theory makes people risk-averse over gains (sell!) and risk-seeking over losses (hold and hope). That selling pressure on winners and reluctant supply from losers slows the price’s adjustment to news: <b>underreaction, mechanically produced</b>.
       </div>
       <div className="rounded-xl bg-yale-50 border border-yale-100 px-3 py-2 text-[11px] text-yale-900">
-        <b>Frazzini (2006) makes it measurable</b> — the capital-gains overhang g = (P − RP)/P, with the reference price RP built from mutual-fund holdings. Prediction: drift is worst when the news and the holders\u2019 paper position <i>align</i> (bad news + holders under water; good news + holders in the money).
+        <b>Frazzini (2006) makes it measurable</b> — the capital-gains overhang g = (P − RP)/P, with the reference price RP built from mutual-fund holdings. Prediction: drift is worst when the news and the holders’ paper position <i>align</i> (bad news + holders under water; good news + holders in the money).
       </div>
       <div className="rounded-xl bg-emerald-50 border border-emerald-200 px-3 py-2 text-[11px] text-emerald-900">
         <b>The result:</b> when news and overhang align, the long-short post-event drift runs <b>2.1–2.5%/month</b>; when they conflict, it largely <b>vanishes</b>. Survives controls for ownership, turnover, characteristics, SUE, and analyst revisions — a micro-foundation for momentum with its own alpha.
@@ -76,10 +76,10 @@ function Flow() {
         <b>The forensic tool (Lee–Ready 1991):</b> sign each trade buyer- or seller-initiated by comparing its price to the bid–ask midpoint; classify trades small vs large by dollar cutoffs. Small trades proxy for <i>individuals</i>, large for <i>institutions</i>. Imbalance = (buys − sells)/(buys + sells), computed separately by size.
       </div>
       <div className="rounded-xl bg-yale-50 border border-yale-100 px-3 py-2 text-[11px] text-yale-900">
-        <b>Hvidkjaer\u2019s finding:</b> among past <b>winners</b>, initial small-trade <i>buying</i> pressure slowly converts into intense <i>selling</i> pressure over the following year — underreaction, then delayed reaction, by small traders. <b>Large-trade imbalances show no such pattern</b> and little effect on subsequent returns.
+        <b>Hvidkjaer’s finding:</b> among past <b>winners</b>, initial small-trade <i>buying</i> pressure slowly converts into intense <i>selling</i> pressure over the following year — underreaction, then delayed reaction, by small traders. <b>Large-trade imbalances show no such pattern</b> and little effect on subsequent returns.
       </div>
       <div className="rounded-xl bg-amber-50 border border-amber-200 px-3 py-2 text-[11px] text-amber-900">
-        <b>Why it matters:</b> the drift isn\u2019t an anonymous market failure — the order flow points at less-sophisticated individual investors as the marginal slow reactors, exactly whom the behavioral models require.
+        <b>Why it matters:</b> the drift isn’t an anonymous market failure — the order flow points at less-sophisticated individual investors as the marginal slow reactors, exactly whom the behavioral models require.
       </div>
     </div>
   );
@@ -104,7 +104,7 @@ function Cust() {
         <text x="44" y="12" fontSize="8.5" fill="#64748b">supplier cumulative L/S return (%) — Cohen–Frazzini (2008), Fig. 3</text>
       </svg>
       <div className="w-full rounded-xl bg-yale-50 border border-yale-100 px-3 py-2 text-[11px] text-yale-900">
-        <b>The Coastcast–Callaway parable:</b> Callaway was <b>50% of Coastcast\u2019s sales</b> — a disclosed, public link. When Callaway cut guidance and fell ~30% (July 2001), Coastcast barely moved… then drifted down for <b>weeks</b>. Systematically: sort suppliers on their principal customers\u2019 last-month return, and the long-short earns a <b>four-factor alpha of 1.38%/month (t = 3.1) — ≈18%/year</b> — surviving the FF factors and both own and industry momentum.
+        <b>The Coastcast–Callaway parable:</b> Callaway was <b>50% of Coastcast’s sales</b> — a disclosed, public link. When Callaway cut guidance and fell ~30% (July 2001), Coastcast barely moved… then drifted down for <b>weeks</b>. Systematically: sort suppliers on their principal customers’ last-month return, and the long-short earns a <b>four-factor alpha of 1.38%/month (t = 3.1) — ≈18%/year</b> — surviving the FF factors and both own and industry momentum.
       </div>
       <p className="text-[11px] text-slate-500 leading-snug">Limited attention: investors underweight information that arrives via an economic link, even a publicly disclosed one. Information moves faster than prices — the family motto.</p>
     </div>

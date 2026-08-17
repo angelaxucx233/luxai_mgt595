@@ -50,20 +50,20 @@ export const lecture03Slides = [
     visual: 'QuantNumericProblem', requireCompletion: true,
     visualProps: {
       slideId: 4,
-      scenario: 'Market model: α = 0, β = 1.2. Around an announcement — day −1: stock +0.5%, market +0.4%. Day 0: stock +6.0%, market +1.0%. Day +1: stock +0.2%, market 0.0%.',
+      scenario: 'Market model: $\\alpha = 0$, $\\beta = 1.2$. Around an announcement — day −1: stock +0.5%, market +0.4%. Day 0: stock +6.0%, market +1.0%. Day +1: stock +0.2%, market 0.0%.',
       question: 'Compute the three-day cumulative abnormal return CAR(−1,+1).',
-      given: [['α, β', '0, 1.2'], ['Day −1', 'stock 0.5%, mkt 0.4%'], ['Day 0', 'stock 6.0%, mkt 1.0%'], ['Day +1', 'stock 0.2%, mkt 0.0%']],
+      given: [['$\\alpha$, $\\beta$', '0, 1.2'], ['Day −1', 'stock 0.5%, mkt 0.4%'], ['Day 0', 'stock 6.0%, mkt 1.0%'], ['Day +1', 'stock 0.2%, mkt 0.0%']],
       answers: [{ label: 'CAR (%)', value: 5.02, tolerance: 0.05 }],
       steps: [
         'AR₋₁ = 0.5 − 1.2×0.4 = 0.02%.',
-        'AR₀ = 6.0 − 1.2×1.0 = 4.80%.',
+        '$AR_{0} = 6.0 - 1.2\\times 1.0 = 4.80\\%$.',
         'AR₊₁ = 0.2 − 1.2×0.0 = 0.20%.',
-        'CAR = 0.02 + 4.80 + 0.20 = 5.02%.',
+        '$\\mathrm{CAR} = 0.02 + 4.80 + 0.20 = 5.02\\%$.',
       ],
     },
     narration: '[encouraging] Subtract what the market model expected, day by day, then add up what is left.',
     systemPromptContext: 'BLOCK B PROBLEM — VERIFIED: ARs 0.02, 4.80, 0.20; CAR 5.02%. Common error: subtracting the raw market return instead of beta×market. Hint ladder: (1) expected return each day is alpha + beta·r_m; (2) abnormal = actual − expected; (3) CAR is a plain sum.',
-    content: { eyebrow: 'Your turn', heading: 'Compute a CAR', problemTitle: 'Your Turn: Compute a CAR', footnote: 'ARₜ = rₜ − (α + β·r_mt); CAR = ΣAR.' },
+    content: { eyebrow: 'Your turn', heading: 'Compute a CAR', problemTitle: 'Your Turn: Compute a CAR', footnote: '$\\mathrm{AR}_t = r_t - (\\alpha + \\beta r_{mt})$; $\\mathrm{CAR} = \\Sigma\\,\\mathrm{AR}$.' },
   },
 
   // ── Block C: Random Walks ──
@@ -76,7 +76,7 @@ export const lecture03Slides = [
     content: {
       eyebrow: 'Random walks', heading: 'Martingales and Random Walks',
       body: 'A martingale makes tomorrow\'s expected price today\'s price — a fair game, though a risk-blind one. The random walk adds independent increments with drift: the mean grows like μt and the variance like σ²t. RW2 and RW3 progressively relax the assumptions until only zero autocorrelation remains — leaving room for volatility clustering, which real returns exhibit in abundance.',
-      footnote: 'Drag μ and σ; resample paths; the shaded cone is ±2σ√t.',
+      footnote: 'Drag $\\mu$ and $\\sigma$; resample paths; the shaded cone is $\\pm 2\\sigma\\sqrt{t}$.',
     },
   },
   {
@@ -84,7 +84,7 @@ export const lecture03Slides = [
     contextLabel: 'Block C · Predictability', blockId: 'C', module: 'market-efficiency',
     visual: 'RandomWalkLab', visualProps: { mode: 'autocorr' },
     narration: '[curious] Set a true autocorrelation, simulate a few hundred months, and see whether you can even detect it. [surprised] Then the puzzle: individual stocks negative, portfolios positive — both at once.',
-    systemPromptContext: 'BLOCK C — Autocorrelation: r_t = g0 + g1·r_{t−k} + e; under iid sigma, autocorrelation = slope; rho² = share of variance explained. SE(rho-hat) ≈ 1/√T. Empirical pattern: individual stocks slightly NEGATIVE at short horizons; portfolios POSITIVE. Decomposition of EW portfolio autocovariance = (1/n²)·sum of own-autocovariances + cross-autocovariances ⟹ cross terms must be large and positive (large stocks LEAD small stocks). Caveats: bid-ask bounce fakes negative own-autocorrelation; nonsynchronous trading fakes positive cross terms. Long horizons: predictable components up to 40% of 2–10yr variance, 3–5yr negative autocorrelation (FF 1988a) — but low power, and bubbles vs mean-reverting premia both fit (joint hypothesis).',
+    systemPromptContext: 'BLOCK C — Autocorrelation: r_t = g0 + g1·r_{t−k} + e; under iid sigma, autocorrelation = slope; rho² = share of variance explained. SE(rho-hat) ≈ ${}1/\\sqrt{T}$. Empirical pattern: individual stocks slightly NEGATIVE at short horizons; portfolios POSITIVE. Decomposition of EW portfolio autocovariance = (1/n²)·sum of own-autocovariances + cross-autocovariances ⟹ cross terms must be large and positive (large stocks LEAD small stocks). Caveats: bid-ask bounce fakes negative own-autocorrelation; nonsynchronous trading fakes positive cross terms. Long horizons: predictable components up to 40% of 2–10yr variance, 3–5yr negative autocorrelation (FF 1988a) — but low power, and bubbles vs mean-reverting premia both fit (joint hypothesis).',
     content: {
       eyebrow: 'Testing the walk', heading: 'Hunting for Autocorrelation',
       body: 'The standard error of an estimated autocorrelation is about 1/√T — so even 400 months barely resolves ρ = 0.10, which explains just 1% of variance. And the strangest fact in the data: individual stocks are slightly negatively autocorrelated while portfolios are positively autocorrelated. The reconciliation is cross-autocorrelation: yesterday\'s large-stock returns predict today\'s small-stock returns.',
@@ -97,23 +97,23 @@ export const lecture03Slides = [
     visual: 'QuantNumericProblem', requireCompletion: true,
     visualProps: {
       slideId: 7,
-      scenario: 'You estimate a first-order monthly autocorrelation of γ₁ = 0.10 from T = 400 months. Assume iid variance so SE ≈ 1/√T.',
+      scenario: 'You estimate a first-order monthly autocorrelation of $\\gamma _{1} = 0.10$ from $T = 400$ months. Assume iid variance so $SE \\approx 1/\\sqrt{T}.$',
       question: 'What share of next month\'s return variance does the lag explain — and is the estimate statistically significant?',
-      given: [['γ₁', '0.10'], ['T', '400 months'], ['SE', '≈ 1/√T']],
+      given: [['$\\gamma _{1}$', '0.10'], ['T', '400 months'], ['SE', '≈ 1/√T']],
       answers: [
         { label: '% of variance explained', value: 1.0, tolerance: 0.1 },
         { label: 't-statistic', value: 2.0, tolerance: 0.1 },
       ],
       steps: [
-        'Variance share = ρ² = 0.10² = 0.01 ⟹ 1.0%.',
-        'SE = 1/√400 = 0.05.',
-        't = 0.10/0.05 = 2.0 — right at the edge of significance.',
+        'Variance share = $\\rho ^{2} = 0.10^{2} = 0.01 \\Rightarrow 1.0\\%$.',
+        '$SE = 1/\\sqrt{400} = 0.05$.',
+        '$t = 0.10/0.05 = 2.0$ — right at the edge of significance.',
         'Thirty-three years of data delivers a borderline t-stat on a 1% effect: statistically detectable, economically tiny.',
       ],
     },
     narration: '[thoughtful] Statistically significant and economically tiny can be the same number. [calm] Square the correlation and see what it buys.',
     systemPromptContext: 'BLOCK C PROBLEM — VERIFIED: rho²=1.0%; SE=0.05; t=2.0. Common error: reporting rho itself (10%) as the variance share. Deep point: this is why short-horizon predictability, though real, rarely survives transaction costs — and why the profession moved to less noisy forecasters like D/P and E/P.',
-    content: { eyebrow: 'Your turn', heading: 'How Big Is Small Predictability?', problemTitle: 'Your Turn: How Big Is Small Predictability?', footnote: 'R² = ρ²; t ≈ ρ·√T.' },
+    content: { eyebrow: 'Your turn', heading: 'How Big Is Small Predictability?', problemTitle: 'Your Turn: How Big Is Small Predictability?', footnote: '$R^2 = \\rho^2$; $t \\approx \\rho\\sqrt{T}$.' },
   },
 
   // ── Block D: Anomalies ──
@@ -147,13 +147,13 @@ export const lecture03Slides = [
     visual: 'QuantNumericProblem', requireCompletion: true,
     visualProps: {
       slideId: 10,
-      scenario: 'Chen, Roll & Ross (1986) report the industrial-production factor premium as 11.756 for 1958–84 (t = 3.05). Units: percent per month × 10.',
+      scenario: 'Chen, Roll & Ross (1986) report the industrial-production factor premium as 11.756 for 1958–84 ($t = 3.05$). Units: percent per month × 10.',
       question: 'Annualize the MP premium.',
       given: [['MP coefficient', '11.756'], ['Units', '%/month × 10'], ['Market premium (memory aid)', '≈6.5%/yr']],
       answers: [{ label: 'Annual MP premium (%)', value: 14.1, tolerance: 0.15 }],
       steps: [
-        'Undo the ×10: 11.756/10 = 1.1756% per month.',
-        'Annualize (simple): 1.1756 × 12 ≈ 14.1% per year.',
+        'Undo the ×10: ${}11.756/10 = 1.1756\\% \\text{per} \\text{month}$.',
+        'Annualize (simple): ${}1.1756 \\times 12 \\approx 14.1\\% \\text{per} \\text{year}$.',
         'More than twice the ≈6.5% market premium — exposure to industrial-production risk was richly priced.',
       ],
     },
@@ -216,7 +216,7 @@ export const lecture03Slides = [
         'Implied holding = 0.8 × $80 = $64 per parent share.',
         'Stub = 50 − 64 = −$14: the market prices the parent\'s own businesses below zero.',
         'Annualized shorting cost = 1.14⁶ − 1 (six two-month periods).',
-        '1.14² = 1.2996; ×1.14 = 1.4815; squared = 2.195 ⟹ ≈119% per year. Shorting the issuer was ruinously expensive — which is exactly why the stub could persist.',
+        '${}1.14^{2} = 1.2996$; $\\times 1.14 = 1.4815$; $\\text{squared} = 2.195 \\Rightarrow \\approx 119\\% \\text{per} \\text{year}$. Shorting the issuer was ruinously expensive — which is exactly why the stub could persist.',
       ],
     },
     narration: '[calm] Two computations, one message. [serious] The mispricing was real, and the toll gate for correcting it charged one hundred nineteen percent a year.',

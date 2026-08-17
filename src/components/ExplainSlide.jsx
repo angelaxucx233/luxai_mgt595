@@ -1,4 +1,5 @@
 import SlideVisual from './visuals/SlideVisual.jsx';
+import { MathText } from './visuals/MathTex.jsx';
 import YourTurnTitle, { isYourTurnEyebrow } from './YourTurnTitle.jsx';
 
 function SampleSpaceNotation({ notation }) {
@@ -37,7 +38,7 @@ export default function ExplainSlide({ content, visual, visualProps, slideTitle 
       ) : (
         <h2 className="text-2xl md:text-3xl font-bold text-white">{heading}</h2>
       )}
-      {content.body && <p className="text-slate-300 leading-relaxed">{content.body}</p>}
+      {content.body && <p className="text-slate-300 leading-relaxed"><MathText text={content.body} /></p>}
       {visual && <SlideVisual id={visual} visualProps={visualProps} />}
       {content.notation &&
         (content.notationVariant === 'sampleSpace' ? (
@@ -53,7 +54,7 @@ export default function ExplainSlide({ content, visual, visualProps, slideTitle 
         </blockquote>
       )}
       {content.footnote && (
-        <p className="text-sm text-slate-500">{content.footnote}</p>
+        <p className="text-sm text-slate-500"><MathText text={content.footnote} /></p>
       )}
     </div>
   );
