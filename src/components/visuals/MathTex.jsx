@@ -70,3 +70,67 @@ export function MathText({ text, className = '' }) {
   if (plain) nodes.push(<span key={nodes.length}>{plain}</span>);
   return <span className={className}>{nodes}</span>;
 }
+
+/** Chat-style text: $...$ math (money-safe) plus **bold** and *italic* markdown. */
+function mdInline(text, keyBase) {
+  const parts = text.split(/(\*\*[^*]+\*\*|\*[^*\n]+\*)/g).filter(Boolean);
+  return parts.map((p, i) => {
+    if (p.startsWith('**') && p.endsWith('**') && p.length > 4) {
+      return <strong key={`${keyBase}-${i}`}>{p.slice(2, -2)}</strong>;
+    }
+    if (p.startsWith('*') && p.endsWith('*') && p.length > 2) {
+      return <em key={`${keyBase}-${i}`}>{p.slice(1, -1)}</em>;
+    }
+    return <span key={`${keyBase}-${i}`}>{p}</span>;
+  });
+}
+
+export function RichText({ text, className = '' }) {
+  if (typeof text !== 'string') return <span className={className}>{text}</span>;
+  const nodes = [];
+  let plain = '';
+  let i = 0;
+  const nextDollar = (from) => {
+    let j = from;
+    while (j < text.length) {
+      j = text.indexOf('$', j);
+      if (j === -1) return -1;
+      if (j > 0 && text[j - 1] === '\\') {
+        j += 1;
+        continue;
+      }
+      return j;
+    }
+    return -1;
+  };
+  const flush = () => {
+    if (plain) {
+      nodes.push(<span key={nodes.length}>{mdInline(plain, nodes.length)}</span>);
+      plain = '';
+    }
+  };
+  while (i < text.length) {
+    const a = nextDollar(i);
+    if (a === -1) {
+      plain += text.slice(i);
+      break;
+    }
+    const b = nextDollar(a + 1);
+    if (b === -1) {
+      plain += text.slice(i);
+      break;
+    }
+    const inner = text.slice(a + 1, b);
+    if (inner.length > 0 && !/^[0-9]/.test(inner)) {
+      plain += text.slice(i, a);
+      flush();
+      nodes.push(<MathTex key={nodes.length} tex={inner} />);
+      i = b + 1;
+    } else {
+      plain += text.slice(i, a + 1);
+      i = a + 1;
+    }
+  }
+  flush();
+  return <span className={className}>{nodes}</span>;
+}

@@ -39,6 +39,8 @@ Never repeat the internal slide context or student work JSON to the student.
 
 Write every mathematical expression as LaTeX inside single dollar signs, e.g. $\\sigma_p^2$, $E[r_i] = r_f + \\beta_i(E[R_M] - r_f)$, $W'VW$. Inline math only — single $ pairs, never $$ blocks. Use \\text{...} for words inside a formula. Dollar amounts stay plain text ($50, $110) — never wrap money in math.
 
+Formatting: you may use **bold** and *italic*; avoid all other Markdown (headings, tables, numbered syntax, code blocks render as plain text). Use short paragraphs separated by blank lines, and simple dashes for lists.
+
 Custom 3D visualizations (rare): use <<<SANDBOX_HTML>>> ... <<<END_SANDBOX_HTML>>>.`;
 
 /** Tool definition in Anthropic's input_schema format. */
