@@ -34,10 +34,10 @@ function Concept() {
         {frozen ? 'World frozen — what do you still earn?' : 'Unfreeze the world'}
       </button>
       <svg viewBox="0 0 400 116" className="w-full">
-        <text x="14" y="12" fontSize="8.5" fill="#64748b">the futures version: spot S, futures F — carry is the gap, earned by convergence</text>
+        <text x="14" y="12" fontSize="8.5" fill="#a3b1c2">the futures version: spot S, futures F — carry is the gap, earned by convergence</text>
         <line x1="40" y1="92" x2="380" y2="92" stroke="#94a3b8" />
-        <line x1="46" y1="38" x2="374" y2="38" stroke="#00356b" strokeWidth="2" strokeDasharray={frozen ? '0' : '5 3'} />
-        <text x="34" y="41" textAnchor="end" fontSize="9" fill="#00356b" fontWeight="800">S</text>
+        <line x1="46" y1="38" x2="374" y2="38" stroke="#3b82f6" strokeWidth="2" strokeDasharray={frozen ? '0' : '5 3'} />
+        <text x="34" y="41" textAnchor="end" fontSize="9" fill="#93b8e8" fontWeight="800">S</text>
         <path d={frozen ? 'M 60 66 C 160 62, 260 50, 360 39' : 'M 60 66 C 160 66, 260 66, 360 66'} fill="none" stroke="#d97706" strokeWidth="2.4" />
         <text x="34" y="69" textAnchor="end" fontSize="9" fill="#d97706" fontWeight="800">F</text>
         {frozen && (
@@ -45,10 +45,10 @@ function Concept() {
             <line x1="360" y1="39" x2="360" y2="66" stroke="#059669" strokeWidth="0" />
             <path d="M 372 66 L 372 40" stroke="#059669" strokeWidth="1.6" markerEnd="url(#cArr)" />
             <defs><marker id="cArr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="#059669" /></marker></defs>
-            <text x="378" y="56" fontSize="8" fill="#059669" fontWeight="800" transform="rotate(90 378 56)">C = (S−F)/F</text>
+            <text x="378" y="56" fontSize="8" fill="#34d399" fontWeight="800" transform="rotate(90 378 56)">C = (S−F)/F</text>
           </>
         )}
-        <text x="200" y="108" textAnchor="middle" fontSize="8.5" fill="#64748b">{frozen ? 'if S never moves, F must roll up to meet it — you collect the gap' : 'the E(Δprice) and surprise terms decide the rest — carry is only the head start'}</text>
+        <text x="200" y="108" textAnchor="middle" fontSize="8.5" fill="#a3b1c2">{frozen ? 'if S never moves, F must roll up to meet it — you collect the gap' : 'the E(Δprice) and surprise terms decide the rest — carry is only the head start'}</text>
       </svg>
       <div className="w-full rounded-xl bg-yale-50 border border-yale-100 px-3 py-2 text-[11px] text-yale-900">
         <b>The generalized expectations hypothesis:</b> carry should predict <i>nothing</i> — any visible carry should be exactly offset by expected depreciation (in FX, that’s UIP). Whether that holds, class by class, is the whole lecture. Because “most finance models have direct implications for carry strategies,” every model you’ve met gets tested at once.
@@ -83,15 +83,15 @@ function Classes() {
       </div>
       {sel === 3 && (
         <svg viewBox="0 0 400 96" className="w-full">
-          <text x="14" y="11" fontSize="8.5" fill="#64748b">the two bond-carry pieces on an upward-sloping curve</text>
+          <text x="14" y="11" fontSize="8.5" fill="#a3b1c2">the two bond-carry pieces on an upward-sloping curve</text>
           <line x1="40" y1="80" x2="380" y2="80" stroke="#94a3b8" />
-          <path d="M 48 72 C 140 52, 260 38, 372 32" fill="none" stroke="#00356b" strokeWidth="2.2" />
-          <circle cx="330" cy="35" r="3.5" fill="#00356b" />
+          <path d="M 48 72 C 140 52, 260 38, 372 32" fill="none" stroke="#3b82f6" strokeWidth="2.2" />
+          <circle cx="330" cy="35" r="3.5" fill="#3b82f6" />
           <circle cx="296" cy="39" r="3.5" fill="#059669" />
-          <text x="336" y="30" fontSize="8" fill="#00356b" fontWeight="700">you, today (10yr)</text>
-          <text x="288" y="54" fontSize="8" fill="#059669" fontWeight="700">you, next year (9yr, lower yield)</text>
+          <text x="336" y="30" fontSize="8" fill="#93b8e8" fontWeight="700">you, today (10yr)</text>
+          <text x="288" y="54" fontSize="8" fill="#34d399" fontWeight="700">you, next year (9yr, lower yield)</text>
           <text x="70" y="66" fontSize="8" fill="#d97706" fontWeight="700">slope: y₁₀ − r_f</text>
-          <text x="200" y="93" textAnchor="middle" fontSize="8" fill="#64748b">maturity → · roll-down = price gain from sliding left along the curve</text>
+          <text x="200" y="93" textAnchor="middle" fontSize="8" fill="#a3b1c2">maturity → · roll-down = price gain from sliding left along the curve</text>
         </svg>
       )}
       <p className="text-[11px] text-slate-500 leading-snug">One formula generates all five: write the forward price, ask what it implies must happen for you to break even, and carry is what you collect when it doesn’t. Portfolios: rank assets by carry within each class, long the top, short the bottom, a dollar each side.</p>

@@ -59,11 +59,11 @@ export default function EfficientSetMath({ showDerivation = false, summaryMode =
         <svg viewBox="0 0 420 218" className="w-full">
           <line x1="50" y1="200" x2="405" y2="200" stroke="#94a3b8" />
           <line x1="50" y1="200" x2="50" y2="15" stroke="#94a3b8" />
-          <text x="400" y="213" textAnchor="end" fontSize="10" fill="#64748b">σ_p</text>
-          <text x="46" y="12" textAnchor="end" fontSize="10" fill="#64748b">r_p</text>
-          <path d={pts.join(' ')} fill="none" stroke="#00356b" strokeWidth="2.5" />
-          <circle cx={X(sMvp)} cy={Y(rMvp)} r="6" fill="#d97706" stroke="#00356b" strokeWidth="1" />
-          <text x={X(sMvp) + 10} y={Y(rMvp) + 4} fontSize="11" fill="#b45309" fontWeight="700">
+          <text x="400" y="213" textAnchor="end" fontSize="10" fill="#a3b1c2">σ_p</text>
+          <text x="46" y="12" textAnchor="end" fontSize="10" fill="#a3b1c2">r_p</text>
+          <path d={pts.join(' ')} fill="none" stroke="#3b82f6" strokeWidth="2.5" />
+          <circle cx={X(sMvp)} cy={Y(rMvp)} r="6" fill="#d97706" stroke="#3b82f6" strokeWidth="1" />
+          <text x={X(sMvp) + 10} y={Y(rMvp) + 4} fontSize="11" fill="#f59e0b" fontWeight="700">
             MVP (σ = {(sMvp * 100).toFixed(1)}%, r = {(rMvp * 100).toFixed(1)}%)
           </text>
         </svg>

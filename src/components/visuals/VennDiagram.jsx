@@ -72,10 +72,10 @@ export default function VennDiagram({ mode = 'toggle', highlightOnly = null }) {
           }
           className={active.highlight === 'intersection' ? 'animate-pulse' : ''}
         />
-        <text x="72" y="72" textAnchor="middle" fill="#2563eb" fontSize="14" fontWeight="bold">
+        <text x="72" y="72" textAnchor="middle" fill="#6b98fa" fontSize="14" fontWeight="bold">
           A
         </text>
-        <text x="208" y="72" textAnchor="middle" fill="#dc2626" fontSize="14" fontWeight="bold">
+        <text x="208" y="72" textAnchor="middle" fill="#f17474" fontSize="14" fontWeight="bold">
           B
         </text>
       </svg>

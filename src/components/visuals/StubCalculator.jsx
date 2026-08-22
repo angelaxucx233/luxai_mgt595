@@ -52,14 +52,14 @@ export default function StubCalculator() {
           <svg viewBox="0 0 400 140" className="w-full">
             <line x1="24" y1={Y(0)} x2="390" y2={Y(0)} stroke="#e2e8f0" />
             <line x1="24" y1="126" x2="390" y2="126" stroke="#94a3b8" /><line x1="24" y1="126" x2="24" y2="10" stroke="#94a3b8" />
-            <polyline points={STUB.map(([d, v]) => `${X(d)},${Y(v)}`).join(' ')} fill="none" stroke="#00356b" strokeWidth="2.2" />
+            <polyline points={STUB.map(([d, v]) => `${X(d)},${Y(v)}`).join(' ')} fill="none" stroke="#3b82f6" strokeWidth="2.2" />
             {[[12.5, '3/20 accel. announced', -46], [47, '5/8 IRS approves', 6], [104, '7/27 distribution', 22]].map(([d, label, ly]) => (
               <g key={label}>
                 <line x1={X(d)} y1={Y(32)} x2={X(d)} y2={Y(-70)} stroke="#e11d48" strokeDasharray="3 3" strokeWidth="1" />
-                <text x={X(d) + 3} y={Y(ly)} fontSize="8" fill="#b45309" fontWeight="700">{label}</text>
+                <text x={X(d) + 3} y={Y(ly)} fontSize="8" fill="#f59e0b" fontWeight="700">{label}</text>
               </g>
             ))}
-            <text x="28" y="18" fontSize="8.5" fill="#64748b">stub $/share · 3/2/00 → 9/18/00</text>
+            <text x="28" y="18" fontSize="8.5" fill="#a3b1c2">stub $/share · 3/2/00 → 9/18/00</text>
           </svg>
           <div className="w-full grid grid-cols-2 gap-1 text-[10.5px]">
             {SIX.map(([name, v]) => (

@@ -63,7 +63,7 @@ export default function DiversificationLab({ mode = 'interactive' }) {
           >
             <p className="font-semibold text-yale-700">ρ={r}</p>
             <p className="tabular-nums text-slate-700">{v}</p>
-            <p className="text-slate-400">{note}</p>
+            <p className="text-slate-500">{note}</p>
           </button>
         ))}
       </div>

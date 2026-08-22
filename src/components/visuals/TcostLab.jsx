@@ -35,8 +35,8 @@ function Shortfall() {
         <rect x="40" y="26" width={exec * 2.2} height="22" fill="#d97706" rx="4" />
         <text x={46 + exec * 2.2} y="41" fontSize="9" fill="#d97706" fontWeight="800">execution {exec.toFixed(0)} bp</text>
         <rect x="40" y="56" width={opp * 2.2} height="22" fill="#7c3aed" rx="4" />
-        <text x={46 + opp * 2.2} y="71" fontSize="9" fill="#7c3aed" fontWeight="800">opportunity {opp.toFixed(0)} bp</text>
-        <text x="40" y="16" fontSize="8.5" fill="#64748b">one dial — patience — moves cost between the two components (total: {(exec + opp).toFixed(0)} bp)</text>
+        <text x={46 + opp * 2.2} y="71" fontSize="9" fill="#a06bfa" fontWeight="800">opportunity {opp.toFixed(0)} bp</text>
+        <text x="40" y="16" fontSize="8.5" fill="#a3b1c2">one dial — patience — moves cost between the two components (total: {(exec + opp).toFixed(0)} bp)</text>
       </svg>
       <div className="w-full rounded-xl bg-yale-50 border border-yale-100 px-3 py-2 text-[11px] text-yale-900">
         <b>The diagnosis chart:</b> shortfall low → your problem is the strategy, not the trading. Dominated by <span className="text-amber-700 font-semibold">execution</span> → slow down, supply liquidity. Dominated by <span className="text-purple-700 font-semibold">opportunity</span> → speed up and pay. A change pays off iff the component you reduce falls more than the other rises. Fast-decaying signals (reversal, news) can’t wait; value can.
@@ -58,7 +58,7 @@ function Literature() {
       </div>
       {tab === 'ks' ? (
         <>
-          <div className="w-full overflow-hidden rounded-xl border border-yale-200 text-[11px]">
+          <div className="w-full overflow-hidden rounded-xl border border-yale-200 text-[11px] text-slate-800">
             <table className="w-full">
               <thead><tr className="bg-yale-800 text-white">
                 <th className="px-2 py-1.5 text-left font-semibold">Monthly cost, extreme momentum winners</th>
@@ -79,13 +79,13 @@ function Literature() {
       ) : (
         <>
           <svg viewBox="0 0 400 108" className="w-full">
-            <text x="14" y="12" fontSize="8.5" fill="#64748b">one-way trading costs over the century (stylized shape of Jones’s figure)</text>
+            <text x="14" y="12" fontSize="8.5" fill="#a3b1c2">one-way trading costs over the century (stylized shape of Jones’s figure)</text>
             <line x1="30" y1="88" x2="390" y2="88" stroke="#94a3b8" />
-            <path d="M 36 34 C 100 40, 150 36, 200 48 C 260 62, 320 76, 384 82" fill="none" stroke="#00356b" strokeWidth="2.4" />
-            <text x="60" y="28" fontSize="8" fill="#64748b">fixed commissions era</text>
-            <text x="250" y="52" fontSize="8" fill="#64748b">May Day 1975 · decimalization</text>
-            <text x="330" y="100" fontSize="8" fill="#059669" fontWeight="700">record lows</text>
-            <text x="60" y="100" fontSize="8" fill="#94a3b8">1900</text>
+            <path d="M 36 34 C 100 40, 150 36, 200 48 C 260 62, 320 76, 384 82" fill="none" stroke="#3b82f6" strokeWidth="2.4" />
+            <text x="60" y="28" fontSize="8" fill="#a3b1c2">fixed commissions era</text>
+            <text x="250" y="52" fontSize="8" fill="#a3b1c2">May Day 1975 · decimalization</text>
+            <text x="330" y="100" fontSize="8" fill="#34d399" fontWeight="700">record lows</text>
+            <text x="60" y="100" fontSize="8" fill="#cbd5e1">1900</text>
           </svg>
           <div className="w-full rounded-xl bg-yale-50 border border-yale-100 px-3 py-2 text-[11px] text-yale-900">
             Costs collapsed; turnover answered — NYSE daily turnover ran 54% in 1994 and 99% by 2004. Cheaper trading doesn’t reduce total spend; it reprices <i>which strategies exist</i>. Grossman–Stiglitz again: the cost of correcting sets how much mispricing survives.
@@ -116,21 +116,21 @@ function Anatomy() {
         ))}
       </div>
       <svg viewBox="0 0 400 134" className="w-full">
-        <text x="14" y="12" fontSize="8.5" fill="#64748b">price around a buy order (the deck’s worked example — real averages)</text>
+        <text x="14" y="12" fontSize="8.5" fill="#a3b1c2">price around a buy order (the deck’s worked example — real averages)</text>
         <line x1="30" y1="104" x2="390" y2="104" stroke="#94a3b8" />
-        <line x1="30" y1="104" x2="120" y2="104" stroke="#00356b" strokeWidth="2.2" />
+        <line x1="30" y1="104" x2="120" y2="104" stroke="#3b82f6" strokeWidth="2.2" />
         {phase >= 1 && <path d="M 120 104 C 160 96, 200 82, 250 78" fill="none" stroke="#d97706" strokeWidth="2.4" />}
-        {phase >= 2 && <path d="M 250 78 C 290 82, 330 85, 384 86" fill="none" stroke="#00356b" strokeWidth="2.2" />}
+        {phase >= 2 && <path d="M 250 78 C 290 82, 330 85, 384 86" fill="none" stroke="#3b82f6" strokeWidth="2.2" />}
         <line x1="120" y1="46" x2="120" y2="104" stroke="#e2e8f0" strokeDasharray="4 3" />
         <line x1="250" y1="46" x2="250" y2="104" stroke="#e2e8f0" strokeDasharray="4 3" />
-        <text x="120" y="122" textAnchor="middle" fontSize="7.5" fill="#94a3b8">order submitted</text>
-        <text x="250" y="122" textAnchor="middle" fontSize="7.5" fill="#94a3b8">order completed</text>
+        <text x="120" y="122" textAnchor="middle" fontSize="7.5" fill="#cbd5e1">order submitted</text>
+        <text x="250" y="122" textAnchor="middle" fontSize="7.5" fill="#cbd5e1">order completed</text>
         {phase >= 2 && (
           <>
             <path d="M 366 104 L 366 88" stroke="#059669" strokeWidth="1.6" markerEnd="url(#aArr)" />
-            <text x="372" y="98" fontSize="7.5" fill="#059669" fontWeight="800">permanent 8.5 bp</text>
+            <text x="372" y="98" fontSize="7.5" fill="#34d399" fontWeight="800">permanent 8.5 bp</text>
             <path d="M 256 78 L 256 88" stroke="#e11d48" strokeWidth="1.6" markerEnd="url(#aArr)" />
-            <text x="262" y="76" fontSize="7.5" fill="#e11d48" fontWeight="800">temporary 2.5 bp decays</text>
+            <text x="262" y="76" fontSize="7.5" fill="#fb7185" fontWeight="800">temporary 2.5 bp decays</text>
             <text x="186" y="66" fontSize="8" fill="#d97706" fontWeight="800">average impact ≈ 11 bp</text>
           </>
         )}

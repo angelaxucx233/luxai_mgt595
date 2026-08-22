@@ -95,14 +95,14 @@ function Years() {
         {YEARS.map(([yr, v], i) => (
           <g key={yr}>
             <rect x={X(i)} y={v >= 0 ? Y(v) : Y(0)} width="12" height={Math.abs(Y(v) - Y(0))}
-              fill={v >= 0 ? '#00356b' : '#e11d48'} rx="1.5" />
-            {i % 3 === 0 && <text x={X(i) + 6} y="136" textAnchor="middle" fontSize="7.5" fill="#64748b">{yr}</text>}
-            {REC.has(yr) && <text x={X(i) + 6} y="112" textAnchor="middle" fontSize="7" fill="#64748b" fontWeight="700">R</text>}
-            {DOWN.has(yr) && <text x={X(i) + 6} y="121" textAnchor="middle" fontSize="7" fill="#e11d48" fontWeight="700">D</text>}
+              fill={v >= 0 ? '#3b82f6' : '#e11d48'} rx="1.5" />
+            {i % 3 === 0 && <text x={X(i) + 6} y="136" textAnchor="middle" fontSize="7.5" fill="#a3b1c2">{yr}</text>}
+            {REC.has(yr) && <text x={X(i) + 6} y="112" textAnchor="middle" fontSize="7" fill="#a3b1c2" fontWeight="700">R</text>}
+            {DOWN.has(yr) && <text x={X(i) + 6} y="121" textAnchor="middle" fontSize="7" fill="#fb7185" fontWeight="700">D</text>}
           </g>
         ))}
-        <text x="24" y="12" fontSize="8.5" fill="#64748b">value − glamour, annual (%)</text>
-        <text x={X(7) + 6} y={Y(38.5) - 4} textAnchor="middle" fontSize="8" fill="#00356b" fontWeight="700">+38.5</text>
+        <text x="24" y="12" fontSize="8.5" fill="#a3b1c2">value − glamour, annual (%)</text>
+        <text x={X(7) + 6} y={Y(38.5) - 4} textAnchor="middle" fontSize="8" fill="#93b8e8" fontWeight="700">+38.5</text>
       </svg>
       <div className="w-full rounded-xl bg-yale-50 border border-yale-100 px-3 py-2 text-[11px] text-yale-900">
         Value beats glamour in <b>{wins} of 22 years</b> — and in <b>every</b> 5-year window. The three losing years (’71, ’79, ’85) include no recession bottoms; value wins right through <b>R</b> (NBER recessions) and <b>D</b> (down-market years).

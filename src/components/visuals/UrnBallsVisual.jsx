@@ -66,7 +66,7 @@ function UrnVessel() {
       />
       <ellipse cx="108" cy="78" rx="56" ry="12" fill="url(#urn-rim)" stroke="#64748b" strokeWidth="1.5" />
       <ellipse cx="108" cy="78" rx="48" ry="9" fill="#f8fafc" opacity="0.5" />
-      <text x="108" y="52" textAnchor="middle" fill="#475569" fontSize="11" fontWeight="700" letterSpacing="1">
+      <text x="108" y="52" textAnchor="middle" fill="#64748b" fontSize="11" fontWeight="700" letterSpacing="1">
         URN
       </text>
     </g>
@@ -105,7 +105,7 @@ export default function UrnBallsVisual({
               strokeWidth="1.5"
               strokeDasharray="4 3"
             />
-            <text x="36" y="168" textAnchor="middle" fill="#0369a1" fontSize="8" fontWeight="600">
+            <text x="36" y="168" textAnchor="middle" fill="#66c9ff" fontSize="8" fontWeight="600">
               drawn out
             </text>
           </g>
@@ -120,7 +120,7 @@ export default function UrnBallsVisual({
         </g>
 
         {!drawnBlue && (
-          <text x="140" y="200" textAnchor="middle" fill="#64748b" fontSize="10">
+          <text x="140" y="200" textAnchor="middle" fill="#a3b1c2" fontSize="10">
             {blueBalls} blue · {redBalls} red · {total} total
           </text>
         )}

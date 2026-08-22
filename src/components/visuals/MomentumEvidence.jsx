@@ -36,10 +36,10 @@ function Oos() {
               <div className="px-3 py-1.5">Window (VW WML)</div><div className="px-2 py-1.5 text-right">Mean (t)</div><div className="px-2 py-1.5 text-right">3F α (t)</div>
             </div>
             {TIME.map((x, i) => (
-              <div key={x.name} className={`grid grid-cols-[1fr_80px_100px] border-t border-slate-100 font-mono ${i >= 1 ? 'bg-emerald-50/50' : 'bg-white'}`}>
-                <div className="px-3 py-1.5 text-slate-700 font-sans">{x.name}{i >= 1 && <span className="text-emerald-700 font-bold"> · OOS</span>}</div>
-                <div className="px-2 py-1.5 text-right text-yale-900 font-bold">{x.mean.toFixed(2)} <span className="text-slate-400">({x.t.toFixed(2)})</span></div>
-                <div className="px-2 py-1.5 text-right text-yale-900 font-bold">{x.alpha.toFixed(2)} <span className="text-slate-400">({x.ta.toFixed(2)})</span></div>
+              <div key={x.name} className={`grid grid-cols-[1fr_80px_100px] border-t border-slate-100 font-mono ${i >= 1 ? 'bg-emerald-50' : 'bg-white'}`}>
+                <div className="px-3 py-1.5 text-slate-800 font-sans font-bold">{x.name}{i >= 1 && <span className="text-emerald-700 font-bold"> · OOS</span>}</div>
+                <div className="px-2 py-1.5 text-right text-yale-900 font-bold">{x.mean.toFixed(2)} <span className="text-slate-600">({x.t.toFixed(2)})</span></div>
+                <div className="px-2 py-1.5 text-right text-yale-900 font-bold">{x.alpha.toFixed(2)} <span className="text-slate-600">({x.ta.toFixed(2)})</span></div>
               </div>
             ))}
           </div>
@@ -51,12 +51,12 @@ function Oos() {
           <svg viewBox="0 0 400 190" className="w-full">
             {ASSETS.map(([name, sr], i) => (
               <g key={name}>
-                <text x="108" y={17 + i * 18} textAnchor="end" fontSize="8.5" fill="#475569">{name}</text>
-                <rect x="112" y={9 + i * 18} width={sr * 320} height="12" fill={name === 'EW all classes' ? '#d97706' : sr < 0.2 ? '#94a3b8' : '#00356b'} rx="2.5" />
-                <text x={116 + sr * 320} y={19 + i * 18} fontSize="8.5" fontWeight="800" fill={name === 'EW all classes' ? '#b45309' : '#00356b'}>{sr.toFixed(2)}</text>
+                <text x="108" y={17 + i * 18} textAnchor="end" fontSize="8.5" fill="#a3b1c2">{name}</text>
+                <rect x="112" y={9 + i * 18} width={sr * 320} height="12" fill={name === 'EW all classes' ? '#d97706' : sr < 0.2 ? '#94a3b8' : '#3b82f6'} rx="2.5" />
+                <text x={116 + sr * 320} y={19 + i * 18} fontSize="8.5" fontWeight="800" fill={name === 'EW all classes' ? '#ffa866' : '#66b2ff'}>{sr.toFixed(2)}</text>
               </g>
             ))}
-            <text x="112" y="188" fontSize="8" fill="#64748b">Sharpe ratios, long-short momentum scaled to 15% vol, 1972–2010 (Asness–Moskowitz–Pedersen)</text>
+            <text x="112" y="188" fontSize="8" fill="#a3b1c2">Sharpe ratios, long-short momentum scaled to 15% vol, 1972–2010 (Asness–Moskowitz–Pedersen)</text>
           </svg>
           <p className="text-[11px] text-slate-500 leading-snug">Positive in every market and asset class. Japan is the famous weak spot (0.12) — hold that thought until the dynamic strategy resurrects it. The equal-weighted combination earns <b>0.81</b>: mutually diversifying momentum everywhere.</p>
         </>
@@ -81,14 +81,14 @@ function States() {
         <line x1={X0} y1="8" x2={X0} y2="138" stroke="#94a3b8" />
         {STATES.map((x, i) => (
           <g key={x.name}>
-            <text x={X0 - 6} y={22 + i * 32} textAnchor="end" fontSize="8.5" fill="#475569">{x.name}</text>
+            <text x={X0 - 6} y={22 + i * 32} textAnchor="end" fontSize="8.5" fill="#a3b1c2">{x.name}</text>
             <rect x={x.mkt >= 0 ? X0 : X0 + x.mkt * S} y={12 + i * 32} width={Math.abs(x.mkt) * S} height="10" fill="#94a3b8" rx="2" />
             <text x={x.mkt >= 0 ? X0 + 4 + x.mkt * S : X0 - 4 + x.mkt * S} y={21 + i * 32} fontSize="8" fill="#64748b" fontWeight="700" textAnchor={x.mkt >= 0 ? 'start' : 'end'}>mkt {x.mkt.toFixed(2)}</text>
             <rect x={x.wml >= 0 ? X0 : X0 + x.wml * S} y={24 + i * 32} width={Math.abs(x.wml) * S} height="10" fill={x.wml >= 0 ? '#0f766e' : '#e11d48'} rx="2" />
             <text x={x.wml >= 0 ? X0 + 4 + x.wml * S : X0 - 4 + x.wml * S} y={33 + i * 32} fontSize="8" fill={x.wml >= 0 ? '#0f766e' : '#e11d48'} fontWeight="700" textAnchor={x.wml >= 0 ? 'start' : 'end'}>WML {x.wml.toFixed(2)}</text>
           </g>
         ))}
-        <text x={X0} y="152" textAnchor="middle" fontSize="8" fill="#64748b">average monthly returns (%) by market state</text>
+        <text x={X0} y="152" textAnchor="middle" fontSize="8" fill="#a3b1c2">average monthly returns (%) by market state</text>
       </svg>
       <div className="w-full rounded-xl bg-rose-50 border border-rose-200 px-3 py-2 text-[11px] text-rose-900">
         <b>The sign test risk cannot pass:</b> momentum earns <b>+1.46%/month in bear markets</b> and +0.89% in recessions — it pays off precisely when marginal utility is high. A risk premium is compensation for hurting in bad times; this strategy is the insurance, not the insured.

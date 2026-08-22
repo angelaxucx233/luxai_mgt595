@@ -67,14 +67,14 @@ function Results() {
   return (
     <div className="w-full max-w-lg flex flex-col items-center gap-2.5">
       <svg viewBox="0 0 400 118" className="w-full">
-        <text x="14" y="12" fontSize="8.5" fill="#64748b">momentum contracts: return from open, through the close, to the final whistle</text>
+        <text x="14" y="12" fontSize="8.5" fill="#a3b1c2">momentum contracts: return from open, through the close, to the final whistle</text>
         <line x1="30" y1="86" x2="390" y2="86" stroke="#94a3b8" />
         <path d="M 34 84 C 90 74, 140 58, 196 52" fill="none" stroke="#0f766e" strokeWidth="2.6" />
         <path d="M 196 52 C 250 58, 310 76, 384 84" fill="none" stroke="#e11d48" strokeWidth="2.6" strokeDasharray="5 3" />
         <circle cx="196" cy="52" r="3.5" fill="#0f172a" />
-        <text x="112" y="44" fontSize="8.5" fill="#0f766e" fontWeight="700">open → close: lines chase the streak (β₁ &gt; 0)</text>
-        <text x="292" y="102" fontSize="8.5" fill="#e11d48" fontWeight="700" textAnchor="middle">close → end: fully refunded (βT = −β₁)</text>
-        <text x="196" y="40" fontSize="7.5" fill="#64748b" textAnchor="middle">closing line</text>
+        <text x="112" y="44" fontSize="8.5" fill="#5eead4" fontWeight="700">open → close: lines chase the streak (β₁ &gt; 0)</text>
+        <text x="292" y="102" fontSize="8.5" fill="#fb7185" fontWeight="700" textAnchor="middle">close → end: fully refunded (βT = −β₁)</text>
+        <text x="196" y="40" fontSize="7.5" fill="#a3b1c2" textAnchor="middle">closing line</text>
       </svg>
       <div className="flex flex-col gap-1 w-full">
         {HYPS.map((h, i) => (
@@ -110,14 +110,14 @@ function Verdict() {
       {tab === 'unc' ? (
         <>
           <svg viewBox="0 0 400 108" className="w-full">
-            <text x="14" y="12" fontSize="8.5" fill="#64748b">overreaction theory’s prediction (DHS ’98, Rabin ’02) — confirmed in betting, then in equities</text>
+            <text x="14" y="12" fontSize="8.5" fill="#a3b1c2">overreaction theory’s prediction (DHS ’98, Rabin ’02) — confirmed in betting, then in equities</text>
             <line x1="60" y1="88" x2="380" y2="88" stroke="#94a3b8" />
             <line x1="60" y1="88" x2="60" y2="24" stroke="#94a3b8" />
             <line x1="66" y1="80" x2="372" y2="34" stroke="#0f766e" strokeWidth="2.4" />
             <line x1="66" y1="40" x2="372" y2="72" stroke="#d97706" strokeWidth="2.4" />
-            <text x="330" y="28" fontSize="8.5" fill="#0f766e" fontWeight="700">momentum</text>
+            <text x="330" y="28" fontSize="8.5" fill="#5eead4" fontWeight="700">momentum</text>
             <text x="330" y="84" fontSize="8.5" fill="#d97706" fontWeight="700">value</text>
-            <text x="220" y="102" textAnchor="middle" fontSize="8" fill="#64748b">uncertainty → (early season · low parlay volume)</text>
+            <text x="220" y="102" textAnchor="middle" fontSize="8" fill="#a3b1c2">uncertainty → (early season · low parlay volume)</text>
           </svg>
           <div className="w-full rounded-xl bg-yale-50 border border-yale-100 px-3 py-2 text-[11px] text-yale-900">
             Overreaction should be strongest where beliefs are least anchored: momentum strengthens with uncertainty, value weakens. Confirmed with two proxies (early vs late season; parlay volume — parlays cluster where bettors are most confident). Then flipped back to Wall Street: the <b>same interaction holds in US equity returns</b>. The lab generated a prediction finance had never tested — and it worked.

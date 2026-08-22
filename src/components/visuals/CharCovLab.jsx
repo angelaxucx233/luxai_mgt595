@@ -56,21 +56,21 @@ function Test() {
         <>
           <svg viewBox="0 0 400 152" className="w-full">
             <line x1="40" y1="130" x2="392" y2="130" stroke="#94a3b8" /><line x1="40" y1="130" x2="40" y2="12" stroke="#94a3b8" />
-            <text x="44" y="12" fontSize="8.5" fill="#64748b">avg return (%/mo), characteristic held fixed</text>
+            <text x="44" y="12" fontSize="8.5" fill="#a3b1c2">avg return (%/mo), characteristic held fixed</text>
             {OBS.map((v, i) => (
               <g key={i}>
-                <rect x={X(i) - 20} y={Y(v)} width="40" height={130 - Y(v)} fill="#00356b" rx="3" />
-                <text x={X(i)} y={Y(v) - 5} textAnchor="middle" fontSize="9.5" fill="#00356b" fontWeight="800">{v.toFixed(3)}</text>
-                <text x={X(i)} y="143" textAnchor="middle" fontSize="8.5" fill="#64748b">Q{i + 1}</text>
+                <rect x={X(i) - 20} y={Y(v)} width="40" height={130 - Y(v)} fill="#3b82f6" rx="3" />
+                <text x={X(i)} y={Y(v) - 5} textAnchor="middle" fontSize="9.5" fill="#93b8e8" fontWeight="800">{v.toFixed(3)}</text>
+                <text x={X(i)} y="143" textAnchor="middle" fontSize="8.5" fill="#a3b1c2">Q{i + 1}</text>
               </g>
             ))}
             {showRisk && (
               <>
                 <polyline points={pred.map((v, i) => `${X(i)},${Y(v)}`).join(' ')} fill="none" stroke="#e11d48" strokeWidth="2.4" strokeDasharray="6 4" />
-                <text x={X(4) - 4} y={Y(pred[4]) - 7} textAnchor="end" fontSize="9" fill="#e11d48" fontWeight="700">risk model: rising with loading</text>
+                <text x={X(4) - 4} y={Y(pred[4]) - 7} textAnchor="end" fontSize="9" fill="#fb7185" fontWeight="700">risk model: rising with loading</text>
               </>
             )}
-            <text x="216" y="152" textAnchor="middle" fontSize="8.5" fill="#64748b">HML-loading quintile (low → high), size & B/M fixed</text>
+            <text x="216" y="152" textAnchor="middle" fontSize="8.5" fill="#a3b1c2">HML-loading quintile (low → high), size & B/M fixed</text>
           </svg>
           <div className="w-full flex items-center gap-2">
             <button onClick={() => setShowRisk((s) => !s)} className={`px-3 py-1.5 rounded-lg text-xs font-semibold ${showRisk ? 'bg-rose-600 text-white' : 'bg-rose-100 text-rose-800'}`}>

@@ -29,7 +29,7 @@ const TERMS = [
 
 function TallParentheses({ children }) {
   return (
-    <span className="inline-flex items-stretch text-slate-400">
+    <span className="inline-flex items-stretch text-slate-500">
       <svg
         className="w-3 shrink-0 self-stretch min-h-[2.5rem]"
         viewBox="0 0 14 100"

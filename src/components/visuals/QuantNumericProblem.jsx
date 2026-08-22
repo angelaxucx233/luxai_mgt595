@@ -99,7 +99,7 @@ export default function QuantNumericProblem({
         <div className="flex flex-col gap-2">
           {answers.map((a, i) => (
             <label key={a.label} className="flex items-center gap-3">
-              <span className="w-36 text-sm font-medium text-slate-700 text-left"><MathText text={a.label} /></span>
+              <span className="w-36 text-sm font-medium text-slate-200 text-left"><MathText text={a.label} /></span>
               <div className="relative flex-1">
                 <input
                   type="text"
@@ -113,7 +113,7 @@ export default function QuantNumericProblem({
                     st[i] = null;
                     setStatus(st);
                   }}
-                  className={`w-full rounded-lg border px-3 py-2 pr-16 text-sm font-semibold text-slate-900 tabular-nums placeholder:text-slate-400 placeholder:font-normal focus:outline-none focus:ring-2 focus:ring-yale-400 ${
+                  className={`w-full rounded-lg border px-3 py-2 pr-16 text-sm font-semibold text-slate-900 tabular-nums placeholder:text-slate-500 placeholder:font-normal focus:outline-none focus:ring-2 focus:ring-yale-400 ${
                     status[i] === 'right'
                       ? 'border-emerald-500 bg-emerald-50'
                       : status[i] === 'wrong'
@@ -122,12 +122,12 @@ export default function QuantNumericProblem({
                   }`}
                   placeholder="your answer"
                 />
-                <span className="absolute right-2 top-1/2 -translate-y-1/2 text-[11px] text-slate-400 tabular-nums pointer-events-none">
+                <span className="absolute right-2 top-1/2 -translate-y-1/2 text-[11px] text-slate-500 tabular-nums pointer-events-none">
                   ±{a.tolerance}
                 </span>
               </div>
-              {status[i] === 'right' && <span className="text-emerald-600 text-sm font-bold">✓</span>}
-              {status[i] === 'wrong' && <span className="text-rose-500 text-sm font-bold">✗</span>}
+              {status[i] === 'right' && <span className="text-emerald-400 text-sm font-bold">✓</span>}
+              {status[i] === 'wrong' && <span className="text-rose-400 text-sm font-bold">✗</span>}
             </label>
           ))}
         </div>
@@ -145,7 +145,7 @@ export default function QuantNumericProblem({
         {done && (
           <button
             onClick={() => setShowSteps((s) => !s)}
-            className="rounded-lg border border-yale-300 px-4 py-2 text-sm font-semibold text-yale-700 hover:bg-yale-50"
+            className="rounded-lg border border-yale-500 px-4 py-2 text-sm font-semibold text-yale-200 hover:bg-yale-900"
           >
             {showSteps ? 'Hide solution' : 'Show solution'}
           </button>
@@ -153,18 +153,18 @@ export default function QuantNumericProblem({
       </div>
 
       {!done && attempts > 0 && (
-        <p className="text-xs text-slate-500 text-left">
+        <p className="text-xs text-slate-300 text-left">
           Not quite — {triesLeft} {triesLeft === 1 ? 'try' : 'tries'} left. Any answer within the ± range
           counts, and Lux knows where this one usually goes wrong if you want a hint.
         </p>
       )}
       {solved && (
-        <p className="text-sm font-semibold text-emerald-700 text-left">
+        <p className="text-sm font-semibold text-emerald-400 text-left">
           Correct{attempts > 1 ? ` — solved in ${attempts} attempts.` : ' on the first try.'}
         </p>
       )}
       {revealed && (
-        <p className="text-sm font-semibold text-amber-700 text-left">
+        <p className="text-sm font-semibold text-amber-400 text-left">
           No worries — here are the answers and the worked solution. You're clear to continue.
         </p>
       )}

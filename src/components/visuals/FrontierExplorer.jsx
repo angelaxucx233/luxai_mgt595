@@ -17,8 +17,8 @@ function Axes({ xmax, ymin, ymax, xlab = 'σ (%)', ylab = 'E (%)' }) {
     <>
       <line x1="45" y1="205" x2="405" y2="205" stroke="#94a3b8" />
       <line x1="45" y1="205" x2="45" y2="15" stroke="#94a3b8" />
-      <text x="400" y="218" textAnchor="end" fontSize="10" fill="#64748b">{xlab}</text>
-      <text x="42" y="12" textAnchor="end" fontSize="10" fill="#64748b">{ylab}</text>
+      <text x="400" y="218" textAnchor="end" fontSize="10" fill="#a3b1c2">{xlab}</text>
+      <text x="42" y="12" textAnchor="end" fontSize="10" fill="#a3b1c2">{ylab}</text>
     </>
   );
 }
@@ -37,11 +37,11 @@ function CalMode() {
         <Axes />
         <line x1={X(0)} y1={Y(rf)} x2={X(17)} y2={Y(rf + sharpe * 17)} stroke="#d97706" strokeWidth="2.5" />
         <circle cx={X(0)} cy={Y(rf)} r="5" fill="#d97706" />
-        <text x={X(0) + 8} y={Y(rf) + 14} fontSize="10" fill="#b45309" fontWeight="600">T-bills 5.5%</text>
-        <circle cx={X(Ss)} cy={Y(Es)} r="5" fill="#00356b" />
-        <text x={X(Ss)} y={Y(Es) - 10} textAnchor="middle" fontSize="10" fill="#00356b" fontWeight="700">S&amp;P 500</text>
+        <text x={X(0) + 8} y={Y(rf) + 14} fontSize="10" fill="#f59e0b" fontWeight="600">T-bills 5.5%</text>
+        <circle cx={X(Ss)} cy={Y(Es)} r="5" fill="#3b82f6" />
+        <text x={X(Ss)} y={Y(Es) - 10} textAnchor="middle" fontSize="10" fill="#93b8e8" fontWeight="700">S&amp;P 500</text>
         <circle cx={X(S)} cy={Y(E)} r="6" fill="#e11d48" stroke="white" strokeWidth="1.5" />
-        <text x={X(S) + 9} y={Y(E) + 4} fontSize="10" fill="#e11d48" fontWeight="700">you</text>
+        <text x={X(S) + 9} y={Y(E) + 4} fontSize="10" fill="#fb7185" fontWeight="700">you</text>
       </svg>
       <label className="w-full flex items-center gap-3 text-sm text-slate-700">
         <span className="w-40">w in S&amp;P = {(w * 100).toFixed(0)}%</span>
@@ -80,13 +80,13 @@ function TwoRiskyMode() {
     <div className="w-full max-w-lg flex flex-col items-center gap-3">
       <svg viewBox="0 0 420 222" className="w-full">
         <Axes />
-        <path d={path} fill="none" stroke="#00356b" strokeWidth="2.5" />
-        <circle cx={X(a1.s)} cy={Y(a1.e)} r="5" fill="#00356b" />
-        <text x={X(a1.s) + 8} y={Y(a1.e) + 4} fontSize="10" fill="#00356b" fontWeight="600">Asset 1 (18, 6)</text>
-        <circle cx={X(a2.s)} cy={Y(a2.e)} r="5" fill="#00356b" />
-        <text x={X(a2.s) + 8} y={Y(a2.e) - 6} fontSize="10" fill="#00356b" fontWeight="600">Asset 2 (15, 12)</text>
+        <path d={path} fill="none" stroke="#3b82f6" strokeWidth="2.5" />
+        <circle cx={X(a1.s)} cy={Y(a1.e)} r="5" fill="#3b82f6" />
+        <text x={X(a1.s) + 8} y={Y(a1.e) + 4} fontSize="10" fill="#93b8e8" fontWeight="600">Asset 1 (18, 6)</text>
+        <circle cx={X(a2.s)} cy={Y(a2.e)} r="5" fill="#3b82f6" />
+        <text x={X(a2.s) + 8} y={Y(a2.e) - 6} fontSize="10" fill="#93b8e8" fontWeight="600">Asset 2 (15, 12)</text>
         <circle cx={X(mvp.s)} cy={Y(mvp.e)} r="5" fill="#d97706" />
-        <text x={X(mvp.s) - 8} y={Y(mvp.e) + 4} textAnchor="end" fontSize="10" fill="#b45309" fontWeight="700">MVP</text>
+        <text x={X(mvp.s) - 8} y={Y(mvp.e) + 4} textAnchor="end" fontSize="10" fill="#f59e0b" fontWeight="700">MVP</text>
       </svg>
       <label className="w-full flex items-center gap-3 text-sm text-slate-700">
         <span className="w-28">ρ = {rho.toFixed(2)}</span>
@@ -121,18 +121,18 @@ function ManyMode() {
     <div className="w-full max-w-lg flex flex-col items-center gap-3">
       <svg viewBox="0 0 420 222" className="w-full">
         <Axes />
-        <path d={lower.join(' ')} fill="none" stroke={showEff ? '#94a3b8' : '#00356b'} strokeWidth="2" strokeDasharray={showEff ? '4 3' : 'none'} />
-        <path d={upper.join(' ')} fill="none" stroke={showEff ? '#e11d48' : '#00356b'} strokeWidth={showEff ? 3 : 2} />
+        <path d={lower.join(' ')} fill="none" stroke={showEff ? '#94a3b8' : '#3b82f6'} strokeWidth="2" strokeDasharray={showEff ? '4 3' : 'none'} />
+        <path d={upper.join(' ')} fill="none" stroke={showEff ? '#e11d48' : '#3b82f6'} strokeWidth={showEff ? 3 : 2} />
         {/* CAL ray */}
         <line x1={X(0)} y1={Y(rf)} x2={X(21)} y2={Y(rf + T.sh * 21)} stroke="#d97706" strokeWidth="2.5" />
         <circle cx={X(0)} cy={Y(rf)} r="5" fill="#d97706" />
-        <text x={X(0) + 7} y={Y(rf) + 13} fontSize="10" fill="#b45309" fontWeight="700">r_f</text>
+        <text x={X(0) + 7} y={Y(rf) + 13} fontSize="10" fill="#f59e0b" fontWeight="700">r_f</text>
         <circle cx={X(8)} cy={Y(10)} r="5" fill="#d97706" />
-        <text x={X(8) - 8} y={Y(10) + 4} textAnchor="end" fontSize="10" fill="#b45309" fontWeight="700">MVP</text>
-        <circle cx={X(T.s)} cy={Y(T.e)} r="6" fill="#d97706" stroke="#00356b" strokeWidth="1.5" />
-        <text x={X(T.s) + 9} y={Y(T.e)} fontSize="11" fill="#00356b" fontWeight="800">T</text>
-        {showEff && <text x={X(17)} y={Y(15.2)} fontSize="10" fill="#e11d48" fontWeight="600">efficient frontier</text>}
-        <text x={X(15)} y={Y(rf + T.sh * 15) - 8} fontSize="10" fill="#b45309" fontWeight="600">CAL</text>
+        <text x={X(8) - 8} y={Y(10) + 4} textAnchor="end" fontSize="10" fill="#f59e0b" fontWeight="700">MVP</text>
+        <circle cx={X(T.s)} cy={Y(T.e)} r="6" fill="#d97706" stroke="#3b82f6" strokeWidth="1.5" />
+        <text x={X(T.s) + 9} y={Y(T.e)} fontSize="11" fill="#93b8e8" fontWeight="800">T</text>
+        {showEff && <text x={X(17)} y={Y(15.2)} fontSize="10" fill="#fb7185" fontWeight="600">efficient frontier</text>}
+        <text x={X(15)} y={Y(rf + T.sh * 15) - 8} fontSize="10" fill="#f59e0b" fontWeight="600">CAL</text>
       </svg>
       <button
         onClick={() => setShowEff((s) => !s)}

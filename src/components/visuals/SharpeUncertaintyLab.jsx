@@ -34,18 +34,18 @@ function Screen() {
     <div className="w-full max-w-lg flex flex-col items-center gap-2.5">
       <svg viewBox="0 0 400 138" className="w-full">
         <line x1="18" y1="118" x2="392" y2="118" stroke="#94a3b8" />
-        <polyline points={noise.join(' ')} fill="none" stroke="#00356b" strokeWidth="2" />
+        <polyline points={noise.join(' ')} fill="none" stroke="#3b82f6" strokeWidth="2" />
         <polyline points={real.join(' ')} fill="none" stroke="#d97706" strokeWidth="2" strokeDasharray="6 4" />
         {/* shaded false positives */}
         <polygon points={`${X(thr)},118 ${noise.filter((p) => parseFloat(p) >= X(thr)).join(' ')} 392,118`} fill="#e11d48" opacity="0.28" />
         {/* shaded missed real */}
         <polygon points={`${X(-4.5)},118 ${real.filter((p) => parseFloat(p) <= X(thr)).join(' ')} ${X(thr)},118`} fill="#d97706" opacity="0.22" />
         <line x1={X(thr)} y1="14" x2={X(thr)} y2="118" stroke="#0f172a" strokeWidth="1.6" strokeDasharray="4 3" />
-        <text x={X(thr)} y="10" textAnchor="middle" fontSize="8.5" fill="#0f172a" fontWeight="800">screen t = {thr.toFixed(2)}</text>
-        <text x={X(-1.4)} y="34" textAnchor="middle" fontSize="8.5" fill="#00356b" fontWeight="700">no real edge</text>
+        <text x={X(thr)} y="10" textAnchor="middle" fontSize="8.5" fill="#e2e8f0" fontWeight="800">screen t = {thr.toFixed(2)}</text>
+        <text x={X(-1.4)} y="34" textAnchor="middle" fontSize="8.5" fill="#93b8e8" fontWeight="700">no real edge</text>
         <text x={X(3.15)} y="34" textAnchor="middle" fontSize="8.5" fill="#d97706" fontWeight="700">real edge</text>
-        <text x={X(2.75)} y="112" textAnchor="middle" fontSize="7.5" fill="#e11d48" fontWeight="700">“discovered” noise</text>
-        <text x={X(0.75)} y="112" textAnchor="middle" fontSize="7.5" fill="#b45309" fontWeight="700">real, thrown away</text>
+        <text x={X(2.75)} y="112" textAnchor="middle" fontSize="7.5" fill="#fb7185" fontWeight="700">“discovered” noise</text>
+        <text x={X(0.75)} y="112" textAnchor="middle" fontSize="7.5" fill="#f59e0b" fontWeight="700">real, thrown away</text>
       </svg>
       <div className="w-full flex items-center gap-2 text-[11px] text-yale-900">
         <span className="whitespace-nowrap font-semibold">significance screen</span>
@@ -84,16 +84,16 @@ function Interval() {
         {[-1, 0, 1, 2].map((v) => (
           <g key={v}>
             <line x1={X(v)} y1="55" x2={X(v)} y2="61" stroke="#94a3b8" />
-            <text x={X(v)} y="74" textAnchor="middle" fontSize="8" fill="#94a3b8">{v}</text>
+            <text x={X(v)} y="74" textAnchor="middle" fontSize="8" fill="#cbd5e1">{v}</text>
           </g>
         ))}
         <line x1={X(0)} y1="14" x2={X(0)} y2="58" stroke="#e2e8f0" />
-        <line x1={Math.max(X(lo), 14)} y1="38" x2={Math.min(X(hi), 392)} y2="38" stroke={fat ? '#d97706' : '#00356b'} strokeWidth="3.5" strokeLinecap="round" />
-        <circle cx={X(sr)} cy="38" r="5" fill={fat ? '#d97706' : '#00356b'} />
-        <text x={X(sr)} y="24" textAnchor="middle" fontSize="9.5" fill="#0f172a" fontWeight="800">SR̂ = {sr.toFixed(2)}</text>
-        <text x={Math.max(X(lo), 20)} y="52" textAnchor="middle" fontSize="8" fill="#64748b">{lo.toFixed(2)}</text>
-        <text x={Math.min(X(hi), 386)} y="52" textAnchor="middle" fontSize="8" fill="#64748b">{hi.toFixed(2)}</text>
-        <text x="200" y="92" textAnchor="middle" fontSize="8.5" fill="#64748b">95% confidence interval for the annualized Sharpe ratio</text>
+        <line x1={Math.max(X(lo), 14)} y1="38" x2={Math.min(X(hi), 392)} y2="38" stroke={fat ? '#d97706' : '#3b82f6'} strokeWidth="3.5" strokeLinecap="round" />
+        <circle cx={X(sr)} cy="38" r="5" fill={fat ? '#d97706' : '#3b82f6'} />
+        <text x={X(sr)} y="24" textAnchor="middle" fontSize="9.5" fill="#e2e8f0" fontWeight="800">SR̂ = {sr.toFixed(2)}</text>
+        <text x={Math.max(X(lo), 20)} y="52" textAnchor="middle" fontSize="8" fill="#a3b1c2">{lo.toFixed(2)}</text>
+        <text x={Math.min(X(hi), 386)} y="52" textAnchor="middle" fontSize="8" fill="#a3b1c2">{hi.toFixed(2)}</text>
+        <text x="200" y="92" textAnchor="middle" fontSize="8.5" fill="#a3b1c2">95% confidence interval for the annualized Sharpe ratio</text>
       </svg>
       <div className="w-full grid grid-cols-2 gap-x-4 gap-y-1 text-[11px] text-yale-900">
         <label className="flex items-center gap-2"><span className="w-8 font-semibold">SR</span>

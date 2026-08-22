@@ -33,14 +33,14 @@ function Horizons() {
     <div className="w-full max-w-lg flex flex-col items-center gap-2.5">
       <svg viewBox="0 0 400 158" className="w-full">
         <line x1="24" y1={Y(0)} x2="392" y2={Y(0)} stroke="#94a3b8" />
-        <text x="26" y="12" fontSize="8.5" fill="#64748b">annual Sharpe of buy-past-winners</text>
+        <text x="26" y="12" fontSize="8.5" fill="#a3b1c2">annual Sharpe of buy-past-winners</text>
         {HORIZONS.map((x, i) => (
           <g key={x.m} onClick={() => setSel(i)} className="cursor-pointer">
             <rect x={X(i) - 17} y={x.sr >= 0 ? Y(x.sr) : Y(0)} width="34" height={Math.abs(Y(x.sr) - Y(0))}
-              fill={x.sr >= 0 ? '#00356b' : '#e11d48'} opacity={sel === i ? 1 : 0.55} rx="3" />
+              fill={x.sr >= 0 ? '#3b82f6' : '#e11d48'} opacity={sel === i ? 1 : 0.55} rx="3" />
             <text x={X(i)} y={x.sr >= 0 ? Y(x.sr) - 4 : Y(x.sr) + 12} textAnchor="middle" fontSize="8.5"
-              fill={x.sr >= 0 ? '#00356b' : '#e11d48'} fontWeight="800">{x.sr.toFixed(2)}</text>
-            <text x={X(i)} y="152" textAnchor="middle" fontSize="8.5" fill="#64748b">{x.m}mo</text>
+              fill={x.sr >= 0 ? '#3b82f6' : '#e11d48'} fontWeight="800">{x.sr.toFixed(2)}</text>
+            <text x={X(i)} y="152" textAnchor="middle" fontSize="8.5" fill="#a3b1c2">{x.m}mo</text>
           </g>
         ))}
       </svg>
@@ -72,9 +72,9 @@ function Deciles() {
         {data.map((v, i) => (
           <g key={i}>
             <rect x={X(i) - 14} y={v >= 0 ? Y(v) : Y(0)} width="28" height={Math.abs(Y(v) - Y(0))}
-              fill={v >= 0 ? '#00356b' : '#e11d48'} rx="2.5" />
-            <text x={X(i)} y={v >= 0 ? Y(v) - 4 : Y(v) + 11} textAnchor="middle" fontSize="8" fill={v >= 0 ? '#00356b' : '#e11d48'} fontWeight="700">{v.toFixed(2)}</text>
-            <text x={X(i)} y="134" textAnchor="middle" fontSize="8" fill="#64748b">{i === 0 ? 'P1' : i === 9 ? 'P10' : i + 1}</text>
+              fill={v >= 0 ? '#3b82f6' : '#e11d48'} rx="2.5" />
+            <text x={X(i)} y={v >= 0 ? Y(v) - 4 : Y(v) + 11} textAnchor="middle" fontSize="8" fill={v >= 0 ? '#3b82f6' : '#e11d48'} fontWeight="700">{v.toFixed(2)}</text>
+            <text x={X(i)} y="134" textAnchor="middle" fontSize="8" fill="#a3b1c2">{i === 0 ? 'P1' : i === 9 ? 'P10' : i + 1}</text>
           </g>
         ))}
       </svg>
@@ -92,7 +92,7 @@ function Decompose() {
   const TERMS = [
     { name: 'σ²μ — dispersion in true means', v: 0.35, sign: '+', color: '#64748b', note: 'Conrad–Kaul: if true expected returns differ permanently, past winners have higher means by construction — no predictability needed. Rejected empirically by MG and Grundy–Martin, but it’s the null every decomposition must beat.' },
     { name: 'σ²β·Cov(F,F₋₁) — factor timing', v: -0.25, sign: '−', color: '#e11d48', note: 'Betting the factor continues. But the market’s own autocovariance is NEGATIVE at these horizons — this channel fights momentum. Whatever drives the profits, it isn’t riding the market.' },
-    { name: 'avg Cov(εt, εt−1) — own autocovariance', v: 0.72, sign: '+', color: '#00356b', note: 'JT’s verdict: delayed reaction to firm-specific news. The tell against the lead–lag alternative: skipping a week between ranking and holding should mute a lead–lag effect — profits instead GROW. Puzzle: firm-specific drift is diversifiable… so why hasn’t arbitrage eaten it?' },
+    { name: 'avg Cov(εt, εt−1) — own autocovariance', v: 0.72, sign: '+', color: '#3b82f6', note: 'JT’s verdict: delayed reaction to firm-specific news. The tell against the lead–lag alternative: skipping a week between ranking and holding should mute a lead–lag effect — profits instead GROW. Puzzle: firm-specific drift is diversifiable… so why hasn’t arbitrage eaten it?' },
   ];
   const t = TERMS[sel];
   return (
@@ -107,7 +107,7 @@ function Decompose() {
               fill={x.color} textAnchor={x.v >= 0 ? 'start' : 'end'}>{x.sign}</text>
           </g>
         ))}
-        <text x="200" y="8" textAnchor="middle" fontSize="8" fill="#64748b">contribution to E[π] (illustrative magnitudes, real signs)</text>
+        <text x="200" y="8" textAnchor="middle" fontSize="8" fill="#a3b1c2">contribution to E[π] (illustrative magnitudes, real signs)</text>
       </svg>
       <div className="w-full rounded-xl border px-3 py-2 text-[11px]" style={{ background: '#f8fafc', borderColor: '#e2e8f0' }}>
         <b style={{ color: t.color }}>{t.name}:</b> <span className="text-slate-700">{t.note}</span>
@@ -130,18 +130,18 @@ const MG = [
 function Industry() {
   return (
     <div className="w-full max-w-lg flex flex-col items-center gap-2.5">
-      <svg viewBox="0 0 400 148" className="w-full">
+      <svg viewBox="0 0 434 148" className="w-full">
         <line x1="150" y1="8" x2="150" y2="128" stroke="#94a3b8" />
         {MG.map((x, i) => (
           <g key={x.name}>
-            <text x="146" y={24 + i * 25} textAnchor="end" fontSize="8.5" fill="#475569">{x.name}</text>
+            <text x="146" y={24 + i * 25} textAnchor="end" fontSize="8.5" fill="#a3b1c2">{x.name}</text>
             <rect x={x.v >= 0 ? 150 : 150 + x.v * 480} y={15 + i * 25} width={Math.abs(x.v) * 480} height="15"
-              fill={x.sig ? '#00356b' : '#94a3b8'} rx="3" />
-            <text x={x.v >= 0 ? 154 + x.v * 480 : 146 + x.v * 480} y={26 + i * 25} fontSize="9" fontWeight="800"
-              fill={x.sig ? '#00356b' : '#64748b'} textAnchor={x.v >= 0 ? 'start' : 'end'}>{x.v.toFixed(2)} (t {x.t.toFixed(2)}){x.sig ? '' : ' ✗'}</text>
+              fill={x.sig ? '#3b82f6' : '#94a3b8'} rx="3" />
+            <text x={x.v >= 0 ? 154 + x.v * 480 : 158} y={26 + i * 25} fontSize="9" fontWeight="800"
+              fill={x.sig ? '#3b82f6' : '#9cafc9'} textAnchor="start">{x.v.toFixed(2)} (t {x.t.toFixed(2)}){x.sig ? '' : ' — n.s.'}</text>
           </g>
         ))}
-        <text x="152" y="142" fontSize="8" fill="#64748b">%/month, (6,6) strategy — Moskowitz & Grinblatt (1999), Table 1</text>
+        <text x="152" y="142" fontSize="8" fill="#a3b1c2">%/month, (6,6) strategy — Moskowitz & Grinblatt (1999), Table 1</text>
       </svg>
       <div className="w-full rounded-xl bg-yale-50 border border-yale-100 px-3 py-2 text-[11px] text-yale-900">
         Neutralize industries and individual momentum <b>collapses</b> (0.43 → 0.08, t = 0.91). Buy past-winning <b>industries</b> and you keep the full 0.43. The control that clinches it: <b>randomly assigned</b> industries earn nothing — real industry structure carries the effect, not the act of grouping. Share attributable to industry: (0.43−0.08)/0.43 ≈ 81%.

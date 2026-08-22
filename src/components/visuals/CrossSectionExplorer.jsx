@@ -44,7 +44,7 @@ function FF92() {
         ))}
       </div>
       <div className="w-full rounded-xl bg-amber-50 border border-amber-200 px-3 py-2 text-[11px] text-amber-900">{s.verdict}</div>
-      <p className="text-[10.5px] text-slate-400">FF92 Table III, actual published values. 7/1963–12/1990, ≈2,267 stocks/month. |t| ≥ 2 marked significant.</p>
+      <p className="text-[10.5px] text-slate-500">FF92 Table III, actual published values. 7/1963–12/1990, ≈2,267 stocks/month. |t| ≥ 2 marked significant.</p>
     </div>
   );
 }
@@ -107,7 +107,7 @@ function FF93() {
               ))]
           ))}
         </div>
-        <div className="flex justify-between text-[9.5px] text-slate-400 px-14 pt-0.5"><span>← growth (low BE/ME)</span><span>value (high BE/ME) →</span></div>
+        <div className="flex justify-between text-[9.5px] text-slate-500 px-14 pt-0.5"><span>← growth (low BE/ME)</span><span>value (high BE/ME) →</span></div>
       </div>
       <div className="w-full rounded-xl bg-yale-50 border border-yale-100 px-3 py-2 text-[11px] text-yale-900">{v.note}</div>
       <div className="w-full flex items-center gap-1.5">
@@ -119,7 +119,7 @@ function FF93() {
           </div>
         ))}
       </div>
-      <p className="text-[10.5px] text-slate-400">FF93, 25 size×BE/ME portfolios, 7/1963–12/1991 (342 months). All models rejected; three-factor least.</p>
+      <p className="text-[10.5px] text-slate-500">FF93, 25 size×BE/ME portfolios, 7/1963–12/1991 (342 months). All models rejected; three-factor least.</p>
     </div>
   );
 }

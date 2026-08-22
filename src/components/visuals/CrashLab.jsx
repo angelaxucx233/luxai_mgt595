@@ -34,15 +34,15 @@ function Anatomy() {
           <svg viewBox="0 0 400 134" className="w-full">
             <line x1="24" y1="118" x2="394" y2="118" stroke="#94a3b8" />
             {HIST.map(([r, f]) => (
-              <rect key={r} x={X(r) - 10} y={Y(f)} width="20" height={118 - Y(f)} fill={r < -5 ? '#e11d48' : '#00356b'} rx="2" />
+              <rect key={r} x={X(r) - 10} y={Y(f)} width="20" height={118 - Y(f)} fill={r < -5 ? '#e11d48' : '#3b82f6'} rx="2" />
             ))}
-            <text x={X(-25)} y="130" textAnchor="middle" fontSize="7.5" fill="#64748b">−25</text>
-            <text x={X(-13)} y="130" textAnchor="middle" fontSize="7.5" fill="#64748b">−13</text>
-            <text x={X(-0.2)} y="130" textAnchor="middle" fontSize="7.5" fill="#64748b">0</text>
-            <text x={X(9.1)} y="130" textAnchor="middle" fontSize="7.5" fill="#64748b">+9</text>
-            <text x={X(15.3)} y="130" textAnchor="middle" fontSize="7.5" fill="#64748b">+15</text>
-            <text x="28" y="12" fontSize="8.5" fill="#64748b">WML monthly returns, 1927–2011 (frequency)</text>
-            <text x={X(-18)} y="60" fontSize="8.5" fill="#e11d48" fontWeight="800">the tail that ends careers →</text>
+            <text x={X(-25)} y="130" textAnchor="middle" fontSize="7.5" fill="#a3b1c2">−25</text>
+            <text x={X(-13)} y="130" textAnchor="middle" fontSize="7.5" fill="#a3b1c2">−13</text>
+            <text x={X(-0.2)} y="130" textAnchor="middle" fontSize="7.5" fill="#a3b1c2">0</text>
+            <text x={X(9.1)} y="130" textAnchor="middle" fontSize="7.5" fill="#a3b1c2">+9</text>
+            <text x={X(15.3)} y="130" textAnchor="middle" fontSize="7.5" fill="#a3b1c2">+15</text>
+            <text x="28" y="12" fontSize="8.5" fill="#a3b1c2">WML monthly returns, 1927–2011 (frequency)</text>
+            <text x={X(-18)} y="60" fontSize="8.5" fill="#fb7185" fontWeight="800">the tail that ends careers →</text>
           </svg>
           <div className="w-full grid grid-cols-2 gap-2">
             <div className="rounded-xl bg-white border border-slate-200 px-3 py-2 text-[10.5px] text-slate-700 font-mono leading-relaxed">
@@ -102,7 +102,7 @@ function Betas() {
       </div>
       <div className="w-full rounded-2xl border border-slate-200 bg-white p-3 flex flex-col gap-2">
         {bar(s.loser, '#e11d48', 'loser β')}
-        {bar(s.winner, '#00356b', 'winner β')}
+        {bar(s.winner, '#3b82f6', 'winner β')}
         {bar(s.wml, s.wml < -1 ? '#e11d48' : '#d97706', 'WML β')}
       </div>
       <div className={`w-full rounded-xl border px-3 py-2 text-[11px] ${sel === 2 ? 'bg-rose-50 border-rose-200 text-rose-900' : 'bg-yale-50 border-yale-100 text-yale-900'}`}>{s.note}</div>
@@ -138,8 +138,8 @@ function Dynamic() {
           <svg viewBox="0 0 400 158" className="w-full">
             {DYN.map((x, i) => (
               <g key={x.name}>
-                <text x="86" y={22 + i * 28} textAnchor="end" fontSize="8.5" fill={i === 4 ? '#00356b' : '#475569'} fontWeight={i === 4 ? '800' : '400'}>{x.name}</text>
-                {[['w', '#94a3b8'], ['c', '#d97706'], ['d', '#0f766e']].map(([k, col], j) => (
+                <text x="86" y={22 + i * 28} textAnchor="end" fontSize="8.5" fill={i === 4 ? '#66b2ff' : '#9cafc9'} fontWeight={i === 4 ? '800' : '400'}>{x.name}</text>
+                {[['w', '#94a3b8'], ['c', '#d97706'], ['d', '#2dd4bf']].map(([k, col], j) => (
                   <g key={k}>
                     <rect x="92" y={10 + i * 28 + j * 6} width={x[k] * 200} height="5" fill={col} rx="2" />
                     <text x={96 + x[k] * 200} y={15 + i * 28 + j * 6} fontSize="7" fill={col} fontWeight="700">{x[k].toFixed(2)}</text>
@@ -148,9 +148,9 @@ function Dynamic() {
               </g>
             ))}
             <g transform="translate(96,152)">
-              <rect width="10" height="5" fill="#94a3b8" rx="1" /><text x="14" y="5" fontSize="7.5" fill="#64748b">static WML</text>
-              <rect x="76" width="10" height="5" fill="#d97706" rx="1" /><text x="90" y="5" fontSize="7.5" fill="#64748b">constant-σ</text>
-              <rect x="156" width="10" height="5" fill="#0f766e" rx="1" /><text x="170" y="5" fontSize="7.5" fill="#64748b">dynamic (μ̂/σ̂²)</text>
+              <rect width="10" height="5" fill="#94a3b8" rx="1" /><text x="14" y="5" fontSize="7.5" fill="#a3b1c2">static WML</text>
+              <rect x="76" width="10" height="5" fill="#d97706" rx="1" /><text x="90" y="5" fontSize="7.5" fill="#a3b1c2">constant-σ</text>
+              <rect x="156" width="10" height="5" fill="#0f766e" rx="1" /><text x="170" y="5" fontSize="7.5" fill="#a3b1c2">dynamic (μ̂/σ̂²)</text>
             </g>
           </svg>
           <div className="w-full rounded-xl bg-emerald-50 border border-emerald-200 px-3 py-2 text-[11px] text-emerald-900">
@@ -165,7 +165,7 @@ function Dynamic() {
               <div className="px-3 py-1.5">Market</div><div className="px-2 py-1.5 text-right">Static WML</div><div className="px-2 py-1.5 text-right">Dynamic</div>
             </div>
             {REGIONS.map(([name, w, d]) => (
-              <div key={name} className={`grid grid-cols-[1fr_90px_90px] border-t border-slate-100 font-mono ${name === 'Japan' ? 'bg-amber-50' : name === 'All assets' ? 'bg-emerald-50/60' : 'bg-white'}`}>
+              <div key={name} className={`grid grid-cols-[1fr_90px_90px] border-t border-slate-100 font-mono ${name === 'Japan' ? 'bg-amber-50' : name === 'All assets' ? 'bg-emerald-50' : 'bg-white'}`}>
                 <div className="px-3 py-1.5 text-slate-700 font-sans font-semibold">{name}</div>
                 <div className="px-2 py-1.5 text-right text-slate-500">{w.toFixed(2)}</div>
                 <div className="px-2 py-1.5 text-right text-emerald-700 font-bold">{d.toFixed(2)}</div>

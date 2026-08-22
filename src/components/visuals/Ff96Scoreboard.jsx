@@ -41,7 +41,7 @@ function Scoreboard() {
       <div className={`w-full rounded-xl border px-3 py-2 text-[11px] ${r.pass ? 'bg-emerald-50 border-emerald-200 text-emerald-900' : 'bg-rose-50 border-rose-200 text-rose-900'}`}>
         <b>{r.name}{r.grs ? ` (GRS F = ${r.grs})` : ''}:</b> {r.note}
       </div>
-      <p className="text-[10.5px] text-slate-400">FF (1996), actual GRS p-values. “Pass” = fail to reject α = 0 jointly. The 25 size-B/M grid rejects only because R² &gt; 93% makes trivial alphas detectable.</p>
+      <p className="text-[10.5px] text-slate-500">FF (1996), actual GRS p-values. “Pass” = fail to reject α = 0 jointly. The 25 size-B/M grid rejects only because R² &gt; 93% makes trivial alphas detectable.</p>
     </div>
   );
 }

@@ -38,13 +38,13 @@ function Patience() {
     <div className="w-full max-w-lg flex flex-col items-center gap-2.5">
       <svg viewBox="0 0 400 146" className="w-full">
         <line x1="30" y1="128" x2="392" y2="128" stroke="#94a3b8" /><line x1="30" y1="128" x2="30" y2="10" stroke="#94a3b8" />
-        <text x="34" y="12" fontSize="8.5" fill="#64748b">P(lose to cash) %</text>
-        <text x="388" y="140" textAnchor="end" fontSize="8.5" fill="#64748b">horizon (years)</text>
-        <polyline points={curve.join(' ')} fill="none" stroke="#00356b" strokeWidth="2.4" />
+        <text x="34" y="12" fontSize="8.5" fill="#a3b1c2">P(lose to cash) %</text>
+        <text x="388" y="140" textAnchor="end" fontSize="8.5" fill="#a3b1c2">horizon (years)</text>
+        <polyline points={curve.join(' ')} fill="none" stroke="#3b82f6" strokeWidth="2.4" />
         {landmarks.map((l) => (
           <g key={l.h}>
-            <circle cx={X(l.h)} cy={Y(l.p)} r="3.5" fill="#d97706" stroke="#00356b" />
-            <text x={X(l.h)} y={Y(l.p) - 7} textAnchor="middle" fontSize="8.5" fill="#b45309" fontWeight="700">{l.h}y: {l.p.toFixed(0)}%</text>
+            <circle cx={X(l.h)} cy={Y(l.p)} r="3.5" fill="#d97706" stroke="#3b82f6" />
+            <text x={X(l.h)} y={Y(l.p) - 7} textAnchor="middle" fontSize="8.5" fill="#f59e0b" fontWeight="700">{l.h}y: {l.p.toFixed(0)}%</text>
           </g>
         ))}
         <circle cx={X(h)} cy={Y(p)} r="5" fill="#e11d48" stroke="white" strokeWidth="1.5" />
@@ -90,19 +90,19 @@ function Spread() {
       <svg viewBox="0 0 400 132" className="w-full">
         <line x1="26" y1="118" x2="392" y2="118" stroke="#94a3b8" /><line x1="26" y1="118" x2="26" y2="10" stroke="#94a3b8" />
         <line x1="26" y1={Y(50)} x2="392" y2={Y(50)} stroke="#e2e8f0" strokeDasharray="4 3" />
-        <text x="30" y={Y(50) - 3} fontSize="7.5" fill="#94a3b8">median</text>
-        <polyline points={SPREAD.map(([y, v]) => `${X(y)},${Y(v)}`).join(' ')} fill="none" stroke="#00356b" strokeWidth="2.4" />
-        <circle cx={X(2000)} cy={Y(97)} r="4" fill="#d97706" stroke="#00356b" />
-        <text x={X(2000)} y={Y(97) - 7} textAnchor="middle" fontSize="8" fill="#b45309" fontWeight="700">2000 tech bubble</text>
+        <text x="30" y={Y(50) - 3} fontSize="7.5" fill="#cbd5e1">median</text>
+        <polyline points={SPREAD.map(([y, v]) => `${X(y)},${Y(v)}`).join(' ')} fill="none" stroke="#3b82f6" strokeWidth="2.4" />
+        <circle cx={X(2000)} cy={Y(97)} r="4" fill="#d97706" stroke="#3b82f6" />
+        <text x={X(2000)} y={Y(97) - 7} textAnchor="middle" fontSize="8" fill="#f59e0b" fontWeight="700">2000 tech bubble</text>
         <circle cx={X(2020)} cy={Y(99)} r="5" fill="#e11d48" stroke="white" strokeWidth="1.5" />
-        <text x={X(2020) - 6} y={Y(99) + 14} textAnchor="end" fontSize="8" fill="#e11d48" fontWeight="800">2020: 99th pct</text>
-        {[1990, 2000, 2010, 2020].map((y) => <text key={y} x={X(y)} y="130" textAnchor="middle" fontSize="7.5" fill="#64748b">{y}</text>)}
-        <text x="30" y="12" fontSize="8.5" fill="#64748b">value spread (percentile of history) — stylized after AQR</text>
+        <text x={X(2020) - 6} y={Y(99) + 14} textAnchor="end" fontSize="8" fill="#fb7185" fontWeight="800">2020: 99th pct</text>
+        {[1990, 2000, 2010, 2020].map((y) => <text key={y} x={X(y)} y="130" textAnchor="middle" fontSize="7.5" fill="#a3b1c2">{y}</text>)}
+        <text x="30" y="12" fontSize="8.5" fill="#a3b1c2">value spread (percentile of history) — stylized after AQR</text>
       </svg>
       <div className="w-full flex flex-col gap-1">
         {SUSPECTS.map(([name, body], i) => (
           <button key={name} onClick={() => setChecked((c) => (c.includes(i) ? c : [...c, i]))}
-            className={`w-full text-left rounded-lg border px-2.5 py-1.5 text-[11px] transition-colors ${checked.includes(i) ? 'bg-slate-100 border-slate-200 text-slate-400' : 'bg-white border-yale-200 text-yale-900 hover:bg-yale-50'}`}>
+            className={`w-full text-left rounded-lg border px-2.5 py-1.5 text-[11px] transition-colors ${checked.includes(i) ? 'bg-slate-100 border-slate-200 text-slate-500' : 'bg-white border-yale-200 text-yale-900 hover:bg-yale-50'}`}>
             <span className={`font-bold ${checked.includes(i) ? 'line-through' : ''}`}>{name}</span>
             {checked.includes(i) && <span className="ml-2 text-rose-600 font-black no-underline">RULED OUT</span>}
             {checked.includes(i) && <div className="text-slate-500">{body}</div>}

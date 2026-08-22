@@ -21,10 +21,10 @@ function SpeakerButton({ onClick, isSpeaking, disabled }) {
       }
       className={`shrink-0 w-7 h-7 rounded-full flex items-center justify-center transition ${
         disabled
-          ? 'opacity-30 cursor-not-allowed text-slate-500'
+          ? 'opacity-30 cursor-not-allowed text-slate-400'
           : isSpeaking
             ? 'bg-yale-600 text-white animate-pulse'
-            : 'bg-slate-700/80 text-slate-300 hover:bg-yale-600 hover:text-white'
+            : 'bg-slate-700/80 text-slate-200 hover:bg-yale-600 hover:text-white'
       }`}
     >
       {isSpeaking ? (
@@ -85,10 +85,10 @@ function ChatBubble({
         />
       )}
       <p
-        className={`text-sm leading-relaxed whitespace-pre-wrap rounded-2xl px-4 py-2.5 max-w-[85%] opacity-35 ${
+        className={`text-sm leading-relaxed whitespace-pre-wrap rounded-2xl px-4 py-2.5 max-w-[85%] opacity-60 ${
           isUser
-            ? 'bg-slate-800/50 text-slate-500'
-            : 'bg-slate-900/40 text-slate-500 border border-transparent'
+            ? 'bg-slate-800/50 text-slate-400'
+            : 'bg-slate-900/40 text-slate-400 border border-transparent'
         }`}
       >
         <RichText text={text} />
@@ -183,7 +183,7 @@ export default function ChatDrawer({ variant = 'sidebar' }) {
         ))}
         {isChatLoading && (
           <div className="flex justify-start w-full">
-            <p className="text-xs text-slate-500 animate-pulse px-1">Lux is thinking…</p>
+            <p className="text-xs text-slate-400 animate-pulse px-1">Lux is thinking…</p>
           </div>
         )}
       </div>
@@ -198,7 +198,7 @@ export default function ChatDrawer({ variant = 'sidebar' }) {
           onChange={(e) => setInput(e.target.value)}
           placeholder="How can I help?"
           disabled={isChatLoading}
-          className="w-full bg-slate-800 border border-slate-600 rounded-full px-4 py-2.5 text-sm text-slate-200 placeholder:text-slate-500 focus:outline-none focus:border-yale-500/60"
+          className="w-full bg-slate-800 border border-slate-600 rounded-full px-4 py-2.5 text-sm text-slate-200 placeholder:text-slate-400 focus:outline-none focus:border-yale-500/60"
         />
       </form>
     </div>

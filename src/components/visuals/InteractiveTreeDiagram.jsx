@@ -23,13 +23,13 @@ export default function InteractiveTreeDiagram() {
   return (
     <div className="w-full flex flex-col items-center gap-3">
       <svg viewBox="0 0 300 160" className="w-full max-w-[300px]">
-        <circle cx="40" cy="80" r="8" fill="#00356b" />
+        <circle cx="40" cy="80" r="8" fill="#3b82f6" />
         <line x1="48" y1="70" x2="120" y2="40" stroke="#64748b" strokeWidth="2" />
         <line x1="48" y1="90" x2="120" y2="120" stroke="#64748b" strokeWidth="2" />
-        <text x="85" y="35" fontSize="11" fill="#64748b">
+        <text x="85" y="35" fontSize="11" fill="#a3b1c2">
           1/2 H
         </text>
-        <text x="85" y="130" fontSize="11" fill="#64748b">
+        <text x="85" y="130" fontSize="11" fill="#a3b1c2">
           1/2 T
         </text>
         <circle cx="120" cy="40" r="6" fill={path[0] === 'H' ? '#2563eb' : '#cbd5e1'} />

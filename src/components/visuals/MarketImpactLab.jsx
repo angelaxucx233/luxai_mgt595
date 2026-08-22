@@ -28,7 +28,7 @@ function Fn() {
   const [show, setShow] = useState({ total: true, perm: true, temp: true });
   const [tab, setTab] = useState('curves');
   const toggle = (k) => setShow((s) => ({ ...s, [k]: !s[k] }));
-  const SERIES = [['total', '#00356b', 'total MI'], ['perm', '#059669', 'permanent (linear)'], ['temp', '#e11d48', 'temporary (√, concave)']];
+  const SERIES = [['total', '#3b82f6', 'total MI'], ['perm', '#059669', 'permanent (linear)'], ['temp', '#e11d48', 'temporary (√, concave)']];
   return (
     <div className="w-full max-w-lg flex flex-col items-center gap-2.5">
       <div className="flex gap-1.5">
@@ -42,24 +42,24 @@ function Fn() {
           <div className="flex gap-1.5">
             {SERIES.map(([k, c, l]) => (
               <button key={k} onClick={() => toggle(k)}
-                className={`rounded-full px-2.5 py-1 text-[10px] font-semibold border transition ${show[k] ? 'text-white' : 'bg-white text-slate-400 border-slate-200'}`}
+                className={`rounded-full px-2.5 py-1 text-[10px] font-semibold border transition ${show[k] ? 'text-white' : 'bg-white text-slate-500 border-slate-200'}`}
                 style={show[k] ? { background: c, borderColor: c } : {}}>{l}</button>
             ))}
           </div>
           <svg viewBox="0 0 400 152" className="w-full">
-            <text x="14" y="12" fontSize="8.5" fill="#64748b">market impact (bps) vs trade size (% of daily volume) — real data, $1.7T of executions</text>
+            <text x="14" y="12" fontSize="8.5" fill="#a3b1c2">market impact (bps) vs trade size (% of daily volume) — real data, $1.7T of executions</text>
             <line x1={X0 - 8} y1={Y0} x2="392" y2={Y0} stroke="#94a3b8" />
-            {[0, 1, 2, 3, 4, 5].map((i) => <text key={i} x={px(i)} y={Y0 + 12} textAnchor="middle" fontSize="7.5" fill="#94a3b8">{i}%</text>)}
+            {[0, 1, 2, 3, 4, 5].map((i) => <text key={i} x={px(i)} y={Y0 + 12} textAnchor="middle" fontSize="7.5" fill="#cbd5e1">{i}%</text>)}
             {[5, 10, 15].map((v) => (
-              <g key={v}><line x1={X0 - 8} y1={py(v)} x2="392" y2={py(v)} stroke="#f1f5f9" /><text x={X0 - 12} y={py(v) + 3} textAnchor="end" fontSize="7" fill="#94a3b8">{v}</text></g>
+              <g key={v}><line x1={X0 - 8} y1={py(v)} x2="392" y2={py(v)} stroke="#f1f5f9" /><text x={X0 - 12} y={py(v) + 3} textAnchor="end" fontSize="7" fill="#cbd5e1">{v}</text></g>
             ))}
-            {show.total && <path d={path(F.total)} fill="none" stroke="#00356b" strokeWidth="2.4" />}
+            {show.total && <path d={path(F.total)} fill="none" stroke="#3b82f6" strokeWidth="2.4" />}
             {show.perm && <path d={path(F.perm)} fill="none" stroke="#059669" strokeWidth="2.2" />}
             {show.temp && <path d={path(F.temp)} fill="none" stroke="#e11d48" strokeWidth="2.2" strokeDasharray="5 3" />}
             {SERIES.map(([k, c]) => show[k] && F[k].map((v, i) => <circle key={k + i} cx={px(i)} cy={py(v)} r="2.4" fill={c} />))}
-            {show.total && <text x={px(5) - 4} y={py(F.total[5]) - 6} textAnchor="end" fontSize="7.5" fill="#00356b" fontWeight="800">18.5</text>}
-            {show.perm && <text x={px(5) - 4} y={py(F.perm[5]) + 11} textAnchor="end" fontSize="7.5" fill="#059669" fontWeight="800">11.9</text>}
-            {show.temp && <text x={px(5) - 4} y={py(F.temp[5]) - 6} textAnchor="end" fontSize="7.5" fill="#e11d48" fontWeight="800">10.2</text>}
+            {show.total && <text x={px(5) - 4} y={py(F.total[5]) - 6} textAnchor="end" fontSize="7.5" fill="#93b8e8" fontWeight="800">18.5</text>}
+            {show.perm && <text x={px(5) - 4} y={py(F.perm[5]) + 11} textAnchor="end" fontSize="7.5" fill="#34d399" fontWeight="800">11.9</text>}
+            {show.temp && <text x={px(5) - 4} y={py(F.temp[5]) - 6} textAnchor="end" fontSize="7.5" fill="#fb7185" fontWeight="800">10.2</text>}
           </svg>
           <div className="w-full rounded-xl bg-yale-50 border border-yale-100 px-3 py-2 text-[11px] text-yale-900">
             <b>Two laws in one curve:</b> the <span className="text-emerald-700 font-semibold">permanent</span> component rises in a straight line (2.25 → 11.9 bp; linearity can’t be rejected) — Kyle’s information model. The <span className="text-rose-600 font-semibold">temporary</span> component does all the bending (0.2 → 10.2 bp; log-log slope 0.49 — a textbook square root; linearity easily rejected). The universal “sqrt cost model” is really a statement about the price of immediacy.
@@ -68,19 +68,19 @@ function Fn() {
       ) : (
         <>
           <svg viewBox="0 0 400 148" className="w-full">
-            <text x="14" y="12" fontSize="8.5" fill="#64748b">number of orders by trade size (% of daily volume) — real histogram</text>
+            <text x="14" y="12" fontSize="8.5" fill="#a3b1c2">number of orders by trade size (% of daily volume) — real histogram</text>
             <line x1="34" y1="116" x2="392" y2="116" stroke="#94a3b8" />
             {HIST.map(([l, v], i) => {
               const h = Math.max(2, (v / 1405055) * 92);
               return (
                 <g key={l}>
-                  <rect x={40 + i * 35} y={116 - h} width="26" height={h} fill="#00356b" opacity={0.9 - i * 0.06} rx="2.5" />
-                  <text x={53 + i * 35} y={112 - h} textAnchor="middle" fontSize="6.3" fill="#00356b" fontWeight="700">{v >= 1e6 ? '1.4M' : (v / 1000).toFixed(0) + 'k'}</text>
-                  <text x={53 + i * 35} y="127" textAnchor="middle" fontSize="6.5" fill="#94a3b8">{l}</text>
+                  <rect x={40 + i * 35} y={116 - h} width="26" height={h} fill="#3b82f6" opacity={0.9 - i * 0.06} rx="2.5" />
+                  <text x={53 + i * 35} y={112 - h} textAnchor="middle" fontSize="6.3" fill="#93b8e8" fontWeight="700">{v >= 1e6 ? '1.4M' : (v / 1000).toFixed(0) + 'k'}</text>
+                  <text x={53 + i * 35} y="127" textAnchor="middle" fontSize="6.5" fill="#cbd5e1">{l}</text>
                 </g>
               );
             })}
-            <text x="200" y="143" textAnchor="middle" fontSize="8" fill="#64748b">% of daily trading volume</text>
+            <text x="200" y="143" textAnchor="middle" fontSize="8" fill="#a3b1c2">% of daily trading volume</text>
           </svg>
           <div className="w-full rounded-xl bg-yale-50 border border-yale-100 px-3 py-2 text-[11px] text-yale-900">
             <b>Where real trading lives:</b> 1.4 million of the orders — the overwhelming mass — were under half a percent of daily volume, in single-digit-bp territory on the curve. Trade duration clusters at 6–7 hours: the algorithms’ patience is visible in the data. Capacity constraints bind eventually — but much later than the average-trade models claimed.
@@ -126,16 +126,16 @@ function Endogeneity() {
       ) : (
         <>
           <svg viewBox="0 0 400 152" className="w-full">
-            <text x="14" y="12" fontSize="8.5" fill="#64748b">price impact (bps) vs %DTV: new-inflow trades (forced size) vs the rest — real data</text>
+            <text x="14" y="12" fontSize="8.5" fill="#a3b1c2">price impact (bps) vs %DTV: new-inflow trades (forced size) vs the rest — real data</text>
             <line x1={X0 - 8} y1={Y0} x2="392" y2={Y0} stroke="#94a3b8" />
-            {[0, 1, 2, 3, 4, 5].map((i) => <text key={i} x={px(i)} y={Y0 + 12} textAnchor="middle" fontSize="7.5" fill="#94a3b8">{i}%</text>)}
+            {[0, 1, 2, 3, 4, 5].map((i) => <text key={i} x={px(i)} y={Y0 + 12} textAnchor="middle" fontSize="7.5" fill="#cbd5e1">{i}%</text>)}
             {[5, 10, 15, 20, 25].map((v) => <line key={v} x1={X0 - 8} y1={Y0 - v * 3.6} x2="392" y2={Y0 - v * 3.6} stroke="#f1f5f9" />)}
-            <path d={INF.no.map((v, i) => `${i === 0 ? 'M' : 'L'} ${px(i)} ${Y0 - v * 3.6}`).join(' ')} fill="none" stroke="#00356b" strokeWidth="2.2" />
+            <path d={INF.no.map((v, i) => `${i === 0 ? 'M' : 'L'} ${px(i)} ${Y0 - v * 3.6}`).join(' ')} fill="none" stroke="#3b82f6" strokeWidth="2.2" />
             <path d={INF.yes.map((v, i) => `${i === 0 ? 'M' : 'L'} ${px(i)} ${Y0 - v * 3.6}`).join(' ')} fill="none" stroke="#e11d48" strokeWidth="2.4" strokeDasharray="6 3" />
-            {INF.no.map((v, i) => <circle key={'n' + i} cx={px(i)} cy={Y0 - v * 3.6} r="2.4" fill="#00356b" />)}
+            {INF.no.map((v, i) => <circle key={'n' + i} cx={px(i)} cy={Y0 - v * 3.6} r="2.4" fill="#3b82f6" />)}
             {INF.yes.map((v, i) => <circle key={'y' + i} cx={px(i)} cy={Y0 - v * 3.6} r="2.4" fill="#e11d48" />)}
-            <text x={px(5) - 4} y={Y0 - INF.yes[5] * 3.6 - 6} textAnchor="end" fontSize="7.5" fill="#e11d48" fontWeight="800">inflows 25.7</text>
-            <text x={px(5) - 4} y={Y0 - INF.no[5] * 3.6 + 12} textAnchor="end" fontSize="7.5" fill="#00356b" fontWeight="800">other trades 20.8</text>
+            <text x={px(5) - 4} y={Y0 - INF.yes[5] * 3.6 - 6} textAnchor="end" fontSize="7.5" fill="#fb7185" fontWeight="800">inflows 25.7</text>
+            <text x={px(5) - 4} y={Y0 - INF.no[5] * 3.6 + 12} textAnchor="end" fontSize="7.5" fill="#93b8e8" fontWeight="800">other trades 20.8</text>
           </svg>
           <div className="w-full rounded-xl bg-rose-50 border border-rose-200 px-3 py-2 text-[11px] text-rose-900">
             <b>Forced size, honest curve:</b> first trades from new client inflows must be done — no discretion over size. Their curve is steeper, and the square-root term goes <i>insignificant</i>; with stock and day fixed effects, inflows face a <b>linear</b> impact function. Budget √size for trading you control; budget linear for trading that controls you — redemptions, rebalances, crisis exits. Hold that thought for the spirals.

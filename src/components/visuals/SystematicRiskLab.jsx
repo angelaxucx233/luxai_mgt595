@@ -37,30 +37,30 @@ function CmlSml() {
     <div className="w-full max-w-xl flex flex-col items-center gap-2">
       <svg viewBox="0 0 420 196" className="w-full">
         {/* Panel A */}
-        <text x="100" y="11" textAnchor="middle" fontSize="9.5" fill="#00356b" fontWeight="700">A · σ-space (CML)</text>
+        <text x="100" y="11" textAnchor="middle" fontSize="9.5" fill="#93b8e8" fontWeight="700">A · σ-space (CML)</text>
         <line x1="18" y1="165" x2="200" y2="165" stroke="#94a3b8" />
         <line x1="18" y1="165" x2="18" y2="16" stroke="#94a3b8" />
-        <text x="196" y="177" textAnchor="end" fontSize="8.5" fill="#64748b">σ (%)</text>
+        <text x="196" y="177" textAnchor="end" fontSize="8.5" fill="#a3b1c2">σ (%)</text>
         <polyline points={frontier.join(' ')} fill="none" stroke="#cbd5e1" strokeWidth="2" />
-        <line x1={XA(0)} y1={YA(rf)} x2={XA(38)} y2={YA(rf + (prem / mktSig) * 38)} stroke="#00356b" strokeWidth="2.2" />
-        <text x={XA(25)} y={YA(rf + (prem / mktSig) * 25) - 6} fontSize="8.5" fill="#00356b" fontWeight="700">CML</text>
-        <circle cx={XA(mktSig)} cy={YA(mktE)} r="4.5" fill="#d97706" stroke="#00356b" />
-        <text x={XA(mktSig) - 6} y={YA(mktE) - 7} fontSize="8.5" fill="#b45309" fontWeight="700">M</text>
+        <line x1={XA(0)} y1={YA(rf)} x2={XA(38)} y2={YA(rf + (prem / mktSig) * 38)} stroke="#3b82f6" strokeWidth="2.2" />
+        <text x={XA(25)} y={YA(rf + (prem / mktSig) * 25) - 6} fontSize="8.5" fill="#93b8e8" fontWeight="700">CML</text>
+        <circle cx={XA(mktSig)} cy={YA(mktE)} r="4.5" fill="#d97706" stroke="#3b82f6" />
+        <text x={XA(mktSig) - 6} y={YA(mktE) - 7} fontSize="8.5" fill="#f59e0b" fontWeight="700">M</text>
         {SECURITIES.map((s) => (
           <g key={s.id} onClick={() => setSel(s.id)} className="cursor-pointer">
             <line x1={XA(Math.sqrt(100 + 9 * (Er(s.beta) - 6) ** 2))} y1={YA(Er(s.beta))} x2={XA(39)} y2={YA(Er(s.beta))} stroke="#e2e8f0" strokeDasharray="3 3" />
             <circle cx={XA(s.sigma)} cy={YA(Er(s.beta))} r={sel === s.id ? 6 : 4} fill={sel === s.id ? '#e11d48' : '#f87171'} stroke="white" strokeWidth="1.2" />
-            {sel === s.id && <text x={XA(s.sigma)} y={YA(Er(s.beta)) - 8} textAnchor="middle" fontSize="8.5" fill="#e11d48" fontWeight="700">{s.name}</text>}
+            {sel === s.id && <text x={XA(s.sigma)} y={YA(Er(s.beta)) - 8} textAnchor="middle" fontSize="8.5" fill="#fb7185" fontWeight="700">{s.name}</text>}
           </g>
         ))}
         {/* Panel B */}
-        <text x="315" y="11" textAnchor="middle" fontSize="9.5" fill="#00356b" fontWeight="700">B · β-space (SML)</text>
+        <text x="315" y="11" textAnchor="middle" fontSize="9.5" fill="#93b8e8" fontWeight="700">B · β-space (SML)</text>
         <line x1="232" y1="165" x2="405" y2="165" stroke="#94a3b8" />
         <line x1="232" y1="165" x2="232" y2="16" stroke="#94a3b8" />
-        <text x="401" y="177" textAnchor="end" fontSize="8.5" fill="#64748b">β</text>
-        <line x1={XB(0)} y1={YB(rf)} x2={XB(1.35)} y2={YB(Er(1.35))} stroke="#00356b" strokeWidth="2.2" />
-        <text x={XB(1.15)} y={YB(Er(1.15)) - 7} fontSize="8.5" fill="#00356b" fontWeight="700">SML</text>
-        <circle cx={XB(1)} cy={YB(mktE)} r="4.5" fill="#d97706" stroke="#00356b" />
+        <text x="401" y="177" textAnchor="end" fontSize="8.5" fill="#a3b1c2">β</text>
+        <line x1={XB(0)} y1={YB(rf)} x2={XB(1.35)} y2={YB(Er(1.35))} stroke="#3b82f6" strokeWidth="2.2" />
+        <text x={XB(1.15)} y={YB(Er(1.15)) - 7} fontSize="8.5" fill="#93b8e8" fontWeight="700">SML</text>
+        <circle cx={XB(1)} cy={YB(mktE)} r="4.5" fill="#d97706" stroke="#3b82f6" />
         {SECURITIES.map((s) => (
           <circle key={s.id} cx={XB(s.beta)} cy={YB(Er(s.beta))} r={sel === s.id ? 6 : 4}
             fill={sel === s.id ? '#e11d48' : '#f87171'} stroke="white" strokeWidth="1.2"
@@ -92,26 +92,26 @@ function Decompose() {
   return (
     <div className="w-full max-w-lg flex flex-col items-center gap-3">
       <div className="w-full flex flex-col gap-2">
-        <label className="text-xs text-slate-600 flex items-center gap-2">
+        <label className="text-xs text-slate-200 flex items-center gap-2">
           <span className="w-28">β = <b className="text-yale-900">{beta.toFixed(2)}</b></span>
           <input type="range" min="0" max="2" step="0.05" value={beta} onChange={(e) => setBeta(+e.target.value)} className="flex-1 accent-yale-700" />
         </label>
-        <label className="text-xs text-slate-600 flex items-center gap-2">
+        <label className="text-xs text-slate-200 flex items-center gap-2">
           <span className="w-28">σ(ε) = <b className="text-yale-900">{sigE}%</b></span>
           <input type="range" min="0" max="40" step="1" value={sigE} onChange={(e) => setSigE(+e.target.value)} className="flex-1 accent-amber-600" />
         </label>
       </div>
       <svg viewBox="0 0 400 92" className="w-full">
-        <text x="20" y="14" fontSize="10" fill="#334155" fontWeight="600">Variance: {totVar.toFixed(0)} %²  (σ = {totSig.toFixed(2)}%)</text>
-        <rect x="20" y="22" width={(sysVar / Math.max(totVar, 1)) * W} height="26" fill="#00356b" rx="3" />
+        <text x="20" y="14" fontSize="10" fill="#cbd5e1" fontWeight="600">Variance: {totVar.toFixed(0)} %²  (σ = {totSig.toFixed(2)}%)</text>
+        <rect x="20" y="22" width={(sysVar / Math.max(totVar, 1)) * W} height="26" fill="#3b82f6" rx="3" />
         <rect x={20 + (sysVar / Math.max(totVar, 1)) * W} y="22" width={(idiVar / Math.max(totVar, 1)) * W} height="26" fill="#d97706" rx="3" />
         <text x={20 + Math.max((sysVar / Math.max(totVar, 1)) * W * 0.5, 34)} y="39" textAnchor="middle" fontSize="9.5" fill="white" fontWeight="700">β²σ²_M = {sysVar.toFixed(0)}</text>
         {idiVar > totVar * 0.12 && (
           <text x={20 + (sysVar / Math.max(totVar, 1)) * W + (idiVar / Math.max(totVar, 1)) * W * 0.5} y="39" textAnchor="middle" fontSize="9.5" fill="white" fontWeight="700">σ²(ε) = {idiVar.toFixed(0)}</text>
         )}
-        <text x="20" y="68" fontSize="10" fill="#00356b" fontWeight="600">Priced (systematic): {share.toFixed(1)}%</text>
-        <text x="380" y="68" textAnchor="end" fontSize="10" fill="#b45309" fontWeight="600">Diversifiable: {(100 - share).toFixed(1)}%</text>
-        <text x="20" y="86" fontSize="10.5" fill="#0f766e" fontWeight="700">Required return: r_f + β·premium = {req.toFixed(1)}%  — depends only on the navy bar</text>
+        <text x="20" y="68" fontSize="10" fill="#93b8e8" fontWeight="600">Priced (systematic): {share.toFixed(1)}%</text>
+        <text x="380" y="68" textAnchor="end" fontSize="10" fill="#f59e0b" fontWeight="600">Diversifiable: {(100 - share).toFixed(1)}%</text>
+        <text x="20" y="86" fontSize="10.5" fill="#5eead4" fontWeight="700">Required return: r_f + β·premium = {req.toFixed(1)}%  — depends only on the navy bar</text>
       </svg>
       <p className="text-[11px] text-slate-500 leading-snug">Push σ(ε) to 40 with β = 0: total risk explodes, required return stays at r_f = 3%. Held inside a diversified portfolio, the amber piece averages away — nobody pays you to bear it.</p>
     </div>

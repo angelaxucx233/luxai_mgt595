@@ -13,7 +13,7 @@ export default function QmjLab({ mode = 'score' }) {
 }
 
 const COMPS = [
-  { k: 'Profitability', d: 'Gross profits, margins, earnings, accruals, cash flows — average rank across all of them.', c: '#00356b' },
+  { k: 'Profitability', d: 'Gross profits, margins, earnings, accruals, cash flows — average rank across all of them.', c: '#3b82f6' },
   { k: 'Growth', d: 'Prior five-year growth in each profitability measure.', c: '#0f766e' },
   { k: 'Safety', d: 'Return-based (low beta, low vol) and fundamental (low leverage, stable profits, low credit risk).', c: '#d97706' },
   { k: 'Payout', d: 'Fraction of profits returned to shareholders — free cash flow can breed agency problems (Jensen 1986).', c: '#7c3aed' },
@@ -24,11 +24,11 @@ function Score() {
   return (
     <div className="w-full max-w-lg flex flex-col gap-2.5">
       <svg viewBox="0 0 400 74" className="w-full">
-        <text x="200" y="18" textAnchor="middle" fontSize="12" fill="#0f172a" fontWeight="700">
-          P/B = <tspan fill="#00356b">profitability</tspan> × <tspan fill="#7c3aed">payout</tspan> / (<tspan fill="#d97706">required return</tspan> − <tspan fill="#0f766e">growth</tspan>)
+        <text x="200" y="18" textAnchor="middle" fontSize="12" fill="#e2e8f0" fontWeight="700">
+          P/B = <tspan fill="#3b82f6">profitability</tspan> × <tspan fill="#7c3aed">payout</tspan> / (<tspan fill="#d97706">required return</tspan> − <tspan fill="#0f766e">growth</tspan>)
         </text>
-        <text x="200" y="42" textAnchor="middle" fontSize="9" fill="#64748b">Gordon’s growth model, rewritten — the four things worth paying more for</text>
-        <text x="200" y="62" textAnchor="middle" fontSize="10" fill="#0f172a" fontWeight="700">Quality = z( Profitability + Growth + Safety + Payout )</text>
+        <text x="200" y="42" textAnchor="middle" fontSize="9" fill="#a3b1c2">Gordon’s growth model, rewritten — the four things worth paying more for</text>
+        <text x="200" y="62" textAnchor="middle" fontSize="10" fill="#e2e8f0" fontWeight="700">Quality = z( Profitability + Growth + Safety + Payout )</text>
       </svg>
       <div className="grid grid-cols-4 gap-1.5">
         {COMPS.map((x, i) => (
@@ -68,15 +68,18 @@ function Results() {
       </div>
       {tab === 'deciles' && (
         <>
-          <svg viewBox="0 0 400 132" className="w-full">
-            <text x="14" y="12" fontSize="8.5" fill="#64748b">4-factor alpha by quality decile (shape) — junk → quality</text>
+          <svg viewBox="0 0 400 140" className="w-full">
+            <text x="14" y="12" fontSize="8.5" fill="#a3b1c2">4-factor alpha by quality decile (shape) — junk → quality</text>
             <line x1="20" y1="82" x2="320" y2="82" stroke="#94a3b8" />
             {DEC_ALPHA.map((v, i) => (
-              <rect key={i} x={26 + i * 29} y={v >= 0 ? 82 - v * 88 : 82} width="21" height={Math.abs(v) * 88}
-                fill={v >= 0 ? '#00356b' : '#e11d48'} opacity={0.5 + i * 0.05} rx="2.5" />
+              <g key={i}>
+              <rect x={26 + i * 29} y={v >= 0 ? 82 - v * 88 : 82} width="21" height={Math.abs(v) * 88}
+                fill={v >= 0 ? '#3b82f6' : '#e11d48'} opacity={0.5 + i * 0.05} rx="2.5" />
+              <text x={36.5 + i * 29} y={v >= 0 ? 82 - v * 88 - 4 : 82 + Math.abs(v) * 88 + 9} textAnchor="middle" fontSize="6.5" fill={v >= 0 ? '#66b2ff' : '#fb7185'} fontWeight="700">{v.toFixed(2)}</text>
+              </g>
             ))}
-            <text x="36" y="126" fontSize="8" fill="#64748b">P1 junk</text>
-            <text x="286" y="126" fontSize="8" fill="#64748b">P10 quality</text>
+            <text x="36" y="137" fontSize="8" fill="#a3b1c2">P1 junk</text>
+            <text x="286" y="137" fontSize="8" fill="#a3b1c2">P10 quality</text>
             <g>
               <rect x="336" y="20" width="56" height="86" rx="6" fill="#f0f7ff" stroke="#bfdbfe" />
               <text x="364" y="36" textAnchor="middle" fontSize="8" fill="#64748b">H−L 4F α</text>
@@ -94,15 +97,15 @@ function Results() {
       {tab === 'flight' && (
         <>
           <svg viewBox="0 0 400 130" className="w-full">
-            <text x="14" y="12" fontSize="8.5" fill="#64748b">QMJ return vs market return — negative and convex (stylized scatter)</text>
+            <text x="14" y="12" fontSize="8.5" fill="#a3b1c2">QMJ return vs market return — negative and convex (stylized scatter)</text>
             <line x1="30" y1="70" x2="392" y2="70" stroke="#e2e8f0" />
             <line x1="200" y1="18" x2="200" y2="112" stroke="#e2e8f0" />
             {[[-14,7.2],[-11,5.4],[-9,4.6],[-7,3.1],[-5,2.2],[-4,1.4],[-3,1.1],[-2,0.6],[-1,0.4],[0,0.1],[1,-0.2],[2,-0.4],[3,-0.5],[4,-0.7],[5,-0.6],[6,-0.9],[8,-0.8],[10,-1.0],[12,-0.8]].map(([m, q], i) => (
-              <circle key={i} cx={200 + m * 13} cy={70 - q * 7.4} r="3" fill="#00356b" opacity="0.6" />
+              <circle key={i} cx={200 + m * 13} cy={70 - q * 7.4} r="3" fill="#3b82f6" opacity="0.6" />
             ))}
             <path d="M 20 16 C 120 52, 240 76, 388 80" fill="none" stroke="#d97706" strokeWidth="2" strokeDasharray="5 4" />
-            <text x="52" y="30" fontSize="8.5" fill="#059669" fontWeight="700">crash months: QMJ’s best</text>
-            <text x="330" y="104" fontSize="8" fill="#64748b">market return →</text>
+            <text x="52" y="30" fontSize="8.5" fill="#34d399" fontWeight="700">crash months: QMJ’s best</text>
+            <text x="330" y="104" fontSize="8" fill="#a3b1c2">market return →</text>
           </svg>
           <div className="w-full rounded-xl bg-emerald-50 border border-emerald-200 px-3 py-2 text-[11px] text-emerald-900">
             <b>Flight to quality.</b> QMJ delivers its best returns in sharp market declines — the relation is negative and convex. A risk premium is compensation for doing badly in bad times; QMJ does the opposite. Whatever pays this factor, it is not crash risk.
@@ -136,7 +139,7 @@ function Verdict() {
   return (
     <div className="w-full max-w-lg flex flex-col gap-2">
       {[
-        { h: 'Profitability', d: 'One clean ratio predicts returns, insures value, and subsumes the quality zoo. Spanning alpha 2.3–4.6%/yr in every specification.', c: '#00356b' },
+        { h: 'Profitability', d: 'One clean ratio predicts returns, insures value, and subsumes the quality zoo. Spanning alpha 2.3–4.6%/yr in every specification.', c: '#3b82f6' },
         { h: 'Betting Against Beta', d: 'Leverage constraints flatten the SML in every asset class; Sharpe 0.75; losses timed to funding shocks; holdings sorted by constraint.', c: '#0f766e' },
         { h: 'Quality Minus Junk', d: 'Alpha 0.66%/mo (t 10.2) with negative risk loadings and flight-to-quality gains — the opposite shape of a risk premium.', c: '#d97706' },
         { h: 'The synthesis', d: 'Together they recover the size effect, absorb a swath of accounting anomalies, and explain roughly half of Buffett. The lean: constraints + behavior — Graham–Dodd, formalized.', c: '#7c3aed' },

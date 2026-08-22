@@ -11,7 +11,7 @@ const PART_IDS = ['nFact', 'kFact', 'nkFact', 'pBase', 'pExp', 'qBase', 'qExp', 
 
 function TallParentheses({ children }) {
   return (
-    <span className="inline-flex items-stretch text-slate-400">
+    <span className="inline-flex items-stretch text-slate-500">
       <svg
         className="w-3.5 shrink-0 self-stretch min-h-[2.75rem]"
         viewBox="0 0 14 100"
@@ -165,7 +165,7 @@ export default function BinomialFormulaReveal({
 
   return (
     <div className="flex flex-col items-center gap-5 w-full max-w-2xl">
-      <p className="text-sm text-slate-400 text-center">
+      <p className="text-sm text-slate-500 text-center">
         Tap each <span className="text-slate-300 font-mono">?</span> to build P(X = {k}) piece
         by piece.
       </p>

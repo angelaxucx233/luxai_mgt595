@@ -31,12 +31,12 @@ export default function EfficiencyForms({ summaryMode = false }) {
   return (
     <div className="w-full max-w-lg flex flex-col items-center gap-3">
       <svg viewBox="0 0 300 190" className="w-full max-w-sm">
-        <ellipse cx="150" cy="95" rx="142" ry="88" fill={sel === 'strong' ? '#00356b' : '#eef4fb'} opacity={sel === 'strong' ? 0.16 : 1} stroke="#00356b" strokeWidth="2" className="cursor-pointer" onClick={() => setSel('strong')} />
-        <ellipse cx="150" cy="108" rx="100" ry="62" fill={sel === 'semi' ? '#0f766e' : '#e6f5f2'} opacity={sel === 'semi' ? 0.2 : 1} stroke="#0f766e" strokeWidth="2" className="cursor-pointer" onClick={() => setSel('semi')} />
-        <ellipse cx="150" cy="122" rx="60" ry="38" fill={sel === 'weak' ? '#d97706' : '#fdf1df'} opacity={sel === 'weak' ? 0.3 : 1} stroke="#d97706" strokeWidth="2" className="cursor-pointer" onClick={() => setSel('weak')} />
-        <text x="150" y="126" textAnchor="middle" fontSize="11" fill="#b45309" fontWeight="800" className="cursor-pointer" onClick={() => setSel('weak')}>past prices</text>
-        <text x="150" y="60" textAnchor="middle" fontSize="11" fill="#0f766e" fontWeight="800" className="cursor-pointer" onClick={() => setSel('semi')}>public info</text>
-        <text x="150" y="24" textAnchor="middle" fontSize="11" fill="#00356b" fontWeight="800" className="cursor-pointer" onClick={() => setSel('strong')}>all info, incl. private</text>
+        <ellipse cx="150" cy="95" rx="142" ry="88" fill="#3b82f6" opacity={sel === 'strong' ? 0.30 : 0.10} stroke="#3b82f6" strokeWidth="2" className="cursor-pointer" onClick={() => setSel('strong')} />
+        <ellipse cx="150" cy="108" rx="100" ry="62" fill="#2dd4bf" opacity={sel === 'semi' ? 0.26 : 0.10} stroke="#2dd4bf" strokeWidth="2" className="cursor-pointer" onClick={() => setSel('semi')} />
+        <ellipse cx="150" cy="122" rx="60" ry="38" fill="#d97706" opacity={sel === 'weak' ? 0.32 : 0.12} stroke="#d97706" strokeWidth="2" className="cursor-pointer" onClick={() => setSel('weak')} />
+        <text x="150" y="126" textAnchor="middle" fontSize="11" fill="#f59e0b" fontWeight="800" className="cursor-pointer" onClick={() => setSel('weak')}>past prices</text>
+        <text x="150" y="60" textAnchor="middle" fontSize="11" fill="#5eead4" fontWeight="800" className="cursor-pointer" onClick={() => setSel('semi')}>public info</text>
+        <text x="150" y="24" textAnchor="middle" fontSize="11" fill="#93b8e8" fontWeight="800" className="cursor-pointer" onClick={() => setSel('strong')}>all info, incl. private</text>
       </svg>
       <div className="w-full rounded-xl bg-white border border-slate-200 px-3 py-2.5 flex flex-col gap-1">
         <div className="text-xs font-bold text-yale-900">{f.name}: prices fully reflect {f.info}</div>

@@ -45,7 +45,7 @@ export default function SampleSpaceGrid() {
               className={`rounded-xl border-2 px-3 py-3 font-mono text-center font-bold transition-all duration-300 ${
                 inEvent
                   ? 'border-amber-500 bg-amber-50 text-amber-900 scale-105 shadow-sm'
-                  : 'border-slate-200 bg-slate-50 text-slate-400 opacity-50'
+                  : 'border-slate-200 bg-slate-50 text-slate-500 opacity-50'
               }`}
             >
               {o.label}

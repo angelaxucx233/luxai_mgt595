@@ -28,7 +28,7 @@ export default function SampleSpaceShrinker() {
               className={`rounded-xl border-2 px-4 py-3 font-mono text-center text-sm font-bold transition-all duration-500 ${
                 kept
                   ? 'border-yale-500 bg-yale-50 text-yale-800 scale-100 opacity-100'
-                  : 'border-slate-200 bg-slate-100 text-slate-400 scale-95 opacity-30 line-through'
+                  : 'border-slate-200 bg-slate-100 text-slate-500 scale-95 opacity-30 line-through'
               }`}
             >
               {outcome.label}

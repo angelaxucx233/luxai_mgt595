@@ -30,7 +30,7 @@ export default function ExplainSlide({ content, visual, visualProps, slideTitle 
         visual ? (yourTurn ? 'max-w-2xl' : 'max-w-xl') : 'max-w-lg'
       }`}
     >
-      <span className="text-xs font-semibold tracking-widest text-yale-400 uppercase">
+      <span className="text-xs font-semibold tracking-widest text-yale-200 uppercase">
         {content.eyebrow}
       </span>
       {yourTurn ? (
@@ -38,7 +38,7 @@ export default function ExplainSlide({ content, visual, visualProps, slideTitle 
       ) : (
         <h2 className="text-2xl md:text-3xl font-bold text-white">{heading}</h2>
       )}
-      {content.body && <p className="text-slate-300 leading-relaxed"><MathText text={content.body} /></p>}
+      {content.body && <p className="text-slate-200 leading-relaxed"><MathText text={content.body} /></p>}
       {visual && <SlideVisual id={visual} visualProps={visualProps} />}
       {content.notation &&
         (content.notationVariant === 'sampleSpace' ? (
@@ -49,12 +49,12 @@ export default function ExplainSlide({ content, visual, visualProps, slideTitle 
           </div>
         ))}
       {content.quote && (
-        <blockquote className="font-serif italic text-slate-400 border-l-2 border-yale-500 pl-4 text-left">
+        <blockquote className="font-serif italic text-slate-300 border-l-2 border-yale-500 pl-4 text-left">
           {content.quote}
         </blockquote>
       )}
       {content.footnote && (
-        <p className="text-sm text-slate-500"><MathText text={content.footnote} /></p>
+        <p className={String(content.footnote).length > 110 ? 'text-[15px] text-slate-200 leading-relaxed' : 'text-sm text-slate-300'}><MathText text={content.footnote} /></p>
       )}
     </div>
   );

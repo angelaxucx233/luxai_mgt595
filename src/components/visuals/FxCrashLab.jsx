@@ -50,10 +50,10 @@ function Carry() {
         ))}
       </div>
       <svg viewBox="0 0 400 150" className="w-full">
-        <text x="14" y="12" fontSize="8.5" fill="#64748b">{label} vs interest differential i*−i — real data, 8 currencies vs USD</text>
+        <text x="14" y="12" fontSize="8.5" fill="#a3b1c2">{label} vs interest differential i*−i — real data, 8 currencies vs USD</text>
         <line x1="36" y1="82" x2="388" y2="82" stroke="#e2e8f0" />
         <line x1="36" y1="130" x2="388" y2="130" stroke="#94a3b8" />
-        <text x="200" y="144" textAnchor="middle" fontSize="8" fill="#64748b">carry i*−i (low → high)</text>
+        <text x="200" y="144" textAnchor="middle" fontSize="8" fill="#a3b1c2">carry i*−i (low → high)</text>
         {[...FX].sort((a, b) => a.diff - b.diff).map((c, i) => {
           const v = yv(c);
           return (
@@ -61,7 +61,7 @@ function Carry() {
               <circle cx={56 + i * 44} cy={82 - v * scale} r="9" fill={v >= 0 ? '#0f766e' : '#e11d48'} opacity="0.88" />
               <text x={56 + i * 44} y={85 - v * scale} textAnchor="middle" fontSize="7" fill="#fff" fontWeight="800">{c.k}</text>
               <text x={56 + i * 44} y={82 - v * scale + (v >= 0 ? -13 : 19)} textAnchor="middle" fontSize="7" fill={v >= 0 ? '#0f766e' : '#e11d48'} fontWeight="700">{v.toFixed(panel === 'z' ? 1 : 2)}</text>
-              <text x={56 + i * 44} y="126" textAnchor="middle" fontSize="7" fill="#94a3b8">{c.diff.toFixed(1)}</text>
+              <text x={56 + i * 44} y="126" textAnchor="middle" fontSize="7" fill="#cbd5e1">{c.diff.toFixed(1)}</text>
             </g>
           );
         })}
@@ -88,7 +88,7 @@ function Predict() {
   const [row, setRow] = useState('z');
   const cfg = {
     z: { get: (h) => h.z, scale: 26, col: '#0f766e', lab: 'future excess return z(t+τ)', note: 'Coefficient +2.17 next quarter, fading to zero by τ = 10: carry predicts returns for roughly two years — the forward premium puzzle with a half-life.' },
-    fut: { get: (h) => h.fut, scale: 7, col: '#00356b', lab: 'speculator futures positions(t+τ)', note: 'Capital chases the differential (+8.26 next quarter) and stays for six — the crowd assembles exactly where the crash risk is building.' },
+    fut: { get: (h) => h.fut, scale: 7, col: '#3b82f6', lab: 'speculator futures positions(t+τ)', note: 'Capital chases the differential (+8.26 next quarter) and stays for six — the crowd assembles exactly where the crash risk is building.' },
     sk: { get: (h) => h.sk, scale: 2.4, col: '#e11d48', lab: 'skewness of returns in quarter t+τ', note: '−23.9 next quarter and still −21 seven quarters out: today’s carry forecasts a persistently crash-shaped distribution more than two years ahead. The profit and the fragility are the same forecast.' },
   }[row];
   return (
@@ -99,8 +99,9 @@ function Predict() {
             className={`rounded-full px-3 py-1 text-[11px] font-semibold border ${row === k ? 'bg-yale-800 text-white border-yale-800' : 'bg-white text-yale-900 border-yale-200'}`}>{l}</button>
         ))}
       </div>
-      <svg viewBox="0 0 400 140" className="w-full">
-        <text x="14" y="12" fontSize="8.5" fill="#64748b">panel regression: {cfg.lab} on today’s i*−i — real coefficients</text>
+      <svg viewBox="0 0 400 164" className="w-full">
+        <text x="14" y="12" fontSize="8.5" fill="#a3b1c2">panel regression: {cfg.lab} on today’s i*−i — real coefficients</text>
+            <g transform="translate(0, 22)">
         <line x1="30" y1="76" x2="392" y2="76" stroke="#94a3b8" />
         {HORIZ.map((h, i) => {
           const v = cfg.get(h);
@@ -108,11 +109,13 @@ function Predict() {
             <g key={h.t}>
               <rect x={38 + i * 36} y={v >= 0 ? 76 - v * cfg.scale : 76} width="20" height={Math.abs(v) * cfg.scale} fill={cfg.col} opacity="0.85" rx="2.5" />
               <text x={48 + i * 36} y={v >= 0 ? 72 - v * cfg.scale : 76 + Math.abs(v) * cfg.scale + 8} textAnchor="middle" fontSize="6.5" fill={cfg.col} fontWeight="700">{v.toFixed(1)}</text>
-              <text x={48 + i * 36} y="134" textAnchor="middle" fontSize="7" fill="#94a3b8">t+{h.t}</text>
+              <text x={48 + i * 36} y="134" textAnchor="middle" fontSize="7" fill="#cbd5e1">t+{h.t}</text>
             </g>
           );
         })}
-      </svg>
+      
+            </g>
+          </svg>
       <div className="w-full rounded-xl bg-yale-50 border border-yale-100 px-3 py-2 text-[11px] text-yale-900">{cfg.note}</div>
       <p className="text-[11px] text-slate-500 leading-snug">Quarterly panel, 8 currencies, country fixed effects, 1986–2006. The VAR version runs the same movie: a carry shock lifts cumulated returns above the UIP line, pulls speculators in for ~2 quarters, and bends skewness sharply negative before it mean-reverts.</p>
     </div>
@@ -132,16 +135,16 @@ function Unwind() {
       {tab === 'vix' && (
         <>
           <svg viewBox="0 0 400 118" className="w-full">
-            <text x="14" y="12" fontSize="8.5" fill="#64748b">weekly effect of ΔVIX × sign(carry) — real coefficients</text>
+            <text x="14" y="12" fontSize="8.5" fill="#a3b1c2">weekly effect of ΔVIX × sign(carry) — real coefficients</text>
             <line x1="208" y1="22" x2="208" y2="100" stroke="#e2e8f0" />
             {[['carry positions Δ (this wk)', -1.47], ['carry positions Δ (next wk)', -1.29], ['risk reversals Δ (insurance)', -5.33], ['carry return z', -0.43]].map(([l, v], i) => (
               <g key={l}>
                 <rect x={208 - Math.abs(v) * 26} y={26 + i * 19} width={Math.abs(v) * 26} height="13" fill="#e11d48" opacity="0.85" rx="3" />
-                <text x={214} y={36 + i * 19} fontSize="8" fill="#334155">{l}</text>
-                <text x={202 - Math.abs(v) * 26} y={36 + i * 19} textAnchor="end" fontSize="8" fill="#e11d48" fontWeight="800">{v}</text>
+                <text x={214} y={36 + i * 19} fontSize="8" fill="#cbd5e1">{l}</text>
+                <text x={202 - Math.abs(v) * 26} y={36 + i * 19} textAnchor="end" fontSize="8" fill="#fb7185" fontWeight="800">{v}</text>
               </g>
             ))}
-            <text x="200" y="113" textAnchor="middle" fontSize="8" fill="#64748b">a volatility spike hits positions, insurance prices, and returns at once (TED spikes: same signs)</text>
+            <text x="200" y="113" textAnchor="middle" fontSize="8" fill="#a3b1c2">a volatility spike hits positions, insurance prices, and returns at once (TED spikes: same signs)</text>
           </svg>
           <div className="w-full rounded-xl bg-rose-50 border border-rose-200 px-3 py-2 text-[11px] text-rose-900">
             <b>Funding is the trigger:</b> when VIX or TED jumps, speculators’ funding tightens, carry positions shrink this week <i>and</i> next, the trade bleeds, and crash insurance gets pricier — the unwind in real time. This is Brunnermeier–Pedersen’s spiral running in FX (the full machine is Lecture 10’s finale).
@@ -188,7 +191,7 @@ function Verdict() {
         {[
           ['The mispricing', 'UIP fails: carry earns 2.17 per unit of differential next quarter. Speculators are paid to correct it.', '#0f766e'],
           ['The police force', 'Correcting it needs leverage; leverage needs funding; funding dies in VIX/TED spikes — precisely when the trade crashes.', '#e11d48'],
-          ['The equilibrium', 'Endogenous crash risk limits the arbitrage, so the puzzle survives — partially corrected, permanently profitable, permanently dangerous.', '#00356b'],
+          ['The equilibrium', 'Endogenous crash risk limits the arbitrage, so the puzzle survives — partially corrected, permanently profitable, permanently dangerous.', '#3b82f6'],
         ].map(([h, d, c]) => (
           <div key={h} className="rounded-xl border bg-white px-2.5 py-2" style={{ borderColor: c }}>
             <div className="font-bold" style={{ color: c }}>{h}</div>

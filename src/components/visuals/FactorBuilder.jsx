@@ -13,7 +13,7 @@ export default function FactorBuilder() {
     if (c.col === 'L') return '−½';
     return '0';
   };
-  const tone = (w) => (w.startsWith('+') ? 'bg-emerald-600 text-white' : w === '0' ? 'bg-slate-100 text-slate-400' : 'bg-rose-600 text-white');
+  const tone = (w) => (w.startsWith('+') ? 'bg-emerald-600 text-white' : w === '0' ? 'bg-slate-100 text-slate-500' : 'bg-rose-600 text-white');
 
   return (
     <div className="w-full max-w-md flex flex-col items-center gap-3">

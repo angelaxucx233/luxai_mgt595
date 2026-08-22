@@ -40,11 +40,11 @@ function Pead() {
       <svg viewBox="0 0 400 152" className="w-full">
         <line x1="34" y1={Y(0)} x2="390" y2={Y(0)} stroke="#cbd5e1" />
         <line x1="34" y1="136" x2="34" y2="8" stroke="#94a3b8" />
-        {line(SUE5, '#00356b', 2.6)}{line(SUE4, '#3b5f8a')}{line(SUE3, '#94a3b8', 1.6)}{line(SUE2, '#d97706')}{line(SUE1, '#e11d48', 2.6)}
-        <text x={X(60) - 2} y={Y(4.3) - 5} textAnchor="end" fontSize="8.5" fill="#00356b" fontWeight="800">SUE 5 (best surprise): +4.3%</text>
-        <text x={X(60) - 2} y={Y(-3.5) + 12} textAnchor="end" fontSize="8.5" fill="#e11d48" fontWeight="800">SUE 1 (worst): −3.5%</text>
-        <text x="200" y="150" textAnchor="middle" fontSize="8" fill="#64748b">trading days after the earnings announcement</text>
-        <text x="38" y="12" fontSize="8.5" fill="#64748b">cumulative return (%)</text>
+        {line(SUE5, '#3b82f6', 2.6)}{line(SUE4, '#3b5f8a')}{line(SUE3, '#94a3b8', 1.6)}{line(SUE2, '#d97706')}{line(SUE1, '#e11d48', 2.6)}
+        <text x={X(60) - 2} y={Y(4.3) - 5} textAnchor="end" fontSize="8.5" fill="#93b8e8" fontWeight="800">SUE 5 (best surprise): +4.3%</text>
+        <text x={X(60) - 2} y={Y(-3.5) + 12} textAnchor="end" fontSize="8.5" fill="#fb7185" fontWeight="800">SUE 1 (worst): −3.5%</text>
+        <text x="200" y="150" textAnchor="middle" fontSize="8" fill="#a3b1c2">trading days after the earnings announcement</text>
+        <text x="38" y="12" fontSize="8.5" fill="#a3b1c2">cumulative return (%)</text>
       </svg>
       <div className="w-full rounded-xl bg-yale-50 border border-yale-100 px-3 py-2 text-[11px] text-yale-900">
         <b>Post-earnings-announcement drift:</b> after the announcement — when the news is fully public — prices keep drifting in the surprise’s direction for ~60 trading days (Bernard–Thomas 1989). The analyst-revision version (earnings momentum) drifts for ~12 months, is <b>distinct</b> from price momentum, combines profitably with it, and appears in <b>34 markets</b>.
@@ -96,12 +96,12 @@ function Cust() {
       <svg viewBox="0 0 400 138" className="w-full">
         <line x1="40" y1={Y(0)} x2="388" y2={Y(0)} stroke="#cbd5e1" />
         <line x1={X(0)} y1={Y(0)} x2={X(0)} y2={Y(3.9)} stroke="#94a3b8" strokeDasharray="4 3" />
-        <polyline points={CF.map(([m, v]) => `${X(m)},${Y(v)}`).join(' ')} fill="none" stroke="#00356b" strokeWidth="2.6" />
-        {CF.map(([m, v]) => <circle key={m} cx={X(m)} cy={Y(v)} r="2.4" fill="#00356b" />)}
-        <text x={X(0) + 4} y={Y(3.9) + 12} fontSize="8.5" fill="#00356b" fontWeight="700">+3.9% on the news month</text>
+        <polyline points={CF.map(([m, v]) => `${X(m)},${Y(v)}`).join(' ')} fill="none" stroke="#3b82f6" strokeWidth="2.6" />
+        {CF.map(([m, v]) => <circle key={m} cx={X(m)} cy={Y(v)} r="2.4" fill="#3b82f6" />)}
+        <text x={X(0) + 4} y={Y(3.9) + 12} fontSize="8.5" fill="#93b8e8" fontWeight="700">+3.9% on the news month</text>
         <text x={X(12) - 2} y={Y(8.6) - 6} textAnchor="end" fontSize="8.5" fill="#d97706" fontWeight="800">+4.7% more drift over the year</text>
-        <text x="200" y="134" textAnchor="middle" fontSize="8" fill="#64748b">months relative to the customer-return month</text>
-        <text x="44" y="12" fontSize="8.5" fill="#64748b">supplier cumulative L/S return (%) — Cohen–Frazzini (2008), Fig. 3</text>
+        <text x="200" y="134" textAnchor="middle" fontSize="8" fill="#a3b1c2">months relative to the customer-return month</text>
+        <text x="44" y="12" fontSize="8.5" fill="#a3b1c2">supplier cumulative L/S return (%) — Cohen–Frazzini (2008), Fig. 3</text>
       </svg>
       <div className="w-full rounded-xl bg-yale-50 border border-yale-100 px-3 py-2 text-[11px] text-yale-900">
         <b>The Coastcast–Callaway parable:</b> Callaway was <b>50% of Coastcast’s sales</b> — a disclosed, public link. When Callaway cut guidance and fell ~30% (July 2001), Coastcast barely moved… then drifted down for <b>weeks</b>. Systematically: sort suppliers on their principal customers’ last-month return, and the long-short earns a <b>four-factor alpha of 1.38%/month (t = 3.1) — ≈18%/year</b> — surviving the FF factors and both own and industry momentum.

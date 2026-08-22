@@ -40,14 +40,14 @@ function Paths() {
         <line x1="24" y1="90" x2="390" y2="90" stroke="#e2e8f0" />
         <line x1="24" y1="172" x2="24" y2="8" stroke="#94a3b8" />
         <line x1="24" y1="172" x2="390" y2="172" stroke="#94a3b8" />
-        <polygon points={cone.join(' ')} fill="#00356b" opacity="0.08" />
+        <polygon points={cone.join(' ')} fill="#3b82f6" opacity="0.08" />
         <polyline points={Array.from({ length: 31 }, (_, i) => `${X(i * 2)},${Y(mu * i * 2)}`).join(' ')} fill="none" stroke="#d97706" strokeWidth="2" strokeDasharray="5 4" />
         {paths.map((p, i) => (
-          <polyline key={i} points={p.map((v, t) => `${X(t)},${Y(v)}`).join(' ')} fill="none" stroke="#00356b" strokeWidth="1.3" opacity="0.55" />
+          <polyline key={i} points={p.map((v, t) => `${X(t)},${Y(v)}`).join(' ')} fill="none" stroke="#3b82f6" strokeWidth="1.3" opacity="0.55" />
         ))}
-        <text x="386" y="168" textAnchor="end" fontSize="8.5" fill="#64748b">t</text>
-        <text x={X(44)} y={Y(mu * 44) - 6} fontSize="8.5" fill="#b45309" fontWeight="700">E[P_t] = μt</text>
-        <text x={X(50)} y={Y(mu * 50 + 2 * sig * Math.sqrt(50)) - 5} fontSize="8.5" fill="#00356b">±2σ√t</text>
+        <text x="386" y="168" textAnchor="end" fontSize="8.5" fill="#a3b1c2">t</text>
+        <text x={X(44)} y={Y(mu * 44) - 6} fontSize="8.5" fill="#f59e0b" fontWeight="700">E[P_t] = μt</text>
+        <text x={X(50)} y={Y(mu * 50 + 2 * sig * Math.sqrt(50)) - 5} fontSize="8.5" fill="#93b8e8">±2σ√t</text>
       </svg>
       <div className="w-full flex gap-3">
         <label className="flex-1 text-xs text-slate-600 flex items-center gap-2">
@@ -86,15 +86,15 @@ function Autocorr() {
   return (
     <div className="w-full max-w-xl flex flex-col items-center gap-2.5">
       <svg viewBox="0 0 420 168" className="w-full">
-        <text x="105" y="11" textAnchor="middle" fontSize="9.5" fill="#00356b" fontWeight="700">r_t vs r_(t−1) — your sample</text>
+        <text x="105" y="11" textAnchor="middle" fontSize="9.5" fill="#93b8e8" fontWeight="700">r_t vs r_(t−1) — your sample</text>
         <line x1="20" y1="150" x2="192" y2="150" stroke="#94a3b8" /><line x1="20" y1="150" x2="20" y2="18" stroke="#94a3b8" />
         {pts.slice(1).map((v, i) => <circle key={i} cx={X(pts[i])} cy={Y(v)} r="1.9" fill="#64748b" opacity="0.6" />)}
         <line x1={X(-3)} y1={Y(-3 * est)} x2={X(3)} y2={Y(3 * est)} stroke="#e11d48" strokeWidth="2.2" />
         {/* own vs cross bars */}
-        <text x="315" y="11" textAnchor="middle" fontSize="9.5" fill="#00356b" fontWeight="700">The stock/portfolio puzzle</text>
-        {[['stock own-autocorr', -0.04, '#e11d48'], ['cross-autocorr (lead–lag)', 0.14, '#0f766e'], ['⟹ portfolio autocorr', 0.10, '#00356b']].map(([name, v, c], i) => (
+        <text x="315" y="11" textAnchor="middle" fontSize="9.5" fill="#93b8e8" fontWeight="700">The stock/portfolio puzzle</text>
+        {[['stock own-autocorr', -0.04, '#e11d48'], ['cross-autocorr (lead–lag)', 0.14, '#0f766e'], ['⟹ portfolio autocorr', 0.10, '#3b82f6']].map(([name, v, c], i) => (
           <g key={name}>
-            <text x="238" y={44 + i * 40} fontSize="8.5" fill="#475569">{name}</text>
+            <text x="238" y={44 + i * 40} fontSize="8.5" fill="#a3b1c2">{name}</text>
             <rect x={v < 0 ? 315 + v * 380 : 315} y={50 + i * 40} width={Math.abs(v) * 380} height="14" fill={c} rx="3" />
             <text x={v < 0 ? 315 + v * 380 - 4 : 315 + v * 380 + 4} y={61 + i * 40} fontSize="9" fill={c} fontWeight="700" textAnchor={v < 0 ? 'end' : 'start'}>{v > 0 ? '+' : ''}{v.toFixed(2)}</text>
             <line x1="315" y1={48 + i * 40} x2="315" y2={66 + i * 40} stroke="#94a3b8" />

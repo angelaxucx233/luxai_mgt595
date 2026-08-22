@@ -33,7 +33,7 @@ export default function SlideViewer() {
       <div className="flex-1 flex flex-col items-center justify-start min-h-0 overflow-y-auto px-6 md:px-10 pt-8 pb-6 md:pt-10">
         {isProblem && !activeSlide.visual && (
           <div className="w-full max-w-2xl flex flex-col items-center gap-4 mb-2">
-            <span className="text-xs font-semibold tracking-widest text-yale-400 uppercase">
+            <span className="text-xs font-semibold tracking-widest text-yale-200 uppercase">
               Your turn
             </span>
             <YourTurnTitle>{activeSlide.title}</YourTurnTitle>
@@ -59,7 +59,7 @@ export default function SlideViewer() {
           />
         ) : (
           problemWork && (
-            <div className="w-full max-w-xl text-slate-200 [&_p]:text-slate-300">
+            <div className="w-full max-w-xl text-slate-200 [&_p]:text-slate-200">
               <ProblemRenderer templateId={problemWork.templateId} />
             </div>
           )
@@ -71,7 +71,7 @@ export default function SlideViewer() {
           <button
             type="button"
             onClick={prevSlide}
-            className="px-5 py-2.5 rounded-full border border-slate-600 text-sm text-slate-300 hover:border-slate-400 hover:text-white"
+            className="px-5 py-2.5 rounded-full border border-slate-600 text-sm text-slate-200 hover:border-slate-400 hover:text-white"
           >
             Back
           </button>
@@ -81,7 +81,7 @@ export default function SlideViewer() {
           <button
             type="button"
             onClick={requestAnotherPractice}
-            className="px-5 py-2.5 rounded-full border border-slate-600 text-slate-300 hover:border-yale-500 hover:text-white text-sm font-semibold"
+            className="px-5 py-2.5 rounded-full border border-slate-600 text-slate-200 hover:border-yale-500 hover:text-white text-sm font-semibold"
           >
             Another example
           </button>
@@ -103,7 +103,7 @@ export default function SlideViewer() {
             title={nextBlocked ? 'Solve the problem to continue' : undefined}
             className={`px-8 py-2.5 rounded-full font-bold text-sm ${
               nextBlocked
-                ? 'bg-slate-700 text-slate-400 cursor-not-allowed'
+                ? 'bg-slate-700 text-slate-300 cursor-not-allowed'
                 : 'bg-yale-600 hover:bg-yale-500 text-white'
             }`}
           >

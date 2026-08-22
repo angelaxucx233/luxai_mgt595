@@ -80,12 +80,12 @@ function Car() {
         <line x1="26" y1="158" x2="392" y2="158" stroke="#94a3b8" /><line x1="26" y1="158" x2="26" y2="12" stroke="#94a3b8" />
         <line x1={X(-130)} y1={Y(0)} x2={X(32)} y2={Y(0)} stroke="#e2e8f0" />
         <line x1={X(0)} y1="158" x2={X(0)} y2="14" stroke="#e11d48" strokeDasharray="4 3" strokeWidth="1.4" />
-        <text x={X(0)} y="10" textAnchor="middle" fontSize="8.5" fill="#e11d48" fontWeight="700">announcement</text>
-        <text x="30" y="12" fontSize="8.5" fill="#64748b">CAR (%)</text>
-        <text x="388" y="170" textAnchor="end" fontSize="8.5" fill="#64748b">days relative to event</text>
-        <polyline points={model} fill="none" stroke="#00356b" strokeWidth="2.4" />
+        <text x={X(0)} y="10" textAnchor="middle" fontSize="8.5" fill="#fb7185" fontWeight="700">announcement</text>
+        <text x="30" y="12" fontSize="8.5" fill="#a3b1c2">CAR (%)</text>
+        <text x="388" y="170" textAnchor="end" fontSize="8.5" fill="#a3b1c2">days relative to event</text>
+        <polyline points={model} fill="none" stroke="#3b82f6" strokeWidth="2.4" />
         {showReal && <polyline points={KP.map(([d, c]) => `${X(d)},${Y(c)}`).join(' ')} fill="none" stroke="#d97706" strokeWidth="2" strokeDasharray="1 0" opacity="0.9" />}
-        {showReal && <text x={X(-58)} y={Y(-2.4) + 12} fontSize="8.5" fill="#b45309" fontWeight="700">Keown–Pinkerton (JF 1981)</text>}
+        {showReal && <text x={X(-58)} y={Y(-2.4) + 12} fontSize="8.5" fill="#f59e0b" fontWeight="700">Keown–Pinkerton (JF 1981)</text>}
       </svg>
       <div className="w-full rounded-xl bg-yale-50 border border-yale-100 px-3 py-2 text-[11px] text-yale-900">
         {path === 'efficient' && 'The semi-strong signature: everything public is priced by the close of day 0. The real data (amber) matches it after the announcement — the flat tail is the evidence.'}

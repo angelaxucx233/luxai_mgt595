@@ -40,17 +40,17 @@ export default function ReturnDistributionLab({ tailToggle = false }) {
     <div className="w-full max-w-lg flex flex-col items-center gap-3">
       <svg viewBox="0 0 420 215" className="w-full">
         <line x1="40" y1="195" x2="400" y2="195" stroke="#94a3b8" />
-        <path d={band(2)} fill="#00356b" opacity="0.18" />
-        <path d={band(1)} fill="#00356b" opacity="0.35" />
-        <path d={path(normPdf)} fill="none" stroke="#00356b" strokeWidth="2.5" />
+        <path d={band(2)} fill="#3b82f6" opacity="0.18" />
+        <path d={band(1)} fill="#3b82f6" opacity="0.35" />
+        <path d={path(normPdf)} fill="none" stroke="#3b82f6" strokeWidth="2.5" />
         {fat && <path d={path(tPdf)} fill="none" stroke="#e11d48" strokeWidth="2" strokeDasharray="6 4" />}
         <line x1={X(mu)} y1="195" x2={X(mu)} y2={Y(peak)} stroke="#d97706" strokeWidth="1.5" strokeDasharray="4 3" />
         <text x={X(mu)} y={Y(peak) - 6} textAnchor="middle" fontSize="10" fill="#d97706" fontWeight="600">μ = {mu}%</text>
-        <text x={X(mu - sigma)} y="208" textAnchor="middle" fontSize="9" fill="#64748b">−σ</text>
-        <text x={X(mu + sigma)} y="208" textAnchor="middle" fontSize="9" fill="#64748b">+σ</text>
-        <text x={X(mu - 2 * sigma)} y="208" textAnchor="middle" fontSize="9" fill="#64748b">−2σ</text>
-        <text x={X(mu + 2 * sigma)} y="208" textAnchor="middle" fontSize="9" fill="#64748b">+2σ</text>
-        {fat && <text x="350" y="40" fontSize="10" fill="#e11d48" fontWeight="600">fat tails</text>}
+        <text x={X(mu - sigma)} y="208" textAnchor="middle" fontSize="9" fill="#a3b1c2">−σ</text>
+        <text x={X(mu + sigma)} y="208" textAnchor="middle" fontSize="9" fill="#a3b1c2">+σ</text>
+        <text x={X(mu - 2 * sigma)} y="208" textAnchor="middle" fontSize="9" fill="#a3b1c2">−2σ</text>
+        <text x={X(mu + 2 * sigma)} y="208" textAnchor="middle" fontSize="9" fill="#a3b1c2">+2σ</text>
+        {fat && <text x="350" y="40" fontSize="10" fill="#fb7185" fontWeight="600">fat tails</text>}
       </svg>
 
       <label className="w-full flex items-center gap-3 text-sm text-slate-700">

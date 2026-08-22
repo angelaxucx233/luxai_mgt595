@@ -25,11 +25,11 @@ export default function CoursePage() {
           <section className="min-w-0">
             <div className="mb-6 flex flex-wrap items-end justify-between gap-3">
               <div>
-                <p className="text-[10px] font-bold uppercase tracking-widest text-yale-400 mb-1">
+                <p className="text-[10px] font-bold uppercase tracking-widest text-yale-200 mb-1">
                   {course.code}
                 </p>
                 <h2 className="text-lg font-bold text-white">Lectures</h2>
-                <p className="text-xs text-slate-500 mt-1">
+                <p className="text-xs text-slate-400 mt-1">
                   {liveCount > 0
                     ? `${liveCount} interactive · ${course.lectures.length} total`
                     : `${course.lectures.length} in this course`}

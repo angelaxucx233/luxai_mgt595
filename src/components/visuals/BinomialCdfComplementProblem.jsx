@@ -40,7 +40,7 @@ function matchesFactorialInput(val, baseN, expectedValue) {
 
 function TallParentheses({ children }) {
   return (
-    <span className="inline-flex items-stretch text-slate-400">
+    <span className="inline-flex items-stretch text-slate-500">
       <svg
         className="w-3.5 shrink-0 self-stretch min-h-[2.75rem]"
         viewBox="0 0 14 100"
@@ -387,7 +387,7 @@ export default function BinomialCdfComplementProblem({
           <ScenarioIcon name={icon} />
           <div className="text-sm text-slate-300 leading-relaxed min-w-0">
             <p>{intro}</p>
-            <p className="mt-2 text-slate-400">{question}</p>
+            <p className="mt-2 text-slate-500">{question}</p>
           </div>
         </div>
       </div>

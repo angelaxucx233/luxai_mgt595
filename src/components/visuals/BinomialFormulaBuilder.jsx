@@ -44,7 +44,7 @@ function matchesFactorialInput(val, baseN, expectedValue) {
 
 function TallParentheses({ children }) {
   return (
-    <span className="inline-flex items-stretch text-slate-400">
+    <span className="inline-flex items-stretch text-slate-500">
       <svg
         className="w-3.5 shrink-0 self-stretch min-h-[2.75rem]"
         viewBox="0 0 14 100"
@@ -123,7 +123,7 @@ function BinomialFormulaReference({ n, k, p }) {
         <span className="inline-flex flex-col items-center leading-tight">
           <span>n!</span>
           <span className="w-full min-w-[4.5rem] border-t border-slate-600 my-1" aria-hidden />
-          <span className="text-slate-400 text-sm">k! × (n − k)!</span>
+          <span className="text-slate-500 text-sm">k! × (n − k)!</span>
         </span>
         <span className="text-slate-500">×</span>
         <span>
@@ -134,7 +134,7 @@ function BinomialFormulaReference({ n, k, p }) {
           (1 − p)<sup className="text-yale-400 text-xs align-super ml-0.5">n − k</sup>
         </span>
       </div>
-      <p className="text-xs text-slate-400 text-center mt-2.5 pt-2 border-t border-slate-800">
+      <p className="text-xs text-slate-500 text-center mt-2.5 pt-2 border-t border-slate-800">
         Here: n = {n}, k = {k}, p = {pLabel}
       </p>
     </div>
@@ -150,7 +150,7 @@ function CollapsibleFormulaHint({ n, k, p, open, onToggle }) {
         aria-expanded={open}
         className="w-full flex items-center justify-between gap-3 rounded-xl border border-slate-700/80 bg-slate-900/40 px-4 py-2.5 text-left hover:border-slate-600 hover:bg-slate-900/60 transition"
       >
-        <span className="text-xs font-semibold text-slate-400">
+        <span className="text-xs font-semibold text-slate-500">
           {open ? 'Hide formula hint' : 'Need the formula? Tap for a hint'}
         </span>
         <span className="text-slate-500 text-xs shrink-0" aria-hidden>
@@ -264,7 +264,7 @@ export default function BinomialFormulaBuilder({
 
   return (
     <div className="flex flex-col items-center gap-5 w-full max-w-2xl">
-      <p className="text-sm text-slate-400 text-center">
+      <p className="text-sm text-slate-500 text-center">
         {n} fair coin flip{n !== 1 ? 's' : ''} — plug in each piece for P(X = {k}), then Check.
       </p>
 

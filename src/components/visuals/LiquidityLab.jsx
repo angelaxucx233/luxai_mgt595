@@ -73,7 +73,7 @@ function Pricing() {
 }
 
 const BETAS = [
-  { k: '\\operatorname{cov}(R_i, R_m)', sign: '+', name: 'Standard market beta', d: 'The one you’ve had since Lecture 1 — return co-movement with the market.', worst: 'high-beta anything', col: '#00356b' },
+  { k: '\\operatorname{cov}(R_i, R_m)', sign: '+', name: 'Standard market beta', d: 'The one you’ve had since Lecture 1 — return co-movement with the market.', worst: 'high-beta anything', col: '#3b82f6' },
   { k: '\\operatorname{cov}(c_i, c_m)', sign: '+', name: 'Commonality in liquidity', d: 'Your costs rise when everyone’s do — you pay up to exit exactly when exits are crowded. Raises required return.', worst: 'assets whose spreads blow out in liquidity crunches', col: '#e11d48' },
   { k: '-\\operatorname{cov}(R_i, c_m)', sign: '−', name: 'Return when markets seize', d: 'An asset that pays off when aggregate liquidity dries up is a hedge — investors accept less return. (Enters with a minus sign.)', worst: 'assets that crater in every liquidity event', col: '#059669' },
   { k: '-\\operatorname{cov}(c_i, R_m)', sign: '−', name: 'Costs in down markets', d: 'Staying cheap to sell in a downturn is precious; costs that explode as prices fall must pay in advance.', worst: 'small caps, EM — spreads widen exactly in crashes', col: '#d97706' },
@@ -140,7 +140,7 @@ function Spirals() {
             <path d="M 322 104 C 300 120, 280 130, 264 138" fill="none" stroke="#e11d48" strokeWidth="2" markerEnd="url(#spArr)" />
             <path d="M 136 140 C 106 130, 86 118, 74 104" fill="none" stroke="#e11d48" strokeWidth="2" markerEnd="url(#spArr)" />
             <path d="M 76 62 C 92 50, 116 42, 136 36" fill="none" stroke="#e11d48" strokeWidth="2" markerEnd="url(#spArr)" />
-            <text x="200" y="108" textAnchor="middle" fontSize="8" fill="#64748b">loss spiral · margin spiral · risk-management spiral</text>
+            <text x="200" y="108" textAnchor="middle" fontSize="8" fill="#a3b1c2">loss spiral · margin spiral · risk-management spiral</text>
           </svg>
           <div className="w-full rounded-xl bg-yale-50 border border-yale-100 px-3 py-2 text-[11px] text-yale-900">
             <b>Liquidity is manufactured by leveraged speculators</b> — and their leverage is the vulnerability. Funding drives market liquidity, market liquidity feeds back into margins, and one loss can turn the wheel until a new equilibrium. Corollaries you’ve already met: commonality (the +cov(c,cₘ) beta), liquidity co-moving with volatility and with the market, flight to quality — and Lecture 9’s carry unwinds, which are this machine running in FX.
@@ -149,13 +149,13 @@ function Spirals() {
       ) : (
         <>
           <svg viewBox="0 0 400 128" className="w-full">
-            <text x="14" y="12" fontSize="8.5" fill="#64748b">theoretical price path when everyone runs for the exit</text>
+            <text x="14" y="12" fontSize="8.5" fill="#a3b1c2">theoretical price path when everyone runs for the exit</text>
             <line x1="26" y1="40" x2="392" y2="40" stroke="#e2e8f0" strokeDasharray="4 3" />
-            <text x="30" y="34" fontSize="7.5" fill="#94a3b8">start</text>
-            <path d="M 30 42 C 90 52, 150 78, 210 96 L 214 96 C 224 74, 232 62, 244 56 C 290 52, 340 53, 388 54" fill="none" stroke="#00356b" strokeWidth="2.6" />
-            <text x="110" y="88" fontSize="8" fill="#64748b">smoother than a random walk (sellers queue)</text>
-            <text x="258" y="44" fontSize="8" fill="#059669" fontWeight="700">sudden rebound — the fingerprint</text>
-            <text x="330" y="70" fontSize="8" fill="#e11d48" fontWeight="700">ends lower: capital left</text>
+            <text x="30" y="34" fontSize="7.5" fill="#cbd5e1">start</text>
+            <path d="M 30 42 C 90 52, 150 78, 210 96 L 214 96 C 224 74, 232 62, 244 56 C 290 52, 340 53, 388 54" fill="none" stroke="#3b82f6" strokeWidth="2.6" />
+            <text x="110" y="88" fontSize="8" fill="#a3b1c2">smoother than a random walk (sellers queue)</text>
+            <text x="258" y="44" fontSize="8" fill="#34d399" fontWeight="700">sudden rebound — the fingerprint</text>
+            <text x="330" y="70" fontSize="8" fill="#fb7185" fontWeight="700">ends lower: capital left</text>
             <circle cx="212" cy="96" r="3.5" fill="#e11d48" />
           </svg>
           <div className="w-full rounded-xl bg-amber-50 border border-amber-200 px-3 py-2 text-[11px] text-amber-900">
@@ -168,7 +168,7 @@ function Spirals() {
 }
 
 const CASES = [
-  { k: 'Quant event · Aug 2007', d: 'Funding trouble at a few quant funds forces selling of the crowded value-momentum book. The spiral completes inside US large caps — the most liquid stocks on earth — and stays invisible to anyone not holding the long/short portfolio: indexes barely moved.', beta: 'commonality: cov(cᵢ,cₘ) — crowding is portfolio-space, not asset-space', col: '#00356b' },
+  { k: 'Quant event · Aug 2007', d: 'Funding trouble at a few quant funds forces selling of the crowded value-momentum book. The spiral completes inside US large caps — the most liquid stocks on earth — and stays invisible to anyone not holding the long/short portfolio: indexes barely moved.', beta: 'commonality: cov(cᵢ,cₘ) — crowding is portfolio-space, not asset-space', col: '#3b82f6' },
   { k: 'Convertible bonds · 2005', d: 'Redemptions force convert desks to sell; converts cheapen against their own theoretical values; the cheapening causes losses, more redemptions, fired desks (Mitchell–Pedersen–Pulvino). Slow-moving capital eventually arrived — and was paid.', beta: 'return sensitivity to liquidity: cov(Rᵢ,cₘ)', col: '#0f766e' },
   { k: 'Flash crash · May 6, 2010', d: 'Between 2 and 3 PM, liquidity provision withdraws in minutes; prices carve the run-for-exit V at high frequency — smooth cascade, sudden rebound — and close lower.', beta: 'the spiral itself, at machine speed', col: '#d97706' },
   { k: 'GFC spillover · 2007–08', d: 'Subprime credit → US quant equity → global quant books (Japan) → currency carry. Markets with no cash-flow links crash together because they share funders — Lecture 9’s co-movement result at planetary scale.', beta: 'funding commonality across everything one balance sheet touches', col: '#e11d48' },

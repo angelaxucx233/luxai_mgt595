@@ -9,7 +9,7 @@ export function HeadsFace() {
         x="50"
         y="18"
         textAnchor="middle"
-        fill="#5c3d1e"
+        fill="#e1b284"
         fontSize="7"
         fontWeight="700"
         letterSpacing="1.5"
@@ -23,7 +23,7 @@ export function HeadsFace() {
         d="M 38 58 Q 50 52 62 58 L 60 68 Q 50 64 40 68 Z"
         fill="#6b3f1f"
       />
-      <text x="50" y="88" textAnchor="middle" fill="#5c3d1e" fontSize="9" fontWeight="700">
+      <text x="50" y="88" textAnchor="middle" fill="#e1b284" fontSize="9" fontWeight="700">
         ONE CENT
       </text>
     </>
@@ -37,7 +37,7 @@ export function TailsFace() {
         x="50"
         y="16"
         textAnchor="middle"
-        fill="#5c3d1e"
+        fill="#e1b284"
         fontSize="6.5"
         fontWeight="700"
         letterSpacing="1"
@@ -50,10 +50,10 @@ export function TailsFace() {
       <rect x="52" y="38" width="4" height="14" fill="#6b3f1f" />
       <rect x="60" y="38" width="4" height="14" fill="#6b3f1f" />
       <path d="M 34 56 L 66 56 L 64 62 L 36 62 Z" fill="#6b3f1f" />
-      <text x="50" y="78" textAnchor="middle" fill="#5c3d1e" fontSize="7" fontWeight="600">
+      <text x="50" y="78" textAnchor="middle" fill="#e1b284" fontSize="7" fontWeight="600">
         OF AMERICA
       </text>
-      <text x="50" y="90" textAnchor="middle" fill="#5c3d1e" fontSize="9" fontWeight="700">
+      <text x="50" y="90" textAnchor="middle" fill="#e1b284" fontSize="9" fontWeight="700">
         ONE CENT
       </text>
     </>
@@ -115,7 +115,7 @@ export default function FairPennyCoin({
         {isHeads ? <HeadsFace /> : <TailsFace />}
       </svg>
       {showCaption && (
-        <span className="text-[11px] text-slate-400 font-medium">
+        <span className="text-[11px] text-slate-500 font-medium">
           {caption ?? (isHeads ? 'Heads' : 'Tails')}
         </span>
       )}

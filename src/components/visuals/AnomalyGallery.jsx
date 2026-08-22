@@ -29,7 +29,7 @@ function Size() {
       <div className="w-full rounded-xl border border-slate-200 overflow-hidden text-[11px]">
         <div className="grid grid-cols-4 bg-yale-900 text-white font-semibold"><div className="px-2 py-1">Decile</div><div className="px-2 py-1 text-right">Return %/yr</div><div className="px-2 py-1 text-right">β</div><div className="px-2 py-1 text-right">Cap $m</div></div>
         {SIZE.map(([n, r, b, c], i) => (
-          <div key={n} className={`grid grid-cols-4 border-t border-slate-100 font-mono ${i === 0 || i === 9 ? 'bg-amber-50 font-bold' : 'bg-white'}`}>
+          <div key={n} className={`grid grid-cols-4 border-t border-slate-100 font-mono text-slate-800 ${i === 0 || i === 9 ? 'bg-amber-50 font-bold' : 'bg-white'}`}>
             <div className="px-2 py-1">{n}</div>
             <div className="px-2 py-1 text-right text-yale-900">{r.toFixed(1)}</div>
             <div className="px-2 py-1 text-right text-slate-600">{b.toFixed(2)}</div>
@@ -51,9 +51,9 @@ function January() {
         <line x1="18" y1={Y(0)} x2="392" y2={Y(0)} stroke="#94a3b8" />
         {JAN.map(([m, v], i) => (
           <g key={m}>
-            <rect x={22 + i * 31} y={v >= 0 ? Y(v) : Y(0)} width="24" height={Math.abs(Y(v) - Y(0))} fill={i === 0 ? '#d97706' : '#00356b'} rx="2" />
-            <text x={34 + i * 31} y="132" textAnchor="middle" fontSize="8" fill="#64748b">{m}</text>
-            {i === 0 && <text x={34} y={Y(v) - 5} textAnchor="middle" fontSize="9" fill="#b45309" fontWeight="800">0.70%</text>}
+            <rect x={22 + i * 31} y={v >= 0 ? Y(v) : Y(0)} width="24" height={Math.abs(Y(v) - Y(0))} fill={i === 0 ? '#d97706' : '#3b82f6'} rx="2" />
+            <text x={34 + i * 31} y="132" textAnchor="middle" fontSize="8" fill="#a3b1c2">{m}</text>
+            {i === 0 && <text x={34} y={Y(v) - 5} textAnchor="middle" fontSize="9" fill="#f59e0b" fontWeight="800">0.70%</text>}
           </g>
         ))}
       </svg>
@@ -75,11 +75,11 @@ function Contrarian() {
       <svg viewBox="0 0 400 126" className="w-full">
         <line x1="22" y1={Y(0)} x2="390" y2={Y(0)} stroke="#e2e8f0" strokeDasharray="4 3" />
         <line x1="22" y1="112" x2="390" y2="112" stroke="#94a3b8" /><line x1="22" y1="112" x2="22" y2="8" stroke="#94a3b8" />
-        <polyline points={loser.join(' ')} fill="none" stroke="#00356b" strokeWidth="2.4" />
+        <polyline points={loser.join(' ')} fill="none" stroke="#3b82f6" strokeWidth="2.4" />
         <polyline points={winner.join(' ')} fill="none" stroke="#e11d48" strokeWidth="2.4" />
-        <text x={X(38)} y={Y(0.30) - 5} fontSize="9.5" fill="#00356b" fontWeight="700">Past losers: +0.30</text>
-        <text x={X(38)} y={Y(-0.10) + 13} fontSize="9.5" fill="#e11d48" fontWeight="700">Past winners: −0.10</text>
-        <text x="386" y="124" textAnchor="end" fontSize="8.5" fill="#64748b">months after formation (0–60)</text>
+        <text x={X(38)} y={Y(0.30) - 5} fontSize="9.5" fill="#93b8e8" fontWeight="700">Past losers: +0.30</text>
+        <text x={X(38)} y={Y(-0.10) + 13} fontSize="9.5" fill="#fb7185" fontWeight="700">Past winners: −0.10</text>
+        <text x="386" y="124" textAnchor="end" fontSize="8.5" fill="#a3b1c2">months after formation (0–60)</text>
       </svg>
       <p className="text-[11px] text-slate-500 leading-snug">DeBondt–Thaler (1985): rank on the past 3 years, then watch the next 5. The bottom decile beats the top by ≈40 cumulative points. Overreaction — or are fallen angels just riskier? Past returns are noisy proxies for expected returns, which pushed researchers toward D/P and E/P.</p>
     </div>

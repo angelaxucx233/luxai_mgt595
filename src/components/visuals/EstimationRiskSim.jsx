@@ -133,13 +133,13 @@ export default function EstimationRiskSim({ mode = 'lab' }) {
       <svg viewBox="0 0 420 215" className="w-full">
         <line x1="45" y1="200" x2="405" y2="200" stroke="#94a3b8" />
         <line x1="45" y1="200" x2="45" y2="15" stroke="#94a3b8" />
-        <text x="400" y="213" textAnchor="end" fontSize="10" fill="#64748b">σ (true)</text>
-        <text x="42" y="12" textAnchor="end" fontSize="10" fill="#64748b">E (true)</text>
+        <text x="400" y="213" textAnchor="end" fontSize="10" fill="#a3b1c2">σ (true)</text>
+        <text x="42" y="12" textAnchor="end" fontSize="10" fill="#a3b1c2">E (true)</text>
         {pts.map((p, i) => (
-          <circle key={i} cx={X(p.s)} cy={Y(p.e)} r="2.4" fill={allowShorts ? '#e11d48' : '#00356b'} opacity="0.35" />
+          <circle key={i} cx={X(p.s)} cy={Y(p.e)} r="2.4" fill={allowShorts ? '#e11d48' : '#3b82f6'} opacity="0.35" />
         ))}
-        <circle cx={X(trueT.s)} cy={Y(trueT.e)} r="6" fill="#d97706" stroke="#00356b" strokeWidth="1.5" />
-        <text x={X(trueT.s) + 9} y={Y(trueT.e) + 4} fontSize="10" fill="#b45309" fontWeight="700">true tangency</text>
+        <circle cx={X(trueT.s)} cy={Y(trueT.e)} r="6" fill="#d97706" stroke="#3b82f6" strokeWidth="1.5" />
+        <text x={X(trueT.s) + 9} y={Y(trueT.e) + 4} fontSize="10" fill="#f59e0b" fontWeight="700">true tangency</text>
       </svg>
       <div className="flex items-center gap-3">
         <button

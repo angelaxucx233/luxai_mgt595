@@ -28,7 +28,7 @@ export default function Navbar() {
         </span>
       </Link>
 
-      <span className="hidden sm:inline text-xs font-semibold uppercase tracking-widest text-slate-400">
+      <span className="hidden sm:inline text-xs font-semibold uppercase tracking-widest text-slate-300">
         MGT 595 · Quantitative Investing
       </span>
     </nav>

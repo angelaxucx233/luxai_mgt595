@@ -27,18 +27,21 @@ function Returns() {
   const s = SR[sel];
   return (
     <div className="w-full max-w-lg flex flex-col items-center gap-2.5">
-      <svg viewBox="0 0 400 158" className="w-full">
-        <text x="14" y="12" fontSize="8.5" fill="#64748b">Sharpe ratios: carry long-short (navy) vs passive equal-weight long (grey) — real data</text>
+      <svg viewBox="0 0 400 180" className="w-full">
+        <text x="14" y="12" fontSize="8.5" fill="#a3b1c2">Sharpe ratios: carry long-short (navy) vs passive equal-weight long (grey) — real data</text>
+            <g transform="translate(0, 20)">
         <line x1="24" y1="106" x2="392" y2="106" stroke="#94a3b8" />
         {SR.map((x, i) => (
           <g key={x.k} onClick={() => setSel(i)} className="cursor-pointer" opacity={sel === i ? 1 : 0.6}>
             <rect x={30 + i * 40} y={x.e >= 0 ? 106 - x.e * 46 : 106} width="12" height={Math.abs(x.e) * 46} fill="#94a3b8" rx="2" />
-            <rect x={44 + i * 40} y={106 - x.c * 46} width="12" height={x.c * 46} fill="#00356b" rx="2" />
-            <text x={50 + i * 40} y={102 - x.c * 46} textAnchor="middle" fontSize="6.8" fill="#00356b" fontWeight="800">{x.c.toFixed(2)}</text>
-            <text x={43 + i * 40} y="150" textAnchor="middle" fontSize="6.6" fill={sel === i ? '#0f172a' : '#94a3b8'} fontWeight="700" transform={`rotate(-24 ${43 + i * 40} 150)`}>{x.k}</text>
+            <rect x={44 + i * 40} y={106 - x.c * 46} width="12" height={x.c * 46} fill="#3b82f6" rx="2" />
+            <text x={50 + i * 40} y={102 - x.c * 46} textAnchor="middle" fontSize="6.8" fill="#93b8e8" fontWeight="800">{x.c.toFixed(2)}</text>
+            <text x={43 + i * 40} y="150" textAnchor="middle" fontSize="6.6" fill={sel === i ? '#87a1de' : '#94a3b8'} fontWeight="700" transform={`rotate(-24 ${43 + i * 40} 150)`}>{x.k}</text>
           </g>
         ))}
-      </svg>
+      
+            </g>
+          </svg>
       <div className="w-full grid grid-cols-4 gap-1.5 text-center">
         {[['mean', '6.75%'], ['vol', '6.12%'], ['Sharpe', '1.10'], ['skew', '−0.02']].map(([l, v]) => (
           <div key={l} className="rounded-xl border-2 border-yale-800 bg-yale-50 px-1 py-1.5">
@@ -74,12 +77,12 @@ function Anatomy() {
       {tab === 'dyn' && (
         <>
           <svg viewBox="0 0 400 136" className="w-full">
-            <text x="14" y="12" fontSize="8.5" fill="#64748b">share of carry profits from DYNAMIC positions (timing), by class — real data</text>
+            <text x="14" y="12" fontSize="8.5" fill="#a3b1c2">share of carry profits from DYNAMIC positions (timing), by class — real data</text>
             {DYN.map(([l, v], i) => (
               <g key={l}>
-                <rect x="96" y={20 + i * 12.5} width={Math.min(v, 115) * 2.3} height="9" fill={v >= 80 ? '#00356b' : v >= 50 ? '#0f766e' : '#d97706'} opacity="0.85" rx="2.5" />
-                <text x="92" y={27.5 + i * 12.5} textAnchor="end" fontSize="7.5" fill="#334155" fontWeight="600">{l}</text>
-                <text x={100 + Math.min(v, 115) * 2.3} y={27.5 + i * 12.5} fontSize="7.5" fill="#0f172a" fontWeight="800">{v}%</text>
+                <rect x="96" y={20 + i * 12.5} width={Math.min(v, 115) * 2.3} height="9" fill={v >= 80 ? '#3b82f6' : v >= 50 ? '#0f766e' : '#d97706'} opacity="0.85" rx="2.5" />
+                <text x="92" y={27.5 + i * 12.5} textAnchor="end" fontSize="7.5" fill="#cbd5e1" fontWeight="600">{l}</text>
+                <text x={100 + Math.min(v, 115) * 2.3} y={27.5 + i * 12.5} fontSize="7.5" fill="#e2e8f0" fontWeight="800">{v}%</text>
               </g>
             ))}
           </svg>
@@ -144,15 +147,15 @@ function Risks() {
       {tab === 'states' && (
         <>
           <svg viewBox="0 0 400 128" className="w-full">
-            <text x="14" y="12" fontSize="8.5" fill="#64748b">annualized carry returns in carry expansions (green) vs drawdowns (red) — real data</text>
+            <text x="14" y="12" fontSize="8.5" fill="#a3b1c2">annualized carry returns in carry expansions (green) vs drawdowns (red) — real data</text>
             <line x1="26" y1="76" x2="392" y2="76" stroke="#94a3b8" />
             {STATES.map((x, i) => (
               <g key={x.k}>
                 <rect x={48 + i * 90} y={76 - x.up * 2.1} width="26" height={x.up * 2.1} fill="#059669" rx="3" />
                 <rect x={78 + i * 90} y="76" width="26" height={-x.dn * 2.1} fill="#e11d48" rx="3" />
-                <text x={61 + i * 90} y={72 - x.up * 2.1} textAnchor="middle" fontSize="7.5" fill="#059669" fontWeight="800">+{x.up.toFixed(1)}</text>
-                <text x={91 + i * 90} y={76 - x.dn * 2.1 + 10} textAnchor="middle" fontSize="7.5" fill="#e11d48" fontWeight="800">{x.dn.toFixed(1)}</text>
-                <text x={76 + i * 90} y="122" textAnchor="middle" fontSize="8" fill="#334155" fontWeight="700">{x.k}</text>
+                <text x={61 + i * 90} y={72 - x.up * 2.1} textAnchor="middle" fontSize="7.5" fill="#34d399" fontWeight="800">+{x.up.toFixed(1)}</text>
+                <text x={91 + i * 90} y={76 - x.dn * 2.1 + 10} textAnchor="middle" fontSize="7.5" fill="#fb7185" fontWeight="800">{x.dn.toFixed(1)}</text>
+                <text x={76 + i * 90} y="122" textAnchor="middle" fontSize="8" fill="#cbd5e1" fontWeight="700">{x.k}</text>
               </g>
             ))}
           </svg>

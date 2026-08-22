@@ -34,24 +34,24 @@ export default function GrsGeometry({ showFormula = false, summaryMode = false }
       )}
       <svg viewBox="0 0 400 186" className="w-full">
         <line x1="30" y1="168" x2="390" y2="168" stroke="#94a3b8" /><line x1="30" y1="168" x2="30" y2="12" stroke="#94a3b8" />
-        <text x="386" y="180" textAnchor="end" fontSize="9" fill="#64748b">σ</text>
-        <text x="34" y="12" fontSize="9" fill="#64748b">E[r]−r_f</text>
+        <text x="386" y="180" textAnchor="end" fontSize="9" fill="#a3b1c2">σ</text>
+        <text x="34" y="12" fontSize="9" fill="#a3b1c2">E[r]−r_f</text>
         <polyline points={frontier.join(' ')} fill="none" stroke="#cbd5e1" strokeWidth="2" />
         {/* tangency ray */}
         <line x1={X(0)} y1={Y(0)} x2={X(2.3)} y2={Y(thQ * 2.3)} stroke="#d97706" strokeWidth="2.4" />
-        <circle cx={X(sigQ)} cy={Y(thQ * sigQ)} r="5" fill="#d97706" stroke="#00356b" strokeWidth="1.2" />
-        <text x={X(sigQ) - 4} y={Y(thQ * sigQ) - 8} fontSize="9.5" fill="#b45309" fontWeight="700">q (tangency)</text>
+        <circle cx={X(sigQ)} cy={Y(thQ * sigQ)} r="5" fill="#d97706" stroke="#3b82f6" strokeWidth="1.2" />
+        <text x={X(sigQ) - 4} y={Y(thQ * sigQ) - 8} fontSize="9.5" fill="#f59e0b" fontWeight="700">q (tangency)</text>
         {/* market ray */}
-        <line x1={X(0)} y1={Y(0)} x2={X(2.3)} y2={Y(thM * 2.3)} stroke="#00356b" strokeWidth="2.4" />
-        <circle cx={X(M.sig)} cy={Y(M.mu)} r="5" fill="#00356b" stroke="white" strokeWidth="1.2" />
-        <text x={X(M.sig) + 8} y={Y(M.mu) + 4} fontSize="9.5" fill="#00356b" fontWeight="700">M</text>
+        <line x1={X(0)} y1={Y(0)} x2={X(2.3)} y2={Y(thM * 2.3)} stroke="#3b82f6" strokeWidth="2.4" />
+        <circle cx={X(M.sig)} cy={Y(M.mu)} r="5" fill="#3b82f6" stroke="white" strokeWidth="1.2" />
+        <text x={X(M.sig) + 8} y={Y(M.mu) + 4} fontSize="9.5" fill="#93b8e8" fontWeight="700">M</text>
         {/* sigma=1 verticals */}
         <line x1={X(1)} y1={Y(0)} x2={X(1)} y2={Y(thQ)} stroke="#e11d48" strokeDasharray="4 3" strokeWidth="1.4" />
         <circle cx={X(1)} cy={Y(thQ)} r="3.4" fill="#d97706" />
-        <circle cx={X(1)} cy={Y(thM)} r="3.4" fill="#00356b" />
-        <text x={X(1) + 6} y={Y(thQ) - 4} fontSize="8.5" fill="#b45309">θ_q = {thQ.toFixed(2)}</text>
-        <text x={X(1) + 6} y={Y(thM) + 12} fontSize="8.5" fill="#00356b">θ_m = {thM.toFixed(2)}</text>
-        <text x={X(1)} y={Y(0) + 12} textAnchor="middle" fontSize="8.5" fill="#64748b">σ=1</text>
+        <circle cx={X(1)} cy={Y(thM)} r="3.4" fill="#3b82f6" />
+        <text x={X(1) + 6} y={Y(thQ) - 4} fontSize="8.5" fill="#f59e0b">θ_q = {thQ.toFixed(2)}</text>
+        <text x={X(1) + 6} y={Y(thM) + 12} fontSize="8.5" fill="#93b8e8">θ_m = {thM.toFixed(2)}</text>
+        <text x={X(1)} y={Y(0) + 12} textAnchor="middle" fontSize="8.5" fill="#a3b1c2">σ=1</text>
       </svg>
       <label className="w-full text-xs text-slate-600 flex items-center gap-2">
         <span className="w-52">Market inefficiency θ_q−θ_m = <b className="text-yale-900">{gap.toFixed(2)}</b></span>

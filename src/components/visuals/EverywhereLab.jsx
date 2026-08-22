@@ -35,7 +35,7 @@ function MeasureMap() {
       </div>
       <div className="grid grid-cols-2 gap-1.5 text-[11px]">
         <div className="rounded-xl border border-yale-200 bg-white px-3 py-2">
-          <div className="text-[9px] uppercase tracking-wide text-slate-400 font-bold">Momentum in {c.k}</div>
+          <div className="text-[9px] uppercase tracking-wide text-slate-500 font-bold">Momentum in {c.k}</div>
           <div className="font-bold text-yale-900 mt-0.5">{c.mom}</div>
           <div className="text-slate-500 mt-0.5">Identical in every class — no translation needed.</div>
         </div>
@@ -67,21 +67,21 @@ function Results() {
   return (
     <div className="w-full max-w-lg flex flex-col items-center gap-2.5">
       <svg viewBox="0 0 400 150" className="w-full">
-        <text x="14" y="12" fontSize="8.5" fill="#64748b">Sharpe ratios by setting (stylized shape of Table I) — value · momentum · 50/50</text>
+        <text x="14" y="12" fontSize="8.5" fill="#a3b1c2">Sharpe ratios by setting (stylized shape of Table I) — value · momentum · 50/50</text>
         <line x1="20" y1="118" x2="392" y2="118" stroke="#94a3b8" />
         {STRIP.map((x, i) => (
           <g key={x.k} onClick={() => setSel(i)} className="cursor-pointer" opacity={sel === i ? 1 : 0.55}>
             <rect x={26 + i * 46} y={118 - x.v * 90} width="10" height={x.v * 90} fill="#d97706" rx="2" />
             <rect x={38 + i * 46} y={118 - x.m * 90} width="10" height={x.m * 90} fill="#0f766e" rx="2" />
-            <rect x={50 + i * 46} y={118 - x.c * 90} width="10" height={x.c * 90} fill="#00356b" rx="2" />
-            <text x={43 + i * 46} y="130" textAnchor="middle" fontSize="7.5" fill={sel === i ? '#0f172a' : '#94a3b8'} fontWeight="700">{x.k}</text>
-            {x.jp && <text x={43 + i * 46} y="142" textAnchor="middle" fontSize="7" fill="#e11d48" fontWeight="800">← the puzzle</text>}
+            <rect x={50 + i * 46} y={118 - x.c * 90} width="10" height={x.c * 90} fill="#3b82f6" rx="2" />
+            <text x={43 + i * 46} y="130" textAnchor="middle" fontSize="7.5" fill={sel === i ? '#87a1de' : '#94a3b8'} fontWeight="700">{x.k}</text>
+            {x.jp && <text x={43 + i * 46} y="142" textAnchor="middle" fontSize="7" fill="#fb7185" fontWeight="800">← the puzzle</text>}
           </g>
         ))}
         <g>
-          <rect x="308" y="16" width="10" height="7" fill="#d97706" rx="1.5" /><text x="322" y="23" fontSize="7.5" fill="#64748b">value</text>
-          <rect x="308" y="27" width="10" height="7" fill="#0f766e" rx="1.5" /><text x="322" y="34" fontSize="7.5" fill="#64748b">momentum</text>
-          <rect x="308" y="38" width="10" height="7" fill="#00356b" rx="1.5" /><text x="322" y="45" fontSize="7.5" fill="#64748b">50/50 combo</text>
+          <rect x="308" y="16" width="10" height="7" fill="#d97706" rx="1.5" /><text x="322" y="23" fontSize="7.5" fill="#a3b1c2">value</text>
+          <rect x="308" y="27" width="10" height="7" fill="#0f766e" rx="1.5" /><text x="322" y="34" fontSize="7.5" fill="#a3b1c2">momentum</text>
+          <rect x="308" y="38" width="10" height="7" fill="#3b82f6" rx="1.5" /><text x="322" y="45" fontSize="7.5" fill="#a3b1c2">50/50 combo</text>
         </g>
       </svg>
       {s.jp ? (
@@ -111,7 +111,7 @@ function Comovement() {
       {tab === 'global' && (
         <>
           <svg viewBox="0 0 400 122" className="w-full">
-            <text x="14" y="12" fontSize="8.5" fill="#64748b">correlation structure (schematic): every V with every V, every M with every M</text>
+            <text x="14" y="12" fontSize="8.5" fill="#a3b1c2">correlation structure (schematic): every V with every V, every M with every M</text>
             {['US val', 'UK val', 'FX val', 'Cmd val'].map((l, i) => (
               <g key={l}>
                 <circle cx={60 + i * 60} cy="44" r="15" fill="#d97706" opacity="0.85" />
@@ -131,7 +131,7 @@ function Comovement() {
               </g>
             ))}
             <line x1="60" y1="59" x2="60" y2="79" stroke="#e11d48" strokeWidth="1.6" strokeDasharray="4 3" />
-            <text x="330" y="70" fontSize="8" fill="#e11d48" fontWeight="700">V ↔ M: negative</text>
+            <text x="330" y="70" fontSize="8" fill="#fb7185" fontWeight="700">V ↔ M: negative</text>
           </svg>
           <div className="w-full rounded-xl bg-yale-50 border border-yale-100 px-3 py-2 text-[11px] text-yale-900">
             Value in one market co-moves with value in <i>every other</i> — across asset classes — and momentum ditto; the first principal component splits the whole zoo into a global value factor and a global momentum factor. A global 3-factor model prices 48 V&amp;M portfolios worldwide better than any local model. No country-specific story survives that.
@@ -141,7 +141,7 @@ function Comovement() {
       {tab === 'liq' && (
         <>
           <svg viewBox="0 0 400 118" className="w-full">
-            <text x="14" y="12" fontSize="8.5" fill="#64748b">loading on funding-liquidity shocks (everywhere portfolios)</text>
+            <text x="14" y="12" fontSize="8.5" fill="#a3b1c2">loading on funding-liquidity shocks (everywhere portfolios)</text>
             <line x1="200" y1="24" x2="200" y2="96" stroke="#e2e8f0" />
             <g>
               <rect x="200" y="34" width="120" height="20" fill="#d97706" rx="4" />
@@ -149,9 +149,9 @@ function Comovement() {
             </g>
             <g>
               <rect x="96" y="66" width="104" height="20" fill="#0f766e" rx="4" />
-              <text x="90" y="80" textAnchor="end" fontSize="9" fill="#0f766e" fontWeight="800">momentum: − (t = −3.2)</text>
+              <text x="90" y="80" textAnchor="end" fontSize="9" fill="#5eead4" fontWeight="800">momentum: − (t = −3.2)</text>
             </g>
-            <text x="200" y="112" textAnchor="middle" fontSize="8.5" fill="#64748b">“cheap assets get cheaper during liquidity events, but trending assets do better”</text>
+            <text x="200" y="112" textAnchor="middle" fontSize="8.5" fill="#a3b1c2">“cheap assets get cheaper during liquidity events, but trending assets do better”</text>
           </svg>
           <div className="w-full rounded-xl bg-amber-50 border border-amber-200 px-3 py-2 text-[11px] text-amber-900">
             <b>Only visible everywhere.</b> In any single market the loadings drown in noise; diversify across all of them and they emerge at |t| &gt; 3. Liquidity risk helps explain value’s premium and the negative V-M correlation — but momentum earns a premium while <i>hedging</i> liquidity events, which makes it more puzzling, not less. Macro risks explain little. “Still far from a full explanation.”
@@ -161,7 +161,7 @@ function Comovement() {
       {tab === 'dyn' && (
         <div className="w-full flex flex-col gap-1.5 text-[11px]">
           {[
-            ['Summer 1998 (LTCM)', 'Liquidity risk’s importance rises sharply after the LTCM crisis — the market learned what funding shocks do to these strategies.', '#00356b'],
+            ['Summer 1998 (LTCM)', 'Liquidity risk’s importance rises sharply after the LTCM crisis — the market learned what funding shocks do to these strategies.', '#3b82f6'],
             ['Rising correlations', 'Over time, value and momentum become more correlated across markets and with each other — consistent with common arbitrage capital trading them globally.', '#0f766e'],
             ['Shrinking premia', 'Both become less profitable over the sample — capital chasing the published effects (McLean–Pontiff’s mechanism, met in Lecture 7).', '#d97706'],
           ].map(([h, d, c]) => (

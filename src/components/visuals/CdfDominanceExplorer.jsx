@@ -42,13 +42,13 @@ export default function CdfDominanceExplorer() {
       <svg viewBox="0 0 420 220" className="w-full">
         <line x1="40" y1="200" x2="400" y2="200" stroke="#94a3b8" />
         <line x1="40" y1="200" x2="40" y2="20" stroke="#94a3b8" />
-        <text x="36" y="30" textAnchor="end" fontSize="10" fill="#64748b">1</text>
-        <text x="36" y="203" textAnchor="end" fontSize="10" fill="#64748b">0</text>
-        <text x="398" y="214" textAnchor="end" fontSize="10" fill="#64748b">return r</text>
-        <path d={path(aC, aK)} fill="none" stroke="#00356b" strokeWidth="2.5" />
+        <text x="36" y="30" textAnchor="end" fontSize="10" fill="#a3b1c2">1</text>
+        <text x="36" y="203" textAnchor="end" fontSize="10" fill="#a3b1c2">0</text>
+        <text x="398" y="214" textAnchor="end" fontSize="10" fill="#a3b1c2">return r</text>
+        <path d={path(aC, aK)} fill="none" stroke="#3b82f6" strokeWidth="2.5" />
         <path d={path(bC, bK)} fill="none" stroke="#e11d48" strokeWidth="2.5" />
-        <text x={X(aC) + 60} y={Y(0.86)} fontSize="12" fontWeight="700" fill="#00356b">F_A</text>
-        <text x={X(bC) - 14} y={Y(0.6)} fontSize="12" fontWeight="700" fill="#e11d48">F_B</text>
+        <text x={X(aC) + 60} y={Y(0.86)} fontSize="12" fontWeight="700" fill="#93b8e8">F_A</text>
+        <text x={X(bC) - 14} y={Y(0.6)} fontSize="12" fontWeight="700" fill="#fb7185">F_B</text>
       </svg>
 
       <label className="w-full flex items-center gap-3 text-sm text-slate-700">
